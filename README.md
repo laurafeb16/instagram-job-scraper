@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/icon.svg" width="80" alt="Logo">
+  <img src="icon.svg" width="80" alt="Logo">
 </p>
 <h1 align="center">MyJobScraper</h1>
  # Instagram Job Scraper
