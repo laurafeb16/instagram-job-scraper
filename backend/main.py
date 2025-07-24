@@ -1,84 +1,149 @@
-# -*- coding: utf-8 -*-
-import argparse
-import sys
-from backend.scraper import InstagramScraper
-from backend.job_extractor import is_job_post
-from backend.ocr_processor import OCRProcessor
+ï»¿# -*- coding: utf-8 -*-
+"""
+Modulo principal que coordina el proceso de scraping, OCR y extraccion de ofertas.
+"""
+import os
+import json
+import logging
+from typing import List, Dict, Optional, Union
+from datetime import datetime
 
-def main():
-    # Configurar argumentos de línea de comandos
-    parser = argparse.ArgumentParser(description="Instagram Job Scraper")
-    parser.add_argument('--username', default='ucm_fdi', 
-                        help='Nombre de usuario de Instagram de la facultad')
-    parser.add_argument('--session', 
-                        help='Nombre de usuario de Instagram para la sesión guardada')
-    parser.add_argument('--max-retries', type=int, default=3,
-                        help='Número máximo de reintentos para operaciones fallidas')
-    parser.add_argument('--keep-files', action='store_true',
-                        help='Mantener archivos descargados (no eliminar directorio temporal)')
-    parser.add_argument('--post-limit', type=int, default=10,
-                        help='Número máximo de posts a verificar (por defecto: 10)')
-    parser.add_argument('--tesseract-path', 
-                        default=r'C:\Program Files\Tesseract-OCR\tesseract.exe',
-                        help='Ruta al ejecutable de Tesseract OCR')
-    args = parser.parse_args()
+from backend.scraper import InstagramScraper
+from backend.ocr_processor import OCRProcessor
+from backend.job_extractor import JobExtractor, extract_job_data
+
+logger = logging.getLogger(__name__)
+
+def process_posts(posts: List[Dict], processor: OCRProcessor, extractor: JobExtractor) -> List[Dict]:
+    """Procesa los posts descargados con OCR y extraccion de informacion.
     
-    # Inicializar scraper
-    scraper = InstagramScraper()
+    Args:
+        posts (List[Dict]): Lista de posts descargados
+        processor (OCRProcessor): Procesador OCR
+        extractor (JobExtractor): Extractor de ofertas
+        
+    Returns:
+        List[Dict]: Posts procesados con informacion de ofertas
+    """
+    processed_posts = []
     
-    # Inicializar procesador OCR
-    ocr = OCRProcessor(tesseract_cmd=args.tesseract_path)
-    
-    try:
-        # Autenticar en Instagram si se proporcionó sesión
-        if args.session:
-            if not scraper.login(args.session, max_retries=args.max_retries):
-                print("No se pudo autenticar. Continuando sin autenticación...")
-        
-        # Obtener perfil
-        profile = scraper.get_profile(args.username, max_retries=args.max_retries)
-        if not profile:
-            print(f"No se pudo obtener el perfil {args.username}. Abortando.")
-            return 1
-        
-        # Buscar posts de ofertas de trabajo
-        job_posts = scraper.find_job_posts(
-            profile, 
-            post_limit=args.post_limit,
-            job_checker_func=is_job_post
-        )
-        
-        if not job_posts:
-            print("No se encontraron ofertas de trabajo. Abortando.")
-            return 1
-        
-        # Procesar y guardar posts
-        results = scraper.process_job_posts(args.username, job_posts)
-        
-        # Mostrar resultado de OCR en el primer post
-        if results:
-            post, image_path, json_path = results[0]
-            print(f"\nAplicando OCR a: {image_path}")
-            print("=== OCR TEXT FROM FIRST IMAGE ===")
+    for post in posts:
+        try:
+            shortcode = post.get('shortcode')
+            local_image_path = post.get('local_image_path')
             
-            try:
-                text = ocr.extract_text(image_path)
-                print(text)
-            except Exception as e:
-                print(f"Error al realizar OCR: {e}")
+            if not local_image_path or not os.path.exists(local_image_path):
+                logger.warning(f"Imagen no encontrada para post {shortcode}")
+                continue
+            
+            # Extraer texto con OCR
+            logger.info(f"Procesando OCR para post {shortcode}")
+            ocr_text = processor.extract_text(local_image_path)
+            
+            # Verificar si es oferta laboral
+            is_job_post, company = extractor.is_job_post(post.get('caption', '') + "\n" + ocr_text)
+            
+            if is_job_post:
+                logger.info(f"Detectada oferta laboral en post {shortcode}")
+                
+                # Extraer informacion estructurada
+                job_info = extract_job_data(ocr_text, post.get('caption', ''))
+                
+                # Si no se detecto empresa en el extractor estructurado, usar la detectada en is_job_post
+                if not job_info['company'] and company and company != "Desconocida":
+                    job_info['company'] = company
+                
+                # Anadir informacion de la oferta al post
+                post['is_job_post'] = True
+                post['job_info'] = job_info
+                post['ocr_text'] = ocr_text
+                
+                # Actualizar el archivo JSON
+                json_path = os.path.join('data/raw', f"{shortcode}.json")
+                if os.path.exists(json_path):
+                    with open(json_path, 'w', encoding='utf-8') as f:
+                        json.dump(post, f, ensure_ascii=False, indent=2)
+                
+                processed_posts.append(post)
+            else:
+                logger.info(f"Post {shortcode} no es una oferta laboral")
+                post['is_job_post'] = False
+                
+                # Actualizar el archivo JSON de igual forma
+                json_path = os.path.join('data/raw', f"{shortcode}.json")
+                if os.path.exists(json_path):
+                    with open(json_path, 'w', encoding='utf-8') as f:
+                        json.dump(post, f, ensure_ascii=False, indent=2)
+                
+        except Exception as e:
+            logger.error(f"Error al procesar post {post.get('shortcode')}: {e}")
+    
+    return processed_posts
+
+def run_scraper(username: str, max_posts: int = 10, headless: bool = False, save_browser: bool = False) -> int:
+    """Ejecuta el proceso completo de scraping.
+    
+    Args:
+        username (str): Nombre de usuario de Instagram a analizar
+        max_posts (int): Numero maximo de posts a analizar
+        headless (bool): Si se ejecuta en modo headless
+        save_browser (bool): Si se guarda la sesion del navegador
         
-        print(f"\nSe descargaron y procesaron {len(results)} ofertas laborales")
-        print(f"Archivos guardados en el directorio 'data/raw/'")
-        return 0
+    Returns:
+        int: Numero de posts procesados
+    """
+    try:
+        # Inicializar componentes
+        scraper = InstagramScraper(headless=headless)
+        processor = OCRProcessor()
+        extractor = JobExtractor()
+        
+        # Extraer posts
+        logger.info(f"Iniciando scraping de {max_posts} posts de @{username}")
+        posts = scraper.scrape_profile(username, max_posts)
+        
+        if not posts:
+            logger.warning(f"No se encontraron posts para @{username}")
+            return 0
+        
+        logger.info(f"Se encontraron {len(posts)} posts")
+        
+        # Procesar posts para OCR y extraccion de ofertas
+        job_posts = process_posts(posts, processor, extractor)
+        
+        logger.info(f"Se identificaron {len(job_posts)} ofertas de trabajo")
+        
+        # Generar informe
+        report = {
+            "username": username,
+            "total_posts_scraped": len(posts),
+            "job_posts_found": len(job_posts),
+            "scrape_date": datetime.now().isoformat(),
+            "job_posts": [
+                {
+                    "shortcode": post.get('shortcode'),
+                    "company": post.get('job_info', {}).get('company'),
+                    "title": post.get('job_info', {}).get('title'),
+                    "url": post.get('post_url')
+                }
+                for post in job_posts
+            ]
+        }
+        
+        # Guardar informe
+        os.makedirs('data', exist_ok=True)
+        report_path = f"data/report_{username}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        with open(report_path, 'w', encoding='utf-8') as f:
+            json.dump(report, f, ensure_ascii=False, indent=2)
+            
+        logger.info(f"Informe guardado en {report_path}")
+        
+        return len(posts)
     
     except Exception as e:
-        print(f"Ocurrió un error inesperado: {e}")
-        return 1
+        logger.exception(f"Error en el proceso de scraping: {e}")
+        return 0
     
     finally:
-        # Limpiar archivos temporales si no se especificó mantenerlos
-        if not args.keep_files:
-            scraper.cleanup()
-
-if __name__ == "__main__":
-    sys.exit(main())
+        if not save_browser and 'scraper' in locals():
+            scraper.close()

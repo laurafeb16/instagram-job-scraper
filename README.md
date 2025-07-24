@@ -1,37 +1,53 @@
 ﻿# Instagram Job Scraper
 
-Herramienta especializada para extraer ofertas de trabajo y prácticas profesionales de páginas de Instagram de facultades.
+Herramienta especializada para extraer ofertas de trabajo y prácticas profesionales de páginas de Instagram de facultades, utilizando técnicas avanzadas de scraping, OCR y procesamiento de lenguaje natural.
+
+## Características
+
+- Extracción eficiente de posts de Instagram mediante Selenium
+- Procesamiento avanzado de imágenes con OpenCV para mejorar OCR
+- Reconocimiento óptico de caracteres (OCR) bilingüe español/inglés
+- Identificación automática de ofertas de trabajo
+- Extracción estructurada de información: empresa, puesto, requisitos, etc.
+- Clasificación de ofertas por área tecnológica
 
 ## Requisitos previos
 
-1. Instalar Tesseract OCR con soporte para español:
+1. Python 3.8 o superior
+2. Tesseract OCR con soporte para español:
    - Ubuntu: `sudo apt-get install tesseract-ocr tesseract-ocr-spa`
    - macOS: `brew install tesseract tesseract-lang`
-   - Windows: Descargar instalador desde https://github.com/UB-Mannheim/tesseract/wiki (asegúrate de incluir el paquete de idioma español)
-
-2. Configurar sesión de Instagram:
-   - Ejecuta `instaloader --login=TU_USUARIO_INSTAGRAM` para guardar la sesión
+   - Windows: Descargar instalador desde [GitHub UB-Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
+3. Chrome o Chromium instalado
+4. ChromeDriver compatible con tu versión de Chrome
 
 ## Instalación
 
-1. Clonar el repositorio: `git clone https://github.com/tu-usuario/instagram-job-scraper.git` `cd instagram-job-scraper`
-2. Instalar dependencias: pip install -r requirements.txt
+1. Clonar el repositorio: `git clone https://github.com/tu-usuario/instagram-job-scraper.git cd instagram-job-scraper`
+2. Crear y activar entorno virtual (recomendado): `python -m venv env source env/bin/activate  # Linux/macOS env\Scripts\activate     # Windows`
+3. Instalar dependencias: pip install -r requirements.txt
+4. Configurar variables de entorno (opcional):
+   - Copia `.env.example` a `.env`
+   - Edita `.env` con tus configuraciones
 
 ## Uso
 
-Ejecutar búsqueda de ofertas: python -m backend.main --username=USUARIO_FACULTAD --session=TU_USUARIO_INSTAGRAM --post-limit=20
+### Modo básico: 
+python scrape.py --username=USUARIO_FACULTAD --posts=20
 
-Opciones:
-- `--username`: Perfil de Instagram a analizar (por defecto: ucm_fdi)
-- `--session`: Usuario de Instagram cuya sesión está guardada
-- `--post-limit=20`: Número máximo de posts a revisar (por defecto: 10)
-- `--max-retries=5`: Número máximo de reintentos para operaciones fallidas
-- `--keep-files`: No eliminar los archivos temporales después de la ejecución
-- `--tesseract-path`: Ruta al ejecutable de Tesseract OCR
+### Opciones disponibles:
+python scrape.py --username=ucm_fdi --posts=10 --headless --save-browser --verbose
+
+Parámetros:
+- `--username`: Perfil de Instagram a analizar (obligatorio)
+- `--posts`: Número máximo de posts a analizar (por defecto: 10)
+- `--headless`: Ejecutar en modo headless (sin interfaz gráfica)
+- `--save-browser`: No cerrar el navegador al terminar
+- `--verbose`: Mostrar información detallada durante la ejecución
 
 ## Filtrado de ofertas
 
-El script busca específicamente posts que contengan patrones como:
+El sistema detecta automáticamente posts de ofertas de trabajo que contienen patrones como:
 - "Vacante ofrecida por [compañía]"
 - "Práctica laboral ofrecida por [compañía]"
 - "Práctica profesional ofrecida por [compañía]"
@@ -39,26 +55,19 @@ El script busca específicamente posts que contengan patrones como:
 
 ## Estructura de datos
 
-El script guarda solo los posts que coinciden con ofertas laborales:
+El script guarda los posts que coinciden con ofertas laborales:
 - Imágenes en `data/raw/{shortcode}.jpg`
-- Metadatos en `data/raw/{shortcode}.json` con información como usuario, empresa, leyenda y timestamp
+- Metadatos en `data/raw/{shortcode}.json` con información detallada
+- Informes de ejecución en `data/report_{usuario}_{fecha}.json`
 
-## Estructura del proyecto
-instagram-job-scraper/ 
-├── .gitignore 
-├── README.md 
-├── requirements.txt 
-├── backend/ 
-│   ├── init.py 
-│   ├── main.py 
-│   ├── scraper.py 
-│   ├── ocr_processor.py 
-│   └── job_extractor.py 
-└── data/
-└── raw/
+## Notas sobre limitaciones
+
+- Instagram implementa restricciones anti-scraping. Este proyecto usa técnicas para minimizar el riesgo de bloqueo, pero no garantiza inmunidad contra restricciones.
+- Se recomienda usar la herramienta con moderación y respetar los términos de servicio de Instagram.
+- Para uso intensivo, considere implementar rotación de IP o proxies.
 
 ## Notas sobre OCR
 
 - El reconocimiento funciona mejor en imágenes con texto claro sobre fondo simple
 - Pósters y diseños complejos pueden tener menor precisión de reconocimiento
-- Imágenes de ofertas de trabajo formales suelen tener mejores resultados
+- El preprocesamiento de imágenes mejora significativamente los resultados de OCR

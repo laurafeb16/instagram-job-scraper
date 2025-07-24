@@ -1,10 +1,21 @@
-# -*- coding: utf-8 -*-
+ï»¿# -*- coding: utf-8 -*-
+"""
+Modulo para procesar imagenes con OCR usando OpenCV y Tesseract.
+"""
 import os
+import requests
 import pytesseract
+import cv2
+import numpy as np
 from PIL import Image
+import io
+import logging
+from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 class OCRProcessor:
-    """Clase para procesar imágenes con OCR."""
+    """Clase para procesar imagenes con OCR."""
     
     def __init__(self, tesseract_cmd=None):
         """Inicializa el procesador OCR.
@@ -12,39 +23,164 @@ class OCRProcessor:
         Args:
             tesseract_cmd (str, optional): Ruta al ejecutable de Tesseract.
         """
+        # Configurar ruta a Tesseract
         if tesseract_cmd:
             pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
         
-        # Verificar que Tesseract esté disponible
+        # Configurar Tesseract para espanol e ingles
+        self.config = '--oem 3 --psm 6 -l spa+eng'
+        
+        # Verificar instalacion de Tesseract
         try:
             self.tesseract_version = pytesseract.get_tesseract_version()
-            print(f"Tesseract OCR inicializado (versión {self.tesseract_version})")
-        except pytesseract.TesseractNotFoundError:
-            print("Error: Tesseract OCR no está instalado o no está en el PATH.")
+            logger.info(f"Tesseract inicializado (version {self.tesseract_version})")
+        except Exception as e:
+            logger.error(f"Error al inicializar Tesseract: {e}")
             self.tesseract_version = None
     
-    def extract_text(self, image_path, lang='spa'):
-        """Extrae texto de una imagen usando OCR.
+    def download_image(self, image_url: str) -> Optional[np.ndarray]:
+        """Descarga una imagen desde URL y la devuelve como array de OpenCV.
+        
+        Args:
+            image_url (str): URL de la imagen
+            
+        Returns:
+            np.ndarray: Imagen en formato OpenCV o None si hubo error
+        """
+        try:
+            response = requests.get(image_url, stream=True)
+            response.raise_for_status()
+            
+            # Convertir a PIL Image y luego a OpenCV
+            image = Image.open(io.BytesIO(response.content))
+            return cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+        except Exception as e:
+            logger.error(f"Error al descargar imagen {image_url}: {e}")
+            return None
+    
+    def load_image(self, image_path: str) -> Optional[np.ndarray]:
+        """Carga una imagen desde archivo local.
         
         Args:
             image_path (str): Ruta a la imagen
-            lang (str, optional): Idioma para OCR. Por defecto 'spa' (español)
             
         Returns:
-            str: Texto extraído de la imagen
-            
-        Raises:
-            FileNotFoundError: Si no se encuentra la imagen
-            pytesseract.TesseractError: Si hay un error con Tesseract
+            np.ndarray: Imagen en formato OpenCV o None si hubo error
         """
-        if not self.tesseract_version:
-            raise RuntimeError("Tesseract OCR no está configurado correctamente")
-            
-        if not os.path.exists(image_path):
-            raise FileNotFoundError(f"No se encontró la imagen: {image_path}")
-            
-        img = Image.open(image_path)
-        print(f"Procesando imagen: {img.format}, {img.size}px")
+        try:
+            if not os.path.exists(image_path):
+                logger.error(f"No se encontro la imagen: {image_path}")
+                return None
+                
+            image = cv2.imread(image_path)
+            if image is None:
+                logger.error(f"No se pudo leer la imagen: {image_path}")
+                return None
+                
+            return image
+        except Exception as e:
+            logger.error(f"Error al cargar imagen {image_path}: {e}")
+            return None
+    
+    def preprocess_image(self, image: np.ndarray) -> np.ndarray:
+        """Preprocesa la imagen para mejorar la precision del OCR.
         
-        text = pytesseract.image_to_string(img, lang=lang)
-        return text
+        Args:
+            image (np.ndarray): Imagen en formato OpenCV
+            
+        Returns:
+            np.ndarray: Imagen preprocesada
+        """
+        # Copiar imagen para evitar modificar la original
+        processed = image.copy()
+        
+        # Verificar si la imagen es a color
+        if len(processed.shape) == 3:
+            # Convertir a escala de grises
+            gray = cv2.cvtColor(processed, cv2.COLOR_BGR2GRAY)
+        else:
+            gray = processed
+        
+        # Aplicar Gaussian blur para reducir ruido
+        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+        
+        # Aplicar umbral adaptativo para manejar iluminacion variable
+        thresh = cv2.adaptiveThreshold(
+            blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+            cv2.THRESH_BINARY, 11, 2
+        )
+        
+        # Operaciones morfologicas para limpiar
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
+        cleaned = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+        
+        return cleaned
+    
+    def extract_text(self, image_path_or_url: str) -> str:
+        """Extrae texto de una imagen usando OCR.
+        
+        Args:
+            image_path_or_url (str): Ruta local o URL de la imagen
+            
+        Returns:
+            str: Texto extraido de la imagen
+        """
+        try:
+            # Determinar si es URL o ruta local
+            if image_path_or_url.startswith(('http://', 'https://')):
+                image = self.download_image(image_path_or_url)
+            else:
+                image = self.load_image(image_path_or_url)
+            
+            if image is None:
+                return ""
+            
+            # Preprocesar para mejor OCR
+            processed = self.preprocess_image(image)
+            
+            # Extraer texto usando Tesseract
+            text = pytesseract.image_to_string(
+                processed, 
+                config=self.config
+            )
+            
+            # Limpiar texto
+            text = self.clean_text(text)
+            
+            logger.info(f"Extraidos {len(text)} caracteres de la imagen")
+            return text
+            
+        except Exception as e:
+            logger.error(f"Error en procesamiento OCR: {e}")
+            return ""
+    
+    def clean_text(self, text: str) -> str:
+        """Limpia y normaliza el texto extraido.
+        
+        Args:
+            text (str): Texto a limpiar
+            
+        Returns:
+            str: Texto limpio
+        """
+        if not text:
+            return ""
+        
+        # Eliminar espacios en blanco extra y normalizar
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        cleaned = '\n'.join(lines)
+        
+        # Reemplazar errores comunes de OCR
+        replacements = {
+            '|': 'I',
+            '@': 'a',
+            '0': 'O',  # Solo en contextos especificos
+            '1': 'l',  # Solo en contextos especificos
+        }
+        
+        # Aplicar reemplazos cuidadosamente
+        for old, new in replacements.items():
+            if old in cleaned:
+                cleaned = cleaned.replace(old, new)
+        
+        return cleaned
