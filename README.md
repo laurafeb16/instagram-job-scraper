@@ -1,4 +1,8 @@
-﻿# Instagram Job Scraper
+<p align="center">
+  <img src=".github/icon.svg" width="80" alt="Logo">
+</p>
+<h1 align="center">MyJobScraper</h1>
+ # Instagram Job Scraper
 
 Herramienta especializada para extraer ofertas de trabajo y prácticas profesionales de páginas de Instagram de facultades, utilizando técnicas avanzadas de scraping, OCR y procesamiento de lenguaje natural.
 
