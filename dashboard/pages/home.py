@@ -2,30 +2,108 @@
 """
 Página de inicio del dashboard.
 """
+from typing import Callable, Dict, List, Any
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from datetime import datetime
 
-def app():
-    """Renderiza la página de inicio."""
+from dashboard.utils.helpers import (
+    get_dashboard_metrics,
+    get_area_stats,
+    get_job_posts_df,
+    get_post_url
+)
+
+def app() -> None:
+    """Renderiza la página de inicio del dashboard."""
     st.header("Resumen de Ofertas Laborales")
     
-    # Mostrar una métrica simulada
+    # Obtener métricas
+    metrics = get_dashboard_metrics()
+    
+    # Mostrar métricas en tarjetas
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric(label="Total de Ofertas", value="0", delta="0")
+        st.metric(
+            label="Total de Ofertas", 
+            value=metrics['total_jobs']
+        )
     with col2:
-        st.metric(label="Empresas Únicas", value="0", delta="0")
+        st.metric(
+            label="Ofertas Abiertas", 
+            value=metrics['open_jobs'],
+            delta=f"{metrics['open_jobs']/metrics['total_jobs']*100:.1f}%" if metrics['total_jobs'] > 0 else None
+        )
     with col3:
-        st.metric(label="Habilidades Populares", value="N/A")
+        st.metric(
+            label="Última Actualización", 
+            value=metrics['last_scrape'].strftime("%d/%m/%Y %H:%M") if metrics['last_scrape'] else "Nunca"
+        )
     
-    # Mostrar un mensaje para comenzar
-    st.info("📊 El dashboard mostrará estadísticas cuando haya datos disponibles.")
+    # Separador
+    st.markdown("---")
     
-    # Espacio para un futuro gráfico
-    st.subheader("Distribución de Ofertas por Área")
-    st.write("Aquí se mostrará la distribución de ofertas por área tecnológica.")
+    # Distribución por área
+    st.subheader("Distribución por Área Tecnológica")
+    area_df, _ = get_area_stats()
     
-    # Espacio para tabla de ofertas recientes
+    if not area_df.empty:
+        fig = px.pie(
+            area_df, 
+            names='area', 
+            values='count',
+            title="Distribución de Ofertas por Área",
+            color_discrete_sequence=px.colors.qualitative.Pastel
+        )
+        st.plotly_chart(fig)
+    else:
+        st.info("No hay datos suficientes para mostrar la distribución por área.")
+    
+    # Ofertas recientes
     st.subheader("Ofertas Recientes")
-    st.write("Aquí se mostrarán las ofertas más recientes.")
+    job_df = get_job_posts_df()
+    
+    if not job_df.empty:
+        # Seleccionar columnas relevantes
+        display_df = job_df[['company', 'title', 'area', 'post_date', 'is_open', 'shortcode']].copy()
+        
+        # Formatear fecha
+        display_df['post_date'] = pd.to_datetime(display_df['post_date']).dt.strftime('%d/%m/%Y')
+        
+        # Convertir estado a texto
+        display_df['is_open'] = display_df['is_open'].map({True: "Abierta", False: "Cerrada"})
+        
+        # Añadir URL
+        display_df['url'] = display_df['shortcode'].apply(get_post_url)
+        
+        # Renombrar columnas
+        display_df = display_df.rename(columns={
+            'company': 'Empresa',
+            'title': 'Posición',
+            'area': 'Área',
+            'post_date': 'Fecha',
+            'is_open': 'Estado',
+            'url': 'Enlace'
+        })
+        
+        # Crear enlaces clicables
+        def make_clickable(url: str, text: str = "Ver Post") -> str:
+            return f'<a href="{url}" target="_blank">{text}</a>'
+        
+        display_df['Enlace'] = display_df.apply(
+            lambda x: make_clickable(x['Enlace']), axis=1
+        )
+        
+        # Mostrar tabla con las 10 ofertas más recientes
+        st.write(
+            display_df.head(10).to_html(escape=False, index=False),
+            unsafe_allow_html=True
+        )
+        
+        # Enlace para ver todas las ofertas
+        if len(job_df) > 10:
+            st.write(f"Mostrando 10 de {len(job_df)} ofertas. ")
+            st.button("Ver todas las ofertas", key="ver_todas")
+    else:
+        st.info("No hay ofertas laborales registradas.")

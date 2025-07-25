@@ -1,1 +1,1 @@
-﻿# Módulo pages
+﻿"""Páginas del dashboard."""

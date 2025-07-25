@@ -1,1 +1,1 @@
-﻿# Módulo utils
+﻿"""Utilidades para el dashboard."""

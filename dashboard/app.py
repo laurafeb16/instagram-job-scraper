@@ -1,30 +1,32 @@
 ﻿# -*- coding: utf-8 -*-
 """
-Aplicación principal del dashboard.
+Aplicación principal del dashboard para visualización de ofertas laborales.
 """
 import streamlit as st
-from multipage import MultiPage
-from dashboard.pages import home, trends, forecast, recommender
+from typing import Dict, List, Any
 
-# Configuración de la página
-st.set_page_config(
-    page_title="Instagram Job Analytics",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="expanded",
+from dashboard.multipage import MultiPage
+from dashboard.pages import home, trends
+from dashboard.utils.helpers import get_dashboard_metrics
+
+# Inicializar aplicación multipágina
+app = MultiPage(
+    app_title="Instagram Job Analytics",
+    app_icon="💼"
 )
 
-# Inicializar la aplicación multipage
-app = MultiPage()
-
 # Agregar páginas
-app.add_page("Inicio", home.app)
-app.add_page("Tendencias", trends.app)
-app.add_page("Pronósticos", forecast.app)
-app.add_page("Recomendador", recommender.app)
-
-# Título principal
-st.title("Instagram Job Analytics Dashboard")
+app.add_page("Inicio", home.app, "🏠")
+app.add_page("Tendencias", trends.app, "📊")
 
 # Ejecutar la aplicación
-app.run()
+def main() -> None:
+    """Función principal que ejecuta el dashboard."""
+    # Actualizar métricas en el sidebar
+    metrics = get_dashboard_metrics()
+    
+    # Ejecutar el app
+    app.run()
+
+if __name__ == "__main__":
+    main()
