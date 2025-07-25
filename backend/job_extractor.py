@@ -7,6 +7,7 @@ import json
 from typing import Dict, List, Optional, Tuple, Any, Set, Pattern
 from datetime import datetime
 import logging
+from backend.metrics import track_time, JOB_EXTRACTION_DURATION, JOBS_EXTRACTED
 
 logger = logging.getLogger(__name__)
 
@@ -112,6 +113,7 @@ class JobExtractor:
         
         return False, None
     
+    @track_time(JOB_EXTRACTION_DURATION)
     def extract_job_info(self, text: str, caption: str = "") -> Dict[str, Any]:
         """Extrae información estructurada de una oferta de trabajo.
         
@@ -133,6 +135,10 @@ class JobExtractor:
             'deadline': self.extract_deadline(combined_text),
             'is_open': self.determine_status(combined_text)
         }
+        
+        # Incrementar contador si se extrajo información
+        if extracted['company'] or extracted['title']:
+            JOBS_EXTRACTED.inc()
         
         return extracted
     
