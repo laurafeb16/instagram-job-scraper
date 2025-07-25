@@ -11,6 +11,7 @@ from PIL import Image
 import io
 import logging
 from typing import Optional, Dict, List, Tuple, Union, Any
+from backend.metrics import track_time, OCR_PROCESSING_DURATION, track_http_request
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +39,7 @@ class OCRProcessor:
             logger.error(f"Error al inicializar Tesseract: {e}")
             self.tesseract_version = None
     
+    @track_http_request(method="GET", endpoint="image")
     def download_image(self, image_url: str) -> Optional[np.ndarray]:
         """Descarga una imagen desde URL y la devuelve como array de OpenCV.
         
@@ -116,6 +118,7 @@ class OCRProcessor:
         
         return cleaned
     
+    @track_time(OCR_PROCESSING_DURATION)
     def extract_text(self, image_path_or_url: str) -> str:
         """Extrae texto de una imagen usando OCR.
         
