@@ -1,22 +1,22 @@
 ﻿# -*- coding: utf-8 -*-
 """
-Modulo para extraer informacion estructurada de ofertas de trabajo desde texto.
+Módulo para extraer información estructurada de ofertas de trabajo desde texto.
 """
 import re
 import json
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any, Set, Pattern
 from datetime import datetime
 import logging
 
 logger = logging.getLogger(__name__)
 
 class JobExtractor:
-    """Clase para extraer informacion estructurada de ofertas de trabajo."""
+    """Clase para extraer información estructurada de ofertas de trabajo."""
     
-    def __init__(self):
+    def __init__(self) -> None:
         """Inicializa el extractor de ofertas de trabajo."""
-        # Definir patrones para extraccion de informacion
-        self.patterns = {
+        # Definir patrones para extracción de información
+        self.patterns: Dict[str, List[str]] = {
             'company': [
                 r'(?:empresa|compania|company):\s*(.+?)(?:\n|$)',
                 r'(?:en|at)\s+([A-Z][A-Za-z\s&.-]+)(?:\n|\s+busca)',
@@ -51,8 +51,8 @@ class JobExtractor:
             ]
         }
         
-        # Mapeo de areas tecnologicas
-        self.tech_areas = {
+        # Mapeo de áreas tecnológicas
+        self.tech_areas: Dict[str, List[str]] = {
             'data-science': [
                 'data scientist', 'machine learning', 'ml', 'ai', 'artificial intelligence',
                 'python', 'r', 'sql', 'pandas', 'numpy', 'scikit-learn', 'tensorflow',
@@ -83,16 +83,16 @@ class JobExtractor:
         """Determina si un texto corresponde a una oferta de trabajo.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            Tuple[bool, Optional[str]]: (es_oferta, empresa)
+            Tupla con (es_oferta, empresa), donde empresa puede ser None
         """
         if not text:
             return False, None
             
-        # Patrones de busqueda para ofertas laborales
-        job_patterns = [
+        # Patrones de búsqueda para ofertas laborales
+        job_patterns: List[str] = [
             r"[Vv]acante(?:\s+[^.]*?)?ofrecida\s+por\s+[\'\"]?([^\'\".,]+)[\'\"]?",
             r"[Pp]ractica\s+laboral(?:\s+[^.]*?)?ofrecida\s+por\s+[\'\"]?([^\'\".,]+)[\'\"]?",
             r"[Pp]ractica\s+profesional(?:\s+[^.]*?)?ofrecida\s+por\s+[\'\"]?([^\'\".,]+)[\'\"]?",
@@ -112,19 +112,19 @@ class JobExtractor:
         
         return False, None
     
-    def extract_job_info(self, text: str, caption: str = "") -> Dict:
-        """Extrae informacion estructurada de una oferta de trabajo.
+    def extract_job_info(self, text: str, caption: str = "") -> Dict[str, Any]:
+        """Extrae información estructurada de una oferta de trabajo.
         
         Args:
-            text (str): Texto OCR de la imagen
-            caption (str): Texto del caption del post
+            text: Texto OCR de la imagen
+            caption: Texto del caption del post
             
         Returns:
-            Dict: Informacion estructurada de la oferta
+            Diccionario con información estructurada de la oferta
         """
         combined_text = f"{caption}\n{text}".lower()
         
-        extracted = {
+        extracted: Dict[str, Any] = {
             'company': self.extract_company(combined_text),
             'title': self.extract_title(combined_text),
             'area': self.classify_area(combined_text),
@@ -140,10 +140,10 @@ class JobExtractor:
         """Extrae el nombre de la empresa usando patrones.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            Optional[str]: Nombre de la empresa o None
+            Nombre de la empresa o None si no se encuentra
         """
         for pattern in self.patterns['company']:
             matches = re.findall(pattern, text, re.IGNORECASE | re.MULTILINE)
@@ -154,13 +154,13 @@ class JobExtractor:
         return None
     
     def extract_title(self, text: str) -> Optional[str]:
-        """Extrae el titulo del puesto usando patrones.
+        """Extrae el título del puesto usando patrones.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            Optional[str]: Titulo del puesto o None
+            Título del puesto o None si no se encuentra
         """
         for pattern in self.patterns['title']:
             matches = re.findall(pattern, text, re.IGNORECASE | re.MULTILINE)
@@ -174,14 +174,14 @@ class JobExtractor:
         """Extrae lista de habilidades del texto.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            List[str]: Lista de habilidades
+            Lista de habilidades identificadas
         """
-        skills = set()
+        skills: Set[str] = set()
         
-        # Buscar secciones explicitas de habilidades
+        # Buscar secciones explícitas de habilidades
         for pattern in self.patterns['skills']:
             matches = re.findall(pattern, text, re.IGNORECASE | re.MULTILINE | re.DOTALL)
             for match in matches:
@@ -192,8 +192,8 @@ class JobExtractor:
                     if len(clean_skill) > 2 and len(clean_skill) < 50:
                         skills.add(clean_skill.title())
         
-        # Buscar habilidades tecnicas comunes en todo el texto
-        tech_skills = [
+        # Buscar habilidades técnicas comunes en todo el texto
+        tech_skills: List[str] = [
             'Python', 'Java', 'JavaScript', 'React', 'Angular', 'Vue', 'Node.js',
             'SQL', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Kubernetes',
             'Machine Learning', 'Data Science', 'AI', 'Blockchain', 'Cybersecurity'
@@ -209,12 +209,12 @@ class JobExtractor:
         """Extrae beneficios/ventajas del texto.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            List[str]: Lista de beneficios
+            Lista de beneficios identificados
         """
-        benefits = set()
+        benefits: Set[str] = set()
         
         for pattern in self.patterns['benefits']:
             matches = re.findall(pattern, text, re.IGNORECASE | re.MULTILINE | re.DOTALL)
@@ -228,13 +228,13 @@ class JobExtractor:
         return list(benefits)[:8]  # Limitar a 8 beneficios
     
     def extract_deadline(self, text: str) -> Optional[str]:
-        """Extrae fecha limite de aplicacion.
+        """Extrae fecha límite de aplicación.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            Optional[str]: Fecha limite o None
+            Fecha límite o None si no se encuentra
         """
         for pattern in self.patterns['deadline']:
             matches = re.findall(pattern, text, re.IGNORECASE)
@@ -245,15 +245,15 @@ class JobExtractor:
         return None
     
     def classify_area(self, text: str) -> str:
-        """Clasifica la oferta en areas tecnologicas segun su contenido.
+        """Clasifica la oferta en áreas tecnológicas según su contenido.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            str: Area tecnologica
+            Área tecnológica identificada o 'general' si no se identifica ninguna
         """
-        area_scores = {}
+        area_scores: Dict[str, int] = {}
         
         for area, keywords in self.tech_areas.items():
             score = 0
@@ -265,18 +265,18 @@ class JobExtractor:
         if area_scores and max(area_scores.values()) > 0:
             return max(area_scores, key=area_scores.get)
         
-        return 'general'  # Area por defecto
+        return 'general'  # Área por defecto
     
     def determine_status(self, text: str) -> bool:
         """Determina si la oferta sigue abierta.
         
         Args:
-            text (str): Texto a analizar
+            text: Texto a analizar
             
         Returns:
-            bool: True si esta abierta, False si esta cerrada
+            True si está abierta, False si está cerrada
         """
-        closed_indicators = [
+        closed_indicators: List[str] = [
             'cerrado', 'closed', 'completado', 'filled', 'no longer', 
             'ya no', 'position filled', 'cubierto', 'vacante cubierta'
         ]
@@ -285,17 +285,17 @@ class JobExtractor:
             if indicator in text.lower():
                 return False
         
-        return True  # Por defecto asumir que esta abierta
+        return True  # Por defecto asumir que está abierta
 
-def extract_job_data(ocr_text: str, caption: str = "") -> Dict:
-    """Funcion de conveniencia para extraccion de datos de ofertas.
+def extract_job_data(ocr_text: str, caption: str = "") -> Dict[str, Any]:
+    """Función de conveniencia para extracción de datos de ofertas.
     
     Args:
-        ocr_text (str): Texto OCR extraido de la imagen
-        caption (str): Texto del caption del post
+        ocr_text: Texto OCR extraído de la imagen
+        caption: Texto del caption del post
         
     Returns:
-        Dict: Informacion estructurada de la oferta
+        Información estructurada de la oferta
     """
     extractor = JobExtractor()
     return extractor.extract_job_info(ocr_text, caption)
