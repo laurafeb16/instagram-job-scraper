@@ -15,20 +15,30 @@ Las facultades universitarias publican frecuentemente ofertas laborales y práct
 ## Diseño y Arquitectura
 
 El sistema implementa un flujo de procesamiento en etapas:
-sequenceDiagram participant U as Usuario participant S as Scraper participant O as OCR participant E as Extractor participant DB as Base de Datos participant D as Dashboard
-U->>S: Inicia extracción (perfil, posts_max)
-S->>S: Navega y extrae posts
-loop Para cada post
-    S->>O: Procesa imagen con OCR
-    O->>E: Detecta si es oferta laboral
-    alt Es oferta
-        E->>E: Extrae información estructurada
-        E->>DB: Almacena datos
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant S as Scraper
+    participant O as OCR
+    participant E as Extractor
+    participant DB as Base de Datos
+    participant D as Dashboard
+
+    U->>S: Inicia extracción (perfil, posts_max)
+    S->>S: Navega y extrae posts
+    loop Para cada post
+        S->>O: Procesa imagen con OCR
+        O->>E: Detecta si es oferta laboral
+        alt Es oferta
+            E->>E: Extrae información estructurada
+            E->>DB: Almacena datos
+        end
     end
-end
-U->>D: Consulta Dashboard
-D->>DB: Obtiene análisis y tendencias
-D->>U: Muestra visualizaciones
+    U->>D: Consulta Dashboard
+    D->>DB: Obtiene análisis y tendencias
+    D->>U: Muestra visualizaciones
+```
 
 ### Componentes Principales
 
@@ -43,7 +53,7 @@ D->>U: Muestra visualizaciones
 - **Precisión vs. Generalidad**: OCR funciona mejor en imágenes con texto claro, pero hay compromiso con compatibilidad para diseños complejos
 - **Almacenamiento vs. Tiempo**: Guardamos tanto imágenes como texto para permitir reanalizar sin volver a descargar
 
-## Instrucciones
+## Instalación
 
 ### Requisitos Previos
 
@@ -55,16 +65,6 @@ D->>U: Muestra visualizaciones
 2. Instalar dependencias: `pip install -r requirements.txt`
 
 3. Configurar variables de entorno: `cp .env.example .env`
-
-
-## Instalación
-
-1. Clonar el repositorio: `git clone https://github.com/tu-usuario/instagram-job-scraper.git cd instagram-job-scraper`
-2. Crear y activar entorno virtual (recomendado): `python -m venv env source env/bin/activate  # Linux/macOS env\Scripts\activate     # Windows`
-3. Instalar dependencias: pip install -r requirements.txt
-4. Configurar variables de entorno (opcional):
-   - Copia `.env.example` a `.env`
-   - Edita `.env` con tus configuraciones
 
 ## Ejecución
 
