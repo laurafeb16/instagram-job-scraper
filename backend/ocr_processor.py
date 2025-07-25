@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 """
-Modulo para procesar imagenes con OCR usando OpenCV y Tesseract.
+Módulo para procesar imágenes con OCR usando OpenCV y Tesseract.
 """
 import os
 import requests
@@ -10,27 +10,27 @@ import numpy as np
 from PIL import Image
 import io
 import logging
-from typing import Optional
+from typing import Optional, Dict, List, Tuple, Union, Any
 
 logger = logging.getLogger(__name__)
 
 class OCRProcessor:
-    """Clase para procesar imagenes con OCR."""
+    """Clase para procesar imágenes con OCR."""
     
-    def __init__(self, tesseract_cmd=None):
+    def __init__(self, tesseract_cmd: Optional[str] = None) -> None:
         """Inicializa el procesador OCR.
         
         Args:
-            tesseract_cmd (str, optional): Ruta al ejecutable de Tesseract.
+            tesseract_cmd: Ruta al ejecutable de Tesseract
         """
         # Configurar ruta a Tesseract
         if tesseract_cmd:
             pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
         
-        # Configurar Tesseract para espanol e ingles
-        self.config = '--oem 3 --psm 6 -l spa+eng'
+        # Configurar Tesseract para español e inglés
+        self.config: str = '--oem 3 --psm 6 -l spa+eng'
         
-        # Verificar instalacion de Tesseract
+        # Verificar instalación de Tesseract
         try:
             self.tesseract_version = pytesseract.get_tesseract_version()
             logger.info(f"Tesseract inicializado (version {self.tesseract_version})")
@@ -42,10 +42,10 @@ class OCRProcessor:
         """Descarga una imagen desde URL y la devuelve como array de OpenCV.
         
         Args:
-            image_url (str): URL de la imagen
+            image_url: URL de la imagen
             
         Returns:
-            np.ndarray: Imagen en formato OpenCV o None si hubo error
+            Imagen en formato OpenCV o None si hubo error
         """
         try:
             response = requests.get(image_url, stream=True)
@@ -62,10 +62,10 @@ class OCRProcessor:
         """Carga una imagen desde archivo local.
         
         Args:
-            image_path (str): Ruta a la imagen
+            image_path: Ruta a la imagen
             
         Returns:
-            np.ndarray: Imagen en formato OpenCV o None si hubo error
+            Imagen en formato OpenCV o None si hubo error
         """
         try:
             if not os.path.exists(image_path):
@@ -83,13 +83,13 @@ class OCRProcessor:
             return None
     
     def preprocess_image(self, image: np.ndarray) -> np.ndarray:
-        """Preprocesa la imagen para mejorar la precision del OCR.
+        """Preprocesa la imagen para mejorar la precisión del OCR.
         
         Args:
-            image (np.ndarray): Imagen en formato OpenCV
+            image: Imagen en formato OpenCV
             
         Returns:
-            np.ndarray: Imagen preprocesada
+            Imagen preprocesada
         """
         # Copiar imagen para evitar modificar la original
         processed = image.copy()
@@ -104,13 +104,13 @@ class OCRProcessor:
         # Aplicar Gaussian blur para reducir ruido
         blurred = cv2.GaussianBlur(gray, (5, 5), 0)
         
-        # Aplicar umbral adaptativo para manejar iluminacion variable
+        # Aplicar umbral adaptativo para manejar iluminación variable
         thresh = cv2.adaptiveThreshold(
             blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
             cv2.THRESH_BINARY, 11, 2
         )
         
-        # Operaciones morfologicas para limpiar
+        # Operaciones morfológicas para limpiar
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
         cleaned = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
         
@@ -120,10 +120,10 @@ class OCRProcessor:
         """Extrae texto de una imagen usando OCR.
         
         Args:
-            image_path_or_url (str): Ruta local o URL de la imagen
+            image_path_or_url: Ruta local o URL de la imagen
             
         Returns:
-            str: Texto extraido de la imagen
+            Texto extraído de la imagen
         """
         try:
             # Determinar si es URL o ruta local
@@ -155,13 +155,13 @@ class OCRProcessor:
             return ""
     
     def clean_text(self, text: str) -> str:
-        """Limpia y normaliza el texto extraido.
+        """Limpia y normaliza el texto extraído.
         
         Args:
-            text (str): Texto a limpiar
+            text: Texto a limpiar
             
         Returns:
-            str: Texto limpio
+            Texto limpio
         """
         if not text:
             return ""
@@ -171,11 +171,11 @@ class OCRProcessor:
         cleaned = '\n'.join(lines)
         
         # Reemplazar errores comunes de OCR
-        replacements = {
+        replacements: Dict[str, str] = {
             '|': 'I',
             '@': 'a',
-            '0': 'O',  # Solo en contextos especificos
-            '1': 'l',  # Solo en contextos especificos
+            '0': 'O',  # Solo en contextos específicos
+            '1': 'l',  # Solo en contextos específicos
         }
         
         # Aplicar reemplazos cuidadosamente
