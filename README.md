@@ -1,8 +1,7 @@
 <p align="center">
   <img src="icon.svg" width="80" alt="Logo">
 </p>
-<h1 align="center">MyJobScraper</h1>
- # Instagram Job Scraper
+<h1 align="center">Instagram Job Scraper</h1>
 
 Herramienta especializada para extraer ofertas de trabajo y prácticas profesionales de páginas de Instagram de facultades, utilizando técnicas avanzadas de scraping, OCR y procesamiento de lenguaje natural.
 
