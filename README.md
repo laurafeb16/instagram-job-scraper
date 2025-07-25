@@ -3,26 +3,59 @@
 </p>
 <h1 align="center">Instagram Job Scraper</h1>
 
-Herramienta especializada para extraer ofertas de trabajo y prácticas profesionales de páginas de Instagram de facultades, utilizando técnicas avanzadas de scraping, OCR y procesamiento de lenguaje natural.
+Sistema especializado para extraer, procesar y analizar ofertas de trabajo y prácticas profesionales publicadas en perfiles de Instagram de facultades universitarias.
 
-## Características
+## Problema
 
-- Extracción eficiente de posts de Instagram mediante Selenium
-- Procesamiento avanzado de imágenes con OpenCV para mejorar OCR
-- Reconocimiento óptico de caracteres (OCR) bilingüe español/inglés
-- Identificación automática de ofertas de trabajo
-- Extracción estructurada de información: empresa, puesto, requisitos, etc.
-- Clasificación de ofertas por área tecnológica
+Las facultades universitarias publican frecuentemente ofertas laborales y prácticas en sus perfiles de Instagram, pero:
+- No existe una forma centralizada de acceder a estas ofertas
+- La información está embebida en imágenes, dificultando la búsqueda y análisis
+- No hay herramientas para identificar tendencias en demanda de habilidades
 
-## Requisitos previos
+## Diseño y Arquitectura
 
-1. Python 3.8 o superior
-2. Tesseract OCR con soporte para español:
+El sistema implementa un flujo de procesamiento en etapas:
+sequenceDiagram participant U as Usuario participant S as Scraper participant O as OCR participant E as Extractor participant DB as Base de Datos participant D as Dashboard
+U->>S: Inicia extracción (perfil, posts_max)
+S->>S: Navega y extrae posts
+loop Para cada post
+    S->>O: Procesa imagen con OCR
+    O->>E: Detecta si es oferta laboral
+    alt Es oferta
+        E->>E: Extrae información estructurada
+        E->>DB: Almacena datos
+    end
+end
+U->>D: Consulta Dashboard
+D->>DB: Obtiene análisis y tendencias
+D->>U: Muestra visualizaciones
+
+### Componentes Principales
+
+- **Scraper**: Navega perfiles de Instagram usando Selenium para emular comportamiento humano
+- **OCR Processor**: Procesa imágenes usando OpenCV y Tesseract para extraer texto
+- **Job Extractor**: Identifica ofertas y extrae información estructurada mediante patrones
+- **Dashboard**: Visualiza datos y análisis usando Streamlit
+
+## Compensaciones (Trade-offs)
+
+- **Robustez vs. Velocidad**: Implementamos pausas aleatorias y navegación simulando humanos para evitar bloqueos, sacrificando velocidad
+- **Precisión vs. Generalidad**: OCR funciona mejor en imágenes con texto claro, pero hay compromiso con compatibilidad para diseños complejos
+- **Almacenamiento vs. Tiempo**: Guardamos tanto imágenes como texto para permitir reanalizar sin volver a descargar
+
+## Instrucciones
+
+### Requisitos Previos
+
+1. Instalar Tesseract OCR con soporte para español:
    - Ubuntu: `sudo apt-get install tesseract-ocr tesseract-ocr-spa`
    - macOS: `brew install tesseract tesseract-lang`
-   - Windows: Descargar instalador desde [GitHub UB-Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
-3. Chrome o Chromium instalado
-4. ChromeDriver compatible con tu versión de Chrome
+   - Windows: Descargar desde [GitHub UB-Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
+
+2. Instalar dependencias: `pip install -r requirements.txt`
+
+3. Configurar variables de entorno: `cp .env.example .env`
+
 
 ## Instalación
 
@@ -33,7 +66,7 @@ Herramienta especializada para extraer ofertas de trabajo y prácticas profesion
    - Copia `.env.example` a `.env`
    - Edita `.env` con tus configuraciones
 
-## Uso
+## Ejecución
 
 ### Modo básico: 
 `python scrape.py --username=USUARIO_FACULTAD --posts=20`
@@ -47,6 +80,20 @@ Parámetros:
 - `--headless`: Ejecutar en modo headless (sin interfaz gráfica)
 - `--save-browser`: No cerrar el navegador al terminar
 - `--verbose`: Mostrar información detallada durante la ejecución
+
+### Tests
+
+Ejecuta todos los tests: `pytest`
+Con cobertura: `pytest --cov=backend`
+Tests específicos: `pytest tests/unit/test_job_extractor.py`
+
+## Observabilidad
+
+El sistema proporciona métricas en formato Prometheus:
+
+- `jobs_scraped_total`: Total de ofertas extraídas
+- `http_requests_duration_seconds`: Duración de peticiones HTTP
+- `ocr_processing_duration_seconds`: Tiempo de procesamiento OCR
 
 ## Filtrado de ofertas
 
