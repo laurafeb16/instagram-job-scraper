@@ -36,10 +36,10 @@ Herramienta especializada para extraer ofertas de trabajo y prácticas profesion
 ## Uso
 
 ### Modo básico: 
-python scrape.py --username=USUARIO_FACULTAD --posts=20
+`python scrape.py --username=USUARIO_FACULTAD --posts=20`
 
 ### Opciones disponibles:
-python scrape.py --username=ucm_fdi --posts=10 --headless --save-browser --verbose
+`python scrape.py --username=ucm_fdi --posts=10 --headless --save-browser --verbose`
 
 Parámetros:
 - `--username`: Perfil de Instagram a analizar (obligatorio)
