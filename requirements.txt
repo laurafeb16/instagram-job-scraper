@@ -11,3 +11,5 @@ regex==2023.8.8
 tqdm==4.66.1
 structlog==23.1.0
 prometheus_client==0.16.0
+# Añadir a requirements.txt
+schedule>=1.2.0
