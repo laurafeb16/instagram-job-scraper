@@ -26,11 +26,11 @@ class InstagramProfile(Base):
     posts: Mapped[List["Post"]] = relationship("Post", back_populates="profile", cascade="all, delete-orphan")
     
     def __repr__(self) -> str:
-        """Representación de texto del perfil."""
+        """Representacion de texto del perfil."""
         return f"<InstagramProfile {self.username}>"
 
 class Post(Base):
-    """Modelo para posts extraídos de Instagram."""
+    """Modelo para posts extraidos de Instagram."""
     
     __tablename__ = "posts"
     
@@ -50,11 +50,11 @@ class Post(Base):
     job: Mapped[Optional["JobPost"]] = relationship("JobPost", back_populates="post", uselist=False, cascade="all, delete-orphan")
     
     def __repr__(self) -> str:
-        """Representación de texto del post."""
+        """Representacion de texto del post."""
         return f"<Post {self.shortcode}>"
 
 class JobPost(Base):
-    """Modelo para ofertas de trabajo extraídas."""
+    """Modelo para ofertas de trabajo extraidas."""
     
     __tablename__ = "job_posts"
     
@@ -74,5 +74,5 @@ class JobPost(Base):
     post: Mapped["Post"] = relationship("Post", back_populates="job")
     
     def __repr__(self) -> str:
-        """Representación de texto de la oferta laboral."""
-        return f"<JobPost {self.id} - {self.title or 'Sin título'} at {self.company or 'Desconocida'}>"
+        """Representacion de texto de la oferta laboral."""
+        return f"<JobPost {self.id} - {self.title or 'Sin titulo'} at {self.company or 'Desconocida'}>"

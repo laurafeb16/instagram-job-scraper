@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
+ï»¿# -*- coding: utf-8 -*-
 """
-Configuración de logging estructurado para la aplicación.
+Configuracion de logging estructurado para la aplicacion.
 """
 import sys
 import time
@@ -11,17 +11,17 @@ import structlog
 from structlog.types import Processor, WrappedLogger
 
 def generate_correlation_id() -> str:
-    """Genera un ID de correlación único para seguimiento de operaciones.
+    """Genera un ID de correlacion unico para seguimiento de operaciones.
     
     Returns:
-        ID de correlación en formato UUID4
+        ID de correlacion en formato UUID4
     """
     return str(uuid.uuid4())
 
 def add_timestamp(
     logger: WrappedLogger, name: str, event_dict: Dict[str, Any]
 ) -> Dict[str, Any]:
-    """Añade timestamp en formato ISO a los eventos de log.
+    """Anade timestamp en formato ISO a los eventos de log.
     
     Args:
         logger: Logger envuelto por structlog
@@ -35,7 +35,7 @@ def add_timestamp(
     return event_dict
 
 def setup_logging() -> None:
-    """Configura el sistema de logging estructurado para la aplicación."""
+    """Configura el sistema de logging estructurado para la aplicacion."""
     processors: list[Processor] = [
         structlog.contextvars.merge_contextvars,
         add_timestamp,
@@ -59,7 +59,7 @@ def get_logger(name: Optional[str] = None) -> structlog.BoundLogger:
     """Obtiene un logger configurado con el nombre especificado.
     
     Args:
-        name: Nombre del módulo o componente
+        name: Nombre del modulo o componente
         
     Returns:
         Logger configurado
@@ -70,13 +70,13 @@ def get_logger(name: Optional[str] = None) -> structlog.BoundLogger:
 def with_correlation_id(
     logger_func: Callable
 ) -> Callable:
-    """Decorador para añadir un ID de correlación a todas las llamadas de logging.
+    """Decorador para anadir un ID de correlacion a todas las llamadas de logging.
     
     Args:
-        logger_func: Función de logging a decorar
+        logger_func: Funcion de logging a decorar
         
     Returns:
-        Función decorada
+        Funcion decorada
     """
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         correlation_id = kwargs.pop("correlation_id", generate_correlation_id())

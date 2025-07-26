@@ -1,5 +1,1 @@
-﻿"""
-Módulo backend para Instagram Job Scraper.
-"""
-
-__version__ = '0.1.0'
+﻿"""Modulo backend para extraccion y analisis de ofertas laborales."""

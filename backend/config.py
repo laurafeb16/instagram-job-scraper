@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 """
-Configuración centralizada para el proyecto.
+Configuracion centralizada para el proyecto.
 """
 import os
 from dotenv import load_dotenv
@@ -16,7 +16,7 @@ INSTAGRAM_PASSWORD = os.getenv("INSTAGRAM_PASSWORD")
 TESSERACT_PATH = os.getenv("TESSERACT_PATH")
 
 # Database
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./instagram_jobs.db")
 
 # Scraping
 MAX_POSTS_PER_RUN = int(os.getenv("MAX_POSTS_PER_RUN", "20"))

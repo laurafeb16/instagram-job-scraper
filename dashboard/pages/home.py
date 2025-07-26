@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 """
-Página de inicio del dashboard.
+Pagina de inicio del dashboard.
 """
 from typing import Callable, Dict, List, Any
 import streamlit as st
@@ -16,13 +16,13 @@ from dashboard.utils.helpers import (
 )
 
 def app() -> None:
-    """Renderiza la página de inicio del dashboard."""
+    """Renderiza la pagina de inicio del dashboard."""
     st.header("Resumen de Ofertas Laborales")
     
-    # Obtener métricas
+    # Obtener metricas
     metrics = get_dashboard_metrics()
     
-    # Mostrar métricas en tarjetas
+    # Mostrar metricas en tarjetas
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric(
@@ -37,15 +37,15 @@ def app() -> None:
         )
     with col3:
         st.metric(
-            label="Última Actualización", 
+            label="Ultima Actualizacion", 
             value=metrics['last_scrape'].strftime("%d/%m/%Y %H:%M") if metrics['last_scrape'] else "Nunca"
         )
     
     # Separador
     st.markdown("---")
     
-    # Distribución por área
-    st.subheader("Distribución por Área Tecnológica")
+    # Distribucion por area
+    st.subheader("Distribucion por Area Tecnologica")
     area_df, _ = get_area_stats()
     
     if not area_df.empty:
@@ -53,12 +53,12 @@ def app() -> None:
             area_df, 
             names='area', 
             values='count',
-            title="Distribución de Ofertas por Área",
+            title="Distribucion de Ofertas por Area",
             color_discrete_sequence=px.colors.qualitative.Pastel
         )
         st.plotly_chart(fig)
     else:
-        st.info("No hay datos suficientes para mostrar la distribución por área.")
+        st.info("No hay datos suficientes para mostrar la distribucion por area.")
     
     # Ofertas recientes
     st.subheader("Ofertas Recientes")
@@ -74,14 +74,14 @@ def app() -> None:
         # Convertir estado a texto
         display_df['is_open'] = display_df['is_open'].map({True: "Abierta", False: "Cerrada"})
         
-        # Añadir URL
+        # Anadir URL
         display_df['url'] = display_df['shortcode'].apply(get_post_url)
         
         # Renombrar columnas
         display_df = display_df.rename(columns={
             'company': 'Empresa',
-            'title': 'Posición',
-            'area': 'Área',
+            'title': 'Posicion',
+            'area': 'Area',
             'post_date': 'Fecha',
             'is_open': 'Estado',
             'url': 'Enlace'
@@ -95,7 +95,7 @@ def app() -> None:
             lambda x: make_clickable(x['Enlace']), axis=1
         )
         
-        # Mostrar tabla con las 10 ofertas más recientes
+        # Mostrar tabla con las 10 ofertas mas recientes
         st.write(
             display_df.head(10).to_html(escape=False, index=False),
             unsafe_allow_html=True

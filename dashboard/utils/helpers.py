@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ï»¿# -*- coding: utf-8 -*-
 """
 Funciones auxiliares para el dashboard.
 """
@@ -24,7 +24,7 @@ def get_job_posts_df() -> pd.DataFrame:
     """
     try:
         db = SessionLocal()
-        # Consultar ofertas con información de posts y perfiles
+        # Consultar ofertas con informacion de posts y perfiles
         query = (
             db.query(
                 models.JobPost.id,
@@ -50,25 +50,25 @@ def get_job_posts_df() -> pd.DataFrame:
         # Convertir a DataFrame
         df = pd.read_sql(query.statement, db.bind)
         
-        # Cerrar sesión
+        # Cerrar sesion
         db.close()
         
         return df
     except Exception as e:
         logger.error(f"Error al obtener DataFrame de ofertas: {e}")
-        # Devolver DataFrame vacío en caso de error
+        # Devolver DataFrame vacio en caso de error
         return pd.DataFrame()
 
 @st.cache_data(ttl=600)
 def get_area_stats() -> Tuple[pd.DataFrame, Dict[str, int]]:
-    """Obtiene estadísticas por área tecnológica.
+    """Obtiene estadisticas por area tecnologica.
     
     Returns:
-        DataFrame con estadísticas por área y diccionario con conteos
+        DataFrame con estadisticas por area y diccionario con conteos
     """
     try:
         db = SessionLocal()
-        # Consultar conteo por área
+        # Consultar conteo por area
         query = (
             db.query(
                 models.JobPost.area,
@@ -80,7 +80,7 @@ def get_area_stats() -> Tuple[pd.DataFrame, Dict[str, int]]:
         # Convertir a DataFrame
         df = pd.read_sql(query.statement, db.bind)
         
-        # Crear diccionario para acceso rápido
+        # Crear diccionario para acceso rapido
         area_counts = dict(zip(df['area'], df['count']))
         
         # Calcular porcentajes
@@ -88,21 +88,21 @@ def get_area_stats() -> Tuple[pd.DataFrame, Dict[str, int]]:
             total = df['count'].sum()
             df['percentage'] = df['count'] / total * 100
         
-        # Cerrar sesión
+        # Cerrar sesion
         db.close()
         
         return df, area_counts
     except Exception as e:
-        logger.error(f"Error al obtener estadísticas por área: {e}")
-        # Devolver DataFrame vacío en caso de error
+        logger.error(f"Error al obtener estadisticas por area: {e}")
+        # Devolver DataFrame vacio en caso de error
         return pd.DataFrame(), {}
 
 @st.cache_data(ttl=600)
 def get_company_stats() -> pd.DataFrame:
-    """Obtiene estadísticas por empresa.
+    """Obtiene estadisticas por empresa.
     
     Returns:
-        DataFrame con estadísticas por empresa
+        DataFrame con estadisticas por empresa
     """
     try:
         db = SessionLocal()
@@ -126,13 +126,13 @@ def get_company_stats() -> pd.DataFrame:
             total = db.query(func.count(models.JobPost.id)).scalar()
             df['percentage'] = df['count'] / total * 100
         
-        # Cerrar sesión
+        # Cerrar sesion
         db.close()
         
         return df
     except Exception as e:
-        logger.error(f"Error al obtener estadísticas por empresa: {e}")
-        # Devolver DataFrame vacío en caso de error
+        logger.error(f"Error al obtener estadisticas por empresa: {e}")
+        # Devolver DataFrame vacio en caso de error
         return pd.DataFrame()
 
 @st.cache_data(ttl=600)
@@ -164,15 +164,15 @@ def get_skills_stats() -> Dict[str, int]:
         
         return skill_counts
     except Exception as e:
-        logger.error(f"Error al obtener estadísticas de habilidades: {e}")
+        logger.error(f"Error al obtener estadisticas de habilidades: {e}")
         return {}
 
 @st.cache_data(ttl=600)
 def get_dashboard_metrics() -> Dict[str, Any]:
-    """Obtiene métricas globales para el dashboard.
+    """Obtiene metricas globales para el dashboard.
     
     Returns:
-        Diccionario con métricas globales
+        Diccionario con metricas globales
     """
     try:
         db = SessionLocal()
@@ -188,10 +188,10 @@ def get_dashboard_metrics() -> Dict[str, Any]:
         # Total de perfiles
         profiles_count = db.query(func.count(models.InstagramProfile.id)).scalar() or 0
         
-        # Última actualización
+        # Ultima actualizacion
         last_scrape = db.query(func.max(models.InstagramProfile.last_scraped)).scalar()
         
-        # Cerrar sesión
+        # Cerrar sesion
         db.close()
         
         return {
@@ -201,7 +201,7 @@ def get_dashboard_metrics() -> Dict[str, Any]:
             'last_scrape': last_scrape
         }
     except Exception as e:
-        logger.error(f"Error al obtener métricas globales: {e}")
+        logger.error(f"Error al obtener metricas globales: {e}")
         return {
             'total_jobs': 0,
             'open_jobs': 0,
@@ -213,7 +213,7 @@ def get_post_url(shortcode: str) -> str:
     """Obtiene la URL completa de un post de Instagram.
     
     Args:
-        shortcode: Código corto del post
+        shortcode: Codigo corto del post
         
     Returns:
         URL completa del post

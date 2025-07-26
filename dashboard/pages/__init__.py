@@ -1,1 +1,1 @@
-﻿"""Páginas del dashboard."""
+﻿"""Paginas del dashboard."""

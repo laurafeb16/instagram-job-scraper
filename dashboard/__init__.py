@@ -1,1 +1,1 @@
-﻿"""Módulo de dashboard para visualización de ofertas laborales."""
+﻿"""Modulo de dashboard para visualizacion de ofertas laborales."""
