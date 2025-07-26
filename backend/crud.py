@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
+ï»¿# -*- coding: utf-8 -*-
 """
-Operaciones CRUD específicas para los modelos de la aplicación.
+Operaciones CRUD especificas para los modelos de la aplicacion.
 """
 from typing import Optional, List, Dict, Any, Union
 from datetime import datetime
@@ -20,7 +20,7 @@ class CRUDProfile(CRUDBase[models.InstagramProfile]):
         """Obtiene un perfil por su nombre de usuario.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             username: Nombre de usuario
             
         Returns:
@@ -34,7 +34,7 @@ class CRUDProfile(CRUDBase[models.InstagramProfile]):
         """Obtiene un perfil existente o crea uno nuevo.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             username: Nombre de usuario
             
         Returns:
@@ -52,10 +52,10 @@ class CRUDProfile(CRUDBase[models.InstagramProfile]):
         return profile
     
     def update_last_scraped(self, db: Session, profile_id: int) -> Optional[models.InstagramProfile]:
-        """Actualiza la fecha de último scraping.
+        """Actualiza la fecha de ultimo scraping.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             profile_id: ID del perfil
             
         Returns:
@@ -75,8 +75,8 @@ class CRUDPost(CRUDBase[models.Post]):
         """Obtiene un post por su shortcode.
         
         Args:
-            db: Sesión de base de datos
-            shortcode: Código corto único del post
+            db: Sesion de base de datos
+            shortcode: Codigo corto unico del post
             
         Returns:
             Post encontrado o None
@@ -88,13 +88,13 @@ class CRUDPost(CRUDBase[models.Post]):
     def get_by_profile(
         self, db: Session, profile_id: int, skip: int = 0, limit: int = 100
     ) -> List[models.Post]:
-        """Obtiene posts de un perfil específico.
+        """Obtiene posts de un perfil especifico.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             profile_id: ID del perfil
-            skip: Número de registros a omitir
-            limit: Número máximo de registros a devolver
+            skip: Numero de registros a omitir
+            limit: Numero maximo de registros a devolver
             
         Returns:
             Lista de posts
@@ -109,9 +109,9 @@ class CRUDPost(CRUDBase[models.Post]):
         """Obtiene posts marcados como ofertas laborales.
         
         Args:
-            db: Sesión de base de datos
-            skip: Número de registros a omitir
-            limit: Número máximo de registros a devolver
+            db: Sesion de base de datos
+            skip: Numero de registros a omitir
+            limit: Numero maximo de registros a devolver
             
         Returns:
             Lista de posts
@@ -126,9 +126,9 @@ class CRUDPost(CRUDBase[models.Post]):
         """Crea un post a partir de datos del scraper.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             profile_id: ID del perfil
-            post_data: Datos extraídos por el scraper
+            post_data: Datos extraidos por el scraper
             
         Returns:
             Post creado
@@ -156,9 +156,9 @@ class CRUDJobPost(CRUDBase[models.JobPost]):
         """Crea una oferta laboral a partir de datos del extractor.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             post_id: ID del post relacionado
-            job_info: Información extraída de la oferta
+            job_info: Informacion extraida de la oferta
             
         Returns:
             Oferta laboral creada
@@ -181,13 +181,13 @@ class CRUDJobPost(CRUDBase[models.JobPost]):
     def get_by_company(
         self, db: Session, company: str, skip: int = 0, limit: int = 100
     ) -> List[models.JobPost]:
-        """Obtiene ofertas laborales de una empresa específica.
+        """Obtiene ofertas laborales de una empresa especifica.
         
         Args:
-            db: Sesión de base de datos
+            db: Sesion de base de datos
             company: Nombre de la empresa
-            skip: Número de registros a omitir
-            limit: Número máximo de registros a devolver
+            skip: Numero de registros a omitir
+            limit: Numero maximo de registros a devolver
             
         Returns:
             Lista de ofertas laborales
@@ -199,13 +199,13 @@ class CRUDJobPost(CRUDBase[models.JobPost]):
     def get_by_area(
         self, db: Session, area: str, skip: int = 0, limit: int = 100
     ) -> List[models.JobPost]:
-        """Obtiene ofertas laborales de un área específica.
+        """Obtiene ofertas laborales de un area especifica.
         
         Args:
-            db: Sesión de base de datos
-            area: Área tecnológica
-            skip: Número de registros a omitir
-            limit: Número máximo de registros a devolver
+            db: Sesion de base de datos
+            area: Area tecnologica
+            skip: Numero de registros a omitir
+            limit: Numero maximo de registros a devolver
             
         Returns:
             Lista de ofertas laborales
@@ -220,9 +220,9 @@ class CRUDJobPost(CRUDBase[models.JobPost]):
         """Obtiene ofertas laborales abiertas.
         
         Args:
-            db: Sesión de base de datos
-            skip: Número de registros a omitir
-            limit: Número máximo de registros a devolver
+            db: Sesion de base de datos
+            skip: Numero de registros a omitir
+            limit: Numero maximo de registros a devolver
             
         Returns:
             Lista de ofertas laborales
@@ -231,7 +231,7 @@ class CRUDJobPost(CRUDBase[models.JobPost]):
             models.JobPost.is_open == True
         ).offset(skip).limit(limit).all()
 
-# Instancias de CRUD para usar en la aplicación
+# Instancias de CRUD para usar en la aplicacion
 profile = CRUDProfile(models.InstagramProfile)
 post = CRUDPost(models.Post)
 job_post = CRUDJobPost(models.JobPost)

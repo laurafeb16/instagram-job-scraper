@@ -305,3 +305,48 @@ def extract_job_data(ocr_text: str, caption: str = "") -> Dict[str, Any]:
     """
     extractor = JobExtractor()
     return extractor.extract_job_info(ocr_text, caption)
+# Añadir estos patrones a la función is_job_post en JobExtractor
+job_patterns: List[str] = [
+    # Patrones existentes
+    r"[Vv]acante(?:\s+[^.]*?)?ofrecida\s+por\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Pp]ractica\s+laboral(?:\s+[^.]*?)?ofrecida\s+por\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Pp]ractica\s+profesional(?:\s+[^.]*?)?ofrecida\s+por\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Oo]ferta\s+de\s+(?:trabajo|empleo|vacante)(?:\s+[^.]*?)?(?:en|por|para)\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Ss]e\s+busca(?:\s+[^.]*?)para(?:\s+[^.]*?)en\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Vv]acante(?:\s+de|:)?\s+(.+?)(?:\n|en|para)",
+    r"[Oo]ferta\s+laboral",
+    r"[Oo]portunidad\s+de\s+(?:trabajo|empleo)",
+    r"[Ee]mpleo\s+(?:disponible|vacante)",
+    
+    # Nuevos patrones específicos para prácticas/pasantías
+    r"[Pp]asantía(?:\s+[^.]*?)?(?:en|con|para)\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Pp]rácticas\s+(?:profesionales|laborales)(?:\s+[^.]*?)?(?:en|con|para)\s+[\'\"]?([^\'\".,]+)[\'\"]?",
+    r"[Ee]mpresa\s+([A-Za-z0-9\s&.,]+)\s+está\s+en\s+búsqueda",
+    r"[Ee]studiantes?\s+(?:para|que\s+opten\s+por)\s+realizar\s+práctica",
+    r"[Tt]rabajo\s+de\s+graduación(?:\s+[^.]*?)(?:en|con|para)\s+[\'\"]?([^\'\".,]+)[\'\"]?"
+]
+# Añadir importación al principio del archivo
+from ml.contact_extractor import extract_contact
+
+# Modificar la función extract_job_data para incluir información de contacto
+def extract_job_data(ocr_text: str, caption: str = "") -> Dict[str, Any]:
+    """Función de conveniencia para extracción de datos de ofertas.
+    
+    Args:
+        ocr_text: Texto OCR extraído de la imagen
+        caption: Texto del caption del post
+        
+    Returns:
+        Información estructurada de la oferta
+    """
+    extractor = JobExtractor()
+    combined_text = f"{caption}\n{ocr_text}"
+    
+    # Extraer información básica
+    job_info = extractor.extract_job_info(ocr_text, caption)
+    
+    # Extraer información de contacto
+    contact_info = extract_contact(combined_text)
+    job_info['contact'] = contact_info
+    
+    return job_info

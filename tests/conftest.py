@@ -1,20 +1,20 @@
-# -*- coding: utf-8 -*-
+ï»¿# -*- coding: utf-8 -*-
 """
-Configuración y fixtures para tests.
+Configuracion y fixtures para tests.
 """
 import os
 import pytest
 from typing import Generator, List, Dict, Any
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
+import tempfile
 
 from backend.database import Base
 from backend import models
-from backend.logging_config import setup_logging
+from backend.metrics import registry
 
-# Configuración de entorno de pruebas
-os.environ["DATABASE_URL"] = "sqlite:///./test.db"
-setup_logging()
+# Configuracion de entorno de pruebas
+os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 
 # Base de datos en memoria para tests
 TEST_DATABASE_URL = "sqlite:///:memory:"
@@ -29,7 +29,7 @@ def db_engine():
 
 @pytest.fixture(scope="function")
 def db_session(db_engine):
-    """Crea una sesión de base de datos para las pruebas."""
+    """Crea una sesion de base de datos para las pruebas."""
     TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=db_engine)
     session = TestingSessionLocal()
     try:
@@ -52,11 +52,13 @@ def sample_profile(db_session):
 @pytest.fixture
 def sample_post(db_session, sample_profile):
     """Crea un post de prueba."""
+    from datetime import datetime
+    
     post = models.Post(
         profile_id=sample_profile.id,
         shortcode="ABC123",
         caption="Test post",
-        timestamp="2023-01-01T12:00:00",
+        timestamp=datetime.utcnow(),
         is_job_post=False
     )
     db_session.add(post)
@@ -86,3 +88,16 @@ def sample_job_post(db_session, sample_post):
     db_session.commit()
     
     return job_post
+
+@pytest.fixture
+def temp_dir():
+    """Crea un directorio temporal para archivos de prueba."""
+    with tempfile.TemporaryDirectory() as tmpdirname:
+        yield tmpdirname
+        
+@pytest.fixture(autouse=True)
+def reset_metrics():
+    """Reinicia las metricas entre pruebas."""
+    for collector in registry._collector_to_names.keys():
+        if hasattr(collector, "_value"):
+            collector._value.set(0)
