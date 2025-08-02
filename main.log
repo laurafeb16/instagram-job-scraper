@@ -1,0 +1,81 @@
+2025-08-01 02:23:02,862 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 02:23:02,863 - WDM - INFO - ====== WebDriver manager ======
+2025-08-01 02:23:03,980 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-01 02:25:11,761 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 02:25:11,762 - WDM - INFO - ====== WebDriver manager ======
+2025-08-01 02:25:12,851 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-01 02:25:13,154 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-01 02:25:13,351 - WDM - INFO - There is no [win64] chromedriver "138.0.7204.183" for browser google-chrome "138.0.7204" in cache
+2025-08-01 02:25:13,351 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-01 02:25:13,871 - WDM - INFO - WebDriver version 138.0.7204.183 selected
+2025-08-01 02:25:13,876 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.183/win32/chromedriver-win32.zip
+2025-08-01 02:25:13,876 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.183/win32/chromedriver-win32.zip
+2025-08-01 02:25:14,131 - WDM - INFO - Driver downloading response is 200
+2025-08-01 02:25:15,765 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-01 02:25:16,990 - WDM - INFO - Driver has been saved in cache [C:\Users\laura\.wdm\drivers\chromedriver\win64\138.0.7204.183]
+2025-08-01 02:29:56,340 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 02:29:56,340 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 02:29:57,583 - src.scraper.instagram_scraper - INFO - Iniciando sesión en Instagram
+2025-08-01 02:30:11,393 - src.scraper.instagram_scraper - INFO - No se encontró el pop-up de cookies o ya fue aceptado
+2025-08-01 02:30:26,796 - src.scraper.instagram_scraper - INFO - No se encontró la ventana emergente post-login
+2025-08-01 02:30:26,796 - src.scraper.instagram_scraper - INFO - Login exitoso
+2025-08-01 02:30:26,797 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 02:30:30,652 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 02:30:40,832 - src.scraper.instagram_scraper - ERROR - Error durante la extracción de posts: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff73aa4e415+77285]
+	GetHandleVerifier [0x0x7ff73aa4e470+77376]
+	(No symbol) [0x0x7ff73a819a6a]
+	(No symbol) [0x0x7ff73a870406]
+	(No symbol) [0x0x7ff73a8706bc]
+	(No symbol) [0x0x7ff73a8c3ac7]
+	(No symbol) [0x0x7ff73a89864f]
+	(No symbol) [0x0x7ff73a8c087f]
+	(No symbol) [0x0x7ff73a8983e3]
+	(No symbol) [0x0x7ff73a861521]
+	(No symbol) [0x0x7ff73a8622b3]
+	GetHandleVerifier [0x0x7ff73ad31efd+3107021]
+	GetHandleVerifier [0x0x7ff73ad2c29d+3083373]
+	GetHandleVerifier [0x0x7ff73ad4bedd+3213485]
+	GetHandleVerifier [0x0x7ff73aa6884e+184862]
+	GetHandleVerifier [0x0x7ff73aa7055f+216879]
+	GetHandleVerifier [0x0x7ff73aa57084+113236]
+	GetHandleVerifier [0x0x7ff73aa57239+113673]
+	GetHandleVerifier [0x0x7ff73aa3e298+11368]
+	BaseThreadInitThunk [0x0x7ffde7b6e8d7+23]
+	RtlUserThreadStart [0x0x7ffde849c34c+44]
+
+2025-08-01 02:30:40,835 - __main__ - ERROR - No se pudieron extraer posts. Abortando.
+2025-08-01 02:30:43,038 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 02:30:43,039 - __main__ - INFO - Proceso finalizado
+2025-08-01 02:32:51,011 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 02:32:51,012 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 02:32:52,566 - src.scraper.instagram_scraper - INFO - Iniciando sesión en Instagram
+2025-08-01 02:33:14,317 - src.scraper.instagram_scraper - INFO - Login exitoso
+2025-08-01 02:33:14,317 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 02:33:20,516 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 02:33:23,237 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 02:33:23,246 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 02:33:23,253 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 02:33:23,261 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 02:33:27,232 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 02:33:27,321 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 02:33:31,401 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 02:33:31,458 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 02:33:35,285 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 02:33:35,341 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMwMdSAMBeH/
+2025-08-01 02:33:37,736 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 02:33:37,826 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMwLmDOM587/
+2025-08-01 02:33:41,423 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 02:33:41,480 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMt0zrCsieA/
+2025-08-01 02:33:41,480 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 02:33:41,480 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 02:33:41,500 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 02:33:41,540 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 02:33:42,083 - src.image_processing.ocr - ERROR - Error al extraer texto: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/spa.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'spa\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+2025-08-01 02:33:42,084 - __main__ - INFO - Texto extraído de la imagen: ...
+2025-08-01 02:33:42,092 - __main__ - ERROR - Error en el proceso principal: (builtins.TypeError) SQLite DateTime type only accepts Python datetime and date objects as input.
+[SQL: INSERT INTO job_posts (post_url, image_url, description, post_date, scraped_at, local_image_path) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: [{'description': 'VACANTES', 'scraped_at': '2025-08-01T02:33:27.321869', 'image_url': 'https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_ ... (493 characters truncated) ... e=68925446&_nc_sid=7a9f4b', 'post_date': '2025-08-01T01:16:29.000Z', 'post_url': 'https://www.instagram.com/p/DMyys5-s96K/', 'local_image_path': None}]]
+2025-08-01 02:33:44,334 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 02:33:44,334 - __main__ - INFO - Proceso finalizado

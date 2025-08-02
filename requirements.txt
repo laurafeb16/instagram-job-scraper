@@ -1,0 +1,12 @@
+selenium==4.15.2
+webdriver-manager==4.0.1
+pytesseract==0.3.10
+pandas
+numpy>=2.3.0
+matplotlib
+scikit-learn
+dash
+plotly
+sqlalchemy
+pillow
+python-dotenv
