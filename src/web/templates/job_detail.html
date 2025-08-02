@@ -1,0 +1,103 @@
+﻿<!-- src/web/templates/job_detail.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job_data.position_title or "Oferta" }} - Detalles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalles de Oferta</li>
+            </ol>
+        </nav>
+
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">{{ job_data.position_title or "Posición no especificada" }}</h3>
+                <span class="badge {% if job_data.is_active %}bg-success{% else %}bg-danger{% endif %}">
+                    {{ "Activa" if job_data.is_active else "Finalizada" }}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Información General</h5>
+                        <p><strong>Empresa:</strong> {{ job_data.company_name }}</p>
+                        <p><strong>Tipo:</strong> {{ job_data.job_type }}</p>
+                        <p><strong>Fecha de publicación:</strong> {{ job_post.post_date.strftime('%d/%m/%Y') }}</p>
+                        <p><strong>Contacto:</strong> {{ job_data.contact_info }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Imagen</h5>
+                        <img src="{{ job_post.image_url }}" class="img-fluid rounded" alt="Imagen de la oferta">
+
+                        {% if job_post.is_carousel and carousel_images %}
+                        <div class="mt-3">
+                            <h6>Imágenes adicionales</h6>
+                            <div class="row">
+                                {% for img in carousel_images %}
+                                <div class="col-4 mb-2">
+                                    <img src="{{ img.image_url }}" class="img-fluid rounded" alt="Imagen {{ loop.index }}">
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <h5>Requisitos</h5>
+                        {% if job_data.requirements %}
+                        {% if job_data.requirements.startswith('[') %}
+                        <ul>
+                            {% for req in job_data.requirements.strip('[]').replace("'", "").split(', ') %}
+                            <li>{{ req }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>{{ job_data.requirements }}</p>
+                        {% endif %}
+                        {% else %}
+                        <p>No se especificaron requisitos.</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Beneficios</h5>
+                        {% if job_data.benefits %}
+                        {% if job_data.benefits.startswith('[') %}
+                        <ul>
+                            {% for benefit in job_data.benefits.strip('[]').replace("'", "").split(', ') %}
+                            <li>{{ benefit }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% elif job_data.benefits == "OFERTA FINALIZADA" %}
+                        <p class="text-danger">OFERTA FINALIZADA</p>
+                        {% else %}
+                        <p>{{ job_data.benefits }}</p>
+                        {% endif %}
+                        {% else %}
+                        <p>No se especificaron beneficios.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{{ job_post.post_url }}" target="_blank" class="btn btn-primary">Ver publicación original</a>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Volver al listado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

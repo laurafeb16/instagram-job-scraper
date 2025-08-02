@@ -1,0 +1,88 @@
+﻿<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Ofertas Laborales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Ofertas Laborales</h1>
+        
+        <!-- Filtros -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Filtros</h5>
+                <form method="get" action="/" class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo de Oferta</label>
+                        <select name="type" class="form-select">
+                            <option value="">Todos</option>
+                            {% for type in job_types %}
+                            <option value="{{ type }}" {% if request.args.get('type') == type %}selected{% endif %}>{{ type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Empresa</label>
+                        <select name="company" class="form-select">
+                            <option value="">Todas</option>
+                            {% for company in companies %}
+                            <option value="{{ company }}" {% if request.args.get('company') == company %}selected{% endif %}>{{ company }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Estado</label>
+                        <select name="active" class="form-select">
+                            <option value="true" {% if request.args.get('active', 'true') == 'true' %}selected{% endif %}>Activas</option>
+                            <option value="false" {% if request.args.get('active') == 'false' %}selected{% endif %}>Finalizadas</option>
+                            <option value="all" {% if request.args.get('active') == 'all' %}selected{% endif %}>Todas</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                        <a href="/" class="btn btn-secondary">Limpiar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Lista de ofertas -->
+        <div class="row">
+            {% for post, data in job_posts %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">{{ data.position_title or "Posición no especificada" }}</h5>
+                        <span class="badge {% if data.is_active %}bg-success{% else %}bg-danger{% endif %}">
+                            {{ "Activa" if data.is_active else "Finalizada" }}
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Empresa:</strong> {{ data.company_name }}</p>
+                        <p><strong>Tipo:</strong> {{ data.job_type }}</p>
+                        <p><strong>Fecha:</strong> {{ post.post_date.strftime('%d/%m/%Y') }}</p>
+                        
+                        {% if post.is_carousel %}
+                        <p><span class="badge bg-info">Múltiples ofertas</span></p>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('job_detail', job_id=data.id) }}" class="btn btn-primary">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="alert alert-info">No se encontraron ofertas laborales con los filtros aplicados.</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

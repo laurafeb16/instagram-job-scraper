@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import logging
+import pickle
 
 class InstagramScraper:
     def __init__(self, username, password, target_account, headless=False):
@@ -63,7 +64,12 @@ class InstagramScraper:
         time.sleep(random.uniform(min_seconds, max_seconds))
         
     def login(self):
-        """Inicia sesión en Instagram"""
+        """Inicia sesión en Instagram o carga sesión guardada"""
+        # Intentar cargar cookies primero
+        if self.load_cookies():
+            return True
+        
+        # Si no hay cookies o falló, hacer login normal
         try:
             self.logger.info("Iniciando sesión en Instagram")
             self.driver.get(self.base_url)
@@ -143,6 +149,8 @@ class InstagramScraper:
             except Exception as e:
                 self.logger.info(f"No se pudo manejar ventanas emergentes: {str(e)}")
             
+            # Guardar cookies después de login exitoso
+            self.save_cookies()
             self.logger.info("Login exitoso")
             return True
         except Exception as e:
@@ -219,10 +227,12 @@ class InstagramScraper:
                     # Obtener la imagen (probar diferentes selectores)
                     img_element = None
                     img_selectors = [
-                        "img[style*='object-fit']",
+                        "article img[sizes]", 
+                        "article div[role='button'] img",
                         "div._aagv img",
-                        "article div > img",
-                        "div[role='button'] img"
+                        "div[role='dialog'] div[role='button'] img",
+                        "div._ab8w img",
+                        "div[style*='transform'] img:not([draggable='false'])"
                     ]
                     
                     for selector in img_selectors:
@@ -239,6 +249,7 @@ class InstagramScraper:
                         img_url = ""
                     else:
                         img_url = img_element.get_attribute("src")
+                        self.logger.info(f"Selector usado para imagen: {selector}")
                         
                     # Obtener la descripción (probar diferentes selectores)
                     description = ""
@@ -267,13 +278,64 @@ class InstagramScraper:
                     except:
                         pass
                     
+                    # Detectar si es un carrusel (múltiples imágenes)
+                    is_carousel = False
+                    carousel_indicators = self.driver.find_elements(By.CSS_SELECTOR, 
+                        "div._acnb, div[class*='carousel'], ul._acay")
+                    
+                    if carousel_indicators:
+                        is_carousel = True
+                        self.logger.info("Detectado carrusel con múltiples imágenes")
+                    
+                    # Extraer todas las imágenes si es un carrusel
+                    carousel_images = []
+                    
+                    if is_carousel:
+                        # Guardar la primera imagen
+                        if img_url:
+                            carousel_images.append(img_url)
+                        
+                        # Hacer clic en el botón "Siguiente" de carrusel
+                        carousel_next_buttons = self.driver.find_elements(By.CSS_SELECTOR, 
+                            "button._afxu, button._aahr, svg[aria-label='Siguiente']")
+                        
+                        while carousel_next_buttons:
+                            try:
+                                carousel_next_buttons[0].click()
+                                self.random_sleep(1, 2)
+                                
+                                # Obtener la nueva imagen
+                                for selector in img_selectors:
+                                    try:
+                                        elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                                        if elements:
+                                            carousel_img_url = elements[0].get_attribute("src")
+                                            if carousel_img_url and carousel_img_url not in carousel_images:
+                                                carousel_images.append(carousel_img_url)
+                                            break
+                                    except:
+                                        continue
+                                
+                                # Buscar el siguiente botón de carrusel
+                                carousel_next_buttons = self.driver.find_elements(By.CSS_SELECTOR, 
+                                    "button._afxu, button._aahr, svg[aria-label='Siguiente']")
+                                
+                                # Si llegamos al final, salir del bucle
+                                if not carousel_next_buttons or len(carousel_images) >= 10:  # Límite de seguridad
+                                    break
+                            except Exception as e:
+                                self.logger.error(f"Error al navegar por el carrusel: {str(e)}")
+                                break
+            
                     # Guardar los datos
                     post_data = {
                         "url": post_url,
                         "image_url": img_url,
                         "description": description,
                         "date": post_date,
-                        "scraped_at": datetime.now().isoformat()
+                        "scraped_at": datetime.now().isoformat(),
+                        "is_carousel": is_carousel,
+                        "carousel_images": carousel_images if is_carousel else []
                     }
                     
                     self.logger.info(f"Post extraído: {post_url}")
@@ -351,3 +413,58 @@ class InstagramScraper:
         """Cierra el navegador"""
         self.driver.quit()
         self.logger.info("Navegador cerrado")
+    
+    def save_cookies(self):
+        """Guarda las cookies de la sesión"""
+        try:
+            cookies = self.driver.get_cookies()
+            with open('instagram_cookies.pkl', 'wb') as f:
+                pickle.dump(cookies, f)
+            self.logger.info("Cookies guardadas correctamente")
+            return True
+        except Exception as e:
+            self.logger.error(f"Error al guardar cookies: {str(e)}")
+            return False
+
+    def load_cookies(self):
+        """Carga cookies previamente guardadas"""
+        try:
+            if not os.path.exists('instagram_cookies.pkl'):
+                self.logger.info("No hay cookies guardadas")
+                return False
+            
+            with open('instagram_cookies.pkl', 'rb') as f:
+                cookies = pickle.load(f)
+            
+            # Primero navegar a Instagram
+            self.driver.get(self.base_url)
+            self.random_sleep(2, 3)
+            
+            # Añadir las cookies
+            for cookie in cookies:
+                try:
+                    self.driver.add_cookie(cookie)
+                except:
+                    pass
+            
+            # Recargar la página
+            self.driver.refresh()
+            self.random_sleep(3, 5)
+            
+            # Verificar si seguimos con la sesión iniciada
+            try:
+                # Buscar elementos que indicen sesión iniciada
+                profile_elements = self.driver.find_elements(By.XPATH, 
+                    "//div[contains(@class, 'xh8yej3')]//img[@alt]")
+                if profile_elements:
+                    self.logger.info("Sesión cargada exitosamente desde cookies")
+                    return True
+            except:
+                pass
+            
+            self.logger.info("No se pudo restaurar la sesión desde cookies")
+            return False
+        except Exception as e:
+            self.logger.error(f"Error al cargar cookies: {str(e)}")
+            return False
+    

@@ -79,3 +79,1264 @@ Stacktrace:
 [parameters: [{'description': 'VACANTES', 'scraped_at': '2025-08-01T02:33:27.321869', 'image_url': 'https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_ ... (493 characters truncated) ... e=68925446&_nc_sid=7a9f4b', 'post_date': '2025-08-01T01:16:29.000Z', 'post_url': 'https://www.instagram.com/p/DMyys5-s96K/', 'local_image_path': None}]]
 2025-08-01 02:33:44,334 - src.scraper.instagram_scraper - INFO - Navegador cerrado
 2025-08-01 02:33:44,334 - __main__ - INFO - Proceso finalizado
+2025-08-01 22:15:08,164 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 22:15:08,166 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 22:15:10,774 - src.scraper.instagram_scraper - INFO - Iniciando sesión en Instagram
+2025-08-01 22:15:33,655 - src.scraper.instagram_scraper - INFO - Login exitoso
+2025-08-01 22:15:33,656 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 22:15:38,978 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 22:15:42,432 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 22:15:42,450 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 22:15:42,467 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 22:15:42,481 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 22:15:48,058 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 22:15:48,347 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:15:50,705 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 22:15:50,794 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:15:54,662 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 22:15:54,767 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:15:57,560 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 22:15:57,677 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:16:01,126 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 22:16:01,238 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:16:01,238 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 22:16:01,238 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 22:16:02,104 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 22:16:02,156 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:16:05,923 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:16:05,938 - __main__ - ERROR - Error en el proceso principal: (builtins.TypeError) SQLite DateTime type only accepts Python datetime and date objects as input.
+[SQL: INSERT INTO job_posts (post_url, image_url, description, post_date, scraped_at, local_image_path) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: [{'description': 'VACANTES', 'scraped_at': '2025-08-01T22:15:48.347360', 'image_url': 'https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_ ... (493 characters truncated) ... e=68935B1B&_nc_sid=4e3341', 'post_date': '2025-08-02T00:58:34.000Z', 'post_url': 'https://www.instagram.com/p/DM1VcdFM1X3/', 'local_image_path': None}]]
+2025-08-01 22:16:08,355 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 22:16:08,355 - __main__ - INFO - Proceso finalizado
+2025-08-01 22:32:01,846 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 22:32:01,846 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 22:32:04,439 - src.scraper.instagram_scraper - INFO - Iniciando sesión en Instagram
+2025-08-01 22:32:27,825 - src.scraper.instagram_scraper - INFO - Login exitoso
+2025-08-01 22:32:27,826 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 22:32:32,606 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 22:32:34,634 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 22:32:34,646 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 22:32:34,654 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 22:32:34,663 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 22:32:39,048 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 22:32:39,214 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:32:42,089 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 22:32:42,153 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:32:44,643 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 22:32:44,708 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:32:46,849 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 22:32:46,942 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:32:50,751 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 22:32:50,842 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:32:50,842 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 22:32:50,842 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 22:32:51,481 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 22:32:51,567 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:32:53,264 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:32:53,289 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:32:55,541 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:32:55,558 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:32:57,233 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:32:57,247 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:32:59,086 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:32:59,098 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:33:01,158 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:33:01,172 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 22:33:03,412 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 22:33:03,412 - __main__ - INFO - Proceso finalizado
+2025-08-01 22:41:46,217 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 22:41:46,217 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 22:41:47,774 - src.scraper.instagram_scraper - INFO - Iniciando sesión en Instagram
+2025-08-01 22:42:13,208 - src.scraper.instagram_scraper - INFO - Login exitoso
+2025-08-01 22:42:13,208 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 22:42:20,028 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 22:42:22,717 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 22:42:22,726 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 22:42:22,733 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 22:42:22,740 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 22:42:25,931 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 22:42:26,009 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:42:28,140 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 22:42:28,196 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:42:31,694 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 22:42:31,749 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:42:33,938 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 22:42:33,994 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:42:36,152 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 22:42:36,222 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:42:36,223 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 22:42:36,223 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 22:42:36,244 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 22:42:36,265 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:42:36,265 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFGJnnGcgUp66TKga8HPXxNkGXLDsyVdHvwjQVRi3j50vRQCft1pfd-l3U_FFqPz5c&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=T2sOHTGvS4xMoh3ijfcYMA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfQleI_8eshkaxVe4WvIl3-WQsDuaCJWy59iqPE8D47n6w&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:42:37,683 - __main__ - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 22:42:40,322 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:42:40,332 - __main__ - ERROR - Error en el proceso principal: (sqlite3.IntegrityError) UNIQUE constraint failed: job_posts.post_url
+[SQL: INSERT INTO job_posts (post_url, image_url, description, post_date, scraped_at, local_image_path) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('https://www.instagram.com/p/DM1VcdFM1X3/', 'https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZy ... (284 characters truncated) ... 4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfQleI_8eshkaxVe4WvIl3-WQsDuaCJWy59iqPE8D47n6w&oe=68935B1B&_nc_sid=7a9f4b', 'VACANTES', '2025-08-02 00:58:34.000000', '2025-08-01 22:42:26.009319', None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-08-01 22:42:42,581 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 22:42:42,581 - __main__ - INFO - Proceso finalizado
+2025-08-01 22:47:04,734 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 22:47:04,734 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 22:47:06,263 - src.scraper.instagram_scraper - INFO - No hay cookies guardadas
+2025-08-01 22:47:06,264 - src.scraper.instagram_scraper - INFO - Iniciando sesión en Instagram
+2025-08-01 22:47:31,750 - src.scraper.instagram_scraper - INFO - Cookies guardadas correctamente
+2025-08-01 22:47:31,750 - src.scraper.instagram_scraper - INFO - Login exitoso
+2025-08-01 22:47:31,750 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 22:47:43,246 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 22:47:47,076 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 22:47:47,086 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 22:47:47,095 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 22:47:47,104 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 22:47:51,528 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 22:47:51,623 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:47:55,283 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 22:47:55,347 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:47:58,452 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 22:47:58,517 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:48:02,495 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 22:48:02,557 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:48:06,084 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 22:48:06,148 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:48:06,148 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 22:48:06,148 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 22:48:06,166 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 22:48:06,193 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:48:06,193 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QE42fEtn59l0_1LDKE0WO6369fDfF9R_rhbSxS3Ay7W6bscnhsj9QND9gRPcPt4798&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=3nxl8v_DsvUUYPAIMkVI-A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRnGahlP_shApKyXQxXtgfSOjG-Qk71JFM-IGIfYsA7BQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:48:06,602 - __main__ - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 22:48:08,018 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:48:08,037 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:48:08,037 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QE42fEtn59l0_1LDKE0WO6369fDfF9R_rhbSxS3Ay7W6bscnhsj9QND9gRPcPt4798&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=3nxl8v_DsvUUYPAIMkVI-A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRnGahlP_shApKyXQxXtgfSOjG-Qk71JFM-IGIfYsA7BQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:48:08,393 - __main__ - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 22:48:09,893 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:48:09,911 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:48:09,912 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QE42fEtn59l0_1LDKE0WO6369fDfF9R_rhbSxS3Ay7W6bscnhsj9QND9gRPcPt4798&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=3nxl8v_DsvUUYPAIMkVI-A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRnGahlP_shApKyXQxXtgfSOjG-Qk71JFM-IGIfYsA7BQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:48:10,203 - __main__ - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 22:48:12,933 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:48:12,947 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:48:12,947 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QE42fEtn59l0_1LDKE0WO6369fDfF9R_rhbSxS3Ay7W6bscnhsj9QND9gRPcPt4798&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=3nxl8v_DsvUUYPAIMkVI-A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRnGahlP_shApKyXQxXtgfSOjG-Qk71JFM-IGIfYsA7BQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:48:14,709 - __main__ - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 22:48:16,827 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:48:16,841 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:48:16,841 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QE42fEtn59l0_1LDKE0WO6369fDfF9R_rhbSxS3Ay7W6bscnhsj9QND9gRPcPt4798&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=3nxl8v_DsvUUYPAIMkVI-A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRnGahlP_shApKyXQxXtgfSOjG-Qk71JFM-IGIfYsA7BQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:48:18,996 - __main__ - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 22:48:23,636 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:48:23,650 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 22:48:25,926 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 22:48:25,926 - __main__ - INFO - Proceso finalizado
+2025-08-01 22:55:54,807 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 22:55:54,808 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 22:56:06,684 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 22:56:06,684 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 22:56:12,690 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 22:56:15,020 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 22:56:15,033 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 22:56:15,043 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 22:56:15,052 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 22:56:18,776 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 22:56:18,798 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 22:56:18,856 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:56:21,885 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 22:56:21,901 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 22:56:21,947 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:56:24,653 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 22:56:24,670 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 22:56:24,717 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:56:27,725 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 22:56:27,741 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 22:56:27,788 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:56:30,148 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 22:56:30,165 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 22:56:30,212 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:56:30,213 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 22:56:30,213 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 22:56:30,239 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 22:56:30,269 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 22:56:30,270 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHNn84rkpH5rtgRCQb0-x_7763nvdjWgAOZhp6jkfawv1nePT8S7lO-RukQUlsm4SM&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=vRSw8V3WGkzRN9HjEwTnoQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfQ2bdXH6nZOjksu5lIPEuwdtL0n6NovBawM24aJW_5jFQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 22:56:30,627 - __main__ - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 22:56:32,053 - __main__ - INFO - Texto extraído de la imagen: Universidad Tecnológica de Panamá
+
+Vicerrectoría Académica
+
+Programación de matrícula para el II Sem...
+2025-08-01 22:56:32,073 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 22:56:32,073 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGeDXwcr07rR8xYW9Ap8StHpzLkk6I5hH_2KaeZy9kPJLijQY4FPp8D-SlQnuqs-ZE&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=xwPtiSi893qbUEUij-proQ&edm=AONqaaQAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfSEeK0d5lEhvaaq4zgQuBTpV4a3JuVfC_GCdCEzlFvfIg&oe=6893723A&_nc_sid=4e3341
+2025-08-01 22:56:32,384 - __main__ - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 22:56:33,618 - __main__ - INFO - Texto extraído de la imagen: ón
+
+Práctica Profesional ( py;
+
+Va Towerbank
+
+Entidad: Towerbank International, Inc.
+Contacto: Joana...
+2025-08-01 22:56:33,636 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 22:56:33,637 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHNn84rkpH5rtgRCQb0-x_7763nvdjWgAOZhp6jkfawv1nePT8S7lO-RukQUlsm4SM&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=vRSw8V3WGkzRN9HjEwTnoQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfQOlaNsO1mYCO9JAe78ICVZ2jXoDCJDCS2RHOjMwn0VmA&oe=689349D2&_nc_sid=7a9f4b
+2025-08-01 22:56:33,941 - __main__ - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 22:56:34,673 - __main__ - INFO - Texto extraído de la imagen: FUL
+idad con herramientas de integración y Conociry
+
+Ofrecen:
++ Apoyo económico.
+e Jornada de 8:00 a...
+2025-08-01 22:56:34,686 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 22:56:34,687 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QHNn84rkpH5rtgRCQb0-x_7763nvdjWgAOZhp6jkfawv1nePT8S7lO-RukQUlsm4SM&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=vRSw8V3WGkzRN9HjEwTnoQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfRNEATvWygC5olBhGdgml1LAK7h2V9ClEms51bJSEvjbQ&oe=68936D86&_nc_sid=7a9f4b
+2025-08-01 22:56:35,002 - __main__ - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 22:56:36,290 - __main__ - INFO - Texto extraído de la imagen: Práctica Laboral
+
+Empresa: Viva Solutions, S. A.
+Contacto: Luis Carlos Cárdenas Ortega | Costumer Ex...
+2025-08-01 22:56:36,302 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 22:56:36,302 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHNn84rkpH5rtgRCQb0-x_7763nvdjWgAOZhp6jkfawv1nePT8S7lO-RukQUlsm4SM&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=vRSw8V3WGkzRN9HjEwTnoQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfTcfIk7Ka0k19OHiteoA7VEw2OSOleTZZ0DkJhwjhFJWw&oe=68937262&_nc_sid=7a9f4b
+2025-08-01 22:56:36,619 - __main__ - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 22:56:38,080 - __main__ - INFO - Texto extraído de la imagen: Práctica Profesional
+
+Empresa: Grupo ENX
+Contacto: Katherine Vega | Analista de Recursos Humanos
+Móv...
+2025-08-01 22:56:38,093 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 22:56:40,295 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 22:56:40,295 - __main__ - INFO - Proceso finalizado
+2025-08-01 23:18:00,549 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 23:18:00,549 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 23:18:11,298 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 23:18:11,298 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 23:18:16,875 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 23:18:18,982 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 23:18:18,991 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 23:18:18,998 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 23:18:19,006 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 23:18:22,427 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 23:18:22,448 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:18:22,508 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:18:26,393 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 23:18:26,408 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:18:26,449 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:18:28,607 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 23:18:28,622 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:18:28,662 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:18:31,514 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 23:18:31,531 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:18:31,573 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:18:34,136 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 23:18:34,151 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:18:34,192 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:18:34,192 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 23:18:34,192 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 23:18:34,213 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 23:18:34,249 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:18:34,250 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHTpClpFJAahlvxIE1-lr5_Yin_Yefeq3N0QrzBHCOPF_TVdUyyawKbuGNT1eyixdg&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=U-hH6o2ZwGqlghInE4Yz6A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfTvQLAl6KCEt9TgHEPam38-Uo6-raTtSAqIfUuR4hU8fw&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 23:18:34,598 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 23:18:36,767 - __main__ - INFO - Texto extraído de la imagen: Eno Ley . . . a
+“gg . . MS
+> e Ta
+a Universidad Tecnológica de Panamá é2 En
+E e . , no. Sa
+: EJ z . ...
+2025-08-01 23:18:36,768 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: No identificado)
+2025-08-01 23:18:36,788 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:18:36,788 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGNn-kyCM7hOygOmYqJXwRtno6ovGdUursAilFNEAv6SseChavnIoM3vBdYWoA9Yu4&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=zwasE3jwbvagb6FXnnLw-g&edm=AONqaaQAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfTcVzz_QCoDIEPsF2bORCZZOARgJXxPotD0QWK-Ep--kw&oe=6893723A&_nc_sid=4e3341
+2025-08-01 23:18:37,068 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 23:18:38,882 - __main__ - INFO - Texto extraído de la imagen: A
+ce : Es AR
+Práctica Profesional “Ep; ($2 Wrowervor:
+e A
+PPP — —— AAA
+Entidad: Towerbank Internatio...
+2025-08-01 23:18:38,883 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: Práctica Profesional)
+2025-08-01 23:18:39,168 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:18:39,168 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHTpClpFJAahlvxIE1-lr5_Yin_Yefeq3N0QrzBHCOPF_TVdUyyawKbuGNT1eyixdg&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=U-hH6o2ZwGqlghInE4Yz6A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfQyK_WprFiXYLfQ1HMoXCycL3jeWx3NSOO_ETQ2LhmaGQ&oe=689349D2&_nc_sid=7a9f4b
+2025-08-01 23:18:39,500 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 23:18:40,949 - __main__ - INFO - Texto extraído de la imagen: 1OVII: +(- ) 0594
+DGCP está en by e dee estudiantes que opten por realizar prátiisa sional como
+opci...
+2025-08-01 23:18:40,949 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 24, Tipo: No identificado)
+2025-08-01 23:18:40,964 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:18:40,964 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QHTpClpFJAahlvxIE1-lr5_Yin_Yefeq3N0QrzBHCOPF_TVdUyyawKbuGNT1eyixdg&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=U-hH6o2ZwGqlghInE4Yz6A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfQY5TecP8VS89vitWRxSn_wI1lLLWvSYU1flXqvT1vzLQ&oe=68936D86&_nc_sid=7a9f4b
+2025-08-01 23:18:41,248 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 23:18:43,176 - __main__ - INFO - Texto extraído de la imagen: A sm
+Ga, O
+cti Ey vívVa
+Práctica Laboral sd = a MY
+1 NAS TECNOLOGÍA QUE CONECTA
+PPP AAA
+Empresa: Viv...
+2025-08-01 23:18:43,176 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral)
+2025-08-01 23:18:43,192 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:18:43,193 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHTpClpFJAahlvxIE1-lr5_Yin_Yefeq3N0QrzBHCOPF_TVdUyyawKbuGNT1eyixdg&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=U-hH6o2ZwGqlghInE4Yz6A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfS-ggcq0J8wV60XATMNgaNqy8-JeRukd_WanumtbzDG8Q&oe=68937262&_nc_sid=7a9f4b
+2025-08-01 23:18:43,490 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 23:18:45,562 - __main__ - INFO - Texto extraído de la imagen: A a
+Lon OL OE, Pb
+y O ] HS EY e ga EN]
+¿ . —
+Práctica Profesional ¡*P: € =nv><
+La ¿ GEav! NIEIPASE N...
+2025-08-01 23:18:45,562 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional)
+2025-08-01 23:18:45,578 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 23:18:47,852 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 23:18:47,852 - __main__ - INFO - Proceso finalizado
+2025-08-01 23:27:45,660 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 23:27:45,661 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 23:27:59,501 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 23:27:59,501 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 23:28:04,372 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 23:28:06,677 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 23:28:06,685 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 23:28:06,693 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 23:28:06,701 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 23:28:10,854 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 23:28:10,876 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:28:10,940 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:28:13,446 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 23:28:13,461 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:28:13,503 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:28:16,907 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 23:28:16,923 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:28:16,970 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:28:20,737 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 23:28:20,754 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:28:20,801 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:28:24,521 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 23:28:24,536 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:28:24,584 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:28:24,584 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 23:28:24,584 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 23:28:24,605 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 23:28:24,636 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:28:24,636 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFXbeTLOob_KNukiIwDKgIu27GhhxpDefYsQb-De3gXFZ-p2NWwkoHlM0hkwFFWFnE&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=jMCtJpLhXey0vNK4XrffLg&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfQSx0-pv9AzozwbfOiAk0a3IcKEGyD9kn4I0UQR3CYvfw&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 23:28:24,968 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 23:28:25,491 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:28:27,205 - __main__ - INFO - Texto extraído de la imagen: oo Ce, SH,
+EZ, a e. . , e. 4 Fa —3
+pS Universidad Tecnológica de Panamá LEER A
+¿ A . . o. ==)
+: EJy ...
+2025-08-01 23:28:27,205 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: No identificado)
+2025-08-01 23:28:27,222 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:28:27,223 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFXbeTLOob_KNukiIwDKgIu27GhhxpDefYsQb-De3gXFZ-p2NWwkoHlM0hkwFFWFnE&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=jMCtJpLhXey0vNK4XrffLg&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfQAEWb0Jvj4YwMcaOX8WoszIBdwJMZTFV2jcCo6riAazw&oe=6893723A&_nc_sid=7a9f4b
+2025-08-01 23:28:27,495 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 23:28:27,982 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:28:29,446 - __main__ - INFO - Texto extraído de la imagen: sl
+” . f . E a VEN
+Practica Profesional Hp; (ES? Wirowervan:
+at ES
+Nm
+Entidad: Towerbank Internation...
+2025-08-01 23:28:29,446 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: No identificado)
+2025-08-01 23:28:29,460 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:28:29,460 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFXbeTLOob_KNukiIwDKgIu27GhhxpDefYsQb-De3gXFZ-p2NWwkoHlM0hkwFFWFnE&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=jMCtJpLhXey0vNK4XrffLg&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfQ3_NssTvbCbLhPBMHIxY6tiSnFvnIf37y65ePgjrE1WA&oe=68938212&_nc_sid=7a9f4b
+2025-08-01 23:28:29,777 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 23:28:30,285 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:28:31,484 - __main__ - INFO - Texto extraído de la imagen: |
+PrAGhrea Proteo ACTO E | o A da iii ps mí 07 MN ada Cia
+Ll res sl re A EL A A TT
+_ Den AT A XK
+Emp...
+2025-08-01 23:28:31,484 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 34, Tipo: No identificado)
+2025-08-01 23:28:31,498 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:28:31,498 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QFBIOK-itnGGhkgIjL9NgU_R0MDpr2y90rFWG0u4wIJZHawbt_cn-ThtPGyqPKij-Y&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=rvSDfv0ayapc4MMnQUQQ0w&edm=AONqaaQAAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfSDKEbBcG5ZJVoVZFyyySAhNEIWxeTj9limjMOch5goVw&oe=68936D86&_nc_sid=4e3341
+2025-08-01 23:28:31,801 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 23:28:32,290 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:28:33,832 - __main__ - INFO - Texto extraído de la imagen: mk
+eS pS 0
+Scti 7 Ey V7VA
+Práctica Laboral PI LA= MM
+rt... OEA TECMOLOGÍA QUE CONECTA
+ml
+Empresa: Vi...
+2025-08-01 23:28:33,832 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral)
+2025-08-01 23:28:33,844 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:28:33,844 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFXbeTLOob_KNukiIwDKgIu27GhhxpDefYsQb-De3gXFZ-p2NWwkoHlM0hkwFFWFnE&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=jMCtJpLhXey0vNK4XrffLg&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfSX_JxDW65ILc92p2DLOMRw2RLbqsIdAiQ6fHcxi-yyFQ&oe=68937262&_nc_sid=7a9f4b
+2025-08-01 23:28:34,169 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 23:28:34,638 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:28:36,327 - __main__ - INFO - Texto extraído de la imagen: A a
+APCLOS, Soi
+2rti : ps EN
+Práctica Profesional ¡WP; (E: =rw><
+1 ¿Ao? VEIVS AA
+0 RA
+A a
+Empresa: G...
+2025-08-01 23:28:36,327 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional)
+2025-08-01 23:28:36,339 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 23:28:38,575 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 23:28:38,576 - __main__ - INFO - Proceso finalizado
+2025-08-01 23:33:00,403 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 23:33:00,404 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 23:33:11,519 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 23:33:11,520 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 23:33:18,795 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 23:33:22,147 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 23:33:22,157 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 23:33:22,165 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 23:33:22,173 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 23:33:26,524 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 23:33:26,545 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:33:26,603 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:33:28,892 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 23:33:28,908 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:33:28,949 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:33:31,711 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 23:33:31,728 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:33:31,770 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:33:34,325 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 23:33:34,341 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:33:34,389 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:33:36,939 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 23:33:36,954 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:33:37,004 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:33:37,004 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 23:33:37,004 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 23:33:37,025 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 23:33:37,055 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:33:37,056 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGam2NfidbvIQ5CfwzMRAulxqKjvfYcDk0kejEzJO0C5LHlUF28-7Bs-NzikpELZRE&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=oT2gAb3Wv1exTHI-KI8UMw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfTH5SVMneTPjQJ1Ttr8ryD763qAebpZhD2L0Xzv_aVVwQ&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 23:33:37,395 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 23:33:37,889 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:33:39,563 - __main__ - INFO - Texto extraído de la imagen: ¿EMO CE, . . , . , Elia
+a Universidad Tecnológica de Panamá ¿ AN,
+¿ , . Vicerrectoría Académica =$
+»...
+2025-08-01 23:33:39,563 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: No identificado)
+2025-08-01 23:33:39,582 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:33:39,582 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGam2NfidbvIQ5CfwzMRAulxqKjvfYcDk0kejEzJO0C5LHlUF28-7Bs-NzikpELZRE&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=oT2gAb3Wv1exTHI-KI8UMw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfRmc9muOev6MephP9e7Y53DMDd3YyXPk0OOd64cc_C21A&oe=6893723A&_nc_sid=7a9f4b
+2025-08-01 23:33:39,898 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 23:33:40,363 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:33:41,631 - __main__ - INFO - Texto extraído de la imagen: Práctica Profesional 2 9) Mori
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial ...
+2025-08-01 23:33:41,632 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: Práctica Profesional)
+2025-08-01 23:33:41,649 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:33:41,649 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGam2NfidbvIQ5CfwzMRAulxqKjvfYcDk0kejEzJO0C5LHlUF28-7Bs-NzikpELZRE&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=oT2gAb3Wv1exTHI-KI8UMw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfTDkxkDdqlnmuwf-ZsP0GoK15lmeHvfmuIkaRcniDsYHw&oe=68938212&_nc_sid=7a9f4b
+2025-08-01 23:33:41,975 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 23:33:42,508 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:33:43,292 - __main__ - INFO - Texto extraído de la imagen: aROgramas y
+nuevas
+'Y Dominio Já
+e Framewor
+Desarrollo
+Base de da
+STFUL
+idad con herramientas de int...
+2025-08-01 23:33:43,292 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 21, Tipo: No identificado)
+2025-08-01 23:33:43,306 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:33:43,306 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGam2NfidbvIQ5CfwzMRAulxqKjvfYcDk0kejEzJO0C5LHlUF28-7Bs-NzikpELZRE&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=oT2gAb3Wv1exTHI-KI8UMw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfQJmYxts90mJUL-mtdxfs2qTsP-ACTaJrt8uO5KL6UGYA&oe=68936D86&_nc_sid=7a9f4b
+2025-08-01 23:33:43,586 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 23:33:44,078 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:33:45,471 - __main__ - INFO - Texto extraído de la imagen: PRES
+Práctica Laboral E $7 Co 9 vva
+TECMOLOGÍA QUE CONECTA
+Empresa: Viva Solutions, S. A.
+Contacto: ...
+2025-08-01 23:33:45,472 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral)
+2025-08-01 23:33:45,484 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:33:45,485 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGOv0GO2xozGHuxiGkIjQ_NTriobiAFWI7efjgfoa-Jh5s4Fu5SPhpyoUht9KQB4yQ&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=4yXWtpllngTr9KDuL3tgiw&edm=AONqaaQAAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfQx9BxbwYVbFmIo952qorw9WdFEp1Q9lTLMliww0SiXQw&oe=68937262&_nc_sid=4e3341
+2025-08-01 23:33:45,788 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 23:33:46,269 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:33:47,787 - __main__ - INFO - Texto extraído de la imagen: r o e $ al (AE
+Práctica Profesional EP; e ES =N><
+Empresa: Grupo ENX
+Contacto: Katherine Vega | Anal...
+2025-08-01 23:33:47,787 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional)
+2025-08-01 23:33:47,802 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 23:33:50,081 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 23:33:50,081 - __main__ - INFO - Proceso finalizado
+2025-08-01 23:39:34,258 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 23:39:34,259 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 23:39:42,836 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 23:39:42,837 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 23:39:48,987 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 23:39:51,621 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 23:39:51,633 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 23:39:51,644 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 23:39:51,656 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 23:39:56,512 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 23:39:56,536 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:39:56,607 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:39:59,650 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 23:39:59,668 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:39:59,720 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:40:02,268 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 23:40:02,286 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:40:02,339 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:40:06,019 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 23:40:06,038 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:40:06,089 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:40:10,171 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 23:40:10,190 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:40:10,240 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:40:10,240 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 23:40:10,241 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 23:40:10,259 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 23:40:10,294 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:40:10,295 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHkqQkWR1I-TxFb0026zd6TQx2JAr4lSThiUdYgOltlwpDcxRSmQPtORKA2uxfniwY&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=FWHi0T4qMiTcGaB3gBwtZw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRDHbBkWuuxRpz4GbWDZj2sUHSdSOdJhaXOJiV7atX7Cg&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 23:40:10,708 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 23:40:11,793 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:40:21,468 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-01 23:40:21,469 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-01 23:40:21,470 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: No identificado)
+2025-08-01 23:40:21,493 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:40:21,493 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHkqQkWR1I-TxFb0026zd6TQx2JAr4lSThiUdYgOltlwpDcxRSmQPtORKA2uxfniwY&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=FWHi0T4qMiTcGaB3gBwtZw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfRecxPhclkd0I-ytgHLANX8T2NeAamHX5hvzQQaVCuZ6g&oe=6893723A&_nc_sid=7a9f4b
+2025-08-01 23:40:21,812 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 23:40:22,762 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:40:30,109 - src.image_processing.ocr - INFO - Texto extraído con 2040 caracteres
+2025-08-01 23:40:30,111 - __main__ - INFO - Texto extraído de la imagen: A
+r e 7 PA, 7: EN
+g É :
+Práctica Profesional “EP; ($5 Wrowervar:
+0. EA
+A
+Entidad: Towerbank Internat...
+2025-08-01 23:40:30,111 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: Práctica Profesional)
+2025-08-01 23:40:30,127 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:40:30,128 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHkqQkWR1I-TxFb0026zd6TQx2JAr4lSThiUdYgOltlwpDcxRSmQPtORKA2uxfniwY&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=FWHi0T4qMiTcGaB3gBwtZw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfSb0Xr_5_PrbVA-MioYs1AAtbcnyxvsxc1umczCQdglww&oe=68938212&_nc_sid=7a9f4b
+2025-08-01 23:40:30,545 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 23:40:31,656 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:40:37,258 - src.image_processing.ocr - INFO - Texto extraído con 1209 caracteres
+2025-08-01 23:40:37,259 - __main__ - INFO - Texto extraído de la imagen: Ain iaa e mera] e Larrea ez Polelezz AE ls 7
+camecia eala, Jessajele ON ca a mverl |
+DGCP está en LE...
+2025-08-01 23:40:37,260 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 26, Tipo: No identificado)
+2025-08-01 23:40:37,276 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:40:37,276 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QHkqQkWR1I-TxFb0026zd6TQx2JAr4lSThiUdYgOltlwpDcxRSmQPtORKA2uxfniwY&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=FWHi0T4qMiTcGaB3gBwtZw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfRe2qsb8xqMwHELjfh5qnqSZ_01w99K2dxA32p0jNkKtw&oe=68936D86&_nc_sid=7a9f4b
+2025-08-01 23:40:37,654 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 23:40:38,671 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:40:47,113 - src.image_processing.ocr - INFO - Texto extraído con 2246 caracteres
+2025-08-01 23:40:47,115 - __main__ - INFO - Texto extraído de la imagen: A
+¿nor Ss .. 0
+DO, PAS
+Práctica Laboral 34 ES VVUA
+or EA TECMOLOGÍA QUE CONECTA
+nn nn
+Empresa: Viva ...
+2025-08-01 23:40:47,115 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral)
+2025-08-01 23:40:47,130 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:40:47,130 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHkqQkWR1I-TxFb0026zd6TQx2JAr4lSThiUdYgOltlwpDcxRSmQPtORKA2uxfniwY&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=FWHi0T4qMiTcGaB3gBwtZw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfRQ_8wDKFLT03MY2RHYLsgm9LHwjkYGSsVK19gVsXEpTQ&oe=68937262&_nc_sid=7a9f4b
+2025-08-01 23:40:47,467 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 23:40:48,540 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:40:56,635 - src.image_processing.ocr - INFO - Texto extraído con 2735 caracteres
+2025-08-01 23:40:56,636 - __main__ - INFO - Texto extraído de la imagen: A j
+A, aid
+2 es . ¡e EE, |
+Práctica Profesional (FP; (E. =5x><
+at A
+A
+Empresa: Grupo ENX
+Contacto: K...
+2025-08-01 23:40:56,636 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional)
+2025-08-01 23:40:56,648 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 23:40:58,885 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 23:40:58,886 - __main__ - INFO - Proceso finalizado
+2025-08-01 23:49:08,047 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 23:49:08,048 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 23:49:19,537 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 23:49:19,537 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 23:49:24,621 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 23:49:26,663 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 23:49:26,676 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 23:49:26,685 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 23:49:26,695 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 23:49:30,901 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 23:49:30,926 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:49:30,999 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:49:34,251 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 23:49:34,272 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:49:34,372 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:49:37,701 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 23:49:37,722 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:49:37,778 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:49:41,858 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 23:49:41,879 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:49:41,935 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:49:45,677 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 23:49:45,717 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:49:45,794 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:49:45,794 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 23:49:45,794 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 23:49:45,813 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 23:49:45,853 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:49:45,853 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QF0hxiIUrhD21cbIIqwKmXcoH_3Qlkm1mVxrw-kMKK00wth-5URaqXlqhN2kvuMBgI&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=1AZoJKq983hvJ-0uzZEGyQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfQ-_g7DcMDv7ZrOs9f0T9HlwlA_tjJLIQprAPKAfAyTfA&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 23:49:46,371 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 23:49:47,411 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:49:57,703 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-01 23:49:57,704 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-01 23:49:57,707 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-01 23:49:57,708 - __main__ - ERROR - Error en el proceso principal: [Errno 2] No such file or directory: 'debug_texts/post_1.txt'
+2025-08-01 23:50:00,005 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 23:50:00,005 - __main__ - INFO - Proceso finalizado
+2025-08-01 23:52:13,545 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-01 23:52:13,546 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-01 23:52:23,334 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-01 23:52:23,335 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-01 23:52:27,981 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-01 23:52:30,310 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-01 23:52:30,321 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-01 23:52:30,329 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-01 23:52:30,337 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-01 23:52:34,103 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-01 23:52:34,124 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:52:34,187 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:52:36,450 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-01 23:52:36,464 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:52:36,508 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:52:40,229 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-01 23:52:40,245 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:52:40,293 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:52:43,120 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-01 23:52:43,136 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:52:43,184 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:52:46,983 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-01 23:52:46,999 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-01 23:52:47,061 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:52:47,061 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-01 23:52:47,061 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-01 23:52:47,078 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-01 23:52:47,109 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-01 23:52:47,109 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFp9ezlPWKYjQOnspbsPvB03v2zOnzWzPDKCisl-CCDwanDqiTJwj9aEoA-i2Ae5As&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=75_FM0a2ZUXcgalIi66xMQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfQLifN_kGoesuHqbZdgJeykal5IYsr6r0JQYHkPtJG_bA&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-01 23:52:47,476 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-01 23:52:48,318 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:52:57,024 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-01 23:52:57,024 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-01 23:52:57,025 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-01 23:52:57,027 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: No identificado)
+2025-08-01 23:52:57,046 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-01 23:52:57,046 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFp9ezlPWKYjQOnspbsPvB03v2zOnzWzPDKCisl-CCDwanDqiTJwj9aEoA-i2Ae5As&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=75_FM0a2ZUXcgalIi66xMQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfR8IYO9lC77xOe1v5ReTgE6ujxwvAQlBTZp1qoyJsM9fQ&oe=6893723A&_nc_sid=7a9f4b
+2025-08-01 23:52:57,346 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-01 23:52:58,087 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:53:04,881 - src.image_processing.ocr - INFO - Texto extraído con 2040 caracteres
+2025-08-01 23:53:04,881 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-01 23:53:04,883 - __main__ - INFO - Texto extraído de la imagen: A
+r e 7 PA, 7: EN
+g É :
+Práctica Profesional “EP; ($5 Wrowervar:
+0. EA
+A
+Entidad: Towerbank Internat...
+2025-08-01 23:53:04,884 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: Práctica Profesional)
+2025-08-01 23:53:04,902 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-01 23:53:04,902 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFp9ezlPWKYjQOnspbsPvB03v2zOnzWzPDKCisl-CCDwanDqiTJwj9aEoA-i2Ae5As&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=75_FM0a2ZUXcgalIi66xMQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfRRR7VaP0h8IyYNCTZ4jM-NXzITVSHxTSo2VjVg_PMSYg&oe=68938212&_nc_sid=7a9f4b
+2025-08-01 23:53:05,223 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-01 23:53:06,077 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:53:10,798 - src.image_processing.ocr - INFO - Texto extraído con 1209 caracteres
+2025-08-01 23:53:10,798 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-01 23:53:10,799 - __main__ - INFO - Texto extraído de la imagen: Ain iaa e mera] e Larrea ez Polelezz AE ls 7
+camecia eala, Jessajele ON ca a mverl |
+DGCP está en LE...
+2025-08-01 23:53:10,800 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 26, Tipo: No identificado)
+2025-08-01 23:53:10,815 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-01 23:53:10,816 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QFp9ezlPWKYjQOnspbsPvB03v2zOnzWzPDKCisl-CCDwanDqiTJwj9aEoA-i2Ae5As&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=75_FM0a2ZUXcgalIi66xMQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfTVMlB1oQBLQgZHwi16xR6JNcsN3MUStBJTS_ykZI0L8A&oe=68936D86&_nc_sid=7a9f4b
+2025-08-01 23:53:11,116 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-01 23:53:11,890 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:53:19,240 - src.image_processing.ocr - INFO - Texto extraído con 2246 caracteres
+2025-08-01 23:53:19,240 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-01 23:53:19,241 - __main__ - INFO - Texto extraído de la imagen: A
+¿nor Ss .. 0
+DO, PAS
+Práctica Laboral 34 ES VVUA
+or EA TECMOLOGÍA QUE CONECTA
+nn nn
+Empresa: Viva ...
+2025-08-01 23:53:19,243 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral)
+2025-08-01 23:53:19,254 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-01 23:53:19,255 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFp9ezlPWKYjQOnspbsPvB03v2zOnzWzPDKCisl-CCDwanDqiTJwj9aEoA-i2Ae5As&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=75_FM0a2ZUXcgalIi66xMQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfTZCfvcCi83bfXWf_RLHJeGGVeAIFBudz4mjf84r7h3Lw&oe=68937262&_nc_sid=7a9f4b
+2025-08-01 23:53:19,557 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-01 23:53:20,328 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-01 23:53:28,186 - src.image_processing.ocr - INFO - Texto extraído con 2735 caracteres
+2025-08-01 23:53:28,186 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-01 23:53:28,187 - __main__ - INFO - Texto extraído de la imagen: A j
+A, aid
+2 es . ¡e EE, |
+Práctica Profesional (FP; (E. =5x><
+at A
+A
+Empresa: Grupo ENX
+Contacto: K...
+2025-08-01 23:53:28,188 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional)
+2025-08-01 23:53:28,200 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-01 23:53:30,432 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-01 23:53:30,432 - __main__ - INFO - Proceso finalizado
+2025-08-02 00:06:08,225 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 00:06:08,225 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 00:06:18,616 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 00:06:18,616 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 00:06:23,265 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 00:06:26,979 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 00:06:26,993 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 00:06:27,003 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 00:06:27,013 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 00:06:30,176 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 00:06:30,201 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:06:30,271 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:06:34,109 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 00:06:34,128 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:06:34,194 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-02 00:06:37,668 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 00:06:37,687 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:06:37,740 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-02 00:06:40,465 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 00:06:40,492 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:06:40,558 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-02 00:06:43,970 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 00:06:44,073 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:06:44,177 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-02 00:06:44,177 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 00:06:44,178 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 00:06:44,201 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 00:06:44,239 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:06:44,240 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHS2_AvW0TbjiSSxDL5Lyf4W1T2_cYAL75Ak55Q7qsH88Ci4Az7IztgTN84jVEhTIU&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=koS6XsLYyGEJgYLdRXq11w&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfTDTWoiGIc_63n33rHaklKqSPQut7jdv2UQi4sb7rzezA&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-02 00:06:44,741 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 00:06:45,767 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:06:56,927 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 00:06:56,927 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:06:56,928 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 00:06:56,930 - __main__ - ERROR - Error en el proceso principal: too many values to unpack (expected 3)
+2025-08-02 00:06:59,234 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 00:06:59,235 - __main__ - INFO - Proceso finalizado
+2025-08-02 00:10:31,052 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 00:10:31,053 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 00:10:41,801 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 00:10:41,801 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 00:10:47,377 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 00:10:50,233 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 00:10:50,244 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 00:10:50,254 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 00:10:50,263 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 00:10:55,266 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 00:10:55,375 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:10:55,452 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:10:59,364 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 00:10:59,386 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:10:59,461 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-02 00:11:01,742 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 00:11:01,762 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:11:01,832 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-02 00:11:04,382 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 00:11:04,400 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:11:04,465 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-02 00:11:07,581 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 00:11:07,599 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:11:07,653 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-02 00:11:07,653 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 00:11:07,653 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 00:11:08,309 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 00:11:08,425 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:11:08,425 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFjWCrNAL0LOzmfnTq1BTdFtZok4KL0q6OuXu4UcyvlVuOmy3qEzZMf2pIeywx2T_Q&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=VUPbUqlorCMEMIHJ7KrPrA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfSa2Kw1t_JZ5Xpe8bI736KoKT_oaXu2P15f2Qz_Cdm9qg&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-02 00:11:08,846 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 00:11:09,874 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:11:19,059 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 00:11:19,059 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:11:19,061 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 00:11:19,064 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: Vacante, Activa)
+2025-08-02 00:11:19,086 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-02 00:11:19,086 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFjWCrNAL0LOzmfnTq1BTdFtZok4KL0q6OuXu4UcyvlVuOmy3qEzZMf2pIeywx2T_Q&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=VUPbUqlorCMEMIHJ7KrPrA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfRoBp0ubKGO9EZk6SvjBiBHt6xx_cAxaM8SLOLwdSV6QA&oe=6893723A&_nc_sid=7a9f4b
+2025-08-02 00:11:19,425 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-02 00:11:20,529 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:11:27,737 - src.image_processing.ocr - INFO - Texto extraído con 2040 caracteres
+2025-08-02 00:11:27,738 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:11:27,739 - __main__ - INFO - Texto extraído de la imagen: A
+r e 7 PA, 7: EN
+g É :
+Práctica Profesional “EP; ($5 Wrowervar:
+0. EA
+A
+Entidad: Towerbank Internat...
+2025-08-02 00:11:27,740 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional, Activa)
+2025-08-02 00:11:27,759 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-02 00:11:27,760 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFjWCrNAL0LOzmfnTq1BTdFtZok4KL0q6OuXu4UcyvlVuOmy3qEzZMf2pIeywx2T_Q&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=VUPbUqlorCMEMIHJ7KrPrA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfT_bRbgImnvroQ3PbeSMv5O9hvK-hpUxiCsPslmCghyew&oe=68938212&_nc_sid=7a9f4b
+2025-08-02 00:11:28,130 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-02 00:11:29,147 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:11:34,228 - src.image_processing.ocr - INFO - Texto extraído con 1209 caracteres
+2025-08-02 00:11:34,228 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:11:34,229 - __main__ - INFO - Texto extraído de la imagen: Ain iaa e mera] e Larrea ez Polelezz AE ls 7
+camecia eala, Jessajele ON ca a mverl |
+DGCP está en LE...
+2025-08-02 00:11:34,231 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 26, Tipo: Vacante, Activa)
+2025-08-02 00:11:34,246 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-02 00:11:34,247 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QFjWCrNAL0LOzmfnTq1BTdFtZok4KL0q6OuXu4UcyvlVuOmy3qEzZMf2pIeywx2T_Q&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=VUPbUqlorCMEMIHJ7KrPrA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfRUTUnqTOMfuATnad55PdcKf76GlSR0o2SKpOqilQnNsA&oe=68936D86&_nc_sid=7a9f4b
+2025-08-02 00:11:34,616 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-02 00:11:35,659 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:11:43,633 - src.image_processing.ocr - INFO - Texto extraído con 2246 caracteres
+2025-08-02 00:11:43,633 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:11:43,635 - __main__ - INFO - Texto extraído de la imagen: A
+¿nor Ss .. 0
+DO, PAS
+Práctica Laboral 34 ES VVUA
+or EA TECMOLOGÍA QUE CONECTA
+nn nn
+Empresa: Viva ...
+2025-08-02 00:11:43,637 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral, Activa)
+2025-08-02 00:11:43,654 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-02 00:11:43,654 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFjWCrNAL0LOzmfnTq1BTdFtZok4KL0q6OuXu4UcyvlVuOmy3qEzZMf2pIeywx2T_Q&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=VUPbUqlorCMEMIHJ7KrPrA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfS7ReRAd59P5hbSaIY9JegFv0C3Q89Dg_PVyxi7aM-uSQ&oe=68937262&_nc_sid=7a9f4b
+2025-08-02 00:11:43,996 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-02 00:11:44,990 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:11:53,284 - src.image_processing.ocr - INFO - Texto extraído con 2735 caracteres
+2025-08-02 00:11:53,284 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:11:53,286 - __main__ - INFO - Texto extraído de la imagen: A j
+A, aid
+2 es . ¡e EE, |
+Práctica Profesional (FP; (E. =5x><
+at A
+A
+Empresa: Grupo ENX
+Contacto: K...
+2025-08-02 00:11:53,288 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional, Activa)
+2025-08-02 00:11:53,306 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-02 00:11:55,629 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 00:11:55,629 - __main__ - INFO - Proceso finalizado
+2025-08-02 00:21:48,105 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 00:21:48,105 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 00:21:57,716 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 00:21:57,716 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 00:22:05,424 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 00:22:07,526 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 00:22:07,536 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 00:22:07,544 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 00:22:07,552 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 00:22:11,252 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 00:22:11,274 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:22:11,335 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:22:13,745 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 00:22:13,765 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:22:13,816 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-02 00:22:16,583 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 00:22:16,603 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:22:16,656 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-02 00:22:19,835 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 00:22:19,853 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:22:19,905 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-02 00:22:22,792 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 00:22:22,812 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:22:22,864 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-02 00:22:22,864 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 00:22:22,865 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 00:22:22,890 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 00:22:22,923 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:22:22,924 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGz3ujQ3QGzB5VcAUKb6yQT5UoFamUkkLWQTKgqziXCWYuhlBeoqsvzbqq_vyEwi1E&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=BGQasmbYVEtkSQa12Vg0jQ&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRSOuIQHNFuljcYOzH7CkGKIcXzvofqKxhoFCK4jMXA6w&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-02 00:22:23,318 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 00:22:24,313 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:22:33,730 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 00:22:33,730 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:22:33,732 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 00:22:33,734 - __main__ - ERROR - Error en el proceso principal: cannot access local variable 'is_job' where it is not associated with a value
+2025-08-02 00:22:36,003 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 00:22:36,003 - __main__ - INFO - Proceso finalizado
+2025-08-02 00:25:00,895 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 00:25:00,895 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 00:25:10,677 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 00:25:10,677 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 00:25:15,650 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 00:25:18,620 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 00:25:18,631 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 00:25:18,641 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 00:25:18,651 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 00:25:21,957 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 00:25:21,982 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:25:22,056 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:25:25,663 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 00:25:25,680 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:25:25,733 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-02 00:25:28,510 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 00:25:28,531 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:25:28,618 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-02 00:25:32,080 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 00:25:32,099 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:25:32,153 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-02 00:25:35,439 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 00:25:35,458 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:25:35,514 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-02 00:25:35,515 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 00:25:35,515 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 00:25:35,534 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 00:25:35,571 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:25:35,571 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGCqhut4R0NJOM4TeMIt7LYFjN5T71JX3gjyyjCUnOI3ldInNm8NLg-ouQlywdqN0A&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=DXCI87OoXV4MrJmSjslStA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfSoZRbqCMPe6pxllctZatZAcoEFcA5qUOgttRIdlBq3zg&oe=68935B1B&_nc_sid=7a9f4b
+2025-08-02 00:25:36,006 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 00:25:37,040 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:25:46,835 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 00:25:46,836 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:25:46,837 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 00:25:46,838 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: -5, Tipo: No identificado, Activa)
+2025-08-02 00:25:46,859 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VJauMBiT/
+2025-08-02 00:25:46,860 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGCqhut4R0NJOM4TeMIt7LYFjN5T71JX3gjyyjCUnOI3ldInNm8NLg-ouQlywdqN0A&_nc_ohc=aw6s4xzqukQQ7kNvwHJ6jTX&_nc_gid=DXCI87OoXV4MrJmSjslStA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfRCNp9WOBSUUnwJFOPu5umAyYIj-sKRaWvY3upPlTHWGQ&oe=6893723A&_nc_sid=7a9f4b
+2025-08-02 00:25:47,194 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-02 00:25:48,180 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:25:55,537 - src.image_processing.ocr - INFO - Texto extraído con 2040 caracteres
+2025-08-02 00:25:55,537 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:25:55,539 - __main__ - INFO - Texto extraído de la imagen: A
+r e 7 PA, 7: EN
+g É :
+Práctica Profesional “EP; ($5 Wrowervar:
+0. EA
+A
+Entidad: Towerbank Internat...
+2025-08-02 00:25:55,541 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional, Activa)
+2025-08-02 00:25:55,562 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1UzkQsS0u/
+2025-08-02 00:25:55,563 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGCqhut4R0NJOM4TeMIt7LYFjN5T71JX3gjyyjCUnOI3ldInNm8NLg-ouQlywdqN0A&_nc_ohc=6uflB7daqnIQ7kNvwEqgvOB&_nc_gid=DXCI87OoXV4MrJmSjslStA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfRru60RGu3lPcw0a9B5EEuRWrRxys9MQ6Qp6Rs7hSMiqQ&oe=68938212&_nc_sid=7a9f4b
+2025-08-02 00:25:56,050 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-02 00:25:57,105 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:26:02,340 - src.image_processing.ocr - INFO - Texto extraído con 1209 caracteres
+2025-08-02 00:26:02,341 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:26:02,342 - __main__ - INFO - Texto extraído de la imagen: Ain iaa e mera] e Larrea ez Polelezz AE ls 7
+camecia eala, Jessajele ON ca a mverl |
+DGCP está en LE...
+2025-08-02 00:26:02,343 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 26, Tipo: Vacante, Activa)
+2025-08-02 00:26:02,356 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyys5-s96K/
+2025-08-02 00:26:02,356 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGCqhut4R0NJOM4TeMIt7LYFjN5T71JX3gjyyjCUnOI3ldInNm8NLg-ouQlywdqN0A&_nc_ohc=DlEzuGKnq2QQ7kNvwEqnIsg&_nc_gid=DXCI87OoXV4MrJmSjslStA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfRmrj_MUVzeBg-iEwGqaxSMgHpTQXX1PNFQnjF4C1tAKg&oe=68936D86&_nc_sid=7a9f4b
+2025-08-02 00:26:02,648 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-02 00:26:03,639 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:26:11,672 - src.image_processing.ocr - INFO - Texto extraído con 2246 caracteres
+2025-08-02 00:26:11,672 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:26:11,673 - __main__ - INFO - Texto extraído de la imagen: A
+¿nor Ss .. 0
+DO, PAS
+Práctica Laboral 34 ES VVUA
+or EA TECMOLOGÍA QUE CONECTA
+nn nn
+Empresa: Viva ...
+2025-08-02 00:26:11,676 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Laboral, Activa)
+2025-08-02 00:26:11,692 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMyyPCuMgAP/
+2025-08-02 00:26:11,692 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGCqhut4R0NJOM4TeMIt7LYFjN5T71JX3gjyyjCUnOI3ldInNm8NLg-ouQlywdqN0A&_nc_ohc=2GCuR8oiOusQ7kNvwH_IDvV&_nc_gid=DXCI87OoXV4MrJmSjslStA&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfTsXO4YUkKBB51u8LqgLy0f_K1yCdy1pAilh1VTak5Tiw&oe=68937262&_nc_sid=7a9f4b
+2025-08-02 00:26:12,049 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-02 00:26:13,104 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:26:22,056 - src.image_processing.ocr - INFO - Texto extraído con 2735 caracteres
+2025-08-02 00:26:22,056 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:26:22,057 - __main__ - INFO - Texto extraído de la imagen: A j
+A, aid
+2 es . ¡e EE, |
+Práctica Profesional (FP; (E. =5x><
+at A
+A
+Empresa: Grupo ENX
+Contacto: K...
+2025-08-02 00:26:22,059 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Práctica Profesional, Activa)
+2025-08-02 00:26:22,078 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-02 00:26:24,429 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 00:26:24,429 - __main__ - INFO - Proceso finalizado
+2025-08-02 00:54:20,016 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 00:54:20,017 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 00:54:30,777 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 00:54:30,777 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 00:54:37,638 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 00:54:41,444 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 00:54:41,452 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 00:54:41,460 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 00:54:41,468 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 00:54:45,740 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 00:54:45,763 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:54:45,839 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:55:01,148 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:55:04,834 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 00:55:04,850 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:55:04,901 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:55:21,000 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMqS4_RPhg6/
+2025-08-02 00:55:23,645 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 00:55:23,661 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:55:23,712 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:55:37,268 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMNiEMXuGFg/
+2025-08-02 00:55:40,699 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 00:55:40,717 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:55:40,776 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:55:55,232 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DL3clvYvmoV/
+2025-08-02 00:55:59,023 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 00:55:59,042 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:55:59,099 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:56:14,081 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DLlG-wePkNY/
+2025-08-02 00:56:14,082 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 00:56:14,082 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 00:56:14,102 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 00:56:14,157 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:56:14,157 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGOh6MDsvBrWPpkFG68gbD9n_NHC9gcyXpw9V4X2cCfMzl2qfQrfiDBh-m-uSbIgIw&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=ZYOuZHX4E6NAilWk4IZpLw&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRuikJQbhUJ48tpEET2PJicTOn8TdyGwNu3U5wwjUJ2Ug&oe=6893935B&_nc_sid=7a9f4b
+2025-08-02 00:56:15,447 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 00:56:16,983 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 00:56:26,052 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 00:56:26,052 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 00:56:26,054 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 00:56:26,060 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 10, Tipo: No identificado, Activa)
+2025-08-02 00:56:26,063 - __main__ - ERROR - Error en el proceso principal: (sqlite3.OperationalError) table job_posts has no column named is_carousel
+[SQL: INSERT INTO job_posts (post_url, image_url, description, post_date, scraped_at, local_image_path, is_carousel) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('https://www.instagram.com/p/DM1VcdFM1X3/', 'https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZy ... (284 characters truncated) ... 4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRuikJQbhUJ48tpEET2PJicTOn8TdyGwNu3U5wwjUJ2Ug&oe=6893935B&_nc_sid=7a9f4b', 'VACANTES', '2025-08-02 00:58:34.000000', '2025-08-02 00:55:01.148331', None, 1)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-08-02 00:56:28,394 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 00:56:28,394 - __main__ - INFO - Proceso finalizado
+2025-08-02 00:59:00,694 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 00:59:00,695 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 00:59:10,790 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 00:59:10,790 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 00:59:16,866 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 00:59:19,999 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 00:59:20,008 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 00:59:20,017 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 00:59:20,026 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 00:59:24,534 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 00:59:24,554 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:59:24,617 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:59:40,620 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 00:59:43,201 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 00:59:43,216 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 00:59:43,268 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 00:59:58,826 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMqS4_RPhg6/
+2025-08-02 01:00:02,522 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 01:00:02,541 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:00:02,600 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:00:16,819 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMNiEMXuGFg/
+2025-08-02 01:00:19,228 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 01:00:19,247 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:00:19,302 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:00:33,584 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DL3clvYvmoV/
+2025-08-02 01:00:36,597 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 01:00:36,615 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:00:36,672 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:00:49,610 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DLlG-wePkNY/
+2025-08-02 01:00:49,610 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 01:00:49,611 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 01:00:49,628 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 01:00:49,694 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 01:00:49,694 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHcAGYbw_htGMuDNZMCoGmUZAxRmLlQ78Y7WXitArk0B4uH2UriJlQFa-b17CsEfF8&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=evHuCqa5o44wXKSS_6g5_Q&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfRYORjrIuPjREmY4nzpMg-pn50h8sSi4XlOgXaCib-95w&oe=6893935B&_nc_sid=7a9f4b
+2025-08-02 01:00:50,125 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 01:00:51,172 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:00:59,855 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 01:00:59,855 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:00:59,857 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 01:00:59,861 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 10, Tipo: No identificado, Activa)
+2025-08-02 01:00:59,889 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMqS4_RPhg6/
+2025-08-02 01:00:59,889 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/523434863_18312498649246080_5521892754225771838_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHcAGYbw_htGMuDNZMCoGmUZAxRmLlQ78Y7WXitArk0B4uH2UriJlQFa-b17CsEfF8&_nc_ohc=a6oCydikEHEQ7kNvwFsORGW&_nc_gid=evHuCqa5o44wXKSS_6g5_Q&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzY4Njg0MjMyNjAxOTA4NjM5NA%3D%3D.3-ccb7-5&oh=00_AfTXftImaEal1uVnNwThfbvHEffyZAyo3YCRhs9ke8bZdg&oe=689378E7&_nc_sid=7a9f4b
+2025-08-02 01:01:00,251 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-02 01:01:01,716 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:01:07,559 - src.image_processing.ocr - INFO - Texto extraído con 652 caracteres
+2025-08-02 01:01:07,559 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:01:07,561 - __main__ - INFO - Texto extraído de la imagen: , NS SA CIENCIAS y
+5 mu e SS 0 “e
+ps , £ IS e)
+o : -
+= UTP. 0
+_ El Vicedecanato Académico de la Facu...
+2025-08-02 01:01:07,562 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 10, Tipo: No identificado, Activa)
+2025-08-02 01:01:07,584 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMNiEMXuGFg/
+2025-08-02 01:01:07,585 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/521702808_18311224393246080_6634762119735160412_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGqTkPATYNLhMU6ukZjolocZZNgUMZsRrBhTJ8ByPlsnFk9KPjCG1qDimGXY0pEZ7M&_nc_ohc=6cvwWTiWUZ4Q7kNvwH96eeZ&_nc_gid=sa3uxNI1RUICqIBs--rk8A&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzY3ODc0NjI5MjM3MzcwOTE1Mg%3D%3D.3-ccb7-5&oh=00_AfQrN7RS1j9ut_LKAnjpVCtYPXU-tSXBaaS5dhYRyXoaEQ&oe=6893735A&_nc_sid=22de04
+2025-08-02 01:01:07,950 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-02 01:01:09,324 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:01:18,326 - src.image_processing.ocr - INFO - Texto extraído con 2349 caracteres
+2025-08-02 01:01:18,327 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:01:18,330 - __main__ - INFO - Texto extraído de la imagen: A
+ARA EEN
+Vacante O (ES
+me GEA Cerpel
+nn —+—+—+141511111111—14+4+4+1+—1+1
+Empresa: Petrolera Naciona...
+2025-08-02 01:01:18,332 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: Vacante, Activa)
+2025-08-02 01:01:18,357 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DL3clvYvmoV/
+2025-08-02 01:01:18,358 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/517949615_18310281238246080_840794477823490894_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHsiYAJCEOlYx7R44JM4RjZncNNOIhiKl3maMYjvLbL1m9u7hKYxLG3DbQ71__GdLM&_nc_ohc=t3I7-6QJHkUQ7kNvwGV0tU3&_nc_gid=R5rno6TimlddPxHXLuzsgg&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzY3MjUyOTc1OTk0Nzg3Njg4NQ%3D%3D.3-ccb7-5&oh=00_AfTGYD7jvMo3bOGkPkbUR3zbJxs9Nhzijo29OJ2hbQ_Uxw&oe=68938C10&_nc_sid=22de04
+2025-08-02 01:01:18,744 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-02 01:01:20,029 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:01:25,892 - src.image_processing.ocr - INFO - Texto extraído con 1041 caracteres
+2025-08-02 01:01:25,892 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:01:25,895 - __main__ - INFO - Texto extraído de la imagen: — Y
+4 A «de ,
+6 y LFSIDT
+N | —— | » pa 7
+— A | Ae .
+: e A k | A o a Moa o |
+pro, Er E. uz y en PA" h...
+2025-08-02 01:01:25,897 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 13, Tipo: No identificado, Activa)
+2025-08-02 01:01:25,920 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DLlG-wePkNY/
+2025-08-02 01:01:25,920 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/504641628_18309497800246080_7191044188680740843_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHnyKUoreEFVk8LpPJHciVQ6vPo4Tj8XIzZCwrLL-ePHxm2lVQ7RwY9e2g5PYjxzts&_nc_ohc=OuhVkX-DF9cQ7kNvwEnVCpa&_nc_gid=xvgGNp7qQPOdNIiBz3L-Bg&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzY2NzM2ODE3MjQ5Njc2NTc4NA%3D%3D.3-ccb7-5&oh=00_AfTXUOEWt_mBdG4vKQlXR4JMAFQWifXMZVywHG3iiHaBJw&oe=689392F6&_nc_sid=22de04
+2025-08-02 01:01:26,265 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-02 01:01:27,645 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:01:34,358 - src.image_processing.ocr - INFO - Texto extraído con 1561 caracteres
+2025-08-02 01:01:34,358 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:01:34,360 - __main__ - INFO - Texto extraído de la imagen: A
+a CASA ÑO
+Práctica Lab 56374 (EEN O
+FactiCca LaDOTra == Cra
+A A
+nn nn
+Empresa: Agua Cristalina, S....
+2025-08-02 01:01:34,362 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Vacante, Activa)
+2025-08-02 01:01:34,384 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-02 01:01:36,725 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 01:01:36,725 - __main__ - INFO - Proceso finalizado
+2025-08-02 01:07:31,654 - __main__ - INFO - Iniciando scraper de Instagram
+2025-08-02 01:07:31,655 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-02 01:07:41,807 - src.scraper.instagram_scraper - INFO - Sesión cargada exitosamente desde cookies
+2025-08-02 01:07:41,808 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-02 01:07:47,130 - src.scraper.instagram_scraper - INFO - Iniciando extracción de 5 posts
+2025-08-02 01:07:50,300 - src.scraper.instagram_scraper - INFO - Intentando selector: article a
+2025-08-02 01:07:50,341 - src.scraper.instagram_scraper - INFO - Intentando selector: article div[role='button']
+2025-08-02 01:07:50,364 - src.scraper.instagram_scraper - INFO - Intentando selector: div._aagw
+2025-08-02 01:07:50,374 - src.scraper.instagram_scraper - INFO - Haciendo clic en la primera publicación
+2025-08-02 01:07:54,043 - src.scraper.instagram_scraper - INFO - Extrayendo post 1/5
+2025-08-02 01:07:54,063 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:07:54,125 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:08:09,688 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 01:08:12,840 - src.scraper.instagram_scraper - INFO - Extrayendo post 2/5
+2025-08-02 01:08:12,856 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:08:12,908 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:08:26,866 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMqS4_RPhg6/
+2025-08-02 01:08:30,143 - src.scraper.instagram_scraper - INFO - Extrayendo post 3/5
+2025-08-02 01:08:30,159 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:08:30,210 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:08:44,750 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DMNiEMXuGFg/
+2025-08-02 01:08:47,102 - src.scraper.instagram_scraper - INFO - Extrayendo post 4/5
+2025-08-02 01:08:47,119 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:08:47,170 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:09:00,864 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DL3clvYvmoV/
+2025-08-02 01:09:03,015 - src.scraper.instagram_scraper - INFO - Extrayendo post 5/5
+2025-08-02 01:09:03,032 - src.scraper.instagram_scraper - INFO - Selector usado para imagen: article img[sizes]
+2025-08-02 01:09:03,083 - src.scraper.instagram_scraper - INFO - Detectado carrusel con múltiples imágenes
+2025-08-02 01:09:19,245 - src.scraper.instagram_scraper - INFO - Post extraído: https://www.instagram.com/p/DLlG-wePkNY/
+2025-08-02 01:09:19,246 - src.scraper.instagram_scraper - INFO - Extracción finalizada. Se obtuvieron 5 posts
+2025-08-02 01:09:19,246 - __main__ - INFO - Se extrajeron 5 posts
+2025-08-02 01:09:19,263 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-02 01:09:19,314 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DM1VcdFM1X3/
+2025-08-02 01:09:19,315 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHIUJ0ehAeiZlXbdCMOQHwQvv9gIvhZEbQZjTQ5Y_mRorxlZ_k6RNheJsoF9f5nsVU&_nc_ohc=ANeqec_NB4gQ7kNvwHE-7CO&_nc_gid=jNqCmeohp5GXq2wKrkog6A&edm=AP4sbd4AAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfR92GifbrUS7DiV69_rnDHxTGTh2EGtdibQNcS0dIkftQ&oe=6893935B&_nc_sid=7a9f4b
+2025-08-02 01:09:19,730 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-02 01:09:20,690 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:09:29,418 - src.image_processing.ocr - INFO - Texto extraído con 3094 caracteres
+2025-08-02 01:09:29,418 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:09:29,420 - __main__ - INFO - Texto extraído de la imagen: ¿ENOLOS, qe SBTEMS
+e S e o , e , Pa "Y
+FA Universidad Tecnológica de Panamá SAFEZ
+4) o . , , . ¿E
+: ...
+2025-08-02 01:09:29,423 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 10, Tipo: No identificado, Activa)
+2025-08-02 01:09:29,453 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMqS4_RPhg6/
+2025-08-02 01:09:29,453 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/523434863_18312498649246080_5521892754225771838_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHIUJ0ehAeiZlXbdCMOQHwQvv9gIvhZEbQZjTQ5Y_mRorxlZ_k6RNheJsoF9f5nsVU&_nc_ohc=a6oCydikEHEQ7kNvwFsORGW&_nc_gid=jNqCmeohp5GXq2wKrkog6A&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzY4Njg0MjMyNjAxOTA4NjM5NA%3D%3D.3-ccb7-5&oh=00_AfT_wDaSFMK100IyLs6xpztJ42BBu623gM0DfqW3Ufdw8g&oe=689378E7&_nc_sid=7a9f4b
+2025-08-02 01:09:29,809 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-02 01:09:30,966 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:09:36,487 - src.image_processing.ocr - INFO - Texto extraído con 652 caracteres
+2025-08-02 01:09:36,487 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:09:36,489 - __main__ - INFO - Texto extraído de la imagen: , NS SA CIENCIAS y
+5 mu e SS 0 “e
+ps , £ IS e)
+o : -
+= UTP. 0
+_ El Vicedecanato Académico de la Facu...
+2025-08-02 01:09:36,490 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 10, Tipo: No identificado, Activa)
+2025-08-02 01:09:36,519 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DMNiEMXuGFg/
+2025-08-02 01:09:36,519 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/521702808_18311224393246080_6634762119735160412_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHc5cvwdFcELYoJrTCRHIRjiy9Mfoc-bHqWtRstCwFYSKP43G3nNN14YjVdyc2-r8A&_nc_ohc=6cvwWTiWUZ4Q7kNvwH96eeZ&_nc_gid=3zQ9fhZ72AWYOrWpOYTbZQ&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzY3ODc0NjI5MjM3MzcwOTE1Mg%3D%3D.3-ccb7-5&oh=00_AfRdJKlZ5JREb7S9gTNUbAy5m0YhcGwQLP2tx3mPAYl2Mw&oe=6893735A&_nc_sid=22de04
+2025-08-02 01:09:36,910 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-02 01:09:38,054 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:09:46,933 - src.image_processing.ocr - INFO - Texto extraído con 2349 caracteres
+2025-08-02 01:09:46,933 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:09:46,935 - __main__ - INFO - Texto extraído de la imagen: A
+ARA EEN
+Vacante O (ES
+me GEA Cerpel
+nn —+—+—+141511111111—14+4+4+1+—1+1
+Empresa: Petrolera Naciona...
+2025-08-02 01:09:46,937 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 49, Tipo: Vacante, Activa)
+2025-08-02 01:09:46,962 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DL3clvYvmoV/
+2025-08-02 01:09:46,962 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/517949615_18310281238246080_840794477823490894_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFS3fqerrKxW9srfP_EOsriJgyVMG7FDu_Vc64tDQnGFMzHqmcxda-T4bwejyqCexE&_nc_ohc=t3I7-6QJHkUQ7kNvwGV0tU3&_nc_gid=eALVHqTgAMcOADHEnLDsOQ&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzY3MjUyOTc1OTk0Nzg3Njg4NQ%3D%3D.3-ccb7-5&oh=00_AfRqSecjXaMRlJ-z8Nl40TvVejDrgWvMr43NZFPwrveW2g&oe=68938C10&_nc_sid=22de04
+2025-08-02 01:09:47,337 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-02 01:09:48,373 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:09:54,096 - src.image_processing.ocr - INFO - Texto extraído con 1041 caracteres
+2025-08-02 01:09:54,096 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:09:54,098 - __main__ - INFO - Texto extraído de la imagen: — Y
+4 A «de ,
+6 y LFSIDT
+N | —— | » pa 7
+— A | Ae .
+: e A k | A o a Moa o |
+pro, Er E. uz y en PA" h...
+2025-08-02 01:09:54,100 - __main__ - INFO - ¿Es oferta laboral? False (Puntuación: 13, Tipo: No identificado, Activa)
+2025-08-02 01:09:54,121 - __main__ - INFO - Procesando post: https://www.instagram.com/p/DLlG-wePkNY/
+2025-08-02 01:09:54,121 - __main__ - INFO - URL de la imagen a procesar: https://instagram.fpac1-3.fna.fbcdn.net/v/t51.2885-15/504641628_18309497800246080_7191044188680740843_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEzNTB4MTY4OC5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFy-7rFG1iTm3RzUJVF2bCGr6O5zbBw55qSDtZ4N1XSlFlpc31EWeb_Os3RC_5K1lc&_nc_ohc=OuhVkX-DF9cQ7kNvwEnVCpa&_nc_gid=qPowAVliU2uVpXLntqlz6w&edm=APoiHPcBAAAA&ccb=7-5&ig_cache_key=MzY2NzM2ODE3MjQ5Njc2NTc4NA%3D%3D.3-ccb7-5&oh=00_AfSXFSy7B1QEbJmGEFHqt4aG9NquA8TxxWwMuOaD1pIKig&oe=689392F6&_nc_sid=22de04
+2025-08-02 01:09:54,433 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-02 01:09:55,468 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed/last_processed.png
+2025-08-02 01:10:02,500 - src.image_processing.ocr - INFO - Texto extraído con 1561 caracteres
+2025-08-02 01:10:02,500 - src.image_processing.ocr - INFO - Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-02 01:10:02,502 - __main__ - INFO - Texto extraído de la imagen: A
+a CASA ÑO
+Práctica Lab 56374 (EEN O
+FactiCca LaDOTra == Cra
+A A
+nn nn
+Empresa: Agua Cristalina, S....
+2025-08-02 01:10:02,504 - __main__ - INFO - ¿Es oferta laboral? True (Puntuación: 54, Tipo: Vacante, Activa)
+2025-08-02 01:10:02,526 - __main__ - INFO - Datos guardados en la base de datos
+2025-08-02 01:10:04,821 - src.scraper.instagram_scraper - INFO - Navegador cerrado
+2025-08-02 01:10:04,821 - __main__ - INFO - Proceso finalizado

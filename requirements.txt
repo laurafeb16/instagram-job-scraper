@@ -10,3 +10,4 @@ plotly
 sqlalchemy
 pillow
 python-dotenv
+flask
