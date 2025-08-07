@@ -1,52 +1,17 @@
-POST URL: https://www.instagram.com/utpfisc/p/DMyyPCuMgAP/
-IMAGE URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526670172_1191054826160076_521853447721783213_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QE928kc4gBwyS7EXozfSzcQemFD61qTplHoSKwcqyGC4ebBXt4kT2lKPnKBwWPodPA&_nc_ohc=U6D13Bes-ZwQ7kNvwFF6W3A&_nc_gid=pefWODhzXlTmBkfvi1qbAA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTIzMTk4MDgxMDA3NjE3NQ%3D%3D.3-ccb7-5&oh=00_AfXKw0wnD4s2fmF-FFZASsDHDPMWDAF92imorSfJe1RvXw&oe=6899D1A2&_nc_sid=fc8dfb
-DESCRIPTION: Práctica profesional ofrecida por Grupo ENX
+POST URL: https://www.instagram.com/utpfisc/p/DM8kjf3s30L/?img_index=1
+IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527986290_1194267922505433_3725496782062260818_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHZC2z2kQW64DDK8_wh_kVuhlMkEVHh0B_TtHDxE26ieaHpu-lSgMSzSO-a_ikGCFs&_nc_ohc=xEYc6cgaGiwQ7kNvwF19AzS&_nc_gid=wXFNuYwXR-wV9Fy4x43q_g&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4NjU1MTM5MTE2ODU3MA%3D%3D.3-ccb7-5&oh=00_AfU3i7WQAskTVsygtGrm-o6P7p20YRgT-oGZrLzGv10rGw&oe=6899FD3B&_nc_sid=fc8dfb
+DESCRIPTION: Jasi 🙌
 EXTRACTED TEXT:
-A
-rd sn
-r . e Pas ál Y: 2]
-Práctica Profesional “EP; ¿($ =><
-+? [::] y) ZA It GA TF
-a NEz,
-A
-Empresa: Grupo ENX
-Contacto: Katherine Vega | Analista de Recursos Humanos
-Móvil: +(507) 6916-9054
-Grupo ENX está en búsqueda de estudiante que opte por realizar práctica profesional
-como opción al trabajo de graduación aplicando sus conocimientos académicos en un
-entorno profesional real dentro de está empresa.
-Requisitos:
-e Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas Computacionales (FISC)
-* Trabajo en equipo, comunicación efectiva, proactividad e iniciativa, adaptabilidad, atención al detalle,
-resolución de problemas, capacidad para trabajar con grandes volúmenes de datos y optimizar procesos
-de análisis y procesamiento.
-Conocimientos en:
-e Habilidades de programación de lenguaje de programación relevante para el análisis de datos, como
-Python, PHP, JavaScript, etc.
-+ Manejo de base de datos SQL y NoSQL para la extracción, transformación y carga (ETL) de datos.
-+ Herramientas y técnicas de visualización de datos para comunicar resultados de manera efectiva.
-+ Conceptos y técnicas de aprendizaje automático e inteligencia artificial para el análisis predictivo y la
-generación de insights.
-Algunas de las funciones de colaboración en el área:
-+ Programación IlA/Machine Learning
-e Desarrollar soluciones y tareas asignadas con el objetivo de proponer mejoras para satisfacer las
-necesidades de los clientes. Visualizar el trabajo necesario para cumplir con los requerimientos del cliente
-o de la plataforma.
-e Desarrollar y mantener soluciones para analizar grandes volúmenes de datos, además de colaborar con
-el equipo para transformar los requisitos del negocio en soluciones técnicas efectivas.
-e Diseñar, implementar y mantener procesos para asegurar la calidad y la integridad de los datos.
-Investigar nuevas tecnologías para mejorar la eficiencia de las soluciones de análisis de datos, realizará
-pruebas de software.
-+ Apoyar cualquier otra función adicional inherente al cargo.
-La Práctica Profesional, será acorde a las normativas de la UTP - FISC
-Beneficios que ofrecen:
-+ Experiencias innovadoras en tecnología, flexibilidad en el horario, certificación o carta de la practica
-realizada y posibilidad de contratación al finalizar la práctica.
-e Al finalizar la práctica, se otorgará un bono como reconocimiento por el apoyo y contribución brindados
-durante el periodo de la práctica profesional.
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa
-Interesados enviar Hoja de Vida a: recursoshumanosOgrupoenx.com
-NN
-Universidad Tecnológica de Panamá
-Facultad de Ingenieria de Sistemas Computacionales
-Síguenos: f X GO O in WEZZA Y Publicado: 31 de julio de 2025
+un |
+MA
+fa Chatbot+Phyton
+— > Y ' . e .
+0 t | +netmiko/Paramiko
+| Ca Por:Daniela Vargas |
+l a Heydher Herrera
+Brandan Olivarren |
+Y Eduardo Lee
+; 'h Is241 |) >
+z = E
+LL ná
+e
