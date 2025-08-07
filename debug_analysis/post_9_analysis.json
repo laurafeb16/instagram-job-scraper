@@ -1,18 +1,41 @@
 {
   "post_info": {
-    "url": "https://www.instagram.com/utpfisc/p/DM8NFcxM5Dd/",
-    "date": "2025-08-04T17:00:12.000Z",
-    "description": "Abran mas por favor"
+    "url": "https://www.instagram.com/utpfisc/p/DM1VJauMBiT/",
+    "date": "2025-08-02T00:55:58.000Z",
+    "description": "Práctica profesional ofrecida por Towerbank International, Inc."
   },
   "classification": {
-    "is_job": false,
-    "job_type": "No identificado",
-    "score": -20,
+    "is_job": true,
+    "job_type": "Práctica Profesional",
+    "score": 94,
     "is_expired": false
   },
-  "extracted_info": {},
+  "extracted_info": {
+    "company_name": "Towerbank Intemational, Inc",
+    "company_industry": "tecnología",
+    "contact_name": "Joana Oro Oficial Jr. de Recursos Humanos Movi",
+    "contact_position": null,
+    "contact_email": null,
+    "contact_phone": "+(507) 6550-6473",
+    "position_title": "Opción Al Trabajo De Graduación",
+    "requirements": [
+      "+. Ser estudiante de último ano de carrera de la Facultad de Ingenieria de Sistemas Computacionales (FISC). Interes en aphcar sus"
+    ],
+    "knowledge_required": [
+      "academicos en un entomo profesional real. Perfil: +. Ser estudiante de último ano de carrera de la Facultad de Ingenieria de Sistemas Computacionales (FISC). Interes en aphcar sus conocimientos en proyectos innovadores del sector bancario. + Deseo de vincular su práctica profesional con iniciativas de transformación digital en lA. Conocimientos en: + Lenguajes de programación como Python y JavaScript Manejo básico de servicios doud, preferiblemente AWS (conocimiento de servicios como 3, Lambda, SageMaker, Bedrock). Algunas de las"
+    ],
+    "functions": [
+      "en el area: + Completar el curriculo de formación en lA de AWS, abarcando fundamentos, arquitectura y operación de modelos. Aphcar los conocimientos adquiridos en un proyecto de lA asignado. + Contribuir al desarrollo o mejora de una funcionahdad dentro de una de las iniciativas activas. + Documentar el proceso técnico y de aprendizaje para retroahmentación académica empresarial."
+    ],
+    "benefits": [
+      "Apoyo economico Formación técnica avalada por Amazon Web Services (AWS) Participación en proyectos reales de intehgencia artificial + Mentores intemos y acompanamiento técnico especiahzado +. Desarrollo de un producto o componente funcional para una iniciativa empresarial Potencial vinculación futura en proyectos de innovación tecnologica"
+    ],
+    "is_active": true,
+    "work_modality": null,
+    "duration": null
+  },
   "text_extracted": {
-    "main_image": "Talleres virtuales 40\nDirigido a estudiantes de UTP - FISC y) 3 +\nde 4to año Ps )S y\nPueden participar estudiantes de Centros Regionales AAN E Ed Y\nA E) 4 :\nBanco General y la de wo :\nFacultad de Ingenieria de Sistemas Computacionales d- e o e .\nUniversidad Tecnológica de Panamá . a Y !\nte invitan a inscribirte : ( A\nY y »/\na] :\nRegístrate aquí . A\n¡Cupos Limitados! , A E\n40 cupos => ..\n74\nA A ES o\nT\npor Micá5o\n4\nh SA\nRequisitos\n* Computadora\n«Carrara wen\n* Mcrofono\n+ Altavoces compatibles Y\n+ Acceso a Internet estable.\nLa Facultad de Ingenieria de Sistemas Computacionales de la Universidad Tecnológica de Panamá te invita a cue\nparticipes de los talleres virtuales realizados por Banco General como parte del Corvento Marco de Cooperación\nBanco General ; 3 EN ¿\no, UU O\nNN\nUniversidad Tecnológica de Panama\nFacultad de Ingenieria de Sistemas Computacionales\nSiguenos: f X Q O in h, autpfisc WN Publicado: 4 de agosto de 2025",
+    "main_image": "ml\nr o . PA Y D\n: É\nPráctica Profesional FP; ($4 Wowervar:\nrt ONES\nA\nEntidad: Towerbank International, Inc.\nContacto: Joana Oro | Oficial Jr. de Recursos Humanos\nMóvil: +(507) 6550-6473\nTowerbank está ofreciendo oportunidades para estudiantes que opten por realizar\npráctica profesional como opción al trabajo de graduación, aplicando sus\nconocimientos académicos en un entorno profesional real.\nPerfil:\n+. Ser estudiante de último año de carrera de la Facultad de Ingeniería de Sistemas\nComputacionales (FISC).\n* Interés en aplicar sus conocimientos en proyectos innovadores del sector bancario.\n+ Deseo de vincular su práctica profesional con iniciativas de transformación digital en lA.\nConocimientos en:\n+ Lenguajes de programación como Python y JavaScript\n» Manejo básico de servicios cloud, preferiblemente AWS (conocimiento de servicios como\n$3, Lambda, SageMaker, Bedrock).\nAlgunas de las funciones de colaboración en el área:\n+ Completar el currículo de formación en lA de AWS, abarcando fundamentos, arquitectura y\noperación de modelos.\n* Aplicar los conocimientos adquiridos en un proyecto de lA asignado.\n+ Contribuir al desarrollo o mejora de una funcionalidad dentro de una de las iniciativas\nactivas.\n+ Documentar el proceso técnico y de aprendizaje para retroalimentación académica\nempresarial.\nLa Práctica Profesional, será acorde a las normativas de la UTP - FISC.\nOfrecen:\n+ Apoyo económico\n* Formación técnica avalada por Amazon Web Services (AWS)\n» Participación en proyectos reales de inteligencia artificial\n+ Mentores internos y acompañamiento técnico especializado\n+. Desarrollo de un producto o componente funcional para una iniciativa empresarial\n» Potencial vinculación futura en proyectos de innovación tecnológica\nNota: Dudas o consultas adicionales comunicarse directamente con el contacto de este banco.\nInteresados enviar Hoja de Vida a: jorootowerbank.com\nA\nUniversidad Tecnológica de Panamá\nFacultad de Ingenieria de Sistemas Computacionales\nTT O in h, Qutpfisc Y Publicado: 1 de agosto de 2025",
     "carousel_images": []
   }
 }

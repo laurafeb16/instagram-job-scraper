@@ -13363,3 +13363,1627 @@ Ofertas encontradas en esta ejecución:
 2025-08-06 20:41:02,550 - __main__ - INFO - === PROCESAMIENTO COMPLETADO EXITOSAMENTE ===
 2025-08-06 20:41:04,837 - src.scraper.instagram_scraper - INFO - 🔒 Navegador cerrado correctamente
 2025-08-06 20:41:04,837 - __main__ - INFO - Recursos liberados correctamente
+2025-08-06 21:12:11,391 - __main__ - INFO - === CONFIGURACIÓN ===
+2025-08-06 21:12:11,392 - __main__ - INFO - Posts a procesar: 10
+2025-08-06 21:12:11,392 - __main__ - INFO - Tamaño de lote: 10
+2025-08-06 21:12:11,392 - __main__ - INFO - Modo headless: No
+2025-08-06 21:12:11,392 - __main__ - INFO - Limpiar entorno: Sí
+2025-08-06 21:12:11,393 - __main__ - INFO - Limpiando entorno para nueva ejecución...
+2025-08-06 21:12:11,393 - __main__ - INFO - Limpiando directorio: debug_images
+2025-08-06 21:12:11,397 - __main__ - INFO - Limpiando directorio: debug_images_processed
+2025-08-06 21:12:11,402 - __main__ - INFO - Limpiando directorio: debug_texts
+2025-08-06 21:12:11,405 - __main__ - INFO - Limpiando directorio: debug_analysis
+2025-08-06 21:12:11,410 - __main__ - INFO - Limpieza completada
+2025-08-06 21:12:11,410 - __main__ - INFO - Limpiando base de datos...
+2025-08-06 21:12:11,452 - __main__ - INFO - Base de datos limpiada correctamente
+2025-08-06 21:12:11,452 - __main__ - INFO - === INICIANDO ANÁLISIS DE OFERTAS LABORALES ===
+2025-08-06 21:12:11,452 - __main__ - INFO - Cuenta objetivo: utpfisc
+2025-08-06 21:12:11,453 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-06 21:12:13,046 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-06 21:12:13,050 - __main__ - INFO - Iniciando proceso de login...
+2025-08-06 21:12:22,741 - src.scraper.instagram_scraper - INFO - 🍪 Sesión cargada exitosamente desde cookies
+2025-08-06 21:12:22,742 - __main__ - INFO - Navegando a la cuenta objetivo...
+2025-08-06 21:12:22,749 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-06 21:12:27,532 - __main__ - INFO - CONFIGURACIÓN AUTOMÁTICA:
+2025-08-06 21:12:27,532 - __main__ - INFO -    Total posts: 10
+2025-08-06 21:12:27,532 - __main__ - INFO -    Lote scraping: 10
+2025-08-06 21:12:27,533 - __main__ - INFO -    Lote procesamiento: 10
+2025-08-06 21:12:27,533 - __main__ - INFO -    Pausas: 1-3s
+2025-08-06 21:12:27,533 - __main__ - INFO - Lote 1: extrayendo 10 posts...
+2025-08-06 21:12:27,533 - src.scraper.instagram_scraper - INFO - 🚀 Iniciando extracción de 10 posts (MÉTODO ANTI-DUPLICADOS)
+2025-08-06 21:12:27,541 - src.scraper.instagram_scraper - INFO - 📥 Obteniendo URLs en orden cronológico...
+2025-08-06 21:12:32,012 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 12
+2025-08-06 21:12:34,795 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 24
+2025-08-06 21:12:37,958 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 6 URLs nuevas. Total: 30
+2025-08-06 21:12:37,958 - src.scraper.instagram_scraper - INFO - ✅ URLs cronológicas obtenidas: 30
+2025-08-06 21:12:37,959 - src.scraper.instagram_scraper - INFO - 📋 URLs únicas para procesar: 10
+2025-08-06 21:12:37,959 - src.scraper.instagram_scraper - INFO - 📊 URLs ya procesadas anteriormente: 0
+2025-08-06 21:12:37,964 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 1/10: DM-oH96zsSi
+2025-08-06 21:12:41,950 - src.scraper.instagram_scraper - INFO - ✅ Post 1 extraído: DM-oH96zsSi
+2025-08-06 21:12:45,667 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 2/10: DM-n2qOTBkJ
+2025-08-06 21:12:49,535 - src.scraper.instagram_scraper - INFO - ✅ Post 2 extraído: DM-n2qOTBkJ
+2025-08-06 21:12:52,268 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 3/10: DM8lPfuTi5D
+2025-08-06 21:12:56,393 - src.scraper.instagram_scraper - INFO - ✅ Post 3 extraído: DM8lPfuTi5D
+2025-08-06 21:13:00,075 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 4/10: DM8kjf3s30L
+2025-08-06 21:13:05,379 - src.scraper.instagram_scraper - INFO - ✅ Post 4 extraído: DM8kjf3s30L
+2025-08-06 21:13:08,395 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 5/10: DM8NFcxM5Dd
+2025-08-06 21:13:12,502 - src.scraper.instagram_scraper - INFO - ✅ Post 5 extraído: DM8NFcxM5Dd
+2025-08-06 21:13:14,626 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 6/10: DM8KRPnzVZt
+2025-08-06 21:13:18,729 - src.scraper.instagram_scraper - INFO - ✅ Post 6 extraído: DM8KRPnzVZt
+2025-08-06 21:13:20,746 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 7/10: DM8AtuSsWAN
+2025-08-06 21:13:25,303 - src.scraper.instagram_scraper - INFO - ✅ Post 7 extraído: DM8AtuSsWAN
+2025-08-06 21:13:27,379 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 8/10: DM1VcdFM1X3
+2025-08-06 21:13:32,401 - src.scraper.instagram_scraper - INFO - ✅ Post 8 extraído: DM1VcdFM1X3
+2025-08-06 21:13:36,332 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 9/10: DM1VJauMBiT
+2025-08-06 21:13:41,415 - src.scraper.instagram_scraper - INFO - ✅ Post 9 extraído: DM1VJauMBiT
+2025-08-06 21:13:43,798 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 10/10: DM1UzkQsS0u
+2025-08-06 21:13:48,647 - src.scraper.instagram_scraper - INFO - ✅ Post 10 extraído: DM1UzkQsS0u
+2025-08-06 21:13:48,647 - src.scraper.instagram_scraper - INFO - 🎉 Extracción completada: 10 posts únicos extraídos
+2025-08-06 21:13:48,647 - src.scraper.instagram_scraper - INFO - 📊 Total procesados en la sesión: 10
+2025-08-06 21:13:48,647 - __main__ - INFO - Lote 1: 10 posts únicos extraídos
+2025-08-06 21:13:48,648 - __main__ - INFO - EXTRACCIÓN COMPLETADA: 10 posts únicos obtenidos
+2025-08-06 21:13:48,648 - __main__ - INFO - Procesando lote 1/1
+2025-08-06 21:13:48,648 - __main__ - INFO - Procesando post 1: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
+2025-08-06 21:13:49,008 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-06 21:13:49,251 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/528301474_1194902705775288_7562878248844204705_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHTxpPFfUSqdaPoPyBk_JFy7hZtSSlpJMa-uYPmql0w0YARZGuTnSTk3R59BG8He94&_nc_ohc=urbz49Pe0CUQ7kNvwH4rJj3&_nc_gid=6H-H3Tg2mGEJk0C7BRTPEw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NTIxMzg3MjA0NzI2Ng%3D%3D.3-ccb7-5&oh=00_AfXwMkZzqNWtL41Q9H0G6kmhNS1eiWEoRyp-qZ23ILwSZg&oe=6899C8A1&_nc_sid=fc8dfb
+2025-08-06 21:13:49,956 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_9b5cc9ef.png
+2025-08-06 21:13:55,912 - src.image_processing.ocr - INFO - Texto extraído con 1866 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:13:55,913 - __main__ - INFO - Texto extraído (1866 caracteres): ml
+“za var
+LA o »
+Práctica Laboral (Epi (45 corsatrines
+3 IE t Cargo HEN.
+Pt NES
+A
+Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
+Contacto: Jovani Mendoza | Analista de Experiencia al C...
+2025-08-06 21:13:55,920 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:13:55,920 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:13:55,920 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:13:55,921 - __main__ - INFO -   - Puntuación: 111
+2025-08-06 21:13:55,921 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:13:55,961 - __main__ - INFO - Información extraída:
+2025-08-06 21:13:55,962 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:13:55,962 - __main__ - INFO -   - Industria: None
+2025-08-06 21:13:55,962 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:13:55,962 - __main__ - INFO -   - Email: None
+2025-08-06 21:13:55,962 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:13:55,983 - __main__ - INFO - OFERTA #1: None
+2025-08-06 21:13:55,983 - __main__ - INFO - Progreso: 1/10 (10.0%) - Ofertas: 1
+2025-08-06 21:13:55,983 - __main__ - INFO - Procesando post 2: https://www.instagram.com/utpfisc/p/DM-n2qOTBkJ/
+2025-08-06 21:13:56,473 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-06 21:13:56,842 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527182964_1194901062442119_9161717728736133745_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGs2qwUuWPSrR6AkOR3x3236ImKerZmu0pRm21TwkNBWtT3u52Hepnb4v0pnzvHuXQ&_nc_ohc=cgZ2JZZ2TPUQ7kNvwGpGF8F&_nc_gid=oIOy0RGSMaLeFD-o-KIWnw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NDAyNDQ5MzA4Njk4NQ%3D%3D.3-ccb7-5&oh=00_AfWjhwU2J--EMt0mUD4IVbXveBf87p0a233r8cmLyGRSvQ&oe=6899D66F&_nc_sid=fc8dfb
+2025-08-06 21:13:57,607 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_cdb41c6c.png
+2025-08-06 21:14:04,227 - src.image_processing.ocr - INFO - Texto extraído con 2325 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:04,228 - __main__ - INFO - Texto extraído (2325 caracteres): ml
+epi NA
+Práctica Laboral O (E: Dj MANZon0U
+A om;
+Empresa: GRUPO MANZ, S. A.
+Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
+Móvil: +(507) 6647-1366
+GRUPO MANZ está ofreciendo o...
+2025-08-06 21:14:04,233 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:04,233 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:14:04,233 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:14:04,234 - __main__ - INFO -   - Puntuación: 121
+2025-08-06 21:14:04,234 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:04,273 - __main__ - INFO - Información extraída:
+2025-08-06 21:14:04,274 - __main__ - INFO -   - Empresa: GRUPO MANZ, S. A
+2025-08-06 21:14:04,274 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:14:04,274 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:14:04,274 - __main__ - INFO -   - Email: None
+2025-08-06 21:14:04,275 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:14:04,291 - __main__ - INFO - OFERTA #2: GRUPO MANZ, S. A
+2025-08-06 21:14:04,291 - __main__ - INFO - Progreso: 2/10 (20.0%) - Ofertas: 2
+2025-08-06 21:14:04,291 - __main__ - INFO - Procesando post 3: https://www.instagram.com/utpfisc/p/DM8lPfuTi5D/?img_index=1
+2025-08-06 21:14:04,605 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-06 21:14:04,758 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/527559289_1194271459171746_4211385132613038168_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2QEaisx0sPmDGKAEU6frmcYI6zFHGMCILaR5sLON9UEXsuFLZWCnVMG6k9sgN4_rJMA&_nc_ohc=bOiwSvdOgPQQ7kNvwHWh0XP&_nc_gid=5_tR8GXh_sBoAfWnLnkQYQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4OTU1NzAxNDY3OTk2Mw%3D%3D.3-ccb7-5&oh=00_AfWmunKEI6kDEAZik3C87bczn302pPEU6haabYyEicY-UA&oe=6899E1D5&_nc_sid=fc8dfb
+2025-08-06 21:14:06,147 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_a8f2415b.png
+2025-08-06 21:14:08,359 - src.image_processing.ocr - INFO - Texto extraído con 266 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:08,360 - __main__ - INFO - Texto extraído (266 caracteres): AS
+| PYTHON + NETCONF Y =
+IGRP PARA IPV48%
+2 t
+. Milo rupo No 6 A A
+e . CN ¿> rontes: 7] Z y , NN
+: : O eN Ao rn 70.107082 NA 3 sq. e En / 4
+E re A Nu Le
+A Fer ¿$ ul 9.756-1052 MN 4 2
+- ESA k,. Nathal...
+2025-08-06 21:14:08,362 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:08,362 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:14:08,362 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:14:08,363 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:14:08,363 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:08,387 - __main__ - INFO - Progreso: 3/10 (30.0%) - Ofertas: 2
+2025-08-06 21:14:08,387 - __main__ - INFO - Procesando post 4: https://www.instagram.com/utpfisc/p/DM8kjf3s30L/?img_index=1
+2025-08-06 21:14:08,650 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-06 21:14:08,796 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527986290_1194267922505433_3725496782062260818_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QEhSGLeZgkQ3kYwOFlpa-lhgmHbD7USDrgF_QheenED93LjdFxxsOMbcHVegYgbILA&_nc_ohc=xEYc6cgaGiwQ7kNvwF19AzS&_nc_gid=g43nhgQFQRFpFdBM0YqpMA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4NjU1MTM5MTE2ODU3MA%3D%3D.3-ccb7-5&oh=00_AfXNnSv3Gm3y-CbbA6c97wgdr6ik8IQAD5dU-IRDGZ933Q&oe=6899C4FB&_nc_sid=fc8dfb
+2025-08-06 21:14:09,931 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_2b3a87a7.png
+2025-08-06 21:14:11,963 - src.image_processing.ocr - INFO - Texto extraído con 173 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:11,964 - __main__ - INFO - Texto extraído (173 caracteres): un |
+MA
+fa Chatbot+Phyton
+— > Y ' . e .
+0 t | +netmiko/Paramiko
+| Ca Por:Daniela Vargas |
+l a Heydher Herrera
+Brandan Olivarren |
+Y Eduardo Lee
+; 'h Is241 |) >
+z = E
+LL ná
+e...
+2025-08-06 21:14:11,966 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:11,966 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:14:11,967 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:14:11,967 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:14:11,967 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:11,992 - __main__ - INFO - Progreso: 4/10 (40.0%) - Ofertas: 2
+2025-08-06 21:14:11,992 - __main__ - INFO - Procesando post 5: https://www.instagram.com/utpfisc/p/DM8NFcxM5Dd/
+2025-08-06 21:14:12,431 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-06 21:14:12,766 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528467658_1194150789183813_5105979718412573731_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHxmnrwq0ng4PmCBKlThZBMV0qOGLwrmzkfeIB7e205hoq6jomyCkVkQgVIRuSxJVw&_nc_ohc=jlnq5FdEBqgQ7kNvwHlb-g7&_nc_gid=ZBUMmp8EMY2_AnV0FvZRcA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg4MzM0MzYyOTIyNjIwNQ%3D%3D.3-ccb7-5&oh=00_AfWUMMaTXj198TKlNyWxxNV9oMXOGv8DgROV42ZnYZ4IoQ&oe=6899F8B2&_nc_sid=fc8dfb
+2025-08-06 21:14:13,687 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_5048456f.png
+2025-08-06 21:14:18,076 - src.image_processing.ocr - INFO - Texto extraído con 932 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:18,077 - __main__ - INFO - Texto extraído (932 caracteres): Talleres virtuales 40
+Dirigido a estudiantes de UTP - FISC y) 3 +
+de 4to año Ps )S y
+Pueden participar estudiantes de Centros Regionales AAN E Ed Y
+A E) 4 :
+Banco General y la de wo :
+Facultad de Inge...
+2025-08-06 21:14:18,083 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:18,083 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:14:18,083 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:14:18,083 - __main__ - INFO -   - Puntuación: -20
+2025-08-06 21:14:18,084 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:18,119 - __main__ - INFO - Progreso: 5/10 (50.0%) - Ofertas: 2
+2025-08-06 21:14:18,119 - __main__ - INFO - Procesando post 6: https://www.instagram.com/utpfisc/p/DM8KRPnzVZt/
+2025-08-06 21:14:18,529 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_6.png
+2025-08-06 21:14:18,805 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527112192_1194134755852083_4063797911794547060_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGW_T9FC7ajQjilKNeBnAn2WvcnuiVLnWBn2ssi2xfSwXN7C1WbxX4KwvlKTIBdbJU&_nc_ohc=ZtKYG_iuVlkQ7kNvwHwUwYb&_nc_gid=NAraBKLoKxXLov6Br86sgQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg3MDk2MDAwNzA3NTQzNw%3D%3D.3-ccb7-5&oh=00_AfXBJfmmGCCHkqdd1EeH4xflibUoJW7dVoiF-sNilEk_5w&oe=6899F540&_nc_sid=fc8dfb
+2025-08-06 21:14:19,856 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_d1832bec.png
+2025-08-06 21:14:23,563 - src.image_processing.ocr - INFO - Texto extraído con 1074 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:23,564 - __main__ - INFO - Texto extraído (1074 caracteres): ; : NN e : : NN A 0 aa
+' e Narcos ' : 5 o PSUCO AL ] 1
+SS
+A + Auditoría Ste . "
+gunas de las fuficion BBION en el área:
+A + Ana SUN We Tiesgos de TI, incluyendo seguridad de la informació Zo lidad del...
+2025-08-06 21:14:23,567 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:23,567 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:14:23,567 - __main__ - INFO -   - Tipo: Vacante
+2025-08-06 21:14:23,568 - __main__ - INFO -   - Puntuación: 57
+2025-08-06 21:14:23,568 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:23,602 - __main__ - INFO - Información extraída:
+2025-08-06 21:14:23,602 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:14:23,602 - __main__ - INFO -   - Industria: None
+2025-08-06 21:14:23,604 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:14:23,604 - __main__ - INFO -   - Email: None
+2025-08-06 21:14:23,604 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:14:23,620 - __main__ - INFO - OFERTA #3: None
+2025-08-06 21:14:23,621 - __main__ - INFO - Progreso: 6/10 (60.0%) - Ofertas: 3
+2025-08-06 21:14:23,621 - __main__ - INFO - Procesando post 7: https://www.instagram.com/utpfisc/p/DM8AtuSsWAN/
+2025-08-06 21:14:25,919 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_7.png
+2025-08-06 21:14:28,459 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528722669_1194074402524785_4780936680842938165_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QEz4aeVZKWFK9DnJ2mWsEZ8dma_RjdBTqwBimtTEySf8UtyHMcOw1FCGBMrRyW41t0&_nc_ohc=30oFyND_TH4Q7kNvwFWRJBj&_nc_gid=tKmlPmrZKIa7wgqe0PSepQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTgyODkzNjYxOTE1NTQ2OQ%3D%3D.3-ccb7-5&oh=00_AfXRHq_EmBgGrE-y69_M27A86o4Zyqin63iZiciYXV9RGw&oe=6899CB96&_nc_sid=fc8dfb
+2025-08-06 21:14:29,363 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_81821e05.png
+2025-08-06 21:14:35,739 - src.image_processing.ocr - INFO - Texto extraído con 1740 caracteres. Mejor configuración: --psm 4 --oem 3 -l spa
+2025-08-06 21:14:35,740 - __main__ - INFO - Texto extraído (1740 caracteres): Talleres virtuales
+Dirigido a estudiantes de UTP - FISC
+de 4to año
+Pueden participar estudiantes de Centros Regionales ¿
+Banco General y la
+Facultad de Ingenieria de Sistemas Computacionales de la
+Uni...
+2025-08-06 21:14:35,746 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:35,746 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:14:35,746 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:14:35,747 - __main__ - INFO -   - Puntuación: 2
+2025-08-06 21:14:35,747 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:35,773 - __main__ - INFO - Progreso: 7/10 (70.0%) - Ofertas: 3
+2025-08-06 21:14:35,773 - __main__ - INFO - Procesando post 8: https://www.instagram.com/utpfisc/p/DM1VcdFM1X3/
+2025-08-06 21:14:38,277 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_8.png
+2025-08-06 21:14:39,574 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFhojyfL1WIFE-S9-N94RmZypm1KM5QacK-Ge4_I_LINSrUo9XxD65Q0mi-aPTvQ3E&_nc_ohc=9R-ATuwxP5IQ7kNvwENrtGv&_nc_gid=1QT-EOlkTTPWwpCFcBGKVA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfXft6e7IZei8LyVylvuEZ8V7y_dDKHOJyk1zkpQCIZ0NQ&oe=6899F29B&_nc_sid=fc8dfb
+2025-08-06 21:14:40,436 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_54603ddc.png
+2025-08-06 21:14:47,522 - src.image_processing.ocr - INFO - Texto extraído con 3002 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:47,523 - __main__ - INFO - Texto extraído (3002 caracteres): Me . . 2... . ii
+e Universidad Tecnológica de Panamá YN
+5 5 . . , . e a
+z Ep $ . Vicerrectoría Académica ol >
+1L¿ e Programación de matrícula para el Il Semestre 2025 ASA
+10 SEAS
+Atención: viernes 8 d...
+2025-08-06 21:14:47,528 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:47,528 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:14:47,529 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:14:47,529 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:14:47,529 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:47,550 - __main__ - INFO - Progreso: 8/10 (80.0%) - Ofertas: 3
+2025-08-06 21:14:47,550 - __main__ - INFO - Procesando post 9: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
+2025-08-06 21:14:47,944 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_9.png
+2025-08-06 21:14:48,265 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QH82DsNJVTxU9u_wRbAKK-tznMbxSURSp97uTqvjUL7SQv5S98IB9QWp8W4sJmf1WI&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=HIsi1UmW4r1B0O7rNOWLTw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfXaWIRoMXY1alMtFi2YqiUlmMWXK5s9ri4srhADPkk14A&oe=6899D17A&_nc_sid=fc8dfb
+2025-08-06 21:14:49,022 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_8f920d1b.png
+2025-08-06 21:14:55,034 - src.image_processing.ocr - INFO - Texto extraído con 2029 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:55,036 - __main__ - INFO - Texto extraído (2029 caracteres): ml
+r o . PA Y D
+: É
+Práctica Profesional FP; ($4 Wowervar:
+rt ONES
+A
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
+Móvil: +(507) 6550-6473
+Towerbank está...
+2025-08-06 21:14:55,039 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:55,039 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:14:55,040 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:14:55,040 - __main__ - INFO -   - Puntuación: 94
+2025-08-06 21:14:55,040 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:55,076 - __main__ - INFO - Información extraída:
+2025-08-06 21:14:55,076 - __main__ - INFO -   - Empresa: Towerbank
+2025-08-06 21:14:55,076 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:14:55,076 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:14:55,077 - __main__ - INFO -   - Email: None
+2025-08-06 21:14:55,077 - __main__ - INFO -   - Puesto: Opción Al Trabajo De Graduación
+2025-08-06 21:14:55,092 - __main__ - INFO - OFERTA #4: Towerbank
+2025-08-06 21:14:55,093 - __main__ - INFO - Progreso: 9/10 (90.0%) - Ofertas: 4
+2025-08-06 21:14:55,093 - __main__ - INFO - Procesando post 10: https://www.instagram.com/utpfisc/p/DM1UzkQsS0u/
+2025-08-06 21:14:55,485 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_10.png
+2025-08-06 21:14:55,755 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QF604Jfd_WyK-BJOykQalfvsApJhNEY_-D2WgT1m42RPDDZtC_4P9gH4LrQ50dhcZ0&_nc_ohc=rsnxtUZ-uDUQ7kNvwFn9Nu2&_nc_gid=Y74OFzsQsEBzipHjdOA7VQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfXgJ5a8AKkokRosm-BGXN3eYggQWudo9VJMYMIyBJhocA&oe=6899E152&_nc_sid=fc8dfb
+2025-08-06 21:14:56,626 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_4ac9daa4.png
+2025-08-06 21:14:59,643 - src.image_processing.ocr - INFO - Texto extraído con 809 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:14:59,644 - __main__ - INFO - Texto extraído (809 caracteres): 1 - Vo mn.
+o DO O Ja ¡077 :
+Framework O at y
+Desarrollo  Fróly po UN "Angular, nest jsjs
+Base de data 7 ,
+SS . RP Is RESTFUL >
+0 dad con herramientas de integración y Conocirg Docker.
+e Entendi a iyoc...
+2025-08-06 21:14:59,646 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:14:59,646 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:14:59,647 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:14:59,647 - __main__ - INFO -   - Puntuación: 62
+2025-08-06 21:14:59,647 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:14:59,663 - __main__ - INFO - Información extraída:
+2025-08-06 21:14:59,663 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:14:59,663 - __main__ - INFO -   - Industria: None
+2025-08-06 21:14:59,663 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:14:59,663 - __main__ - INFO -   - Email: None
+2025-08-06 21:14:59,663 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:14:59,680 - __main__ - INFO - OFERTA #5: None
+2025-08-06 21:14:59,680 - __main__ - INFO - Progreso: 10/10 (100.0%) - Ofertas: 5
+2025-08-06 21:14:59,680 - __main__ - INFO - 
+=== RESUMEN DE RESULTADOS ===
+2025-08-06 21:14:59,680 - __main__ - INFO - Posts procesados: 10
+2025-08-06 21:14:59,680 - __main__ - INFO - Posts duplicados: 0
+2025-08-06 21:14:59,681 - __main__ - INFO - Ofertas laborales encontradas: 5
+2025-08-06 21:14:59,681 - __main__ - INFO - Tasa de éxito: 50.0%
+2025-08-06 21:14:59,695 - __main__ - INFO - Total posts en BD: 10
+2025-08-06 21:14:59,695 - __main__ - INFO - Ofertas activas: 5
+2025-08-06 21:14:59,695 - __main__ - INFO - Por tipo de trabajo:
+2025-08-06 21:14:59,695 - __main__ - INFO -   - Práctica Laboral: 2
+2025-08-06 21:14:59,696 - __main__ - INFO -   - Práctica Profesional: 2
+2025-08-06 21:14:59,696 - __main__ - INFO -   - Vacante: 1
+2025-08-06 21:14:59,696 - __main__ - INFO - Por industria:
+2025-08-06 21:14:59,696 - __main__ - INFO -   - tecnología: 2
+2025-08-06 21:14:59,696 - __main__ - INFO - 
+Ofertas encontradas en esta ejecución:
+2025-08-06 21:14:59,696 - __main__ - INFO -  1. Empresa no identificada
+2025-08-06 21:14:59,697 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:14:59,697 - __main__ - INFO - 
+2025-08-06 21:14:59,697 - __main__ - INFO -  2. GRUPO MANZ, S. A
+2025-08-06 21:14:59,697 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:14:59,697 - __main__ - INFO - 
+2025-08-06 21:14:59,698 - __main__ - INFO -  3. Empresa no identificada
+2025-08-06 21:14:59,698 - __main__ - INFO -      Tipo: Vacante
+2025-08-06 21:14:59,698 - __main__ - INFO - 
+2025-08-06 21:14:59,698 - __main__ - INFO -  4. Towerbank
+2025-08-06 21:14:59,698 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:14:59,699 - __main__ - INFO - 
+2025-08-06 21:14:59,699 - __main__ - INFO -  5. Empresa no identificada
+2025-08-06 21:14:59,699 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:14:59,699 - __main__ - INFO - 
+2025-08-06 21:14:59,699 - __main__ - INFO - === PROCESAMIENTO COMPLETADO EXITOSAMENTE ===
+2025-08-06 21:15:02,003 - src.scraper.instagram_scraper - INFO - 🔒 Navegador cerrado correctamente
+2025-08-06 21:15:02,004 - __main__ - INFO - Recursos liberados correctamente
+2025-08-06 21:26:51,933 - __main__ - INFO - === CONFIGURACIÓN ===
+2025-08-06 21:26:51,933 - __main__ - INFO - Posts a procesar: 10
+2025-08-06 21:26:51,933 - __main__ - INFO - Tamaño de lote: 10
+2025-08-06 21:26:51,934 - __main__ - INFO - Modo headless: No
+2025-08-06 21:26:51,934 - __main__ - INFO - Limpiar entorno: Sí
+2025-08-06 21:26:51,934 - __main__ - INFO - Limpiando entorno para nueva ejecución...
+2025-08-06 21:26:51,934 - __main__ - INFO - Limpiando directorio: debug_images
+2025-08-06 21:26:51,941 - __main__ - INFO - Limpiando directorio: debug_images_processed
+2025-08-06 21:26:51,947 - __main__ - INFO - Limpiando directorio: debug_texts
+2025-08-06 21:26:51,953 - __main__ - INFO - Limpiando directorio: debug_analysis
+2025-08-06 21:26:51,959 - __main__ - INFO - Limpieza completada
+2025-08-06 21:26:51,959 - __main__ - INFO - Limpiando base de datos...
+2025-08-06 21:26:52,013 - __main__ - INFO - Base de datos limpiada correctamente
+2025-08-06 21:26:52,013 - __main__ - INFO - === INICIANDO ANÁLISIS DE OFERTAS LABORALES ===
+2025-08-06 21:26:52,013 - __main__ - INFO - Cuenta objetivo: utpfisc
+2025-08-06 21:26:52,014 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-06 21:26:53,663 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-06 21:26:53,667 - __main__ - INFO - Iniciando proceso de login...
+2025-08-06 21:27:10,422 - src.scraper.instagram_scraper - INFO - 🍪 Sesión cargada exitosamente desde cookies
+2025-08-06 21:27:10,422 - __main__ - INFO - Navegando a la cuenta objetivo...
+2025-08-06 21:27:10,431 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-06 21:27:16,828 - __main__ - INFO - CONFIGURACIÓN AUTOMÁTICA:
+2025-08-06 21:27:16,829 - __main__ - INFO -    Total posts: 10
+2025-08-06 21:27:16,829 - __main__ - INFO -    Lote scraping: 10
+2025-08-06 21:27:16,829 - __main__ - INFO -    Lote procesamiento: 10
+2025-08-06 21:27:16,830 - __main__ - INFO -    Pausas: 1-3s
+2025-08-06 21:27:16,830 - __main__ - INFO - Lote 1: extrayendo 10 posts...
+2025-08-06 21:27:16,831 - src.scraper.instagram_scraper - INFO - 🚀 Iniciando extracción de 10 posts (MÉTODO ANTI-DUPLICADOS)
+2025-08-06 21:27:16,849 - src.scraper.instagram_scraper - INFO - 📥 Obteniendo URLs en orden cronológico...
+2025-08-06 21:27:25,336 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 12
+2025-08-06 21:27:27,761 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 24
+2025-08-06 21:27:30,223 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 6 URLs nuevas. Total: 30
+2025-08-06 21:27:30,223 - src.scraper.instagram_scraper - INFO - ✅ URLs cronológicas obtenidas: 30
+2025-08-06 21:27:30,224 - src.scraper.instagram_scraper - INFO - 📋 URLs únicas para procesar: 10
+2025-08-06 21:27:30,224 - src.scraper.instagram_scraper - INFO - 📊 URLs ya procesadas anteriormente: 0
+2025-08-06 21:27:30,228 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 1/10: DM-oH96zsSi
+2025-08-06 21:27:35,641 - src.scraper.instagram_scraper - INFO - ✅ Post 1 extraído: DM-oH96zsSi
+2025-08-06 21:27:38,303 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 2/10: DM-n2qOTBkJ
+2025-08-06 21:27:43,084 - src.scraper.instagram_scraper - INFO - ✅ Post 2 extraído: DM-n2qOTBkJ
+2025-08-06 21:27:46,930 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 3/10: DM8lPfuTi5D
+2025-08-06 21:27:50,377 - src.scraper.instagram_scraper - INFO - ✅ Post 3 extraído: DM8lPfuTi5D
+2025-08-06 21:27:54,101 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 4/10: DM8kjf3s30L
+2025-08-06 21:27:58,081 - src.scraper.instagram_scraper - INFO - ✅ Post 4 extraído: DM8kjf3s30L
+2025-08-06 21:28:00,308 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 5/10: DM8NFcxM5Dd
+2025-08-06 21:28:05,348 - src.scraper.instagram_scraper - INFO - ✅ Post 5 extraído: DM8NFcxM5Dd
+2025-08-06 21:28:07,563 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 6/10: DM8KRPnzVZt
+2025-08-06 21:28:13,336 - src.scraper.instagram_scraper - INFO - ✅ Post 6 extraído: DM8KRPnzVZt
+2025-08-06 21:28:16,486 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 7/10: DM8AtuSsWAN
+2025-08-06 21:28:20,572 - src.scraper.instagram_scraper - INFO - ✅ Post 7 extraído: DM8AtuSsWAN
+2025-08-06 21:28:22,809 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 8/10: DM1VcdFM1X3
+2025-08-06 21:28:26,914 - src.scraper.instagram_scraper - INFO - ✅ Post 8 extraído: DM1VcdFM1X3
+2025-08-06 21:28:30,628 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 9/10: DM1VJauMBiT
+2025-08-06 21:28:34,197 - src.scraper.instagram_scraper - INFO - ✅ Post 9 extraído: DM1VJauMBiT
+2025-08-06 21:28:36,527 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 10/10: DM1UzkQsS0u
+2025-08-06 21:28:40,445 - src.scraper.instagram_scraper - INFO - ✅ Post 10 extraído: DM1UzkQsS0u
+2025-08-06 21:28:40,445 - src.scraper.instagram_scraper - INFO - 🎉 Extracción completada: 10 posts únicos extraídos
+2025-08-06 21:28:40,446 - src.scraper.instagram_scraper - INFO - 📊 Total procesados en la sesión: 10
+2025-08-06 21:28:40,446 - __main__ - INFO - Lote 1: 10 posts únicos extraídos
+2025-08-06 21:28:40,446 - __main__ - INFO - EXTRACCIÓN COMPLETADA: 10 posts únicos obtenidos
+2025-08-06 21:28:40,446 - __main__ - INFO - Procesando lote 1/1
+2025-08-06 21:28:40,447 - __main__ - INFO - Procesando post 1: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
+2025-08-06 21:28:40,872 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-06 21:28:41,154 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/528301474_1194902705775288_7562878248844204705_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHBqgxyIwF9W487gqdR7K5-6KSHZ_KisPNnHq2LKOUgJUrPEbB7EfGHfxkqFgEr2m0&_nc_ohc=urbz49Pe0CUQ7kNvwH4rJj3&_nc_gid=MnjuFIE4_kmkOpnqEuJU0w&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NTIxMzg3MjA0NzI2Ng%3D%3D.3-ccb7-5&oh=00_AfU9VXzKFLx2wKrUVCo5OtXOyQHNg1kFMh72zvn5Mm6A1A&oe=6899C8A1&_nc_sid=fc8dfb
+2025-08-06 21:28:41,961 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_ce8fdf57.png
+2025-08-06 21:28:48,172 - src.image_processing.ocr - INFO - Texto extraído con 1866 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:28:48,173 - __main__ - INFO - Texto extraído (1866 caracteres): ml
+“za var
+LA o »
+Práctica Laboral (Epi (45 corsatrines
+3 IE t Cargo HEN.
+Pt NES
+A
+Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
+Contacto: Jovani Mendoza | Analista de Experiencia al C...
+2025-08-06 21:28:48,178 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:28:48,178 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:28:48,179 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:28:48,179 - __main__ - INFO -   - Puntuación: 111
+2025-08-06 21:28:48,179 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:28:48,219 - __main__ - INFO - Información extraída:
+2025-08-06 21:28:48,219 - __main__ - INFO -   - Empresa: Copa Airhnes
+2025-08-06 21:28:48,219 - __main__ - INFO -   - Industria: aviación
+2025-08-06 21:28:48,219 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:28:48,219 - __main__ - INFO -   - Email: None
+2025-08-06 21:28:48,220 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:28:48,239 - __main__ - INFO - OFERTA #1: Copa Airhnes
+2025-08-06 21:28:48,239 - __main__ - INFO - Progreso: 1/10 (10.0%) - Ofertas: 1
+2025-08-06 21:28:48,239 - __main__ - INFO - Procesando post 2: https://www.instagram.com/utpfisc/p/DM-n2qOTBkJ/
+2025-08-06 21:28:48,626 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-06 21:28:49,133 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527182964_1194901062442119_9161717728736133745_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QE5fOv1h8fSg9Q8osWxP7YnBcihavGo-KHaJEWR1zgCHEN0ET9yFR1XECivBkNm9_Q&_nc_ohc=cgZ2JZZ2TPUQ7kNvwGpGF8F&_nc_gid=GvqSb-IW6Bc1gOizfRholg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NDAyNDQ5MzA4Njk4NQ%3D%3D.3-ccb7-5&oh=00_AfV05pUqixH4n8_968VAgeNhSuj5qw__FGbh8TtXj5cMHA&oe=6899D66F&_nc_sid=fc8dfb
+2025-08-06 21:28:49,895 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_33b7bbef.png
+2025-08-06 21:28:57,040 - src.image_processing.ocr - INFO - Texto extraído con 2325 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:28:57,040 - __main__ - INFO - Texto extraído (2325 caracteres): ml
+epi NA
+Práctica Laboral O (E: Dj MANZon0U
+A om;
+Empresa: GRUPO MANZ, S. A.
+Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
+Móvil: +(507) 6647-1366
+GRUPO MANZ está ofreciendo o...
+2025-08-06 21:28:57,045 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:28:57,045 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:28:57,046 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:28:57,046 - __main__ - INFO -   - Puntuación: 121
+2025-08-06 21:28:57,046 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:28:57,085 - __main__ - INFO - Información extraída:
+2025-08-06 21:28:57,085 - __main__ - INFO -   - Empresa: GRUPO MANZ, S. A
+2025-08-06 21:28:57,086 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:28:57,086 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:28:57,086 - __main__ - INFO -   - Email: None
+2025-08-06 21:28:57,086 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:28:57,102 - __main__ - INFO - OFERTA #2: GRUPO MANZ, S. A
+2025-08-06 21:28:57,102 - __main__ - INFO - Progreso: 2/10 (20.0%) - Ofertas: 2
+2025-08-06 21:28:57,102 - __main__ - INFO - Procesando post 3: https://www.instagram.com/utpfisc/p/DM8lPfuTi5D/?img_index=1
+2025-08-06 21:28:57,416 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-06 21:28:57,566 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/527559289_1194271459171746_4211385132613038168_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2QGM4fBa9zMxkTSgWqZxKuKRrsem0HEhVdirTXA9-K6L3kjafIgi8D8zh_HLd3Hs87s&_nc_ohc=bOiwSvdOgPQQ7kNvwHWh0XP&_nc_gid=XQKoNg2oe3c9FHQaZq8ciw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4OTU1NzAxNDY3OTk2Mw%3D%3D.3-ccb7-5&oh=00_AfVKD-JFW-itfd9OnczDJOaPiz1e9xoLjYWvMIcxGGLWiw&oe=6899E1D5&_nc_sid=fc8dfb
+2025-08-06 21:28:58,917 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_86e69087.png
+2025-08-06 21:29:00,771 - src.image_processing.ocr - INFO - Texto extraído con 266 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:00,772 - __main__ - INFO - Texto extraído (266 caracteres): AS
+| PYTHON + NETCONF Y =
+IGRP PARA IPV48%
+2 t
+. Milo rupo No 6 A A
+e . CN ¿> rontes: 7] Z y , NN
+: : O eN Ao rn 70.107082 NA 3 sq. e En / 4
+E re A Nu Le
+A Fer ¿$ ul 9.756-1052 MN 4 2
+- ESA k,. Nathal...
+2025-08-06 21:29:00,775 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:00,775 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:29:00,775 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:29:00,775 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:29:00,775 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:00,800 - __main__ - INFO - Progreso: 3/10 (30.0%) - Ofertas: 2
+2025-08-06 21:29:00,800 - __main__ - INFO - Procesando post 4: https://www.instagram.com/utpfisc/p/DM8kjf3s30L/?img_index=1
+2025-08-06 21:29:01,080 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-06 21:29:01,190 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527986290_1194267922505433_3725496782062260818_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGVvdH-3SFshzG5oM7_wY3R-ubdq3PnfAq2hswqxBsWjQumwgbdjtrpzt_ShRN_6vo&_nc_ohc=xEYc6cgaGiwQ7kNvwF19AzS&_nc_gid=ZgwkpILwk1goGrxEKyqaYA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4NjU1MTM5MTE2ODU3MA%3D%3D.3-ccb7-5&oh=00_AfVV53HXYAoXj4OIBphHVOYtWz2PjPRlDW0d_nCrcoma4A&oe=6899FD3B&_nc_sid=fc8dfb
+2025-08-06 21:29:02,347 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_1b4b381b.png
+2025-08-06 21:29:04,495 - src.image_processing.ocr - INFO - Texto extraído con 173 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:04,496 - __main__ - INFO - Texto extraído (173 caracteres): un |
+MA
+fa Chatbot+Phyton
+— > Y ' . e .
+0 t | +netmiko/Paramiko
+| Ca Por:Daniela Vargas |
+l a Heydher Herrera
+Brandan Olivarren |
+Y Eduardo Lee
+; 'h Is241 |) >
+z = E
+LL ná
+e...
+2025-08-06 21:29:04,498 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:04,498 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:29:04,498 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:29:04,498 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:29:04,498 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:04,519 - __main__ - INFO - Progreso: 4/10 (40.0%) - Ofertas: 2
+2025-08-06 21:29:04,519 - __main__ - INFO - Procesando post 5: https://www.instagram.com/utpfisc/p/DM8NFcxM5Dd/
+2025-08-06 21:29:04,947 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-06 21:29:05,298 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528467658_1194150789183813_5105979718412573731_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHefSD52TZdgDn7RwW4tOFbNww_84h3IVausesdFY4X7Kix9cKgI_O-UKaKCoZ9Tv0&_nc_ohc=jlnq5FdEBqgQ7kNvwHlb-g7&_nc_gid=eU8MR6zQpbkrk0FbuivLTg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg4MzM0MzYyOTIyNjIwNQ%3D%3D.3-ccb7-5&oh=00_AfVompNLPC07RDjaqXyUmTImhS2xco9yLyP9hA2OFR1rCw&oe=6899F8B2&_nc_sid=fc8dfb
+2025-08-06 21:29:06,237 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_177e1a8a.png
+2025-08-06 21:29:10,710 - src.image_processing.ocr - INFO - Texto extraído con 932 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:10,711 - __main__ - INFO - Texto extraído (932 caracteres): Talleres virtuales 40
+Dirigido a estudiantes de UTP - FISC y) 3 +
+de 4to año Ps )S y
+Pueden participar estudiantes de Centros Regionales AAN E Ed Y
+A E) 4 :
+Banco General y la de wo :
+Facultad de Inge...
+2025-08-06 21:29:10,715 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:10,716 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:29:10,716 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:29:10,716 - __main__ - INFO -   - Puntuación: -20
+2025-08-06 21:29:10,716 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:10,740 - __main__ - INFO - Progreso: 5/10 (50.0%) - Ofertas: 2
+2025-08-06 21:29:10,741 - __main__ - INFO - Procesando post 6: https://www.instagram.com/utpfisc/p/DM8KRPnzVZt/
+2025-08-06 21:29:11,144 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_6.png
+2025-08-06 21:29:11,491 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527112192_1194134755852083_4063797911794547060_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QEflZ98ztrr0bIW04_PrQO6pCGxUjjr54E9yT4EE0HqfcAf04SraS-hkMhVPkZKXVU&_nc_ohc=ZtKYG_iuVlkQ7kNvwHwUwYb&_nc_gid=1rbnZgP2fzWEsXNcdX2kCA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg3MDk2MDAwNzA3NTQzNw%3D%3D.3-ccb7-5&oh=00_AfVULGp48XmVoiAZfJaPqEN5gti7lzVw3mhQP-uRGTIh4A&oe=6899F540&_nc_sid=fc8dfb
+2025-08-06 21:29:12,376 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_25b1846a.png
+2025-08-06 21:29:16,150 - src.image_processing.ocr - INFO - Texto extraído con 1074 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:16,151 - __main__ - INFO - Texto extraído (1074 caracteres): ; : NN e : : NN A 0 aa
+' e Narcos ' : 5 o PSUCO AL ] 1
+SS
+A + Auditoría Ste . "
+gunas de las fuficion BBION en el área:
+A + Ana SUN We Tiesgos de TI, incluyendo seguridad de la informació Zo lidad del...
+2025-08-06 21:29:16,156 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:16,156 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:29:16,156 - __main__ - INFO -   - Tipo: Vacante
+2025-08-06 21:29:16,157 - __main__ - INFO -   - Puntuación: 57
+2025-08-06 21:29:16,157 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:16,191 - __main__ - INFO - Información extraída:
+2025-08-06 21:29:16,191 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:29:16,191 - __main__ - INFO -   - Industria: None
+2025-08-06 21:29:16,191 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:29:16,191 - __main__ - INFO -   - Email: None
+2025-08-06 21:29:16,192 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:29:16,208 - __main__ - INFO - OFERTA #3: None
+2025-08-06 21:29:16,208 - __main__ - INFO - Progreso: 6/10 (60.0%) - Ofertas: 3
+2025-08-06 21:29:16,208 - __main__ - INFO - Procesando post 7: https://www.instagram.com/utpfisc/p/DM8AtuSsWAN/
+2025-08-06 21:29:16,624 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_7.png
+2025-08-06 21:29:16,957 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528722669_1194074402524785_4780936680842938165_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QEQH8V6xJNfaTQerpxE_DEDxUTUgkD5UxuLq3gqJkzZGL10bdwcKvlwJ6zx04zR5gY&_nc_ohc=30oFyND_TH4Q7kNvwFWRJBj&_nc_gid=3VM9dzVWdkhhjphyhFtWVQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTgyODkzNjYxOTE1NTQ2OQ%3D%3D.3-ccb7-5&oh=00_AfVo_eNcrPzXdlgoHkQ8Am0rMCqtOlNtFM2cQF_qTt46fA&oe=6899CB96&_nc_sid=fc8dfb
+2025-08-06 21:29:17,874 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_d03bdd71.png
+2025-08-06 21:29:24,261 - src.image_processing.ocr - INFO - Texto extraído con 1740 caracteres. Mejor configuración: --psm 4 --oem 3 -l spa
+2025-08-06 21:29:24,262 - __main__ - INFO - Texto extraído (1740 caracteres): Talleres virtuales
+Dirigido a estudiantes de UTP - FISC
+de 4to año
+Pueden participar estudiantes de Centros Regionales ¿
+Banco General y la
+Facultad de Ingenieria de Sistemas Computacionales de la
+Uni...
+2025-08-06 21:29:24,266 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:24,267 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:29:24,267 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:29:24,267 - __main__ - INFO -   - Puntuación: 2
+2025-08-06 21:29:24,267 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:24,290 - __main__ - INFO - Progreso: 7/10 (70.0%) - Ofertas: 3
+2025-08-06 21:29:24,290 - __main__ - INFO - Procesando post 8: https://www.instagram.com/utpfisc/p/DM1VcdFM1X3/
+2025-08-06 21:29:24,689 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_8.png
+2025-08-06 21:29:24,991 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGB6Uiu2JemGZb0rMAwZtJ-FUeZA4_9tkSeYsK0HahFpeI086WgL49FXa0-cWITpg0&_nc_ohc=9R-ATuwxP5IQ7kNvwENrtGv&_nc_gid=N3D58M72hKbdmekxWZcU-A&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfWqyo0CsnLB5Ll3VrewrZpOALkHXfXr7y2F2zXTpBQZ1g&oe=6899F29B&_nc_sid=fc8dfb
+2025-08-06 21:29:25,842 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_5a275c64.png
+2025-08-06 21:29:33,000 - src.image_processing.ocr - INFO - Texto extraído con 3002 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:33,001 - __main__ - INFO - Texto extraído (3002 caracteres): Me . . 2... . ii
+e Universidad Tecnológica de Panamá YN
+5 5 . . , . e a
+z Ep $ . Vicerrectoría Académica ol >
+1L¿ e Programación de matrícula para el Il Semestre 2025 ASA
+10 SEAS
+Atención: viernes 8 d...
+2025-08-06 21:29:33,007 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:33,007 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:29:33,007 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:29:33,008 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:29:33,008 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:33,029 - __main__ - INFO - Progreso: 8/10 (80.0%) - Ofertas: 3
+2025-08-06 21:29:33,029 - __main__ - INFO - Procesando post 9: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
+2025-08-06 21:29:33,350 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_9.png
+2025-08-06 21:29:33,589 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGXJYMed1qRpbVHRMk9an2UOfI3QYesb3B3p0Ymo2R2BHdNtbRk7yqYC4Va6bK3mhQ&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=-lLv9asNRRO0QtpLhO-7yg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfXQuT0osNT4jg52pXi2JfWqafyScxMWRJ1LSF5NaqsHqQ&oe=6899D17A&_nc_sid=fc8dfb
+2025-08-06 21:29:34,334 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_a1c0d17b.png
+2025-08-06 21:29:40,809 - src.image_processing.ocr - INFO - Texto extraído con 2029 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:40,810 - __main__ - INFO - Texto extraído (2029 caracteres): ml
+r o . PA Y D
+: É
+Práctica Profesional FP; ($4 Wowervar:
+rt ONES
+A
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
+Móvil: +(507) 6550-6473
+Towerbank está...
+2025-08-06 21:29:40,814 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:40,815 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:29:40,815 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:29:40,815 - __main__ - INFO -   - Puntuación: 94
+2025-08-06 21:29:40,815 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:40,849 - __main__ - INFO - Información extraída:
+2025-08-06 21:29:40,850 - __main__ - INFO -   - Empresa: Towerbank Intemational, Inc
+2025-08-06 21:29:40,850 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:29:40,850 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:29:40,850 - __main__ - INFO -   - Email: None
+2025-08-06 21:29:40,850 - __main__ - INFO -   - Puesto: Opción Al Trabajo De Graduación
+2025-08-06 21:29:40,868 - __main__ - INFO - OFERTA #4: Towerbank Intemational, Inc
+2025-08-06 21:29:40,868 - __main__ - INFO - Progreso: 9/10 (90.0%) - Ofertas: 4
+2025-08-06 21:29:40,868 - __main__ - INFO - Procesando post 10: https://www.instagram.com/utpfisc/p/DM1UzkQsS0u/
+2025-08-06 21:29:41,294 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_10.png
+2025-08-06 21:29:41,566 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHmo6Mi6drZ99mhnMD7tFy32wDw-Gk0a2qdoD9UojtfpXmoAbU9ZQYte_JmsMtI35o&_nc_ohc=rsnxtUZ-uDUQ7kNvwFn9Nu2&_nc_gid=n76n7VmjziuAF50Hg5fOXA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfWAtHHUcvWAJ2en8KRIpfeEN7RiePPASHl5oChttuQgsg&oe=6899E152&_nc_sid=fc8dfb
+2025-08-06 21:29:42,413 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_cd777231.png
+2025-08-06 21:29:46,027 - src.image_processing.ocr - INFO - Texto extraído con 809 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:29:46,028 - __main__ - INFO - Texto extraído (809 caracteres): 1 - Vo mn.
+o DO O Ja ¡077 :
+Framework O at y
+Desarrollo  Fróly po UN "Angular, nest jsjs
+Base de data 7 ,
+SS . RP Is RESTFUL >
+0 dad con herramientas de integración y Conocirg Docker.
+e Entendi a iyoc...
+2025-08-06 21:29:46,031 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:29:46,032 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:29:46,032 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:29:46,032 - __main__ - INFO -   - Puntuación: 62
+2025-08-06 21:29:46,032 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:29:46,046 - __main__ - INFO - Información extraída:
+2025-08-06 21:29:46,046 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:29:46,047 - __main__ - INFO -   - Industria: None
+2025-08-06 21:29:46,047 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:29:46,047 - __main__ - INFO -   - Email: None
+2025-08-06 21:29:46,047 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:29:46,063 - __main__ - INFO - OFERTA #5: None
+2025-08-06 21:29:46,063 - __main__ - INFO - Progreso: 10/10 (100.0%) - Ofertas: 5
+2025-08-06 21:29:46,063 - __main__ - INFO - 
+=== RESUMEN DE RESULTADOS ===
+2025-08-06 21:29:46,064 - __main__ - INFO - Posts procesados: 10
+2025-08-06 21:29:46,064 - __main__ - INFO - Posts duplicados: 0
+2025-08-06 21:29:46,064 - __main__ - INFO - Ofertas laborales encontradas: 5
+2025-08-06 21:29:46,065 - __main__ - INFO - Tasa de éxito: 50.0%
+2025-08-06 21:29:46,080 - __main__ - INFO - Total posts en BD: 10
+2025-08-06 21:29:46,080 - __main__ - INFO - Ofertas activas: 5
+2025-08-06 21:29:46,080 - __main__ - INFO - Por tipo de trabajo:
+2025-08-06 21:29:46,080 - __main__ - INFO -   - Práctica Laboral: 2
+2025-08-06 21:29:46,081 - __main__ - INFO -   - Práctica Profesional: 2
+2025-08-06 21:29:46,081 - __main__ - INFO -   - Vacante: 1
+2025-08-06 21:29:46,081 - __main__ - INFO - Por industria:
+2025-08-06 21:29:46,081 - __main__ - INFO -   - aviación: 1
+2025-08-06 21:29:46,081 - __main__ - INFO -   - tecnología: 2
+2025-08-06 21:29:46,082 - __main__ - INFO - 
+Ofertas encontradas en esta ejecución:
+2025-08-06 21:29:46,082 - __main__ - INFO -  1. Copa Airhnes
+2025-08-06 21:29:46,082 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:29:46,082 - __main__ - INFO - 
+2025-08-06 21:29:46,082 - __main__ - INFO -  2. GRUPO MANZ, S. A
+2025-08-06 21:29:46,082 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:29:46,083 - __main__ - INFO - 
+2025-08-06 21:29:46,083 - __main__ - INFO -  3. Empresa no identificada
+2025-08-06 21:29:46,083 - __main__ - INFO -      Tipo: Vacante
+2025-08-06 21:29:46,083 - __main__ - INFO - 
+2025-08-06 21:29:46,083 - __main__ - INFO -  4. Towerbank Intemational, Inc
+2025-08-06 21:29:46,083 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:29:46,084 - __main__ - INFO - 
+2025-08-06 21:29:46,084 - __main__ - INFO -  5. Empresa no identificada
+2025-08-06 21:29:46,084 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:29:46,084 - __main__ - INFO - 
+2025-08-06 21:29:46,085 - __main__ - INFO - === PROCESAMIENTO COMPLETADO EXITOSAMENTE ===
+2025-08-06 21:29:48,450 - src.scraper.instagram_scraper - INFO - 🔒 Navegador cerrado correctamente
+2025-08-06 21:29:48,450 - __main__ - INFO - Recursos liberados correctamente
+2025-08-06 21:43:04,355 - __main__ - INFO - === CONFIGURACIÓN ===
+2025-08-06 21:43:04,355 - __main__ - INFO - Posts a procesar: 10
+2025-08-06 21:43:04,355 - __main__ - INFO - Tamaño de lote: 10
+2025-08-06 21:43:04,355 - __main__ - INFO - Modo headless: No
+2025-08-06 21:43:04,356 - __main__ - INFO - Limpiar entorno: Sí
+2025-08-06 21:43:04,356 - __main__ - INFO - Limpiando entorno para nueva ejecución...
+2025-08-06 21:43:04,356 - __main__ - INFO - Limpiando directorio: debug_images
+2025-08-06 21:43:04,360 - __main__ - INFO - Limpiando directorio: debug_images_processed
+2025-08-06 21:43:04,364 - __main__ - INFO - Limpiando directorio: debug_texts
+2025-08-06 21:43:04,368 - __main__ - INFO - Limpiando directorio: debug_analysis
+2025-08-06 21:43:04,372 - __main__ - INFO - Limpieza completada
+2025-08-06 21:43:04,372 - __main__ - INFO - Limpiando base de datos...
+2025-08-06 21:43:04,413 - __main__ - INFO - Base de datos limpiada correctamente
+2025-08-06 21:43:04,413 - __main__ - INFO - === INICIANDO ANÁLISIS DE OFERTAS LABORALES ===
+2025-08-06 21:43:04,413 - __main__ - INFO - Cuenta objetivo: utpfisc
+2025-08-06 21:43:04,414 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-06 21:43:06,180 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-06 21:43:06,183 - __main__ - INFO - Iniciando proceso de login...
+2025-08-06 21:43:21,490 - src.scraper.instagram_scraper - INFO - 🍪 Sesión cargada exitosamente desde cookies
+2025-08-06 21:43:21,490 - __main__ - INFO - Navegando a la cuenta objetivo...
+2025-08-06 21:43:21,495 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-06 21:43:26,707 - __main__ - INFO - CONFIGURACIÓN AUTOMÁTICA:
+2025-08-06 21:43:26,707 - __main__ - INFO -    Total posts: 10
+2025-08-06 21:43:26,707 - __main__ - INFO -    Lote scraping: 10
+2025-08-06 21:43:26,708 - __main__ - INFO -    Lote procesamiento: 10
+2025-08-06 21:43:26,708 - __main__ - INFO -    Pausas: 1-3s
+2025-08-06 21:43:26,708 - __main__ - INFO - Lote 1: extrayendo 10 posts...
+2025-08-06 21:43:26,709 - src.scraper.instagram_scraper - INFO - 🚀 Iniciando extracción de 10 posts (MÉTODO ANTI-DUPLICADOS)
+2025-08-06 21:43:26,716 - src.scraper.instagram_scraper - INFO - 📥 Obteniendo URLs en orden cronológico...
+2025-08-06 21:43:33,835 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 12
+2025-08-06 21:43:36,896 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 24
+2025-08-06 21:43:39,901 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 6 URLs nuevas. Total: 30
+2025-08-06 21:43:39,901 - src.scraper.instagram_scraper - INFO - ✅ URLs cronológicas obtenidas: 30
+2025-08-06 21:43:39,901 - src.scraper.instagram_scraper - INFO - 📋 URLs únicas para procesar: 10
+2025-08-06 21:43:39,902 - src.scraper.instagram_scraper - INFO - 📊 URLs ya procesadas anteriormente: 0
+2025-08-06 21:43:39,906 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 1/10: DM-oH96zsSi
+2025-08-06 21:43:44,812 - src.scraper.instagram_scraper - INFO - ✅ Post 1 extraído: DM-oH96zsSi
+2025-08-06 21:43:47,676 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 2/10: DM-n2qOTBkJ
+2025-08-06 21:43:52,264 - src.scraper.instagram_scraper - INFO - ✅ Post 2 extraído: DM-n2qOTBkJ
+2025-08-06 21:43:55,225 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 3/10: DM8lPfuTi5D
+2025-08-06 21:43:59,510 - src.scraper.instagram_scraper - INFO - ✅ Post 3 extraído: DM8lPfuTi5D
+2025-08-06 21:44:03,206 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 4/10: DM8kjf3s30L
+2025-08-06 21:44:06,621 - src.scraper.instagram_scraper - INFO - ✅ Post 4 extraído: DM8kjf3s30L
+2025-08-06 21:44:08,902 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 5/10: DM8NFcxM5Dd
+2025-08-06 21:44:11,806 - src.scraper.instagram_scraper - INFO - ✅ Post 5 extraído: DM8NFcxM5Dd
+2025-08-06 21:44:14,114 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 6/10: DM8KRPnzVZt
+2025-08-06 21:44:17,852 - src.scraper.instagram_scraper - INFO - ✅ Post 6 extraído: DM8KRPnzVZt
+2025-08-06 21:44:21,694 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 7/10: DM8AtuSsWAN
+2025-08-06 21:44:25,156 - src.scraper.instagram_scraper - INFO - ✅ Post 7 extraído: DM8AtuSsWAN
+2025-08-06 21:44:27,818 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 8/10: DM1VcdFM1X3
+2025-08-06 21:44:33,114 - src.scraper.instagram_scraper - INFO - ✅ Post 8 extraído: DM1VcdFM1X3
+2025-08-06 21:44:35,402 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 9/10: DM1VJauMBiT
+2025-08-06 21:44:42,237 - src.scraper.instagram_scraper - INFO - ✅ Post 9 extraído: DM1VJauMBiT
+2025-08-06 21:44:44,922 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 10/10: DM1UzkQsS0u
+2025-08-06 21:44:48,816 - src.scraper.instagram_scraper - INFO - ✅ Post 10 extraído: DM1UzkQsS0u
+2025-08-06 21:44:48,816 - src.scraper.instagram_scraper - INFO - 🎉 Extracción completada: 10 posts únicos extraídos
+2025-08-06 21:44:48,816 - src.scraper.instagram_scraper - INFO - 📊 Total procesados en la sesión: 10
+2025-08-06 21:44:48,817 - __main__ - INFO - Lote 1: 10 posts únicos extraídos
+2025-08-06 21:44:48,817 - __main__ - INFO - EXTRACCIÓN COMPLETADA: 10 posts únicos obtenidos
+2025-08-06 21:44:48,817 - __main__ - INFO - Procesando lote 1/1
+2025-08-06 21:44:48,817 - __main__ - INFO - Procesando post 1: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
+2025-08-06 21:44:49,193 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-06 21:44:49,555 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/528301474_1194902705775288_7562878248844204705_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGajfqbm-5WQugqxe9qHjUHnuVekQX00bb5l_05cgbC0KUoAGkL0Hjhs10LxUuoFV0&_nc_ohc=urbz49Pe0CUQ7kNvwH4rJj3&_nc_gid=HYMeF1KAfei1RU-zvhobig&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NTIxMzg3MjA0NzI2Ng%3D%3D.3-ccb7-5&oh=00_AfW1Adiwu4-EkUhmpy-G9Wd_1ob9bSGKfnJStHfvSv9Cug&oe=689A00E1&_nc_sid=fc8dfb
+2025-08-06 21:44:50,254 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_4747b460.png
+2025-08-06 21:44:56,015 - src.image_processing.ocr - INFO - Texto extraído con 1866 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:44:56,016 - __main__ - INFO - Texto extraído (1866 caracteres): ml
+“za var
+LA o »
+Práctica Laboral (Epi (45 corsatrines
+3 IE t Cargo HEN.
+Pt NES
+A
+Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
+Contacto: Jovani Mendoza | Analista de Experiencia al C...
+2025-08-06 21:44:56,023 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:44:56,023 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:44:56,023 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:44:56,023 - __main__ - INFO -   - Puntuación: 111
+2025-08-06 21:44:56,024 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:44:56,075 - __main__ - INFO - Información extraída:
+2025-08-06 21:44:56,076 - __main__ - INFO -   - Empresa: Copa Airhnes
+2025-08-06 21:44:56,076 - __main__ - INFO -   - Industria: aviación
+2025-08-06 21:44:56,076 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:44:56,076 - __main__ - INFO -   - Email: None
+2025-08-06 21:44:56,076 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:44:56,098 - __main__ - INFO - OFERTA #1: Copa Airhnes
+2025-08-06 21:44:56,099 - __main__ - INFO - Progreso: 1/10 (10.0%) - Ofertas: 1
+2025-08-06 21:44:56,099 - __main__ - INFO - Procesando post 2: https://www.instagram.com/utpfisc/p/DM-n2qOTBkJ/
+2025-08-06 21:44:56,487 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-06 21:44:56,744 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527182964_1194901062442119_9161717728736133745_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QFsbUBkwUEujJG9rcsk1QqLyGA8-j29-0CWZAYnlFuGBjVGI6MeFa5h2YQgHrcE_os&_nc_ohc=cgZ2JZZ2TPUQ7kNvwGpGF8F&_nc_gid=bkvZZOXSYk64XqbLoc37rQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NDAyNDQ5MzA4Njk4NQ%3D%3D.3-ccb7-5&oh=00_AfUzYZqfoQ6YRKq82wc9Ut1gL7egPNFLs-lFaPXPHYupvQ&oe=6899D66F&_nc_sid=fc8dfb
+2025-08-06 21:44:57,524 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_ce34f6b3.png
+2025-08-06 21:45:04,256 - src.image_processing.ocr - INFO - Texto extraído con 2325 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:04,257 - __main__ - INFO - Texto extraído (2325 caracteres): ml
+epi NA
+Práctica Laboral O (E: Dj MANZon0U
+A om;
+Empresa: GRUPO MANZ, S. A.
+Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
+Móvil: +(507) 6647-1366
+GRUPO MANZ está ofreciendo o...
+2025-08-06 21:45:04,261 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:04,261 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:45:04,262 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:45:04,262 - __main__ - INFO -   - Puntuación: 121
+2025-08-06 21:45:04,262 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:04,288 - __main__ - INFO - Información extraída:
+2025-08-06 21:45:04,288 - __main__ - INFO -   - Empresa: GRUPO MANZ, S. A
+2025-08-06 21:45:04,288 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:45:04,289 - __main__ - INFO -   - Contacto: Lcda. Ehzabeth Rodriguez Talent Development
+2025-08-06 21:45:04,289 - __main__ - INFO -   - Email: None
+2025-08-06 21:45:04,289 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:45:04,303 - __main__ - INFO - OFERTA #2: GRUPO MANZ, S. A
+2025-08-06 21:45:04,303 - __main__ - INFO - Progreso: 2/10 (20.0%) - Ofertas: 2
+2025-08-06 21:45:04,303 - __main__ - INFO - Procesando post 3: https://www.instagram.com/utpfisc/p/DM8lPfuTi5D/?img_index=1
+2025-08-06 21:45:04,621 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-06 21:45:04,864 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/527559289_1194271459171746_4211385132613038168_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2QF5K2_VjgMFTpeW_lljUguAAxp4UU8096q5B-3H2zJxRdo7FdUmoOZOJx9NEiBHzxs&_nc_ohc=bOiwSvdOgPQQ7kNvwHWh0XP&_nc_gid=n0RKanBX9JofEomWywr08Q&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4OTU1NzAxNDY3OTk2Mw%3D%3D.3-ccb7-5&oh=00_AfUJyRkTN8xXIyQFMcB8fuNY6ODJdJGWt_zuTldcVr8QmQ&oe=6899E1D5&_nc_sid=fc8dfb
+2025-08-06 21:45:06,024 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_982a73c9.png
+2025-08-06 21:45:08,066 - src.image_processing.ocr - INFO - Texto extraído con 266 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:08,067 - __main__ - INFO - Texto extraído (266 caracteres): AS
+| PYTHON + NETCONF Y =
+IGRP PARA IPV48%
+2 t
+. Milo rupo No 6 A A
+e . CN ¿> rontes: 7] Z y , NN
+: : O eN Ao rn 70.107082 NA 3 sq. e En / 4
+E re A Nu Le
+A Fer ¿$ ul 9.756-1052 MN 4 2
+- ESA k,. Nathal...
+2025-08-06 21:45:08,070 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:08,070 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:45:08,071 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:45:08,071 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:45:08,071 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:08,094 - __main__ - INFO - Progreso: 3/10 (30.0%) - Ofertas: 2
+2025-08-06 21:45:08,094 - __main__ - INFO - Procesando post 4: https://www.instagram.com/utpfisc/p/DM8kjf3s30L/?img_index=1
+2025-08-06 21:45:08,325 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-06 21:45:08,450 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527986290_1194267922505433_3725496782062260818_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHc10cqeI2n3-5i9VJjsaP-aFDsI9A0bFaARRK_Wvi_YZpxvZDtu9NHQeF7gOIhtHk&_nc_ohc=xEYc6cgaGiwQ7kNvwF19AzS&_nc_gid=JNr-RT7x-s9QbkgqofWF3Q&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4NjU1MTM5MTE2ODU3MA%3D%3D.3-ccb7-5&oh=00_AfXzVQz_UKEngQbuHovdi5tFJiOBv-pH-9QCAHjWQ-NoaQ&oe=6899FD3B&_nc_sid=fc8dfb
+2025-08-06 21:45:09,571 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_baa1ba19.png
+2025-08-06 21:45:11,555 - src.image_processing.ocr - INFO - Texto extraído con 173 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:11,556 - __main__ - INFO - Texto extraído (173 caracteres): un |
+MA
+fa Chatbot+Phyton
+— > Y ' . e .
+0 t | +netmiko/Paramiko
+| Ca Por:Daniela Vargas |
+l a Heydher Herrera
+Brandan Olivarren |
+Y Eduardo Lee
+; 'h Is241 |) >
+z = E
+LL ná
+e...
+2025-08-06 21:45:11,558 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:11,558 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:45:11,558 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:45:11,558 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:45:11,559 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:11,580 - __main__ - INFO - Progreso: 4/10 (40.0%) - Ofertas: 2
+2025-08-06 21:45:11,580 - __main__ - INFO - Procesando post 5: https://www.instagram.com/utpfisc/p/DM8NFcxM5Dd/
+2025-08-06 21:45:12,029 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-06 21:45:12,427 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528467658_1194150789183813_5105979718412573731_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGELJrGZ5UHY82SwusRz7tyq3EGmyX8RE2huKKq32-4869gJpJ22ZTaXyYnBebZXPk&_nc_ohc=jlnq5FdEBqgQ7kNvwHlb-g7&_nc_gid=3Hb_YptJrpRE0r-3LmAaDA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg4MzM0MzYyOTIyNjIwNQ%3D%3D.3-ccb7-5&oh=00_AfWuKLUk1EkqkFA2Z0h2U1M-AslV5I4WdTCp2fKsJ0QHXw&oe=6899F8B2&_nc_sid=fc8dfb
+2025-08-06 21:45:13,351 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_f591bbbd.png
+2025-08-06 21:45:17,576 - src.image_processing.ocr - INFO - Texto extraído con 932 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:17,577 - __main__ - INFO - Texto extraído (932 caracteres): Talleres virtuales 40
+Dirigido a estudiantes de UTP - FISC y) 3 +
+de 4to año Ps )S y
+Pueden participar estudiantes de Centros Regionales AAN E Ed Y
+A E) 4 :
+Banco General y la de wo :
+Facultad de Inge...
+2025-08-06 21:45:17,585 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:17,586 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:45:17,586 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:45:17,586 - __main__ - INFO -   - Puntuación: -20
+2025-08-06 21:45:17,586 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:17,607 - __main__ - INFO - Progreso: 5/10 (50.0%) - Ofertas: 2
+2025-08-06 21:45:17,607 - __main__ - INFO - Procesando post 6: https://www.instagram.com/utpfisc/p/DM8KRPnzVZt/
+2025-08-06 21:45:18,022 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_6.png
+2025-08-06 21:45:18,310 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527112192_1194134755852083_4063797911794547060_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QFWrYEpEAUNRS0sfn9-53JTt-scfayss60KNDw4qdK0QjAW1l8BO-Wu-MN0SpsqLuE&_nc_ohc=ZtKYG_iuVlkQ7kNvwHwUwYb&_nc_gid=OTp8X1Gnu5xRSZd83cOo-A&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg3MDk2MDAwNzA3NTQzNw%3D%3D.3-ccb7-5&oh=00_AfX7sPT5kOiEJZI3QaytwmeLCWLqKK3cDBeXyRXopXHtoQ&oe=6899F540&_nc_sid=fc8dfb
+2025-08-06 21:45:19,198 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_d6eae5ef.png
+2025-08-06 21:45:22,524 - src.image_processing.ocr - INFO - Texto extraído con 1074 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:22,525 - __main__ - INFO - Texto extraído (1074 caracteres): ; : NN e : : NN A 0 aa
+' e Narcos ' : 5 o PSUCO AL ] 1
+SS
+A + Auditoría Ste . "
+gunas de las fuficion BBION en el área:
+A + Ana SUN We Tiesgos de TI, incluyendo seguridad de la informació Zo lidad del...
+2025-08-06 21:45:22,530 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:22,530 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:45:22,530 - __main__ - INFO -   - Tipo: Vacante
+2025-08-06 21:45:22,530 - __main__ - INFO -   - Puntuación: 57
+2025-08-06 21:45:22,531 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:22,577 - __main__ - INFO - Información extraída:
+2025-08-06 21:45:22,577 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:45:22,577 - __main__ - INFO -   - Industria: None
+2025-08-06 21:45:22,577 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:45:22,577 - __main__ - INFO -   - Email: None
+2025-08-06 21:45:22,578 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:45:22,593 - __main__ - INFO - OFERTA #3: None
+2025-08-06 21:45:22,593 - __main__ - INFO - Progreso: 6/10 (60.0%) - Ofertas: 3
+2025-08-06 21:45:22,594 - __main__ - INFO - Procesando post 7: https://www.instagram.com/utpfisc/p/DM8AtuSsWAN/
+2025-08-06 21:45:22,998 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_7.png
+2025-08-06 21:45:23,264 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528722669_1194074402524785_4780936680842938165_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFkh67vOvvUx40jRnmuX6O0uyGMIFgBb9fcnkVdLcwkcxSWepRLmWKFJyMeCBpfyh8&_nc_ohc=30oFyND_TH4Q7kNvwFWRJBj&_nc_gid=gJu7Q_996M8tXUoN4e-epg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTgyODkzNjYxOTE1NTQ2OQ%3D%3D.3-ccb7-5&oh=00_AfWNVCeWhJlIG6YFE8RrxykZVjY_2PYbY7MZSDVOxNAwyQ&oe=6899CB96&_nc_sid=fc8dfb
+2025-08-06 21:45:24,193 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_e40cbd3b.png
+2025-08-06 21:45:29,834 - src.image_processing.ocr - INFO - Texto extraído con 1740 caracteres. Mejor configuración: --psm 4 --oem 3 -l spa
+2025-08-06 21:45:29,835 - __main__ - INFO - Texto extraído (1740 caracteres): Talleres virtuales
+Dirigido a estudiantes de UTP - FISC
+de 4to año
+Pueden participar estudiantes de Centros Regionales ¿
+Banco General y la
+Facultad de Ingenieria de Sistemas Computacionales de la
+Uni...
+2025-08-06 21:45:29,839 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:29,839 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:45:29,839 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:45:29,839 - __main__ - INFO -   - Puntuación: 2
+2025-08-06 21:45:29,839 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:29,861 - __main__ - INFO - Progreso: 7/10 (70.0%) - Ofertas: 3
+2025-08-06 21:45:29,861 - __main__ - INFO - Procesando post 8: https://www.instagram.com/utpfisc/p/DM1VcdFM1X3/
+2025-08-06 21:45:30,183 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_8.png
+2025-08-06 21:45:30,434 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QER9k45Gyq7WmL60xX5zlboem-sxRWB86mNZ7SlD6_cOo5SYVC5ocbuZdUvWX3o_H0&_nc_ohc=9R-ATuwxP5IQ7kNvwENrtGv&_nc_gid=y2t6ly80Kpen8JhxEEL_Xw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfXpCX26ahOofqhgamQvLAecTpzmhYx4a5ueoEvvaXMSfg&oe=6899F29B&_nc_sid=fc8dfb
+2025-08-06 21:45:31,259 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_d7c00905.png
+2025-08-06 21:45:38,752 - src.image_processing.ocr - INFO - Texto extraído con 3002 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:38,752 - __main__ - INFO - Texto extraído (3002 caracteres): Me . . 2... . ii
+e Universidad Tecnológica de Panamá YN
+5 5 . . , . e a
+z Ep $ . Vicerrectoría Académica ol >
+1L¿ e Programación de matrícula para el Il Semestre 2025 ASA
+10 SEAS
+Atención: viernes 8 d...
+2025-08-06 21:45:38,758 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:38,758 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:45:38,758 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:45:38,758 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:45:38,758 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:38,779 - __main__ - INFO - Progreso: 8/10 (80.0%) - Ofertas: 3
+2025-08-06 21:45:38,779 - __main__ - INFO - Procesando post 9: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
+2025-08-06 21:45:39,091 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_9.png
+2025-08-06 21:45:39,329 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QG5zD6Sg5laqTpR8ds4AsclAEP6q7RdnjZJ3ivF6OxIqMQrTOMlO-fIQjom7ajGRYA&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=mue6c8IeOQRaWMsBYoKg8w&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfUBD0VfHd9H7F6cXYg-HTido8m9Oyd4AroTjgbU8RhRfQ&oe=6899D17A&_nc_sid=fc8dfb
+2025-08-06 21:45:40,106 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_8a6a21d2.png
+2025-08-06 21:45:45,801 - src.image_processing.ocr - INFO - Texto extraído con 2029 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:45,802 - __main__ - INFO - Texto extraído (2029 caracteres): ml
+r o . PA Y D
+: É
+Práctica Profesional FP; ($4 Wowervar:
+rt ONES
+A
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
+Móvil: +(507) 6550-6473
+Towerbank está...
+2025-08-06 21:45:45,807 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:45,807 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:45:45,807 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:45:45,807 - __main__ - INFO -   - Puntuación: 94
+2025-08-06 21:45:45,808 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:45,853 - __main__ - INFO - Información extraída:
+2025-08-06 21:45:45,854 - __main__ - INFO -   - Empresa: Towerbank Intemational, Inc
+2025-08-06 21:45:45,854 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:45:45,854 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:45:45,854 - __main__ - INFO -   - Email: None
+2025-08-06 21:45:45,855 - __main__ - INFO -   - Puesto: Opción Al Trabajo De Graduación
+2025-08-06 21:45:45,872 - __main__ - INFO - OFERTA #4: Towerbank Intemational, Inc
+2025-08-06 21:45:45,872 - __main__ - INFO - Progreso: 9/10 (90.0%) - Ofertas: 4
+2025-08-06 21:45:45,873 - __main__ - INFO - Procesando post 10: https://www.instagram.com/utpfisc/p/DM1UzkQsS0u/
+2025-08-06 21:45:46,320 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_10.png
+2025-08-06 21:45:46,551 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFPUrw83LD9H94BlpsmNcfa2NofOchc1X5B-cPdX7eLLqzk7RuqR50-TuWn_zyH7Bg&_nc_ohc=rsnxtUZ-uDUQ7kNvwFn9Nu2&_nc_gid=ieOH6MDNs3FzodP87L9zaQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfWfeTksj5hVlrdBu4aOd42OvFHtOKt3eIDRR04avo8UxA&oe=6899E152&_nc_sid=fc8dfb
+2025-08-06 21:45:47,428 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_fa8966a8.png
+2025-08-06 21:45:50,954 - src.image_processing.ocr - INFO - Texto extraído con 809 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:45:50,955 - __main__ - INFO - Texto extraído (809 caracteres): 1 - Vo mn.
+o DO O Ja ¡077 :
+Framework O at y
+Desarrollo  Fróly po UN "Angular, nest jsjs
+Base de data 7 ,
+SS . RP Is RESTFUL >
+0 dad con herramientas de integración y Conocirg Docker.
+e Entendi a iyoc...
+2025-08-06 21:45:50,964 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:45:50,964 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:45:50,965 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:45:50,965 - __main__ - INFO -   - Puntuación: 62
+2025-08-06 21:45:50,965 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:45:50,990 - __main__ - INFO - Información extraída:
+2025-08-06 21:45:50,990 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:45:50,990 - __main__ - INFO -   - Industria: None
+2025-08-06 21:45:50,991 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:45:50,991 - __main__ - INFO -   - Email: None
+2025-08-06 21:45:50,991 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:45:51,010 - __main__ - INFO - OFERTA #5: None
+2025-08-06 21:45:51,010 - __main__ - INFO - Progreso: 10/10 (100.0%) - Ofertas: 5
+2025-08-06 21:45:51,011 - __main__ - INFO - 
+=== RESUMEN DE RESULTADOS ===
+2025-08-06 21:45:51,012 - __main__ - INFO - Posts procesados: 10
+2025-08-06 21:45:51,013 - __main__ - INFO - Posts duplicados: 0
+2025-08-06 21:45:51,013 - __main__ - INFO - Ofertas laborales encontradas: 5
+2025-08-06 21:45:51,013 - __main__ - INFO - Tasa de éxito: 50.0%
+2025-08-06 21:45:51,033 - __main__ - INFO - Total posts en BD: 10
+2025-08-06 21:45:51,033 - __main__ - INFO - Ofertas activas: 5
+2025-08-06 21:45:51,034 - __main__ - INFO - Por tipo de trabajo:
+2025-08-06 21:45:51,035 - __main__ - INFO -   - Práctica Laboral: 2
+2025-08-06 21:45:51,035 - __main__ - INFO -   - Práctica Profesional: 2
+2025-08-06 21:45:51,035 - __main__ - INFO -   - Vacante: 1
+2025-08-06 21:45:51,036 - __main__ - INFO - Por industria:
+2025-08-06 21:45:51,036 - __main__ - INFO -   - aviación: 1
+2025-08-06 21:45:51,036 - __main__ - INFO -   - tecnología: 2
+2025-08-06 21:45:51,036 - __main__ - INFO - 
+Ofertas encontradas en esta ejecución:
+2025-08-06 21:45:51,037 - __main__ - INFO -  1. Copa Airhnes
+2025-08-06 21:45:51,037 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:45:51,038 - __main__ - INFO - 
+2025-08-06 21:45:51,038 - __main__ - INFO -  2. GRUPO MANZ, S. A
+2025-08-06 21:45:51,038 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:45:51,038 - __main__ - INFO - 
+2025-08-06 21:45:51,039 - __main__ - INFO -  3. Empresa no identificada
+2025-08-06 21:45:51,039 - __main__ - INFO -      Tipo: Vacante
+2025-08-06 21:45:51,039 - __main__ - INFO - 
+2025-08-06 21:45:51,039 - __main__ - INFO -  4. Towerbank Intemational, Inc
+2025-08-06 21:45:51,039 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:45:51,040 - __main__ - INFO - 
+2025-08-06 21:45:51,040 - __main__ - INFO -  5. Empresa no identificada
+2025-08-06 21:45:51,040 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:45:51,040 - __main__ - INFO - 
+2025-08-06 21:45:51,041 - __main__ - INFO - === PROCESAMIENTO COMPLETADO EXITOSAMENTE ===
+2025-08-06 21:45:53,528 - src.scraper.instagram_scraper - INFO - 🔒 Navegador cerrado correctamente
+2025-08-06 21:45:53,528 - __main__ - INFO - Recursos liberados correctamente
+2025-08-06 21:54:26,665 - __main__ - INFO - === CONFIGURACIÓN ===
+2025-08-06 21:54:26,665 - __main__ - INFO - Posts a procesar: 10
+2025-08-06 21:54:26,665 - __main__ - INFO - Tamaño de lote: 10
+2025-08-06 21:54:26,665 - __main__ - INFO - Modo headless: No
+2025-08-06 21:54:26,665 - __main__ - INFO - Limpiar entorno: Sí
+2025-08-06 21:54:26,665 - __main__ - INFO - Limpiando entorno para nueva ejecución...
+2025-08-06 21:54:26,666 - __main__ - INFO - Limpiando directorio: debug_images
+2025-08-06 21:54:26,670 - __main__ - INFO - Limpiando directorio: debug_images_processed
+2025-08-06 21:54:26,673 - __main__ - INFO - Limpiando directorio: debug_texts
+2025-08-06 21:54:26,677 - __main__ - INFO - Limpiando directorio: debug_analysis
+2025-08-06 21:54:26,680 - __main__ - INFO - Limpieza completada
+2025-08-06 21:54:26,681 - __main__ - INFO - Limpiando base de datos...
+2025-08-06 21:54:26,720 - __main__ - INFO - Base de datos limpiada correctamente
+2025-08-06 21:54:26,720 - __main__ - INFO - === INICIANDO ANÁLISIS DE OFERTAS LABORALES ===
+2025-08-06 21:54:26,720 - __main__ - INFO - Cuenta objetivo: utpfisc
+2025-08-06 21:54:26,721 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-06 21:54:28,359 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-06 21:54:28,364 - __main__ - INFO - Iniciando proceso de login...
+2025-08-06 21:54:47,056 - src.scraper.instagram_scraper - INFO - 🍪 Sesión cargada exitosamente desde cookies
+2025-08-06 21:54:47,057 - __main__ - INFO - Navegando a la cuenta objetivo...
+2025-08-06 21:54:47,061 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-06 21:54:52,292 - __main__ - INFO - CONFIGURACIÓN AUTOMÁTICA:
+2025-08-06 21:54:52,292 - __main__ - INFO -    Total posts: 10
+2025-08-06 21:54:52,293 - __main__ - INFO -    Lote scraping: 10
+2025-08-06 21:54:52,293 - __main__ - INFO -    Lote procesamiento: 10
+2025-08-06 21:54:52,293 - __main__ - INFO -    Pausas: 1-3s
+2025-08-06 21:54:52,293 - __main__ - INFO - Lote 1: extrayendo 10 posts...
+2025-08-06 21:54:52,294 - src.scraper.instagram_scraper - INFO - 🚀 Iniciando extracción de 10 posts (MÉTODO ANTI-DUPLICADOS)
+2025-08-06 21:54:52,304 - src.scraper.instagram_scraper - INFO - 📥 Obteniendo URLs en orden cronológico...
+2025-08-06 21:55:00,685 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 12
+2025-08-06 21:55:02,911 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 24
+2025-08-06 21:55:05,638 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 6 URLs nuevas. Total: 30
+2025-08-06 21:55:05,638 - src.scraper.instagram_scraper - INFO - ✅ URLs cronológicas obtenidas: 30
+2025-08-06 21:55:05,639 - src.scraper.instagram_scraper - INFO - 📋 URLs únicas para procesar: 10
+2025-08-06 21:55:05,639 - src.scraper.instagram_scraper - INFO - 📊 URLs ya procesadas anteriormente: 0
+2025-08-06 21:55:05,644 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 1/10: DM-oH96zsSi
+2025-08-06 21:55:09,810 - src.scraper.instagram_scraper - INFO - ✅ Post 1 extraído: DM-oH96zsSi
+2025-08-06 21:55:12,520 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 2/10: DM-n2qOTBkJ
+2025-08-06 21:55:16,089 - src.scraper.instagram_scraper - INFO - ✅ Post 2 extraído: DM-n2qOTBkJ
+2025-08-06 21:55:19,526 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 3/10: DM8lPfuTi5D
+2025-08-06 21:55:22,827 - src.scraper.instagram_scraper - INFO - ✅ Post 3 extraído: DM8lPfuTi5D
+2025-08-06 21:55:25,618 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 4/10: DM8kjf3s30L
+2025-08-06 21:55:30,519 - src.scraper.instagram_scraper - INFO - ✅ Post 4 extraído: DM8kjf3s30L
+2025-08-06 21:55:33,094 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 5/10: DM8NFcxM5Dd
+2025-08-06 21:55:37,301 - src.scraper.instagram_scraper - INFO - ✅ Post 5 extraído: DM8NFcxM5Dd
+2025-08-06 21:55:40,436 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 6/10: DM8KRPnzVZt
+2025-08-06 21:55:43,945 - src.scraper.instagram_scraper - INFO - ✅ Post 6 extraído: DM8KRPnzVZt
+2025-08-06 21:55:46,785 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 7/10: DM8AtuSsWAN
+2025-08-06 21:55:50,235 - src.scraper.instagram_scraper - INFO - ✅ Post 7 extraído: DM8AtuSsWAN
+2025-08-06 21:55:53,945 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 8/10: DM1VcdFM1X3
+2025-08-06 21:55:58,104 - src.scraper.instagram_scraper - INFO - ✅ Post 8 extraído: DM1VcdFM1X3
+2025-08-06 21:56:01,394 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 9/10: DM1VJauMBiT
+2025-08-06 21:56:05,895 - src.scraper.instagram_scraper - INFO - ✅ Post 9 extraído: DM1VJauMBiT
+2025-08-06 21:56:09,572 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 10/10: DM1UzkQsS0u
+2025-08-06 21:56:13,854 - src.scraper.instagram_scraper - INFO - ✅ Post 10 extraído: DM1UzkQsS0u
+2025-08-06 21:56:13,855 - src.scraper.instagram_scraper - INFO - 🎉 Extracción completada: 10 posts únicos extraídos
+2025-08-06 21:56:13,855 - src.scraper.instagram_scraper - INFO - 📊 Total procesados en la sesión: 10
+2025-08-06 21:56:13,855 - __main__ - INFO - Lote 1: 10 posts únicos extraídos
+2025-08-06 21:56:13,855 - __main__ - INFO - EXTRACCIÓN COMPLETADA: 10 posts únicos obtenidos
+2025-08-06 21:56:13,855 - __main__ - INFO - Procesando lote 1/1
+2025-08-06 21:56:13,855 - __main__ - INFO - Procesando post 1: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
+2025-08-06 21:56:14,732 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-06 21:56:15,150 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/528301474_1194902705775288_7562878248844204705_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHaqiIoL4LU11LHeERadF8Y2IfeYlC_hxLcmAOOoBo_vvjnfLBl6l5TacAEYcYxuMk&_nc_ohc=urbz49Pe0CUQ7kNvwH4rJj3&_nc_gid=VcBBToRthyrew_0o9690ow&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NTIxMzg3MjA0NzI2Ng%3D%3D.3-ccb7-5&oh=00_AfWJCq5iGOXVn058ahVuYp18usYvqpd-gwHUk_r5D8Wccw&oe=689A00E1&_nc_sid=fc8dfb
+2025-08-06 21:56:15,854 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_28d6b2a3.png
+2025-08-06 21:56:21,106 - src.image_processing.ocr - INFO - Texto extraído con 1866 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:56:21,107 - __main__ - INFO - Texto extraído (1866 caracteres): ml
+“za var
+LA o »
+Práctica Laboral (Epi (45 corsatrines
+3 IE t Cargo HEN.
+Pt NES
+A
+Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
+Contacto: Jovani Mendoza | Analista de Experiencia al C...
+2025-08-06 21:56:21,112 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:21,112 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:56:21,113 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:56:21,113 - __main__ - INFO -   - Puntuación: 111
+2025-08-06 21:56:21,113 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:21,164 - __main__ - INFO - Información extraída:
+2025-08-06 21:56:21,164 - __main__ - INFO -   - Empresa: Copa Airhnes
+2025-08-06 21:56:21,165 - __main__ - INFO -   - Industria: aviación
+2025-08-06 21:56:21,165 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:56:21,165 - __main__ - INFO -   - Email: None
+2025-08-06 21:56:21,165 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:56:21,184 - __main__ - INFO - OFERTA #1: Copa Airhnes
+2025-08-06 21:56:21,184 - __main__ - INFO - Progreso: 1/10 (10.0%) - Ofertas: 1
+2025-08-06 21:56:21,184 - __main__ - INFO - Procesando post 2: https://www.instagram.com/utpfisc/p/DM-n2qOTBkJ/
+2025-08-06 21:56:21,739 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-06 21:56:22,216 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527182964_1194901062442119_9161717728736133745_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QERt2B2XpmnA_YY0mZ0dSJgJkF3wDAOyLBj8umeMVz06yx0lyiwmWOxQQubnBhborw&_nc_ohc=cgZ2JZZ2TPUQ7kNvwGpGF8F&_nc_gid=YOy454X7_HJYdKGsImuhHw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NDAyNDQ5MzA4Njk4NQ%3D%3D.3-ccb7-5&oh=00_AfV74RH-I9zjM1k1tm01OdyWCHkeK-fznPU2wcDIen8lXg&oe=6899D66F&_nc_sid=fc8dfb
+2025-08-06 21:56:22,987 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_7f10e9bd.png
+2025-08-06 21:56:29,179 - src.image_processing.ocr - INFO - Texto extraído con 2325 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:56:29,180 - __main__ - INFO - Texto extraído (2325 caracteres): ml
+epi NA
+Práctica Laboral O (E: Dj MANZon0U
+A om;
+Empresa: GRUPO MANZ, S. A.
+Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
+Móvil: +(507) 6647-1366
+GRUPO MANZ está ofreciendo o...
+2025-08-06 21:56:29,186 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:29,186 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:56:29,186 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 21:56:29,186 - __main__ - INFO -   - Puntuación: 121
+2025-08-06 21:56:29,186 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:29,216 - __main__ - INFO - Información extraída:
+2025-08-06 21:56:29,217 - __main__ - INFO -   - Empresa: GRUPO MANZ, S. A
+2025-08-06 21:56:29,217 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:56:29,217 - __main__ - INFO -   - Contacto: Lcda. Ehzabeth Rodriguez Talent Development
+2025-08-06 21:56:29,217 - __main__ - INFO -   - Email: None
+2025-08-06 21:56:29,217 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:56:29,233 - __main__ - INFO - OFERTA #2: GRUPO MANZ, S. A
+2025-08-06 21:56:29,233 - __main__ - INFO - Progreso: 2/10 (20.0%) - Ofertas: 2
+2025-08-06 21:56:29,233 - __main__ - INFO - Procesando post 3: https://www.instagram.com/utpfisc/p/DM8lPfuTi5D/?img_index=1
+2025-08-06 21:56:29,560 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-06 21:56:29,803 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/527559289_1194271459171746_4211385132613038168_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2QEQIEYVz2dYakNE7X66TlxOV3ZvKQLzJtywia5UzGxLS5lfK5cas9TVcoO8mTShLA4&_nc_ohc=bOiwSvdOgPQQ7kNvwHWh0XP&_nc_gid=RxxHCI6XIwGaRBPkEDjznA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4OTU1NzAxNDY3OTk2Mw%3D%3D.3-ccb7-5&oh=00_AfXQ01hvFJKOQ_MFbqN6XBwfql-krNtZoxLNX4tis4KFuw&oe=6899E1D5&_nc_sid=fc8dfb
+2025-08-06 21:56:31,182 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_f93786e6.png
+2025-08-06 21:56:32,959 - src.image_processing.ocr - INFO - Texto extraído con 266 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:56:32,960 - __main__ - INFO - Texto extraído (266 caracteres): AS
+| PYTHON + NETCONF Y =
+IGRP PARA IPV48%
+2 t
+. Milo rupo No 6 A A
+e . CN ¿> rontes: 7] Z y , NN
+: : O eN Ao rn 70.107082 NA 3 sq. e En / 4
+E re A Nu Le
+A Fer ¿$ ul 9.756-1052 MN 4 2
+- ESA k,. Nathal...
+2025-08-06 21:56:32,963 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:32,963 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:56:32,963 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:56:32,963 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:56:32,963 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:32,986 - __main__ - INFO - Progreso: 3/10 (30.0%) - Ofertas: 2
+2025-08-06 21:56:32,986 - __main__ - INFO - Procesando post 4: https://www.instagram.com/utpfisc/p/DM8kjf3s30L/?img_index=1
+2025-08-06 21:56:33,321 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-06 21:56:33,451 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527986290_1194267922505433_3725496782062260818_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFoTYanwzDf-nJmvfSHlok2zSVEmveGWU93yLV1T0aDHT3URJXchNJqDxAKeXBMfJ8&_nc_ohc=xEYc6cgaGiwQ7kNvwF19AzS&_nc_gid=5veoeFKimPwzynV5jeiMBg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4NjU1MTM5MTE2ODU3MA%3D%3D.3-ccb7-5&oh=00_AfWG4GZOzkFqgCjbYO5qBqOEb71_0y22DzUoblafexAgnw&oe=6899FD3B&_nc_sid=fc8dfb
+2025-08-06 21:56:34,580 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_76bbbd55.png
+2025-08-06 21:56:36,333 - src.image_processing.ocr - INFO - Texto extraído con 173 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:56:36,334 - __main__ - INFO - Texto extraído (173 caracteres): un |
+MA
+fa Chatbot+Phyton
+— > Y ' . e .
+0 t | +netmiko/Paramiko
+| Ca Por:Daniela Vargas |
+l a Heydher Herrera
+Brandan Olivarren |
+Y Eduardo Lee
+; 'h Is241 |) >
+z = E
+LL ná
+e...
+2025-08-06 21:56:36,336 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:36,336 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:56:36,336 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:56:36,337 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:56:36,337 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:36,361 - __main__ - INFO - Progreso: 4/10 (40.0%) - Ofertas: 2
+2025-08-06 21:56:36,361 - __main__ - INFO - Procesando post 5: https://www.instagram.com/utpfisc/p/DM8NFcxM5Dd/
+2025-08-06 21:56:37,463 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-06 21:56:37,966 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528467658_1194150789183813_5105979718412573731_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QH1IcQrEF8oTZuhyumCCQZTHVydi7H48E7mnqmVEzJsuAIxW5t-Zu6pcGDG6buFVLc&_nc_ohc=jlnq5FdEBqgQ7kNvwHlb-g7&_nc_gid=iXwgjvp0RfJlh55sgaX_iw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg4MzM0MzYyOTIyNjIwNQ%3D%3D.3-ccb7-5&oh=00_AfXlc3pn_S_0wAD53uNTNgnGu1rPz9Aihjja7l4dLZSYGA&oe=6899F8B2&_nc_sid=fc8dfb
+2025-08-06 21:56:38,873 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_46d813e5.png
+2025-08-06 21:56:43,023 - src.image_processing.ocr - INFO - Texto extraído con 932 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:56:43,024 - __main__ - INFO - Texto extraído (932 caracteres): Talleres virtuales 40
+Dirigido a estudiantes de UTP - FISC y) 3 +
+de 4to año Ps )S y
+Pueden participar estudiantes de Centros Regionales AAN E Ed Y
+A E) 4 :
+Banco General y la de wo :
+Facultad de Inge...
+2025-08-06 21:56:43,027 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:43,027 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:56:43,027 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:56:43,028 - __main__ - INFO -   - Puntuación: -20
+2025-08-06 21:56:43,028 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:43,049 - __main__ - INFO - Progreso: 5/10 (50.0%) - Ofertas: 2
+2025-08-06 21:56:43,049 - __main__ - INFO - Procesando post 6: https://www.instagram.com/utpfisc/p/DM8KRPnzVZt/
+2025-08-06 21:56:43,502 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_6.png
+2025-08-06 21:56:43,851 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527112192_1194134755852083_4063797911794547060_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGJnPcusbtwxWKDVr3VEiqmjenP1bWaJBP6SEyxaWheuYhJKjJZVi8sX19V87_ak_k&_nc_ohc=ZtKYG_iuVlkQ7kNvwHwUwYb&_nc_gid=e-UQC0zfIYsQGMMM7LBnDA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg3MDk2MDAwNzA3NTQzNw%3D%3D.3-ccb7-5&oh=00_AfUSJfWSd2QJ-Uszy2FrTQ4rGwLpklrcY1hySx4QyMkxGQ&oe=6899F540&_nc_sid=fc8dfb
+2025-08-06 21:56:44,767 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_af534893.png
+2025-08-06 21:56:47,945 - src.image_processing.ocr - INFO - Texto extraído con 1074 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:56:47,946 - __main__ - INFO - Texto extraído (1074 caracteres): ; : NN e : : NN A 0 aa
+' e Narcos ' : 5 o PSUCO AL ] 1
+SS
+A + Auditoría Ste . "
+gunas de las fuficion BBION en el área:
+A + Ana SUN We Tiesgos de TI, incluyendo seguridad de la informació Zo lidad del...
+2025-08-06 21:56:47,949 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:47,949 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:56:47,950 - __main__ - INFO -   - Tipo: Vacante
+2025-08-06 21:56:47,950 - __main__ - INFO -   - Puntuación: 57
+2025-08-06 21:56:47,950 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:47,992 - __main__ - INFO - Información extraída:
+2025-08-06 21:56:47,993 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:56:47,993 - __main__ - INFO -   - Industria: None
+2025-08-06 21:56:47,993 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:56:47,994 - __main__ - INFO -   - Email: None
+2025-08-06 21:56:47,994 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:56:48,011 - __main__ - INFO - OFERTA #3: None
+2025-08-06 21:56:48,012 - __main__ - INFO - Progreso: 6/10 (60.0%) - Ofertas: 3
+2025-08-06 21:56:48,012 - __main__ - INFO - Procesando post 7: https://www.instagram.com/utpfisc/p/DM8AtuSsWAN/
+2025-08-06 21:56:48,500 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_7.png
+2025-08-06 21:56:48,924 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528722669_1194074402524785_4780936680842938165_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QEiXxBR3MKRXrzgl3PpdqEgqxP0WXRcJnozcSWYns8O5bzSAzRIbQfGOp3fqe3ZlVA&_nc_ohc=30oFyND_TH4Q7kNvwFWRJBj&_nc_gid=1RmWOPLXkFXBfqTrTS3iAA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTgyODkzNjYxOTE1NTQ2OQ%3D%3D.3-ccb7-5&oh=00_AfXv63tb4h_cIiL7W8ap9wJEaTyypkmEKTbojKVsMkfQUA&oe=689A03D6&_nc_sid=fc8dfb
+2025-08-06 21:56:49,845 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_1b6396a8.png
+2025-08-06 21:56:55,484 - src.image_processing.ocr - INFO - Texto extraído con 1740 caracteres. Mejor configuración: --psm 4 --oem 3 -l spa
+2025-08-06 21:56:55,485 - __main__ - INFO - Texto extraído (1740 caracteres): Talleres virtuales
+Dirigido a estudiantes de UTP - FISC
+de 4to año
+Pueden participar estudiantes de Centros Regionales ¿
+Banco General y la
+Facultad de Ingenieria de Sistemas Computacionales de la
+Uni...
+2025-08-06 21:56:55,489 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:56:55,490 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:56:55,490 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:56:55,490 - __main__ - INFO -   - Puntuación: 2
+2025-08-06 21:56:55,490 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:56:55,510 - __main__ - INFO - Progreso: 7/10 (70.0%) - Ofertas: 3
+2025-08-06 21:56:55,510 - __main__ - INFO - Procesando post 8: https://www.instagram.com/utpfisc/p/DM1VcdFM1X3/
+2025-08-06 21:56:55,917 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_8.png
+2025-08-06 21:56:56,237 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QErgI60cTKdQcJ6zQwyoYV8aUNcN4Tq6Y1um-QmF-6fiOkQuLUy5Q7AatLJTg2S638&_nc_ohc=9R-ATuwxP5IQ7kNvwENrtGv&_nc_gid=IQXoN5pLoGsX4dhgNdHW0A&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfWmVTm3YlB0A9C-QKTU19vhyaunXvo3ZX8s3Kw_2gOoiA&oe=6899F29B&_nc_sid=fc8dfb
+2025-08-06 21:56:57,057 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_6e40ea05.png
+2025-08-06 21:57:03,962 - src.image_processing.ocr - INFO - Texto extraído con 3002 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:57:03,963 - __main__ - INFO - Texto extraído (3002 caracteres): Me . . 2... . ii
+e Universidad Tecnológica de Panamá YN
+5 5 . . , . e a
+z Ep $ . Vicerrectoría Académica ol >
+1L¿ e Programación de matrícula para el Il Semestre 2025 ASA
+10 SEAS
+Atención: viernes 8 d...
+2025-08-06 21:57:03,970 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:57:03,971 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 21:57:03,971 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 21:57:03,971 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 21:57:03,971 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:57:03,994 - __main__ - INFO - Progreso: 8/10 (80.0%) - Ofertas: 3
+2025-08-06 21:57:03,995 - __main__ - INFO - Procesando post 9: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
+2025-08-06 21:57:04,421 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_9.png
+2025-08-06 21:57:04,691 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHnVa-qITcdiaZVAQAZwUz3-ZonZC-FLXjdcuSCD9mkX2bn4UoDQPDnUaG2tlAPb_4&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=4Z7M4QyvEobxL5N3mQIjeg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfVobxCQAkhQfyK-JeoEsy7EtzmJuOR1rWaCrCDbPtdMsA&oe=6899D17A&_nc_sid=fc8dfb
+2025-08-06 21:57:05,410 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_2ce759f5.png
+2025-08-06 21:57:10,943 - src.image_processing.ocr - INFO - Texto extraído con 2029 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:57:10,944 - __main__ - INFO - Texto extraído (2029 caracteres): ml
+r o . PA Y D
+: É
+Práctica Profesional FP; ($4 Wowervar:
+rt ONES
+A
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
+Móvil: +(507) 6550-6473
+Towerbank está...
+2025-08-06 21:57:10,948 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:57:10,948 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:57:10,948 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:57:10,949 - __main__ - INFO -   - Puntuación: 94
+2025-08-06 21:57:10,949 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:57:10,990 - __main__ - INFO - Información extraída:
+2025-08-06 21:57:10,990 - __main__ - INFO -   - Empresa: Towerbank Intemational, Inc
+2025-08-06 21:57:10,990 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 21:57:10,991 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:57:10,991 - __main__ - INFO -   - Email: None
+2025-08-06 21:57:10,991 - __main__ - INFO -   - Puesto: Opción Al Trabajo De Graduación
+2025-08-06 21:57:11,006 - __main__ - INFO - OFERTA #4: Towerbank Intemational, Inc
+2025-08-06 21:57:11,007 - __main__ - INFO - Progreso: 9/10 (90.0%) - Ofertas: 4
+2025-08-06 21:57:11,007 - __main__ - INFO - Procesando post 10: https://www.instagram.com/utpfisc/p/DM1UzkQsS0u/
+2025-08-06 21:57:11,478 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_10.png
+2025-08-06 21:57:11,844 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGyxqnW_Jb4CDASW5EmknCks1b9PNzU-fC13ly06NL4GNYmLp6zMQp_Myt7scWNJc8&_nc_ohc=rsnxtUZ-uDUQ7kNvwFn9Nu2&_nc_gid=CnlJIBRigMKiwg8szxlqtg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfUBBWwet4iFmP_U1Go2dY8wtaSLeYyeGejTnOidcEIhcw&oe=6899E152&_nc_sid=fc8dfb
+2025-08-06 21:57:12,732 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_dc58a95e.png
+2025-08-06 21:57:15,743 - src.image_processing.ocr - INFO - Texto extraído con 809 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 21:57:15,744 - __main__ - INFO - Texto extraído (809 caracteres): 1 - Vo mn.
+o DO O Ja ¡077 :
+Framework O at y
+Desarrollo  Fróly po UN "Angular, nest jsjs
+Base de data 7 ,
+SS . RP Is RESTFUL >
+0 dad con herramientas de integración y Conocirg Docker.
+e Entendi a iyoc...
+2025-08-06 21:57:15,748 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 21:57:15,749 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 21:57:15,749 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 21:57:15,749 - __main__ - INFO -   - Puntuación: 62
+2025-08-06 21:57:15,749 - __main__ - INFO -   - Estado: Activa
+2025-08-06 21:57:15,768 - __main__ - INFO - Información extraída:
+2025-08-06 21:57:15,768 - __main__ - INFO -   - Empresa: None
+2025-08-06 21:57:15,768 - __main__ - INFO -   - Industria: None
+2025-08-06 21:57:15,768 - __main__ - INFO -   - Contacto: None
+2025-08-06 21:57:15,769 - __main__ - INFO -   - Email: None
+2025-08-06 21:57:15,769 - __main__ - INFO -   - Puesto: None
+2025-08-06 21:57:15,783 - __main__ - INFO - OFERTA #5: None
+2025-08-06 21:57:15,784 - __main__ - INFO - Progreso: 10/10 (100.0%) - Ofertas: 5
+2025-08-06 21:57:15,784 - __main__ - INFO - 
+=== RESUMEN DE RESULTADOS ===
+2025-08-06 21:57:15,784 - __main__ - INFO - Posts procesados: 10
+2025-08-06 21:57:15,784 - __main__ - INFO - Posts duplicados: 0
+2025-08-06 21:57:15,784 - __main__ - INFO - Ofertas laborales encontradas: 5
+2025-08-06 21:57:15,785 - __main__ - INFO - Tasa de éxito: 50.0%
+2025-08-06 21:57:15,799 - __main__ - INFO - Total posts en BD: 10
+2025-08-06 21:57:15,799 - __main__ - INFO - Ofertas activas: 5
+2025-08-06 21:57:15,799 - __main__ - INFO - Por tipo de trabajo:
+2025-08-06 21:57:15,799 - __main__ - INFO -   - Práctica Laboral: 2
+2025-08-06 21:57:15,799 - __main__ - INFO -   - Práctica Profesional: 2
+2025-08-06 21:57:15,799 - __main__ - INFO -   - Vacante: 1
+2025-08-06 21:57:15,800 - __main__ - INFO - Por industria:
+2025-08-06 21:57:15,800 - __main__ - INFO -   - aviación: 1
+2025-08-06 21:57:15,800 - __main__ - INFO -   - tecnología: 2
+2025-08-06 21:57:15,800 - __main__ - INFO - 
+Ofertas encontradas en esta ejecución:
+2025-08-06 21:57:15,800 - __main__ - INFO -  1. Copa Airhnes
+2025-08-06 21:57:15,801 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:57:15,801 - __main__ - INFO - 
+2025-08-06 21:57:15,801 - __main__ - INFO -  2. GRUPO MANZ, S. A
+2025-08-06 21:57:15,801 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 21:57:15,801 - __main__ - INFO - 
+2025-08-06 21:57:15,802 - __main__ - INFO -  3. Empresa no identificada
+2025-08-06 21:57:15,802 - __main__ - INFO -      Tipo: Vacante
+2025-08-06 21:57:15,802 - __main__ - INFO - 
+2025-08-06 21:57:15,802 - __main__ - INFO -  4. Towerbank Intemational, Inc
+2025-08-06 21:57:15,802 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:57:15,803 - __main__ - INFO - 
+2025-08-06 21:57:15,803 - __main__ - INFO -  5. Empresa no identificada
+2025-08-06 21:57:15,803 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 21:57:15,803 - __main__ - INFO - 
+2025-08-06 21:57:15,803 - __main__ - INFO - === PROCESAMIENTO COMPLETADO EXITOSAMENTE ===
+2025-08-06 21:57:18,197 - src.scraper.instagram_scraper - INFO - 🔒 Navegador cerrado correctamente
+2025-08-06 21:57:18,198 - __main__ - INFO - Recursos liberados correctamente
+2025-08-06 22:04:58,311 - __main__ - INFO - === CONFIGURACIÓN ===
+2025-08-06 22:04:58,312 - __main__ - INFO - Posts a procesar: 10
+2025-08-06 22:04:58,312 - __main__ - INFO - Tamaño de lote: 10
+2025-08-06 22:04:58,312 - __main__ - INFO - Modo headless: No
+2025-08-06 22:04:58,312 - __main__ - INFO - Limpiar entorno: Sí
+2025-08-06 22:04:58,312 - __main__ - INFO - Limpiando entorno para nueva ejecución...
+2025-08-06 22:04:58,313 - __main__ - INFO - Limpiando directorio: debug_images
+2025-08-06 22:04:58,317 - __main__ - INFO - Limpiando directorio: debug_images_processed
+2025-08-06 22:04:58,322 - __main__ - INFO - Limpiando directorio: debug_texts
+2025-08-06 22:04:58,326 - __main__ - INFO - Limpiando directorio: debug_analysis
+2025-08-06 22:04:58,330 - __main__ - INFO - Limpieza completada
+2025-08-06 22:04:58,331 - __main__ - INFO - Limpiando base de datos...
+2025-08-06 22:04:58,369 - __main__ - INFO - Base de datos limpiada correctamente
+2025-08-06 22:04:58,369 - __main__ - INFO - === INICIANDO ANÁLISIS DE OFERTAS LABORALES ===
+2025-08-06 22:04:58,370 - __main__ - INFO - Cuenta objetivo: utpfisc
+2025-08-06 22:04:58,370 - src.scraper.instagram_scraper - INFO - Buscando ChromeDriver en: C:\Users\laura\Source\Repos\instagram-job-scraper\chromedriver.exe
+2025-08-06 22:05:00,001 - src.image_processing.ocr - INFO - Tesseract versión: 5.3.0.20221214
+2025-08-06 22:05:00,005 - __main__ - INFO - Iniciando proceso de login...
+2025-08-06 22:05:16,602 - src.scraper.instagram_scraper - INFO - 🍪 Sesión cargada exitosamente desde cookies
+2025-08-06 22:05:16,602 - __main__ - INFO - Navegando a la cuenta objetivo...
+2025-08-06 22:05:16,609 - src.scraper.instagram_scraper - INFO - Navegando a la cuenta: utpfisc
+2025-08-06 22:05:22,556 - __main__ - INFO - CONFIGURACIÓN AUTOMÁTICA:
+2025-08-06 22:05:22,557 - __main__ - INFO -    Total posts: 10
+2025-08-06 22:05:22,557 - __main__ - INFO -    Lote scraping: 10
+2025-08-06 22:05:22,557 - __main__ - INFO -    Lote procesamiento: 10
+2025-08-06 22:05:22,557 - __main__ - INFO -    Pausas: 1-3s
+2025-08-06 22:05:22,558 - __main__ - INFO - Lote 1: extrayendo 10 posts...
+2025-08-06 22:05:22,559 - src.scraper.instagram_scraper - INFO - 🚀 Iniciando extracción de 10 posts (MÉTODO ANTI-DUPLICADOS)
+2025-08-06 22:05:22,569 - src.scraper.instagram_scraper - INFO - 📥 Obteniendo URLs en orden cronológico...
+2025-08-06 22:05:29,986 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 12
+2025-08-06 22:05:32,787 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 12 URLs nuevas. Total: 24
+2025-08-06 22:05:35,278 - src.scraper.instagram_scraper - INFO - 📋 Encontradas 6 URLs nuevas. Total: 30
+2025-08-06 22:05:35,279 - src.scraper.instagram_scraper - INFO - ✅ URLs cronológicas obtenidas: 30
+2025-08-06 22:05:35,279 - src.scraper.instagram_scraper - INFO - 📋 URLs únicas para procesar: 10
+2025-08-06 22:05:35,279 - src.scraper.instagram_scraper - INFO - 📊 URLs ya procesadas anteriormente: 0
+2025-08-06 22:05:35,284 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 1/10: DM-oH96zsSi
+2025-08-06 22:05:39,626 - src.scraper.instagram_scraper - INFO - ✅ Post 1 extraído: DM-oH96zsSi
+2025-08-06 22:05:43,178 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 2/10: DM-n2qOTBkJ
+2025-08-06 22:05:48,211 - src.scraper.instagram_scraper - INFO - ✅ Post 2 extraído: DM-n2qOTBkJ
+2025-08-06 22:05:50,835 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 3/10: DM8lPfuTi5D
+2025-08-06 22:05:55,532 - src.scraper.instagram_scraper - INFO - ✅ Post 3 extraído: DM8lPfuTi5D
+2025-08-06 22:05:58,303 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 4/10: DM8kjf3s30L
+2025-08-06 22:06:02,816 - src.scraper.instagram_scraper - INFO - ✅ Post 4 extraído: DM8kjf3s30L
+2025-08-06 22:06:06,487 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 5/10: DM8NFcxM5Dd
+2025-08-06 22:06:11,539 - src.scraper.instagram_scraper - INFO - ✅ Post 5 extraído: DM8NFcxM5Dd
+2025-08-06 22:06:13,978 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 6/10: DM8KRPnzVZt
+2025-08-06 22:06:18,768 - src.scraper.instagram_scraper - INFO - ✅ Post 6 extraído: DM8KRPnzVZt
+2025-08-06 22:06:22,405 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 7/10: DM8AtuSsWAN
+2025-08-06 22:06:26,372 - src.scraper.instagram_scraper - INFO - ✅ Post 7 extraído: DM8AtuSsWAN
+2025-08-06 22:06:30,242 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 8/10: DM1VcdFM1X3
+2025-08-06 22:06:33,430 - src.scraper.instagram_scraper - INFO - ✅ Post 8 extraído: DM1VcdFM1X3
+2025-08-06 22:06:35,473 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 9/10: DM1VJauMBiT
+2025-08-06 22:06:39,817 - src.scraper.instagram_scraper - INFO - ✅ Post 9 extraído: DM1VJauMBiT
+2025-08-06 22:06:43,797 - src.scraper.instagram_scraper - INFO - 🔍 Procesando post 10/10: DM1UzkQsS0u
+2025-08-06 22:06:47,328 - src.scraper.instagram_scraper - INFO - ✅ Post 10 extraído: DM1UzkQsS0u
+2025-08-06 22:06:47,328 - src.scraper.instagram_scraper - INFO - 🎉 Extracción completada: 10 posts únicos extraídos
+2025-08-06 22:06:47,329 - src.scraper.instagram_scraper - INFO - 📊 Total procesados en la sesión: 10
+2025-08-06 22:06:47,329 - __main__ - INFO - Lote 1: 10 posts únicos extraídos
+2025-08-06 22:06:47,329 - __main__ - INFO - EXTRACCIÓN COMPLETADA: 10 posts únicos obtenidos
+2025-08-06 22:06:47,329 - __main__ - INFO - Procesando lote 1/1
+2025-08-06 22:06:47,329 - __main__ - INFO - Procesando post 1: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
+2025-08-06 22:06:47,862 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_1.png
+2025-08-06 22:06:48,229 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/528301474_1194902705775288_7562878248844204705_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHsaybIebs5sIBkwprLBBZ2IIQe6cl6CaYlO5hx6zYARtECSl9Lco3mBdxUY8PTSxQ&_nc_ohc=urbz49Pe0CUQ7kNvwH4rJj3&_nc_gid=lPxmTleeunMjNqOYBRRuJA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NTIxMzg3MjA0NzI2Ng%3D%3D.3-ccb7-5&oh=00_AfXT4xS8yaWV-WmZfcGSd5vrXtCCYWjucqtEmjiK5c9KwA&oe=689A00E1&_nc_sid=fc8dfb
+2025-08-06 22:06:48,752 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_ac4b4e6d.png
+2025-08-06 22:06:53,983 - src.image_processing.ocr - INFO - Texto extraído con 1866 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:06:53,983 - __main__ - INFO - Texto extraído (1866 caracteres): ml
+“za var
+LA o »
+Práctica Laboral (Epi (45 corsatrines
+3 IE t Cargo HEN.
+Pt NES
+A
+Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
+Contacto: Jovani Mendoza | Analista de Experiencia al C...
+2025-08-06 22:06:53,989 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:06:53,989 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 22:06:53,989 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 22:06:53,989 - __main__ - INFO -   - Puntuación: 111
+2025-08-06 22:06:53,989 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:06:54,014 - __main__ - INFO - Información extraída:
+2025-08-06 22:06:54,014 - __main__ - INFO -   - Empresa: Copa Airhnes
+2025-08-06 22:06:54,015 - __main__ - INFO -   - Industria: aviación
+2025-08-06 22:06:54,015 - __main__ - INFO -   - Contacto: Jovani Mendoza Anahsta de Experiencia al Chent
+2025-08-06 22:06:54,015 - __main__ - INFO -   - Email: None
+2025-08-06 22:06:54,015 - __main__ - INFO -   - Puesto: None
+2025-08-06 22:06:54,035 - __main__ - INFO - OFERTA #1: Copa Airhnes
+2025-08-06 22:06:54,036 - __main__ - INFO - Progreso: 1/10 (10.0%) - Ofertas: 1
+2025-08-06 22:06:54,036 - __main__ - INFO - Procesando post 2: https://www.instagram.com/utpfisc/p/DM-n2qOTBkJ/
+2025-08-06 22:06:54,480 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_2.png
+2025-08-06 22:06:54,910 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527182964_1194901062442119_9161717728736133745_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QEIAAb2zok_9WEu-Vnww_nj8zhJW7M57DRVOm8mIBL-Hgar_cPm8Ia1LWYm0ucVBUw&_nc_ohc=cgZ2JZZ2TPUQ7kNvwGpGF8F&_nc_gid=CdrXzfhBldZv5Ddb2fcgoQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NDAyNDQ5MzA4Njk4NQ%3D%3D.3-ccb7-5&oh=00_AfXGnvHWj0hMLueYoYD3KtEu4hhXu1UE38qWEUp24RbaoQ&oe=6899D66F&_nc_sid=fc8dfb
+2025-08-06 22:06:55,489 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_10c48f18.png
+2025-08-06 22:07:01,644 - src.image_processing.ocr - INFO - Texto extraído con 2325 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:01,644 - __main__ - INFO - Texto extraído (2325 caracteres): ml
+epi NA
+Práctica Laboral O (E: Dj MANZon0U
+A om;
+Empresa: GRUPO MANZ, S. A.
+Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
+Móvil: +(507) 6647-1366
+GRUPO MANZ está ofreciendo o...
+2025-08-06 22:07:01,648 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:01,648 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 22:07:01,648 - __main__ - INFO -   - Tipo: Práctica Laboral
+2025-08-06 22:07:01,648 - __main__ - INFO -   - Puntuación: 121
+2025-08-06 22:07:01,649 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:01,672 - __main__ - INFO - Información extraída:
+2025-08-06 22:07:01,672 - __main__ - INFO -   - Empresa: GRUPO MANZ, S. A
+2025-08-06 22:07:01,673 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 22:07:01,673 - __main__ - INFO -   - Contacto: Lcda. Ehzabeth Rodriguez Talent Development Ce
+2025-08-06 22:07:01,673 - __main__ - INFO -   - Email: None
+2025-08-06 22:07:01,673 - __main__ - INFO -   - Puesto: None
+2025-08-06 22:07:01,686 - __main__ - INFO - OFERTA #2: GRUPO MANZ, S. A
+2025-08-06 22:07:01,687 - __main__ - INFO - Progreso: 2/10 (20.0%) - Ofertas: 2
+2025-08-06 22:07:01,687 - __main__ - INFO - Procesando post 3: https://www.instagram.com/utpfisc/p/DM8lPfuTi5D/?img_index=1
+2025-08-06 22:07:02,054 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_3.png
+2025-08-06 22:07:02,308 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/527559289_1194271459171746_4211385132613038168_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2QHbZyEbd-a0MoPIAVkbemeueQ8PEBA0Sg4Y7khr3IwHGrc9oQ4WmrsENgehrJSxBfg&_nc_ohc=bOiwSvdOgPQQ7kNvwHWh0XP&_nc_gid=8OdlLMkm8T2i9wSDCfjhzg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4OTU1NzAxNDY3OTk2Mw%3D%3D.3-ccb7-5&oh=00_AfX8KxtPmXBRZqf1TP048x4KK3w8_7BWsMMQNyNO4Qq5yQ&oe=6899E1D5&_nc_sid=fc8dfb
+2025-08-06 22:07:03,327 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_7acb452d.png
+2025-08-06 22:07:05,003 - src.image_processing.ocr - INFO - Texto extraído con 266 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:05,004 - __main__ - INFO - Texto extraído (266 caracteres): AS
+| PYTHON + NETCONF Y =
+IGRP PARA IPV48%
+2 t
+. Milo rupo No 6 A A
+e . CN ¿> rontes: 7] Z y , NN
+: : O eN Ao rn 70.107082 NA 3 sq. e En / 4
+E re A Nu Le
+A Fer ¿$ ul 9.756-1052 MN 4 2
+- ESA k,. Nathal...
+2025-08-06 22:07:05,006 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:05,006 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 22:07:05,006 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 22:07:05,007 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 22:07:05,007 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:05,027 - __main__ - INFO - Progreso: 3/10 (30.0%) - Ofertas: 2
+2025-08-06 22:07:05,028 - __main__ - INFO - Procesando post 4: https://www.instagram.com/utpfisc/p/DM8kjf3s30L/?img_index=1
+2025-08-06 22:07:05,299 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_4.png
+2025-08-06 22:07:05,463 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527986290_1194267922505433_3725496782062260818_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE2MDB4MTIwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHZC2z2kQW64DDK8_wh_kVuhlMkEVHh0B_TtHDxE26ieaHpu-lSgMSzSO-a_ikGCFs&_nc_ohc=xEYc6cgaGiwQ7kNvwF19AzS&_nc_gid=wXFNuYwXR-wV9Fy4x43q_g&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTk4NjU1MTM5MTE2ODU3MA%3D%3D.3-ccb7-5&oh=00_AfU3i7WQAskTVsygtGrm-o6P7p20YRgT-oGZrLzGv10rGw&oe=6899FD3B&_nc_sid=fc8dfb
+2025-08-06 22:07:06,343 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_79030a27.png
+2025-08-06 22:07:08,159 - src.image_processing.ocr - INFO - Texto extraído con 173 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:08,160 - __main__ - INFO - Texto extraído (173 caracteres): un |
+MA
+fa Chatbot+Phyton
+— > Y ' . e .
+0 t | +netmiko/Paramiko
+| Ca Por:Daniela Vargas |
+l a Heydher Herrera
+Brandan Olivarren |
+Y Eduardo Lee
+; 'h Is241 |) >
+z = E
+LL ná
+e...
+2025-08-06 22:07:08,162 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:08,162 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 22:07:08,162 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 22:07:08,163 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 22:07:08,163 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:08,184 - __main__ - INFO - Progreso: 4/10 (40.0%) - Ofertas: 2
+2025-08-06 22:07:08,184 - __main__ - INFO - Procesando post 5: https://www.instagram.com/utpfisc/p/DM8NFcxM5Dd/
+2025-08-06 22:07:08,703 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_5.png
+2025-08-06 22:07:09,152 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528467658_1194150789183813_5105979718412573731_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QEK5qAqSU4oW1zddkY6hANZiPskjC90HefaecN1PMA4Os1ZONEDu8vkQwOnuK1k2v4&_nc_ohc=jlnq5FdEBqgQ7kNvwHlb-g7&_nc_gid=ClMap8HAdIaIzZOEbdnerA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg4MzM0MzYyOTIyNjIwNQ%3D%3D.3-ccb7-5&oh=00_AfWW3Ngm9gtPOsqj04A2YBDLw8H4o3qQLxG7wtQ8cwbTGA&oe=6899F8B2&_nc_sid=fc8dfb
+2025-08-06 22:07:09,954 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_3772ebe9.png
+2025-08-06 22:07:14,016 - src.image_processing.ocr - INFO - Texto extraído con 932 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:14,017 - __main__ - INFO - Texto extraído (932 caracteres): Talleres virtuales 40
+Dirigido a estudiantes de UTP - FISC y) 3 +
+de 4to año Ps )S y
+Pueden participar estudiantes de Centros Regionales AAN E Ed Y
+A E) 4 :
+Banco General y la de wo :
+Facultad de Inge...
+2025-08-06 22:07:14,020 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:14,020 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 22:07:14,020 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 22:07:14,020 - __main__ - INFO -   - Puntuación: -20
+2025-08-06 22:07:14,020 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:14,040 - __main__ - INFO - Progreso: 5/10 (50.0%) - Ofertas: 2
+2025-08-06 22:07:14,040 - __main__ - INFO - Procesando post 6: https://www.instagram.com/utpfisc/p/DM8KRPnzVZt/
+2025-08-06 22:07:14,673 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_6.png
+2025-08-06 22:07:15,011 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527112192_1194134755852083_4063797911794547060_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QG_AxyN0dqZIWMmVg5lmQw2IAtx3KR6u1i2cowz41asTn-keC4CLUuJMVKorW0zBGg&_nc_ohc=ZtKYG_iuVlkQ7kNvwHwUwYb&_nc_gid=ER4okUJlpX7xQGg4Ie3ftw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTg3MDk2MDAwNzA3NTQzNw%3D%3D.3-ccb7-5&oh=00_AfUnVTyqtB49Rj3PNx7mYkntd-uPM5QBfdyc3tyPH8Gg3Q&oe=6899F540&_nc_sid=fc8dfb
+2025-08-06 22:07:15,691 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_7883d760.png
+2025-08-06 22:07:18,942 - src.image_processing.ocr - INFO - Texto extraído con 1074 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:18,942 - __main__ - INFO - Texto extraído (1074 caracteres): ; : NN e : : NN A 0 aa
+' e Narcos ' : 5 o PSUCO AL ] 1
+SS
+A + Auditoría Ste . "
+gunas de las fuficion BBION en el área:
+A + Ana SUN We Tiesgos de TI, incluyendo seguridad de la informació Zo lidad del...
+2025-08-06 22:07:18,946 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:18,946 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 22:07:18,946 - __main__ - INFO -   - Tipo: Vacante
+2025-08-06 22:07:18,947 - __main__ - INFO -   - Puntuación: 57
+2025-08-06 22:07:18,947 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:18,965 - __main__ - INFO - Información extraída:
+2025-08-06 22:07:18,966 - __main__ - INFO -   - Empresa: None
+2025-08-06 22:07:18,966 - __main__ - INFO -   - Industria: None
+2025-08-06 22:07:18,966 - __main__ - INFO -   - Contacto: None
+2025-08-06 22:07:18,966 - __main__ - INFO -   - Email: None
+2025-08-06 22:07:18,966 - __main__ - INFO -   - Puesto: None
+2025-08-06 22:07:18,979 - __main__ - INFO - OFERTA #3: None
+2025-08-06 22:07:18,979 - __main__ - INFO - Progreso: 6/10 (60.0%) - Ofertas: 3
+2025-08-06 22:07:18,979 - __main__ - INFO - Procesando post 7: https://www.instagram.com/utpfisc/p/DM8AtuSsWAN/
+2025-08-06 22:07:19,893 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_7.png
+2025-08-06 22:07:20,348 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528722669_1194074402524785_4780936680842938165_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QGB0fQu730iqlKVRBSgDtMPQRHKcSJbq6EugjVI7SXbqC_DdQrFzn-EQk2QLfclmMM&_nc_ohc=30oFyND_TH4Q7kNvwFWRJBj&_nc_gid=LYWrnCOeNvgf5-GoXx3sMQ&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTgyODkzNjYxOTE1NTQ2OQ%3D%3D.3-ccb7-5&oh=00_AfV0T_KysXW_q1eM1lqnOJaqr1koHn71qvCbiveYdIKUnA&oe=689A03D6&_nc_sid=fc8dfb
+2025-08-06 22:07:21,027 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_f2aca7c5.png
+2025-08-06 22:07:26,552 - src.image_processing.ocr - INFO - Texto extraído con 1740 caracteres. Mejor configuración: --psm 4 --oem 3 -l spa
+2025-08-06 22:07:26,553 - __main__ - INFO - Texto extraído (1740 caracteres): Talleres virtuales
+Dirigido a estudiantes de UTP - FISC
+de 4to año
+Pueden participar estudiantes de Centros Regionales ¿
+Banco General y la
+Facultad de Ingenieria de Sistemas Computacionales de la
+Uni...
+2025-08-06 22:07:26,556 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:26,556 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 22:07:26,556 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 22:07:26,556 - __main__ - INFO -   - Puntuación: 2
+2025-08-06 22:07:26,556 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:26,575 - __main__ - INFO - Progreso: 7/10 (70.0%) - Ofertas: 3
+2025-08-06 22:07:26,575 - __main__ - INFO - Procesando post 8: https://www.instagram.com/utpfisc/p/DM1VcdFM1X3/
+2025-08-06 22:07:27,039 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_8.png
+2025-08-06 22:07:27,380 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHiv-PuyT9A8Ibkw5scXIoj5Xk3K3SWefq0h0m5jt5nKheARO8pl9KnH0UbheRZtb0&_nc_ohc=9R-ATuwxP5IQ7kNvwENrtGv&_nc_gid=fQX33Gq3nKB214TYjoj4_A&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfUEfB6SxnbNDtJkLIsrP5nWnV-RHLpNuD3A1eAzf7QG9A&oe=6899F29B&_nc_sid=fc8dfb
+2025-08-06 22:07:28,002 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_c70e6f75.png
+2025-08-06 22:07:34,842 - src.image_processing.ocr - INFO - Texto extraído con 3002 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:34,843 - __main__ - INFO - Texto extraído (3002 caracteres): Me . . 2... . ii
+e Universidad Tecnológica de Panamá YN
+5 5 . . , . e a
+z Ep $ . Vicerrectoría Académica ol >
+1L¿ e Programación de matrícula para el Il Semestre 2025 ASA
+10 SEAS
+Atención: viernes 8 d...
+2025-08-06 22:07:34,848 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:34,848 - __main__ - INFO -   - Es oferta laboral: False
+2025-08-06 22:07:34,848 - __main__ - INFO -   - Tipo: No identificado
+2025-08-06 22:07:34,848 - __main__ - INFO -   - Puntuación: 0
+2025-08-06 22:07:34,848 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:34,866 - __main__ - INFO - Progreso: 8/10 (80.0%) - Ofertas: 3
+2025-08-06 22:07:34,867 - __main__ - INFO - Procesando post 9: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
+2025-08-06 22:07:35,358 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_9.png
+2025-08-06 22:07:35,811 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGbzYL1nrhlHjfoyH_cbRPXUYTZNruSKjdDCg4bIHATOkNgRAgEm0ga-9F-JHhRjMo&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=oCa3Sc7uqhICN4M7uw4ZIw&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfXehAehx4ZXJNYWUrMe3dqom7va8J4AvMIx4XGdNvqmmw&oe=6899D17A&_nc_sid=fc8dfb
+2025-08-06 22:07:36,356 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_097772c9.png
+2025-08-06 22:07:42,023 - src.image_processing.ocr - INFO - Texto extraído con 2029 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:42,024 - __main__ - INFO - Texto extraído (2029 caracteres): ml
+r o . PA Y D
+: É
+Práctica Profesional FP; ($4 Wowervar:
+rt ONES
+A
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
+Móvil: +(507) 6550-6473
+Towerbank está...
+2025-08-06 22:07:42,028 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:42,028 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 22:07:42,028 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 22:07:42,028 - __main__ - INFO -   - Puntuación: 94
+2025-08-06 22:07:42,028 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:42,050 - __main__ - INFO - Información extraída:
+2025-08-06 22:07:42,051 - __main__ - INFO -   - Empresa: Towerbank Intemational, Inc
+2025-08-06 22:07:42,051 - __main__ - INFO -   - Industria: tecnología
+2025-08-06 22:07:42,051 - __main__ - INFO -   - Contacto: Joana Oro Oficial Jr. de Recursos Humanos Movi
+2025-08-06 22:07:42,051 - __main__ - INFO -   - Email: None
+2025-08-06 22:07:42,051 - __main__ - INFO -   - Puesto: Opción Al Trabajo De Graduación
+2025-08-06 22:07:42,067 - __main__ - INFO - OFERTA #4: Towerbank Intemational, Inc
+2025-08-06 22:07:42,067 - __main__ - INFO - Progreso: 9/10 (90.0%) - Ofertas: 4
+2025-08-06 22:07:42,067 - __main__ - INFO - Procesando post 10: https://www.instagram.com/utpfisc/p/DM1UzkQsS0u/
+2025-08-06 22:07:42,652 - src.utils.helpers - INFO - Imagen guardada en debug_images/post_10.png
+2025-08-06 22:07:43,056 - src.image_processing.ocr - INFO - Imagen cargada exitosamente desde URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFQw-AfF4KFjbDeBI0aEgM_3Q83VIS4rudqTxXpFQqjDFOStpyJ-c5rBRis9loU22c&_nc_ohc=rsnxtUZ-uDUQ7kNvwFn9Nu2&_nc_gid=y7QfDpU1mUfF5_jzxYGX1w&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfWpMEF2y6iMNOVzYGSsLpRu7nuXpNhMRdlEPZKFXMrkoQ&oe=6899E152&_nc_sid=fc8dfb
+2025-08-06 22:07:43,706 - src.image_processing.ocr - INFO - Imagen preprocesada guardada en debug_images_processed\last_processed_41389061.png
+2025-08-06 22:07:46,727 - src.image_processing.ocr - INFO - Texto extraído con 809 caracteres. Mejor configuración: --psm 6 --oem 3 -l spa
+2025-08-06 22:07:46,728 - __main__ - INFO - Texto extraído (809 caracteres): 1 - Vo mn.
+o DO O Ja ¡077 :
+Framework O at y
+Desarrollo  Fróly po UN "Angular, nest jsjs
+Base de data 7 ,
+SS . RP Is RESTFUL >
+0 dad con herramientas de integración y Conocirg Docker.
+e Entendi a iyoc...
+2025-08-06 22:07:46,731 - __main__ - INFO - Análisis de clasificación:
+2025-08-06 22:07:46,731 - __main__ - INFO -   - Es oferta laboral: True
+2025-08-06 22:07:46,731 - __main__ - INFO -   - Tipo: Práctica Profesional
+2025-08-06 22:07:46,731 - __main__ - INFO -   - Puntuación: 62
+2025-08-06 22:07:46,731 - __main__ - INFO -   - Estado: Activa
+2025-08-06 22:07:46,741 - __main__ - INFO - Información extraída:
+2025-08-06 22:07:46,741 - __main__ - INFO -   - Empresa: None
+2025-08-06 22:07:46,741 - __main__ - INFO -   - Industria: None
+2025-08-06 22:07:46,742 - __main__ - INFO -   - Contacto: None
+2025-08-06 22:07:46,742 - __main__ - INFO -   - Email: None
+2025-08-06 22:07:46,742 - __main__ - INFO -   - Puesto: None
+2025-08-06 22:07:46,756 - __main__ - INFO - OFERTA #5: None
+2025-08-06 22:07:46,756 - __main__ - INFO - Progreso: 10/10 (100.0%) - Ofertas: 5
+2025-08-06 22:07:46,756 - __main__ - INFO - 
+=== RESUMEN DE RESULTADOS ===
+2025-08-06 22:07:46,756 - __main__ - INFO - Posts procesados: 10
+2025-08-06 22:07:46,756 - __main__ - INFO - Posts duplicados: 0
+2025-08-06 22:07:46,756 - __main__ - INFO - Ofertas laborales encontradas: 5
+2025-08-06 22:07:46,757 - __main__ - INFO - Tasa de éxito: 50.0%
+2025-08-06 22:07:46,767 - __main__ - INFO - Total posts en BD: 10
+2025-08-06 22:07:46,767 - __main__ - INFO - Ofertas activas: 5
+2025-08-06 22:07:46,768 - __main__ - INFO - Por tipo de trabajo:
+2025-08-06 22:07:46,768 - __main__ - INFO -   - Práctica Laboral: 2
+2025-08-06 22:07:46,768 - __main__ - INFO -   - Práctica Profesional: 2
+2025-08-06 22:07:46,768 - __main__ - INFO -   - Vacante: 1
+2025-08-06 22:07:46,768 - __main__ - INFO - Por industria:
+2025-08-06 22:07:46,768 - __main__ - INFO -   - aviación: 1
+2025-08-06 22:07:46,769 - __main__ - INFO -   - tecnología: 2
+2025-08-06 22:07:46,769 - __main__ - INFO - 
+Ofertas encontradas en esta ejecución:
+2025-08-06 22:07:46,769 - __main__ - INFO -  1. Copa Airhnes
+2025-08-06 22:07:46,769 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 22:07:46,770 - __main__ - INFO - 
+2025-08-06 22:07:46,770 - __main__ - INFO -  2. GRUPO MANZ, S. A
+2025-08-06 22:07:46,770 - __main__ - INFO -      Tipo: Práctica Laboral
+2025-08-06 22:07:46,770 - __main__ - INFO - 
+2025-08-06 22:07:46,770 - __main__ - INFO -  3. Empresa no identificada
+2025-08-06 22:07:46,770 - __main__ - INFO -      Tipo: Vacante
+2025-08-06 22:07:46,770 - __main__ - INFO - 
+2025-08-06 22:07:46,771 - __main__ - INFO -  4. Towerbank Intemational, Inc
+2025-08-06 22:07:46,771 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 22:07:46,771 - __main__ - INFO - 
+2025-08-06 22:07:46,771 - __main__ - INFO -  5. Empresa no identificada
+2025-08-06 22:07:46,771 - __main__ - INFO -      Tipo: Práctica Profesional
+2025-08-06 22:07:46,771 - __main__ - INFO - 
+2025-08-06 22:07:46,772 - __main__ - INFO - === PROCESAMIENTO COMPLETADO EXITOSAMENTE ===
+2025-08-06 22:07:49,051 - src.scraper.instagram_scraper - INFO - 🔒 Navegador cerrado correctamente
+2025-08-06 22:07:49,051 - __main__ - INFO - Recursos liberados correctamente

@@ -20,9 +20,9 @@ def normalize_text(text: str) -> str:
     # === CORRECCIONES GENERALES DE OCR ===
     
     # 1. Patrón "IA" mal interpretado (muy común en OCR)
-    normalized = re.sub(r'\bIA\b', 'ia', normalized)  # IA como palabra completa → ia
-    normalized = re.sub(r'IA([a-z])', r'ia\1', normalized)  # IA seguido de minúscula → ia
-    normalized = re.sub(r'([A-Z])IA([a-z])', r'\1ia\2', normalized)  # CompanIA → Compania
+    normalized = re.sub(r'\bIA\b', 'ia', normalized)  # IA como palabra completa ? ia
+    normalized = re.sub(r'IA([a-z])', r'ia\1', normalized)  # IA seguido de minúscula ? ia
+    normalized = re.sub(r'([A-Z])IA([a-z])', r'\1ia\2', normalized)  # CompanIA ? Compania
     
     # 2. Correcciones de acentos perdidos (patrones comunes)
     accent_patterns = {
@@ -47,10 +47,10 @@ def normalize_text(text: str) -> str:
     
     # 3. Errores de consonantes comunes (OCR confunde estas letras)
     consonant_patterns = {
-        r'\b([A-Za-z]*?)rn([A-Za-z]*?)\b': r'\1m\2',  # 'rn' → 'm'
-        r'\b([A-Za-z]*?)cl([A-Za-z]*?)\b': r'\1d\2',   # 'cl' → 'd' 
-        r'\b([A-Za-z]*?)li([A-Za-z]*?)\b': r'\1h\2',   # 'li' → 'h'
-        r'\bii\b': 'n',  # 'ii' → 'n' cuando es palabra completa
+        r'\b([A-Za-z]*?)rn([A-Za-z]*?)\b': r'\1m\2',  # 'rn' ? 'm'
+        r'\b([A-Za-z]*?)cl([A-Za-z]*?)\b': r'\1d\2',   # 'cl' ? 'd' 
+        r'\b([A-Za-z]*?)li([A-Za-z]*?)\b': r'\1h\2',   # 'li' ? 'h'
+        r'\bii\b': 'n',  # 'ii' ? 'n' cuando es palabra completa
     }
     
     for pattern, replacement in consonant_patterns.items():
@@ -64,9 +64,9 @@ def normalize_text(text: str) -> str:
     
     # 4. Correcciones de sufijos comunes
     suffix_patterns = {
-        r'([a-zA-Z]+?)cion\b': r'\1ción',  # -cion → -ción
+        r'([a-zA-Z]+?)cion\b': r'\1ción',  # -cion ? -ción
         r'([a-zA-Z]+?)ciones\b': r'\1ciones',  # mantener si ya tiene tilde en otro lado
-        r'([a-zA-Z]+?)sion\b': r'\1sión',  # -sion → -sión
+        r'([a-zA-Z]+?)sion\b': r'\1sión',  # -sion ? -sión
     }
     
     for pattern, replacement in suffix_patterns.items():
@@ -89,7 +89,7 @@ def normalize_text(text: str) -> str:
     
     # 6. Correcciones de 'h' perdida o mal colocada
     h_patterns = {
-        r'\b([a-zA-Z]*?)l([a-zA-Z]*?)idad\b': r'\1bilidad',  # habihdad → habilidad
+        r'\b([a-zA-Z]*?)l([a-zA-Z]*?)idad\b': r'\1bilidad',  # habihdad ? habilidad
         r'\b([a-zA-Z]*?)l([a-zA-Z]*?)dades\b': r'\1bilidades',
     }
     
@@ -116,7 +116,7 @@ def normalize_text(text: str) -> str:
     return normalized
 
 def extract_contact_info(text: str) -> Dict[str, Optional[str]]:
-    """Extrae información de contacto con patrones generales escalables"""
+    """Extrae información de contacto SUPER ROBUSTA - versión final"""
     
     contact_info = {
         "name": None,
@@ -128,60 +128,69 @@ def extract_contact_info(text: str) -> Dict[str, Optional[str]]:
     
     normalized_text = normalize_text(text)
     
-    # === PATRONES GENERALES PARA NOMBRES ===
-    general_contact_patterns = [
-        # Patrón principal: "Contacto: Nombre | Cargo"
-        r"Contacto:\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,3})(?:\s*[\|\-]\s*([^|\n]+?))?(?=\s*(?:Móvil|Teléfono|Email|\+\d|\d{4}|$))",
+    # === PATRONES ULTRA SIMPLES Y ROBUSTOS ===
+    simple_patterns = [
+        # 1. PATRÓN MÁS SIMPLE: Solo "Contacto: Nombre Apellido"
+        r"Contacto:\s*([A-Za-z][A-Za-z\s\.]{8,45})",
         
-        # Títulos profesionales + Nombre
-        r"((?:Lcda?\.|Dr[a]?\.|Ing\.)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)",
+        # 2. CON TÍTULO: "Contacto: Lcda. Nombre Apellido"  
+        r"Contacto:\s*((?:Lcda?\.|Lic\.|Dr[a]?\.|Ing\.)\s*[A-Za-z][A-Za-z\s]{5,35})",
         
-        # Nombre + Cargo conocido
-        r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)(?:\s*[\|\-]\s*)?(Analista|Gerente|Director|Coordinador|Oficial|Especialista|Manager|Ejecutivo)(?:\s+[a-z].*?)?(?=\s*(?:Móvil|Teléfono|\+\d))",
+        # 3. NOMBRE + PIPE: "Contacto: Nombre Apellido |"
+        r"Contacto:\s*([A-Za-z][A-Za-z\s\.]{8,45})\s*\|",
         
-        # Nombre antes de departamentos
-        r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)(?:\s*[\|\-]\s*)?(?:Talent\s+Development|Human\s+Resources|Recursos\s+Humanos|Development\s+Center)",
+        # 4. BÚSQUEDA EN LÍNEA COMPLETA
+        r"Contacto:\s*([^\|:\n]+?)(?:\s*\||\s*$)",
     ]
     
-    for pattern in general_contact_patterns:
-        match = re.search(pattern, normalized_text, re.IGNORECASE)
-        if match:
-            name = match.group(1).strip()
-            
-            # Validación general de nombres
-            if (3 <= len(name) <= 50 and
-                re.match(r'^[A-Za-z\.\s]+$', name) and
-                len(name.split()) <= 4 and  # Máximo 4 palabras
-                not any(word.lower() in ['contacto', 'email', 'telefono', 'movil'] for word in name.split())):
+    for i, pattern in enumerate(simple_patterns):
+        try:
+            match = re.search(pattern, normalized_text, re.IGNORECASE)
+            if match:
+                name = match.group(1).strip()
                 
-                contact_info["name"] = name
-                
-                # Extraer cargo si existe
-                if len(match.groups()) >= 2 and match.group(2):
-                    position = match.group(2).strip()
-                    position = re.sub(r'(Móvil|Teléfono|Email).*$', '', position).strip()
-                    if 3 <= len(position) <= 100:
-                        contact_info["position"] = position
-                break
+                # Validación MUY SIMPLE
+                if (len(name) >= 8 and len(name) <= 50 and
+                    ' ' in name and  # Debe tener al menos un espacio
+                    re.match(r'^[A-Za-z\.\s]+$', name) and
+                    not name.lower().startswith('contacto')):
+                    
+                    contact_info["name"] = name
+                    logger.debug(f"? Contacto encontrado con patrón {i+1}: '{name}'")
+                    break
+                else:
+                    logger.debug(f"? Validación falló para patrón {i+1}: '{name}'")
+        except Exception as e:
+            logger.debug(f"? Error en patrón {i+1}: {e}")
     
-    # === PATRONES GENERALES PARA TELÉFONOS ===
+    # === TELÉFONOS - MUY SIMPLE ===
     phone_patterns = [
-        r"(?:Móvil|Celular|Teléfono|Tel\.?):\s*(\+\(?\d{3}\)?\s*\d{4}[-\s]?\d{4})",
+        r"(?:Móvil|Celular):\s*(\+\(?\d{3}\)?\s*\d{4}[-\s]?\d{4})",
         r"(\+\(?\d{3}\)?\s*\d{4}[-\s]?\d{4})",
-        r"(\d{4}[-\s]\d{4})",
     ]
     
     for pattern in phone_patterns:
         match = re.search(pattern, normalized_text)
         if match:
-            phone = match.group(1).strip()
-            contact_info["phone"] = phone
+            contact_info["phone"] = match.group(1).strip()
+            break
+    
+    # === EMAILS ===
+    email_patterns = [
+        r"(?:Email|E-mail|Correo):\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        r"\b([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\b",
+    ]
+    
+    for pattern in email_patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            contact_info["email"] = match.group(1).strip()
             break
     
     return contact_info
 
 def extract_company_info(text: str) -> Dict[str, Optional[str]]:
-    """Extrae información de empresas con patrones escalables"""
+    """Extrae información de empresas con patrones escalables MEJORADOS"""
     
     company_info = {
         "name": None,
@@ -191,47 +200,61 @@ def extract_company_info(text: str) -> Dict[str, Optional[str]]:
     
     normalized_text = normalize_text(text)
     
-    # === PATRONES GENERALES PARA EMPRESAS ===
+    # === PATRONES MEJORADOS PARA EMPRESAS ===
     general_company_patterns = [
-        # Patrón principal: "Empresa: Nombre de la Empresa"
-        r"(?:Empresa|Entidad):\s*([A-Z][A-Za-z\s,\.&]{8,80}?(?:\s*S\.?\s*A\.?|Inc\.?|Corp\.?|Group|Bank|Solutions?)?)(?=\s|$|\n)",
+        # Patrón PRINCIPAL mejorado para Copa Airlines y similares
+        r"(?:Empresa|Entidad):\s*([A-Z][A-Za-z\s,\.&()]{8,120}?(?:\s*S\.?\s*A\.?|Inc\.?|Corp\.?|Group|Bank|Solutions?|Airlines?)?)(?=\s*(?:\n|Contacto:|$))",
+        
+        # Patrón específico para nombres con paréntesis (Copa Airlines)
+        r"(?:Empresa|Entidad):\s*([^:]+?)\s*\(([^)]+?)\)",
         
         # Empresas en mayúsculas (común en OCR)
-        r"(?:Empresa|Entidad):\s*([A-Z][A-Z\s,\.&]{10,60})",
+        r"(?:Empresa|Entidad):\s*([A-Z][A-Z\s,\.&()]{10,60})",
         
         # Empresa seguida de "está ofreciendo"
-        r"([A-Z][A-Za-z\s,\.&]{8,60}?(?:\s*S\.?\s*A\.?)?)\s+está\s+(?:ofreciendo|buscando)",
+        r"([A-Z][A-Za-z\s,\.&()]{8,60}?(?:\s*S\.?\s*A\.?)?)\s+está\s+(?:ofreciendo|buscando)",
+        
+        # Patrón para GRUPO MANZ, GRUPO ENX, etc.
+        r"(?:Empresa|Entidad):\s*(GRUPO\s+[A-Z]+(?:\s*,\s*S\.?\s*A\.?)?)",
     ]
     
     for pattern in general_company_patterns:
         match = re.search(pattern, normalized_text)
         if match:
-            company_name = match.group(1).strip()
+            # Para patrones con paréntesis, preferir el contenido del paréntesis
+            if len(match.groups()) >= 2 and match.group(2):
+                # Contenido de paréntesis (ej: "Copa Airlines")
+                company_name = match.group(2).strip()
+            else:
+                # Nombre principal
+                company_name = match.group(1).strip()
             
             # Limpiar nombre de empresa
             company_name = re.sub(r'^\W+|\W+$', '', company_name)
             company_name = re.sub(r'\s+', ' ', company_name)
             
-            # Filtros de calidad generales
-            if (8 <= len(company_name) <= 80 and
-                not any(word in company_name.lower() for word in ['contacto', 'telefono', 'email'])):
+            # Filtros de calidad generales MEJORADOS
+            if (3 <= len(company_name) <= 80 and  # Rango más amplio
+                not any(word in company_name.lower() for word in ['contacto', 'telefono', 'email', 'movil']) and
+                not re.match(r'^[\d\s\.,\-\(\)]+$', company_name)):  # No solo números/puntuación
                 
                 company_info["name"] = company_name
                 break
     
-    # === DETECCIÓN DE INDUSTRIA GENERAL ===
+    # === DETECCIÓN DE INDUSTRIA MEJORADA ===
     if company_info["name"]:
         company_text = (company_info["name"] + " " + normalized_text).lower()
         
-        # Patrones de industria escalables
+        # Patrones de industria escalables MEJORADOS
         industry_keywords = {
-            "aviación": [r"aviación", r"aviation", r"airline", r"aereo", r"copa"],
-            "tecnología": [r"tech", r"system", r"software", r"digital", r"solutions", r"manz", r"grupo"],
-            "financiero": [r"banco", r"bank", r"financ", r"tower", r"credit"],
+            "aviación": [r"aviación", r"aviation", r"airline", r"aereo", r"copa", r"panameña de aviación"],
+            "tecnología": [r"tech", r"system", r"software", r"digital", r"solutions", r"manz", r"grupo", r"enx"],
+            "financiero": [r"banco", r"bank", r"financ", r"tower", r"credit", r"international"],
             "consultoría": [r"consult", r"advisory", r"pwc", r"audit"],
             "manufactura": [r"manufactur", r"industrial", r"fabrica"],
             "educación": [r"universidad", r"educación", r"academy", r"utp"],
             "gobierno": [r"gobierno", r"ministerio", r"gob\.pa", r"dgcp"],
+            "servicios": [r"servicios", r"services", r"viva solutions"],
         }
         
         for industry, patterns in industry_keywords.items():
@@ -302,8 +325,8 @@ def extract_list_items(text: str) -> List[str]:
     
     # Patrones de viñetas generales
     bullet_patterns = [
-        r'^[•⚫⭐✓✔·\-→+*]\s+(.+)$',      # Viñetas al inicio de línea
-        r'\n[•⚫⭐✓✔·\-→+*]\s+(.+)',      # Viñetas después de salto
+        r'^[•????·\-?+*]\s+(.+)$',      # Viñetas al inicio de línea
+        r'\n[•????·\-?+*]\s+(.+)',      # Viñetas después de salto
         r'^[0-9]+\.\s+(.+)$',             # Listas numeradas
         r'\n[0-9]+\.\s+(.+)',             # Listas numeradas después de salto
         r'^[a-zA-Z]\)\s+(.+)$',           # Listas con letras a) b) c)
@@ -565,11 +588,8 @@ def extract_skills_and_technologies(text: str) -> Dict[str, List[str]]:
     ]
 
     for pattern in programming_patterns:
-        match = re.search(pattern, normalized_text)
-        if match:
-            programming = match.group(1).strip()
-            programming = re.sub(r'^(?:un|una)\s+', '', programming)
-            return tech.strip().programming()
+        matches = re.findall(pattern, normalized_text, re.IGNORECASE)
+        result["programming_languages"].extend(matches)
     
     # Patrones para tecnologías
     tech_patterns = [
@@ -578,11 +598,8 @@ def extract_skills_and_technologies(text: str) -> Dict[str, List[str]]:
     ]
     
     for pattern in tech_patterns:
-        match = re.search(pattern, normalized_text)
-        if match:
-            tech = match.group(1).strip()
-            tech = re.sub(r'^(?:un|una)\s+', '', tech)
-            return tech.strip().title()
+        matches = re.findall(pattern, normalized_text, re.IGNORECASE)
+        result["technologies"].extend(matches)
 
     # Patrones para habilidades blandas
     soft_skills_patterns = [
@@ -591,10 +608,7 @@ def extract_skills_and_technologies(text: str) -> Dict[str, List[str]]:
     ]
 
     for pattern in soft_skills_patterns:
-        match = re.search(pattern, normalized_text)
-        if match:
-            soft_skills = match.group(1).strip()
-            soft_skills = re.sub(r'^(?:un|una)\s+', '', soft_skills)
-            return soft_skills.strip().title()
+        matches = re.findall(pattern, normalized_text, re.IGNORECASE)
+        result["soft_skills"].extend(matches)
 
     return result
