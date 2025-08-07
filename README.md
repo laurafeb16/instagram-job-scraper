@@ -1,21 +1,21 @@
-﻿# :bar_chart: Instagram Job Scraper
+Instagram Job Scraper
 
-> :mortar_board: **Proyecto Capstone** - Analizador automatizado de ofertas laborales en Instagram
+> **Proyecto Capstone** - Analizador automatizado de ofertas laborales en Instagram
 
-## :clipboard: Descripción
+## Descripción
 
 Sistema inteligente que automatiza la detección y análisis de ofertas laborales publicadas en Instagram, específicamente para la Facultad de Ingeniería de Sistemas Computacionales (FISC) de la UTP.
 
-## :sparkles: Características
+## Características
 
-- :spider: **Web Scraping** con Selenium
-- :frame_photo: **OCR** para extracción de texto desde imágenes
-- :pencil: **Análisis NLP** para clasificación automática
-- :file_cabinet: **Base de datos** SQLAlchemy
-- :globe_with_meridians: **Dashboard web** con Flask
-- :bar_chart: **Exportación** a Excel y CSV
+- **Web Scraping** con Selenium
+- **OCR** para extracción de texto desde imágenes
+- **Análisis NLP** para clasificación automática
+- **Base de datos** SQLAlchemy
+- **Dashboard web** con Flask
+- **Exportación** a Excel y CSV
 
-## :rocket: Instalación
+## Instalación
 
 ### Prerrequisitos
 - Python 3.8+
@@ -48,7 +48,7 @@ INSTAGRAM_USERNAME=tu_usuario
 INSTAGRAM_PASSWORD=tu_contraseña 
 TARGET_ACCOUNT=utpfisc
 
-## :book: Uso
+## Uso
 
 ### Comandos básicos
 
@@ -80,7 +80,7 @@ python src/main.py --clean-only
 Procesar en lotes
 python src/main.py 100 --batch 25
 
-## :bar_chart: Resultados
+## Resultados
 === RESUMEN === Posts procesados: 25 Ofertas encontradas: 18 Tasa de éxito: 72%
 Por tipo:
 •    Práctica Profesional: 8
@@ -95,7 +95,7 @@ Por tipo:
 | Tesseract not found | Verificar instalación y PATH |
 | Login failed | Revisar credenciales en .env |
 
-## :crystal_ball: Roadmap
+## Roadmap
 
 - [x] Scraping básico
 - [x] Dashboard web
