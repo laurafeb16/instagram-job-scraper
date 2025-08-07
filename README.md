@@ -16,6 +16,48 @@ Las facultades universitarias publican frecuentemente ofertas laborales y práct
 
 Sistema inteligente que automatiza la detección y análisis de ofertas laborales publicadas en Instagram, específicamente diseñado para la Facultad de Ingeniería de Sistemas Computacionales (FISC) de la Universidad Tecnológica de Panamá.
 
+## Diseño y Arquitectura
+
+El sistema implementa un flujo de procesamiento en etapas:
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant S as Instagram Scraper
+    participant O as OCR Engine
+    participant N as NLP Analyzer
+    participant DB as Base de Datos
+    participant D as Dashboard Web
+    
+    U->>S: Inicia extracción (perfil, posts_max)
+    S->>S: Login y navegación a cuenta objetivo
+    S->>S: Extrae URLs de posts en lotes
+    
+    loop Para cada post
+        S->>S: Descarga imagen del post
+        S->>O: Procesa imagen con Tesseract OCR
+        O->>O: Preprocesa y extrae texto
+        O->>N: Envía texto extraído
+        N->>N: Analiza y clasifica contenido
+        
+        alt Es oferta laboral
+            N->>N: Clasifica tipo (Práctica/Vacante)
+            N->>N: Extrae información estructurada
+            N->>DB: Almacena datos de la oferta
+        else No es oferta
+            N->>DB: Marca como contenido no laboral
+        end
+    end
+    
+    S->>U: Retorna resumen de procesamiento
+    
+    Note over U,D: Consulta y visualización
+    U->>D: Accede al Dashboard
+    D->>DB: Consulta ofertas y estadísticas
+    DB->>D: Retorna datos agregados
+    D->>U: Muestra visualizaciones y análisis
+```
+
 ## Características Principales
 
 - **Web Scraping Automatizado**: Utiliza Selenium para navegación web inteligente
