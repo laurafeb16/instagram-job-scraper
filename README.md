@@ -1,104 +1,168 @@
-Instagram Job Scraper
+# Instagram Job Scraper
 
-> **Proyecto Capstone** - Analizador automatizado de ofertas laborales en Instagram
+**Proyecto Capstone** - Analizador automatizado de ofertas laborales en Instagram
 
 ## Descripción
 
-Sistema inteligente que automatiza la detección y análisis de ofertas laborales publicadas en Instagram, específicamente para la Facultad de Ingeniería de Sistemas Computacionales (FISC) de la UTP.
+Sistema inteligente que automatiza la detección y análisis de ofertas laborales publicadas en Instagram, específicamente diseñado para la Facultad de Ingeniería de Sistemas Computacionales (FISC) de la Universidad Tecnológica de Panamá.
 
-## Características
+## Características Principales
 
-- **Web Scraping** con Selenium
-- **OCR** para extracción de texto desde imágenes
-- **Análisis NLP** para clasificación automática
-- **Base de datos** SQLAlchemy
-- **Dashboard web** con Flask
-- **Exportación** a Excel y CSV
+- **Web Scraping Automatizado**: Utiliza Selenium para navegación web inteligente
+- **Reconocimiento Óptico de Caracteres (OCR)**: Extrae texto desde imágenes de ofertas laborales
+- **Procesamiento de Lenguaje Natural (NLP)**: Clasificación automática de ofertas laborales
+- **Base de Datos Robusta**: Gestión de datos con SQLAlchemy
+- **Dashboard Interactivo**: Interfaz web desarrollada con Flask
+- **Exportación de Datos**: Soporte para formatos Excel y CSV
 
 ## Instalación
 
 ### Prerrequisitos
-- Python 3.8+
-- Chrome + ChromeDriver
-- Tesseract OCR
 
-### Configuración
-Clonar repositorio
-git clone <repo-url> cd instagram-job-scraper
+- Python 3.8 o superior
+- Google Chrome y ChromeDriver
+- Tesseract OCR Engine
 
-Instalar dependencias
+### Configuración Inicial
+
+**1. Clonar el repositorio**
+
+```bash
+git clone <repo-url>
+cd instagram-job-scraper
+```
+
+**2. Instalar dependencias**
+
+```bash
 pip install -r requirements.txt
+```
 
-Configurar variables de entorno
+**3. Configurar variables de entorno**
+
+```bash
 cp .env.example .env
+```
 
-Editar .env con tus credenciales
+Editar el archivo `.env` con tus credenciales de Instagram.
 
-### Instalar Tesseract
+### Instalación de Tesseract OCR
 
 **Windows:**
-Descargar desde: https://github.com/UB-Mannheim/tesseract/wiki
+- Descargar desde: https://github.com/UB-Mannheim/tesseract/wiki
+- Agregar al PATH del sistema
+
 **Linux:**
+```bash
 sudo apt install tesseract-ocr tesseract-ocr-spa
+```
+
 **macOS:**
-rew install tesseract tesseract-lang
+```bash
+brew install tesseract tesseract-lang
+```
 
-### Configurar .env
-INSTAGRAM_USERNAME=tu_usuario 
-INSTAGRAM_PASSWORD=tu_contraseña 
+### Configuración del archivo .env
+
+```env
+INSTAGRAM_USERNAME=tu_usuario
+INSTAGRAM_PASSWORD=tu_contraseña
 TARGET_ACCOUNT=utpfisc
+```
 
-## Uso
+## Uso del Sistema
 
-### Comandos básicos
+### Comandos Básicos
 
-Procesamiento estándar (25 posts)
+**Procesamiento estándar (25 posts):**
+```bash
 python src/main.py
+```
 
-Número específico
+**Especificar número de posts:**
+```bash
 python src/main.py 50
+```
 
-Modo headless
+**Modo headless (sin interfaz gráfica):**
+```bash
 python src/main.py 20 --headless
+```
 
-Procesamiento masivo
+**Procesamiento masivo:**
+```bash
 python src/main.py --max
+```
 
-Dashboard web
+### Dashboard Web
+
+**Iniciar servidor:**
+```bash
 python src/web/app.py
+```
 
-Abrir: http://localhost:5000
+Acceder a: http://localhost:5000
 
-### Opciones avanzadas
+### Opciones Avanzadas
 
-Modo debug
+**Modo debug:**
+```bash
 python src/main.py 10 --debug
+```
 
-Solo limpiar BD
+**Solo limpiar base de datos:**
+```bash
 python src/main.py --clean-only
+```
 
-Procesar en lotes
+**Procesamiento en lotes:**
+```bash
 python src/main.py 100 --batch 25
+```
 
-## Resultados
-=== RESUMEN === Posts procesados: 25 Ofertas encontradas: 18 Tasa de éxito: 72%
-Por tipo:
-•    Práctica Profesional: 8
-•    Práctica Laboral: 6
-•    Vacante: 4
+## Resultados Típicos
 
-## :tools: Solución de Problemas
+```
+=== RESUMEN ===
+Posts procesados: 25
+Ofertas encontradas: 18
+Tasa de éxito: 72%
 
-| Problema | Solución |
-|----------|----------|
-| ChromeDriver not found | Colocar chromedriver.exe en raíz |
-| Tesseract not found | Verificar instalación y PATH |
-| Login failed | Revisar credenciales en .env |
+Distribución por tipo:
+• Práctica Profesional: 8
+• Práctica Laboral: 6
+• Vacante: 4
+```
 
-## Roadmap
+## Solución de Problemas
 
-- [x] Scraping básico
-- [x] Dashboard web
-- [ ] Machine Learning
+| Problema | Causa Común | Solución |
+|----------|-------------|----------|
+| ChromeDriver not found | Driver no instalado | Colocar chromedriver.exe en directorio raíz |
+| Tesseract not found | OCR no configurado | Verificar instalación y variable PATH |
+| Instagram login failed | Credenciales incorrectas | Revisar usuario/contraseña en archivo .env |
+| Memory issues | Procesamiento masivo | Usar parámetro --batch para procesar en lotes |
 
-*Desarrollado para la Universidad Tecnológica de Panamá*
+## Arquitectura del Proyecto
+
+```
+instagram-job-scraper/
+├── src/
+│   ├── main.py              # Punto de entrada principal
+│   ├── scraper/             # Módulos de web scraping
+│   ├── ocr/                 # Procesamiento OCR
+│   ├── nlp/                 # Análisis de texto
+│   ├── database/            # Gestión de base de datos
+│   └── web/                 # Dashboard Flask
+├── data/                    # Archivos de datos
+├── exports/                 # Exportaciones CSV/Excel
+└── logs/                    # Archivos de registro
+```
+
+## Estado de Desarrollo
+
+- [x] Sistema de scraping básico
+- [x] Implementación OCR
+- [x] Dashboard web funcional
+- [x] Exportación de datos
+- [ ] Modelo de Machine Learning
