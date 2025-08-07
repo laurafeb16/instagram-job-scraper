@@ -195,22 +195,6 @@ Distribución por tipo:
 | Instagram login failed | Credenciales incorrectas | Revisar usuario/contraseña en archivo .env |
 | Memory issues | Procesamiento masivo | Usar parámetro --batch para procesar en lotes |
 
-## Arquitectura del Proyecto
-
-```
-instagram-job-scraper/
-├── src/
-│   ├── main.py              # Punto de entrada principal
-│   ├── scraper/             # Módulos de web scraping
-│   ├── ocr/                 # Procesamiento OCR
-│   ├── nlp/                 # Análisis de texto
-│   ├── database/            # Gestión de base de datos
-│   └── web/                 # Dashboard Flask
-├── data/                    # Archivos de datos
-├── exports/                 # Exportaciones CSV/Excel
-└── logs/                    # Archivos de registro
-```
-
 ## Estado de Desarrollo
 
 - [x] Sistema de scraping básico
