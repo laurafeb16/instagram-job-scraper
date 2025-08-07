@@ -1,40 +1,47 @@
+POST URL: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
+IMAGE URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QFDNVLEyj0ZJByoP3xHXX2FluRISZEln7f8yU84sBooR97HatAqmTIPbN7ArMWnEtw&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=OXNulmWafyP3D7hz1Br5bA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfVw1pncfAB__CKGa2xD9gtHYmx-RfjfsM4UE1cCXdiEQw&oe=6899D17A&_nc_sid=fc8dfb
+DESCRIPTION: Práctica profesional ofrecida por Towerbank International, Inc.
+EXTRACTED TEXT:
+ml
+r o . PA Y D
+: É
+Práctica Profesional FP; ($4 Wowervar:
+rt ONES
 A
-a CASA ÑO
-Práctica Lab 56374 (EEN O
-FactiCca LaDOTra == Cra
-A A
-nn nn
-Empresa: Agua Cristalina, S. A.
-Contacto: Michelle Vallejos | Generalista de Recursos Humanos
-Móvil: +(507) 6781-3672
-Agua Cristalina está ofreciendo oportunidades para estudiantes que quieran ganar
-experiencia laboral como Soporte Técnico y desee hacerlo con esta empresa.
-Requisitos:
-e Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas
+Entidad: Towerbank International, Inc.
+Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
+Móvil: +(507) 6550-6473
+Towerbank está ofreciendo oportunidades para estudiantes que opten por realizar
+práctica profesional como opción al trabajo de graduación, aplicando sus
+conocimientos académicos en un entorno profesional real.
+Perfil:
++. Ser estudiante de último año de carrera de la Facultad de Ingeniería de Sistemas
 Computacionales (FISC).
-e Habilidades de comunicación y trabajo en equipo.
+* Interés en aplicar sus conocimientos en proyectos innovadores del sector bancario.
++ Deseo de vincular su práctica profesional con iniciativas de transformación digital en lA.
 Conocimientos en:
-e Sistema operativo Windows.
-e Mantenimiento de computadoras.
-Algunas de las funciones del área:
-e Limpieza física y lógica de computadoras.
-e Reemplazo de partes.
-e Confección de cables de red con conectores RJ45.
-e Inventario de equipos tecnológicos y teléfonos móviles.
-e Reporte de mantenimiento e inventario.
-e Instalación de sistemas operativos y aplicaciones.
-e Instalación de periféricos.
-e Soporte en el acceso a usuarios de Windows, Correo, etc.
-e Soporte en el control de acceso por tarjeta.
-e Cotizaciones con proveedores.
-e Formateo y configuración de teléfonos celulares.
-La Práctica Laboral, será acorde a las normativas de la UTP - FISC.
++ Lenguajes de programación como Python y JavaScript
+» Manejo básico de servicios cloud, preferiblemente AWS (conocimiento de servicios como
+$3, Lambda, SageMaker, Bedrock).
+Algunas de las funciones de colaboración en el área:
++ Completar el currículo de formación en lA de AWS, abarcando fundamentos, arquitectura y
+operación de modelos.
+* Aplicar los conocimientos adquiridos en un proyecto de lA asignado.
++ Contribuir al desarrollo o mejora de una funcionalidad dentro de una de las iniciativas
+activas.
++ Documentar el proceso técnico y de aprendizaje para retroalimentación académica
+empresarial.
+La Práctica Profesional, será acorde a las normativas de la UTP - FISC.
 Ofrecen:
-e Apoyo económico.
-e Oportunidad de aprendizaje y conocimiento.
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa.
-Interesados enviar Hoja de Vida a: generalistavaquacristalina.com
-E
++ Apoyo económico
+* Formación técnica avalada por Amazon Web Services (AWS)
+» Participación en proyectos reales de inteligencia artificial
++ Mentores internos y acompañamiento técnico especializado
++. Desarrollo de un producto o componente funcional para una iniciativa empresarial
+» Potencial vinculación futura en proyectos de innovación tecnológica
+Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de este banco.
+Interesados enviar Hoja de Vida a: jorootowerbank.com
+A
 Universidad Tecnológica de Panamá
-Facultad de Ingeniería de Sistemas Computacionales
-Síguenos: f X O 0 in WIZA Y Publicado: 1 de julio de 2025
+Facultad de Ingenieria de Sistemas Computacionales
+TT O in h, Qutpfisc Y Publicado: 1 de agosto de 2025

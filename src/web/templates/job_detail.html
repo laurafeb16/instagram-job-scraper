@@ -1,103 +1,709 @@
-﻿<!-- src/web/templates/job_detail.html -->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ job_data.position_title or "Oferta" }} - Detalles</title>
+    <title>{{ job_data.position_title or "Oferta" }} - {{ job_data.company_name }} - Detalles</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta principal del logo */
+            --primary-green: #6A994E;
+            --light-lime: #DCE775;
+            --light-purple: #B39DDB;
+            --deep-purple: #7E57C2;
+            --muted-purple: #957DAD;
+            --charcoal: #394240;
+            --light-gray: #D4D4D4;
+            /* Colores derivados para mejor usabilidad */
+            --primary-green-light: #8BB366;
+            --primary-green-dark: #4A6A35;
+            --accent-lime: #E8F19A;
+            --background-soft: #F8FAF6;
+            --text-dark: #2C3E35;
+            --success-green: #5B8A42;
+            --warning-amber: #D4A74A;
+            --info-purple: #9C88C7;
+            --danger-muted: #B85D5D;
+        }
+
+        body {
+            background-color: var(--background-soft);
+            color: var(--text-dark);
+        }
+
+        /* Navbar con colores del tema */
+        .navbar-dark {
+            background: linear-gradient(90deg, var(--charcoal) 0%, var(--text-dark) 100%) !important;
+        }
+
+        .navbar-brand {
+            color: var(--light-lime) !important;
+            font-weight: 600;
+        }
+
+            .navbar-brand:hover {
+                color: var(--accent-lime) !important;
+            }
+
+        .nav-link {
+            color: var(--light-gray) !important;
+            transition: color 0.3s ease;
+        }
+
+            .nav-link:hover,
+            .nav-link.active {
+                color: var(--light-lime) !important;
+            }
+
+        .header-gradient {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .header-gradient::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(220, 231, 117, 0.1) 0%, transparent 50%);
+                pointer-events: none;
+            }
+
+        .info-card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(57, 66, 64, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+        }
+
+            .info-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(57, 66, 64, 0.15);
+            }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--success-green) 0%, var(--primary-green) 100%);
+            color: white;
+            border-left: 4px solid var(--light-lime);
+        }
+
+            .contact-card .card-header {
+                background: rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+
+        .requirements-card {
+            background: linear-gradient(135deg, var(--light-purple) 0%, rgba(179, 157, 219, 0.8) 100%);
+            border-left: 4px solid var(--deep-purple);
+        }
+
+            .requirements-card .card-header {
+                background: rgba(255, 255, 255, 0.9);
+                color: var(--text-dark);
+            }
+
+        .benefits-card {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--muted-purple) 100%);
+            color: white;
+            border-left: 4px solid var(--light-lime);
+        }
+
+            .benefits-card .card-header {
+                background: rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+
+        .knowledge-card {
+            background: linear-gradient(135deg, var(--info-purple) 0%, var(--muted-purple) 100%);
+            color: white;
+            border-left: 4px solid var(--accent-lime);
+        }
+
+            .knowledge-card .card-header {
+                background: rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+
+        .functions-card {
+            background: linear-gradient(135deg, var(--primary-green-light) 0%, var(--success-green) 100%);
+            color: white;
+            border-left: 4px solid var(--light-lime);
+        }
+
+            .functions-card .card-header {
+                background: rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+
+        .image-carousel {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(57, 66, 64, 0.15);
+            border: 3px solid var(--light-lime);
+        }
+
+        .badge-custom {
+            font-size: 0.9em;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.bg-success {
+            background: linear-gradient(135deg, var(--success-green) 0%, var(--primary-green) 100%) !important;
+            box-shadow: 0 2px 8px rgba(91, 138, 66, 0.3);
+        }
+
+        .badge.bg-danger {
+            background: linear-gradient(135deg, var(--danger-muted) 0%, #a04545 100%) !important;
+            box-shadow: 0 2px 8px rgba(184, 93, 93, 0.3);
+        }
+
+        .badge.bg-primary {
+            background: var(--primary-green) !important;
+            box-shadow: 0 2px 8px rgba(106, 153, 78, 0.3);
+        }
+
+        .badge.bg-info {
+            background: var(--info-purple) !important;
+            box-shadow: 0 2px 8px rgba(156, 136, 199, 0.3);
+        }
+
+        .badge.bg-warning {
+            background: var(--warning-amber) !important;
+            color: var(--text-dark) !important;
+            box-shadow: 0 2px 8px rgba(212, 167, 74, 0.3);
+        }
+
+        .badge.bg-secondary {
+            background: var(--muted-purple) !important;
+            box-shadow: 0 2px 8px rgba(149, 125, 173, 0.3);
+        }
+
+        .badge.bg-dark {
+            background: var(--charcoal) !important;
+            box-shadow: 0 2px 8px rgba(57, 66, 64, 0.3);
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 15px 20px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+            .list-group-item:hover {
+                transform: translateX(5px);
+                background: rgba(255, 255, 255, 1);
+                box-shadow: 0 2px 8px rgba(57, 66, 64, 0.1);
+            }
+
+        .requirements-card .list-group-item,
+        .knowledge-card .list-group-item,
+        .functions-card .list-group-item,
+        .benefits-card .list-group-item {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            border-left: 3px solid var(--light-lime);
+        }
+
+        .contact-card .list-group-item {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            border-left: 3px solid var(--light-lime);
+        }
+
+            .contact-card .list-group-item a {
+                color: var(--primary-green);
+                text-decoration: none;
+            }
+
+                .contact-card .list-group-item a:hover {
+                    color: var(--primary-green-dark);
+                    text-decoration: underline;
+                }
+
+        .metrics-badge {
+            background: rgba(220, 231, 117, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(220, 231, 117, 0.3);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Breadcrumb styling */
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 12px 20px;
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            .breadcrumb-item a:hover {
+                color: var(--primary-green-dark);
+            }
+
+        .breadcrumb-item.active {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Botones mejorados */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            border: none;
+            box-shadow: 0 2px 8px rgba(106, 153, 78, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--charcoal) 100%);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(106, 153, 78, 0.4);
+            }
+
+        .btn-outline-primary {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            font-weight: 500;
+        }
+
+            .btn-outline-primary:hover {
+                background: var(--primary-green);
+                border-color: var(--primary-green);
+                color: white;
+            }
+
+        /* Card headers personalizados */
+        .card-header h5 {
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        /* Texto mejorado */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-dark);
+        }
+
+        .text-muted {
+            color: var(--muted-purple) !important;
+        }
+
+        /* Avatar mejorado */
+        .company-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--light-lime) 0%, var(--accent-lime) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(220, 231, 117, 0.4);
+            border: 3px solid white;
+        }
+
+        /* Animaciones mejoradas */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 30px, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .info-card {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        /* Carrusel mejorado */
+        .carousel-control-prev,
+        .carousel-control-next {
+            background: linear-gradient(135deg, var(--charcoal) 0%, rgba(57, 66, 64, 0.8) 100%);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-briefcase me-2"></i>
+                Ofertas Laborales
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{{ url_for('index') }}">
+                    <i class="fas fa-arrow-left me-1"></i>
+                    Volver al listado
+                </a>
+                <a class="nav-link" href="{{ url_for('dashboard') }}">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mt-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Detalles de Oferta</li>
+                <li class="breadcrumb-item">
+                    <a href="{{ url_for('index') }}">
+                        <i class="fas fa-home me-1"></i>Inicio
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ job_data.company_name or "Empresa" }}
+                </li>
             </ol>
         </nav>
 
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">{{ job_data.position_title or "Posición no especificada" }}</h3>
-                <span class="badge {% if job_data.is_active %}bg-success{% else %}bg-danger{% endif %}">
-                    {{ "Activa" if job_data.is_active else "Finalizada" }}
-                </span>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="card-title">Información General</h5>
-                        <p><strong>Empresa:</strong> {{ job_data.company_name }}</p>
-                        <p><strong>Tipo:</strong> {{ job_data.job_type }}</p>
-                        <p><strong>Fecha de publicación:</strong> {{ job_post.post_date.strftime('%d/%m/%Y') }}</p>
-                        <p><strong>Contacto:</strong> {{ job_data.contact_info }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5>Imagen</h5>
-                        <img src="{{ job_post.image_url }}" class="img-fluid rounded" alt="Imagen de la oferta">
-
-                        {% if job_post.is_carousel and carousel_images %}
-                        <div class="mt-3">
-                            <h6>Imágenes adicionales</h6>
-                            <div class="row">
-                                {% for img in carousel_images %}
-                                <div class="col-4 mb-2">
-                                    <img src="{{ img.image_url }}" class="img-fluid rounded" alt="Imagen {{ loop.index }}">
+        <div class="card info-card mb-4">
+            <div class="card-header header-gradient">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <div class="company-avatar">
+                                    {{ job_data.company_name[0] if job_data.company_name and job_data.company_name != "Por determinar" else "?" }}
                                 </div>
-                                {% endfor %}
                             </div>
+                            <div>
+                                <h2 class="mb-1">{{ job_data.position_title or "Posición no especificada" }}</h2>
+                                <h4 class="mb-0 opacity-75">{{ job_data.company_name or "Empresa no especificada" }}</h4>
+                                {% if job_data.company_industry %}
+                                <p class="mb-0 opacity-75">
+                                    <i class="fas fa-industry me-1"></i>
+                                    {{ job_data.company_industry }}
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <span class="badge badge-custom {% if job_data.is_active %}bg-success{% else %}bg-danger{% endif %}">
+                            {% if job_data.is_active %}
+                            <i class="fas fa-check-circle me-1"></i>ACTIVA
+                            {% else %}
+                            <i class="fas fa-times-circle me-1"></i>FINALIZADA
+                            {% endif %}
+                        </span>
+
+                        {% if metrics %}
+                        <div class="mt-2">
+                            <span class="badge metrics-badge">
+                                <i class="fas fa-chart-line me-1"></i>
+                                Confianza: {{ metrics.classification_confidence }}%
+                            </span>
                         </div>
                         {% endif %}
                     </div>
                 </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="badge bg-primary badge-custom">
+                                <i class="fas fa-briefcase me-1"></i>
+                                {{ job_data.job_type }}
+                            </span>
 
-                <hr>
+                            {% if job_data.work_modality %}
+                            <span class="badge bg-info badge-custom">
+                                <i class="fas fa-laptop-house me-1"></i>
+                                {{ job_data.work_modality }}
+                            </span>
+                            {% endif %}
 
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <h5>Requisitos</h5>
-                        {% if job_data.requirements %}
-                        {% if job_data.requirements.startswith('[') %}
-                        <ul>
-                            {% for req in job_data.requirements.strip('[]').replace("'", "").split(', ') %}
-                            <li>{{ req }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% else %}
-                        <p>{{ job_data.requirements }}</p>
-                        {% endif %}
-                        {% else %}
-                        <p>No se especificaron requisitos.</p>
-                        {% endif %}
-                    </div>
-                    <div class="col-md-6">
-                        <h5>Beneficios</h5>
-                        {% if job_data.benefits %}
-                        {% if job_data.benefits.startswith('[') %}
-                        <ul>
-                            {% for benefit in job_data.benefits.strip('[]').replace("'", "").split(', ') %}
-                            <li>{{ benefit }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% elif job_data.benefits == "OFERTA FINALIZADA" %}
-                        <p class="text-danger">OFERTA FINALIZADA</p>
-                        {% else %}
-                        <p>{{ job_data.benefits }}</p>
-                        {% endif %}
-                        {% else %}
-                        <p>No se especificaron beneficios.</p>
-                        {% endif %}
+                            {% if job_data.duration %}
+                            <span class="badge bg-warning badge-custom">
+                                <i class="fas fa-clock me-1"></i>
+                                {{ job_data.duration }}
+                            </span>
+                            {% endif %}
+
+                            {% if job_post.is_carousel %}
+                            <span class="badge bg-secondary badge-custom">
+                                <i class="fas fa-images me-1"></i>
+                                Múltiples ofertas
+                            </span>
+                            {% endif %}
+
+                            <span class="badge bg-dark badge-custom">
+                                <i class="fas fa-calendar me-1"></i>
+                                {{ job_post.post_date.strftime('%d/%m/%Y') }}
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-4">
-                    <a href="{{ job_post.post_url }}" target="_blank" class="btn btn-primary">Ver publicación original</a>
-                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Volver al listado</a>
+                <div class="row">
+                    <div class="col-lg-8">
+                        {% if job_data.contact_name or job_data.contact_email or job_data.contact_phone %}
+                        <div class="card info-card contact-card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0 text-white">
+                                    <i class="fas fa-id-card-alt me-2"></i>Información de Contacto
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    {% if job_data.contact_name %}
+                                    <li class="list-group-item">
+                                        <strong>Nombre:</strong> {{ job_data.contact_name }}
+                                        {% if job_data.contact_position %}
+                                        <br><small class="text-muted">{{ job_data.contact_position }}</small>
+                                        {% endif %}
+                                    </li>
+                                    {% endif %}
+                                    {% if job_data.contact_email %}
+                                    <li class="list-group-item">
+                                        <strong>Email:</strong> <a href="mailto:{{ job_data.contact_email }}">{{ job_data.contact_email }}</a>
+                                    </li>
+                                    {% endif %}
+                                    {% if job_data.contact_phone %}
+                                    <li class="list-group-item">
+                                        <strong>Teléfono:</strong> <a href="tel:{{ job_data.contact_phone }}">{{ job_data.contact_phone }}</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if job_data.requirements %}
+                        <div class="card info-card requirements-card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-clipboard-list me-2"></i>Requisitos
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                {% if job_data.requirements is iterable and job_data.requirements is not string %}
+                                <ul class="list-group list-group-flush">
+                                    {% for requirement in job_data.requirements %}
+                                    <li class="list-group-item">
+                                        <i class="fas fa-check-circle me-2 text-success"></i>
+                                        {{ requirement }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p class="card-text">{{ job_data.requirements }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if job_data.knowledge_required %}
+                        <div class="card info-card knowledge-card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0 text-white">
+                                    <i class="fas fa-brain me-2"></i>Conocimientos Requeridos
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                {% if job_data.knowledge_required is iterable and job_data.knowledge_required is not string %}
+                                <ul class="list-group list-group-flush">
+                                    {% for knowledge in job_data.knowledge_required %}
+                                    <li class="list-group-item">
+                                        <i class="fas fa-lightbulb me-2 text-warning"></i>
+                                        {{ knowledge }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p class="card-text text-white">{{ job_data.knowledge_required }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if job_data.functions %}
+                        <div class="card info-card functions-card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0 text-white">
+                                    <i class="fas fa-tasks me-2"></i>Funciones
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                {% if job_data.functions is iterable and job_data.functions is not string %}
+                                <ul class="list-group list-group-flush">
+                                    {% for function in job_data.functions %}
+                                    <li class="list-group-item">
+                                        <i class="fas fa-arrow-right me-2" style="color: var(--primary-green);"></i>
+                                        {{ function }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p class="card-text text-white">{{ job_data.functions }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if job_data.benefits %}
+                        <div class="card info-card benefits-card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0 text-white">
+                                    <i class="fas fa-gift me-2"></i>Beneficios
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                {% if job_data.benefits is iterable and job_data.benefits is not string %}
+                                <ul class="list-group list-group-flush">
+                                    {% for benefit in job_data.benefits %}
+                                    <li class="list-group-item">
+                                        <i class="fas fa-star me-2 text-warning"></i>
+                                        {{ benefit }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p class="card-text text-white">{{ job_data.benefits }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-lg-4">
+                        {% if job_post.image_url %}
+                        <div class="image-carousel mb-4">
+                            <img src="{{ job_post.image_url }}" class="d-block w-100" alt="Imagen de oferta laboral" style="border-radius: 16px;">
+                        </div>
+                        {% endif %}
+
+                        <div class="card info-card mb-4">
+                            <div class="card-body text-center">
+                                <p class="mb-3">Puedes ver la publicación original en:</p>
+                                <a href="{{ job_post.post_url }}" target="_blank" class="btn btn-outline-primary btn-lg w-100">
+                                    <i class="fab fa-instagram me-2"></i>Ver Publicación Original
+                                </a>
+                            </div>
+                        </div>
+
+                        {% if metrics %}
+                        <div class="card info-card">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-chart-bar me-2"></i>Métricas de Análisis
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-6 mb-3">
+                                        <h4 class="text-primary">{{ metrics.classification_confidence }}%</h4>
+                                        <small class="text-muted">Confianza IA</small>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h4 class="text-success">{{ metrics.text_length }}</h4>
+                                        <small class="text-muted">Caracteres</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4 class="text-info">{% if metrics.has_contact_info %}Sí{% else %}No{% endif %}</h4>
+                                        <small class="text-muted">Contacto</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4 class="text-warning">{% if metrics.has_requirements %}Sí{% else %}No{% endif %}</h4>
+                                        <small class="text-muted">Requisitos</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animación de entrada para las cards
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Animación de badges
+            const badges = document.querySelectorAll('.badge-custom');
+            badges.forEach((badge, index) => {
+                badge.style.opacity = '0';
+                badge.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    badge.style.transition = 'all 0.4s ease';
+                    badge.style.opacity = '1';
+                    badge.style.transform = 'scale(1)';
+                }, 500 + (index * 100));
+            });
+
+            // Efecto hover mejorado para list items
+            const listItems = document.querySelectorAll('.list-group-item');
+            listItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateX(8px)';
+                    this.style.boxShadow = '0 4px 12px rgba(57, 66, 64, 0.15)';
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateX(0)';
+                    this.style.boxShadow = '0 2px 8px rgba(57, 66, 64, 0.1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

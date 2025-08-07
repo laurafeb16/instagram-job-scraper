@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\database",
+    "\\src\\image_processing",
+    "\\src\\scraper",
+    "\\src\\text_analysis",
+    "\\src\\utils",
+    "\\src\\web"
   ],
-  "SelectedNode": "\\C:\\Users\\laura\\Source\\Repos\\instagram-job-scraper",
+  "SelectedNode": "\\src\\scraper\\instagram_scraper.py",
   "PreviewInSolutionExplorer": false
 }
