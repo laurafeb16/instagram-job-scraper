@@ -1,6 +1,16 @@
-# Instagram Job Scraper
+<p align="center">
+  <img src="icon.svg" width="80" alt="Logo">
+</p>
+<h1 align="center">Instagram Job Scraper</h1>
 
-**Proyecto Capstone** - Analizador automatizado de ofertas laborales en Instagram
+**Proyecto Personal** - Analizador automatizado de ofertas laborales en Instagram
+
+## Problema
+
+Las facultades universitarias publican frecuentemente ofertas laborales y prácticas en sus perfiles de Instagram, pero:
+- No existe una forma centralizada de acceder a estas ofertas
+- La información está embebida en imágenes, dificultando la búsqueda y análisis
+- No hay herramientas para identificar tendencias en demanda de habilidades
 
 ## Descripción
 
