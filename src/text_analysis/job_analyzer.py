@@ -1,65 +1,390 @@
 ﻿# -*- coding: utf-8 -*-
 import re
 import unicodedata
+import logging
+from typing import Dict, List, Optional, Tuple
 
-def normalize_text(text):
-    """Normaliza el texto para manejar errores de OCR y caracteres especiales"""
+logger = logging.getLogger(__name__)
+
+def normalize_text(text: str) -> str:
+    """
+    Sistema de normalización escalable para errores de OCR comunes.
+    Aplica correcciones generales que funcionan para cualquier texto.
+    """
     if not text:
         return ""
-    # Normalizar a forma NFKD y luego reemplazar caracteres no ASCII
-    normalized = unicodedata.normalize('NFKD', text)
-    # Corregir errores comunes de OCR
-    corrections = {
-        'cl': 'd', 'rn': 'm', 'li': 'h', 'ii': 'n',
-        'pracbca': 'práctica', 'requhitos': 'requisitos',
-        'conodmientos': 'conocimientos', 'expenenda': 'experiencia'
+        
+    # Normalizar caracteres Unicode
+    normalized = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8')
+    
+    # === CORRECCIONES GENERALES DE OCR ===
+    
+    # 1. Patrón "IA" mal interpretado (muy común en OCR)
+    normalized = re.sub(r'\bIA\b', 'ia', normalized)  # IA como palabra completa → ia
+    normalized = re.sub(r'IA([a-z])', r'ia\1', normalized)  # IA seguido de minúscula → ia
+    normalized = re.sub(r'([A-Z])IA([a-z])', r'\1ia\2', normalized)  # CompanIA → Compania
+    
+    # 2. Correcciones de acentos perdidos (patrones comunes)
+    accent_patterns = {
+        r'\bultimo\b': 'último',
+        r'\bultima\b': 'última',  
+        r'\bpractica\b': 'práctica',
+        r'\bPractica\b': 'Práctica',
+        r'\bacademico\b': 'académico',
+        r'\bacademica\b': 'académica',
+        r'\btecnico\b': 'técnico',
+        r'\btecnica\b': 'técnica',
+        r'\bbasico\b': 'básico',
+        r'\bbasica\b': 'básica',
+        r'\bLogica\b': 'Lógica',
+        r'\blogica\b': 'lógica',
+        r'\bmatematicas\b': 'matemáticas',
+        r'\bMatematicas\b': 'Matemáticas',
     }
-    for error, fix in corrections.items():
-        normalized = normalized.replace(error, fix)
+    
+    for pattern, replacement in accent_patterns.items():
+        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+    
+    # 3. Errores de consonantes comunes (OCR confunde estas letras)
+    consonant_patterns = {
+        r'\b([A-Za-z]*?)rn([A-Za-z]*?)\b': r'\1m\2',  # 'rn' → 'm'
+        r'\b([A-Za-z]*?)cl([A-Za-z]*?)\b': r'\1d\2',   # 'cl' → 'd' 
+        r'\b([A-Za-z]*?)li([A-Za-z]*?)\b': r'\1h\2',   # 'li' → 'h'
+        r'\bii\b': 'n',  # 'ii' → 'n' cuando es palabra completa
+    }
+    
+    for pattern, replacement in consonant_patterns.items():
+        # Solo aplicar si la palabra resultante tiene sentido
+        matches = re.finditer(pattern, normalized)
+        for match in matches:
+            original_word = match.group(0)
+            corrected = re.sub(pattern, replacement, original_word)
+            if len(corrected) >= 3:  # Evitar correcciones muy cortas
+                normalized = normalized.replace(original_word, corrected)
+    
+    # 4. Correcciones de sufijos comunes
+    suffix_patterns = {
+        r'([a-zA-Z]+?)cion\b': r'\1ción',  # -cion → -ción
+        r'([a-zA-Z]+?)ciones\b': r'\1ciones',  # mantener si ya tiene tilde en otro lado
+        r'([a-zA-Z]+?)sion\b': r'\1sión',  # -sion → -sión
+    }
+    
+    for pattern, replacement in suffix_patterns.items():
+        normalized = re.sub(pattern, replacement, normalized)
+    
+    # 5. Correcciones de palabras técnicas comunes
+    tech_patterns = {
+        r'\bs3L\b': 'SQL',
+        r'\bMys3L\b': 'MySQL',
+        r'\bPostgres3L\b': 'PostgreSQL',
+        r'\bSIMUhNK\b': 'SIMULINK',
+        r'\bMATLAB/SIMUhNK\b': 'MATLAB/SIMULINK',
+        r'\bpythOn\b': 'Python',
+        r'\bJavascript\b': 'JavaScript',
+        r'\bjavascript\b': 'JavaScript',
+    }
+    
+    for pattern, replacement in tech_patterns.items():
+        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+    
+    # 6. Correcciones de 'h' perdida o mal colocada
+    h_patterns = {
+        r'\b([a-zA-Z]*?)l([a-zA-Z]*?)idad\b': r'\1bilidad',  # habihdad → habilidad
+        r'\b([a-zA-Z]*?)l([a-zA-Z]*?)dades\b': r'\1bilidades',
+    }
+    
+    for pattern, replacement in h_patterns.items():
+        normalized = re.sub(pattern, replacement, normalized)
+    
+    # 7. Correcciones de nombres propios comunes
+    proper_name_patterns = {
+        r'\bPanamena\b': 'Panameña',
+        r'\bAvIAcion\b': 'Aviación',
+        r'\bIngenierIA\b': 'Ingeniería',
+        r'\bComputacionales\b': 'Computacionales',
+        r'\bExperiencIA\b': 'Experiencia',
+    }
+    
+    for pattern, replacement in proper_name_patterns.items():
+        normalized = re.sub(pattern, replacement, normalized)
+    
+    # 8. Limpiar espacios múltiples y caracteres extraños
+    normalized = re.sub(r'\s+', ' ', normalized)
+    normalized = re.sub(r'[^\w\s\.,;:()\-+@áéíóúñü]', ' ', normalized)
+    normalized = normalized.strip()
+    
     return normalized
 
-def is_job_post(text, description):
-    """Determina si un post es una oferta laboral"""
+def extract_contact_info(text: str) -> Dict[str, Optional[str]]:
+    """Extrae información de contacto con patrones generales escalables"""
     
-    # Normalizar textos
+    contact_info = {
+        "name": None,
+        "position": None,
+        "email": None,
+        "phone": None,
+        "mobile": None
+    }
+    
+    normalized_text = normalize_text(text)
+    
+    # === PATRONES GENERALES PARA NOMBRES ===
+    general_contact_patterns = [
+        # Patrón principal: "Contacto: Nombre | Cargo"
+        r"Contacto:\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,3})(?:\s*[\|\-]\s*([^|\n]+?))?(?=\s*(?:Móvil|Teléfono|Email|\+\d|\d{4}|$))",
+        
+        # Títulos profesionales + Nombre
+        r"((?:Lcda?\.|Dr[a]?\.|Ing\.)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)",
+        
+        # Nombre + Cargo conocido
+        r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)(?:\s*[\|\-]\s*)?(Analista|Gerente|Director|Coordinador|Oficial|Especialista|Manager|Ejecutivo)(?:\s+[a-z].*?)?(?=\s*(?:Móvil|Teléfono|\+\d))",
+        
+        # Nombre antes de departamentos
+        r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)(?:\s*[\|\-]\s*)?(?:Talent\s+Development|Human\s+Resources|Recursos\s+Humanos|Development\s+Center)",
+    ]
+    
+    for pattern in general_contact_patterns:
+        match = re.search(pattern, normalized_text, re.IGNORECASE)
+        if match:
+            name = match.group(1).strip()
+            
+            # Validación general de nombres
+            if (3 <= len(name) <= 50 and
+                re.match(r'^[A-Za-z\.\s]+$', name) and
+                len(name.split()) <= 4 and  # Máximo 4 palabras
+                not any(word.lower() in ['contacto', 'email', 'telefono', 'movil'] for word in name.split())):
+                
+                contact_info["name"] = name
+                
+                # Extraer cargo si existe
+                if len(match.groups()) >= 2 and match.group(2):
+                    position = match.group(2).strip()
+                    position = re.sub(r'(Móvil|Teléfono|Email).*$', '', position).strip()
+                    if 3 <= len(position) <= 100:
+                        contact_info["position"] = position
+                break
+    
+    # === PATRONES GENERALES PARA TELÉFONOS ===
+    phone_patterns = [
+        r"(?:Móvil|Celular|Teléfono|Tel\.?):\s*(\+\(?\d{3}\)?\s*\d{4}[-\s]?\d{4})",
+        r"(\+\(?\d{3}\)?\s*\d{4}[-\s]?\d{4})",
+        r"(\d{4}[-\s]\d{4})",
+    ]
+    
+    for pattern in phone_patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            phone = match.group(1).strip()
+            contact_info["phone"] = phone
+            break
+    
+    return contact_info
+
+def extract_company_info(text: str) -> Dict[str, Optional[str]]:
+    """Extrae información de empresas con patrones escalables"""
+    
+    company_info = {
+        "name": None,
+        "industry": None,
+        "description": None
+    }
+    
+    normalized_text = normalize_text(text)
+    
+    # === PATRONES GENERALES PARA EMPRESAS ===
+    general_company_patterns = [
+        # Patrón principal: "Empresa: Nombre de la Empresa"
+        r"(?:Empresa|Entidad):\s*([A-Z][A-Za-z\s,\.&]{8,80}?(?:\s*S\.?\s*A\.?|Inc\.?|Corp\.?|Group|Bank|Solutions?)?)(?=\s|$|\n)",
+        
+        # Empresas en mayúsculas (común en OCR)
+        r"(?:Empresa|Entidad):\s*([A-Z][A-Z\s,\.&]{10,60})",
+        
+        # Empresa seguida de "está ofreciendo"
+        r"([A-Z][A-Za-z\s,\.&]{8,60}?(?:\s*S\.?\s*A\.?)?)\s+está\s+(?:ofreciendo|buscando)",
+    ]
+    
+    for pattern in general_company_patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            company_name = match.group(1).strip()
+            
+            # Limpiar nombre de empresa
+            company_name = re.sub(r'^\W+|\W+$', '', company_name)
+            company_name = re.sub(r'\s+', ' ', company_name)
+            
+            # Filtros de calidad generales
+            if (8 <= len(company_name) <= 80 and
+                not any(word in company_name.lower() for word in ['contacto', 'telefono', 'email'])):
+                
+                company_info["name"] = company_name
+                break
+    
+    # === DETECCIÓN DE INDUSTRIA GENERAL ===
+    if company_info["name"]:
+        company_text = (company_info["name"] + " " + normalized_text).lower()
+        
+        # Patrones de industria escalables
+        industry_keywords = {
+            "aviación": [r"aviación", r"aviation", r"airline", r"aereo", r"copa"],
+            "tecnología": [r"tech", r"system", r"software", r"digital", r"solutions", r"manz", r"grupo"],
+            "financiero": [r"banco", r"bank", r"financ", r"tower", r"credit"],
+            "consultoría": [r"consult", r"advisory", r"pwc", r"audit"],
+            "manufactura": [r"manufactur", r"industrial", r"fabrica"],
+            "educación": [r"universidad", r"educación", r"academy", r"utp"],
+            "gobierno": [r"gobierno", r"ministerio", r"gob\.pa", r"dgcp"],
+        }
+        
+        for industry, patterns in industry_keywords.items():
+            if any(re.search(pattern, company_text) for pattern in patterns):
+                company_info["industry"] = industry
+                break
+    
+    return company_info
+
+def extract_requirements_and_knowledge(text: str) -> Dict[str, List[str]]:
+    """
+    Extrae secciones de manera general y escalable.
+    Funciona con diferentes formatos y estructuras.
+    """
+    
+    result = {
+        "requirements": [],
+        "knowledge": [],
+        "functions": [],
+        "benefits": []
+    }
+    
+    normalized_text = normalize_text(text)
+    
+    # === PATRONES GENERALES PARA SECCIONES ===
+    section_patterns = {
+        "requirements": [
+            r"(?:Requisitos?|Perfil|Requerimientos?):\s*(.*?)(?=(?:Conocimientos?|Funciones?|Ofrecemos?|Beneficios?|La\s+práctica|Universidad|$))",
+            r"(?:Requisitos?|Perfil|Requerimientos?)\s+(.*?)(?=(?:Conocimientos?|Funciones?|Ofrecemos?|Beneficios?|La\s+práctica|Universidad|$))",
+        ],
+        "knowledge": [
+            r"Conocimientos?\s*(?:en|requeridos?|necesarios?)?\s*:?\s*(.*?)(?=(?:Funciones?|Ofrecemos?|Beneficios?|La\s+práctica|Universidad|$))",
+            r"(?:Habilidades?|Skills?|Competencias?)\s*:?\s*(.*?)(?=(?:Funciones?|Ofrecemos?|Beneficios?|La\s+práctica|Universidad|$))",
+        ],
+        "functions": [
+            r"(?:Algunas?\s+de\s+las?\s+)?Funciones?\s*(?:de\s+colaboración)?\s*(?:en\s+el\s+área)?\s*:?\s*(.*?)(?=(?:Ofrecemos?|Beneficios?|La\s+práctica|Universidad|$))",
+            r"(?:Responsabilidades?|Actividades?|Tareas?)\s*:?\s*(.*?)(?=(?:Ofrecemos?|Beneficios?|La\s+práctica|Universidad|$))",
+        ],
+        "benefits": [
+            r"(?:Ofrecemos?|Beneficios?|Ofrecen)\s*:?\s*(.*?)(?=(?:Nota|Dudas?|Interesados?|Universidad|Publicado|$))",
+            r"(?:Qué\s+ofrecemos|Lo\s+que\s+ofrecemos)\s*:?\s*(.*?)(?=(?:Nota|Dudas?|Interesados?|Universidad|Publicado|$))",
+        ]
+    }
+    
+    # === PROCESAMIENTO GENERAL DE SECCIONES ===
+    for section_name, patterns in section_patterns.items():
+        for pattern in patterns:
+            match = re.search(pattern, normalized_text, re.DOTALL | re.IGNORECASE)
+            if match:
+                section_text = match.group(1).strip()
+                
+                # Detectar diferentes formatos de listas
+                items = extract_list_items(section_text)
+                
+                if items:
+                    result[section_name] = items
+                    break
+    
+    return result
+
+def extract_list_items(text: str) -> List[str]:
+    """
+    Extrae elementos de lista de manera general.
+    Detecta diferentes formatos: viñetas, números, guiones, etc.
+    """
+    
+    items = []
+    
+    # Patrones de viñetas generales
+    bullet_patterns = [
+        r'^[•⚫⭐✓✔·\-→+*]\s+(.+)$',      # Viñetas al inicio de línea
+        r'\n[•⚫⭐✓✔·\-→+*]\s+(.+)',      # Viñetas después de salto
+        r'^[0-9]+\.\s+(.+)$',             # Listas numeradas
+        r'\n[0-9]+\.\s+(.+)',             # Listas numeradas después de salto
+        r'^[a-zA-Z]\)\s+(.+)$',           # Listas con letras a) b) c)
+    ]
+    
+    # Intentar cada patrón
+    for pattern in bullet_patterns:
+        matches = re.findall(pattern, text, re.MULTILINE)
+        if matches:
+            # Limpiar y filtrar elementos válidos
+            clean_items = []
+            for item in matches:
+                item = item.strip()
+                if (len(item) > 10 and  # Mínimo 10 caracteres
+                    not re.match(r'^[\d\s\.,\-]+$', item) and  # No solo números/puntuación
+                    len(item.split()) >= 3):  # Al menos 3 palabras
+                    clean_items.append(item)
+            
+            if clean_items:
+                items = clean_items
+                break
+    
+    # Si no hay viñetas, dividir por líneas significativas
+    if not items:
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        for line in lines:
+            if (len(line) > 15 and
+                not re.match(r'^[\d\s\.,\-]+$', line) and
+                len(line.split()) >= 4 and
+                line.lower() not in ['requisitos', 'conocimientos', 'funciones', 'beneficios']):
+                items.append(line)
+    
+    # Eliminar duplicados manteniendo orden
+    return list(dict.fromkeys(items))
+
+# === RESTO DE FUNCIONES CON MEJORAS GENERALES ===
+
+def is_job_post(text: str, description: str) -> Tuple[bool, Optional[str], int, bool]:
+    """Determina si es oferta laboral con criterios generales mejorados"""
+    
     text = normalize_text(text)
     description = normalize_text(description)
+    combined_text = f"{text} {description}".lower()
     
-    # Palabras clave positivas con ponderación
+    # Indicadores positivos generales
     job_indicators = {
-        "práctica profesional": 10,
-        "práctica laboral": 10,
-        "vacante": 10,
-        "oferta laboral": 10,
-        "empresa": 5,
-        "entidad": 5,
-        "requisitos": 5,
-        "conocimientos": 5,
-        "funciones": 5,
-        "ofrecen": 5,
-        "contacto": 3,
-        "interesados": 3,
-        "hoja de vida": 3,
-        "cv": 3,
-        "reclutamiento": 2  # Añadido
+        "práctica profesional": 25,
+        "práctica laboral": 25,
+        "vacante": 20,
+        "pasantía": 20,
+        "empleo": 15,
+        "trabajo": 10,
+        "puesto": 10,
+        "empresa:": 15,
+        "contacto:": 12,
+        "requisitos:": 12,
+        "conocimientos": 10,
+        "funciones": 10,
+        "ofrecemos": 12,
+        "está ofreciendo": 15,
+        "está buscando": 15,
+        "se solicita": 12,
+        "enviar hoja de vida": 15,
+        "interesados enviar": 12,
     }
     
-    # Palabras clave negativas
+    # Indicadores negativos generales
     non_job_indicators = {
-        "matrícula": -10,
-        "calendario académico": -10,
-        "horario de clases": -10,
-        "seminario": -5,
-        "conferencia": -5,
-        "vicerrectoría": -5,
-        "ha finalizado": -8,  # Añadido
-        "finalizado el período": -8  # Añadido
+        "talleres": -20,
+        "seminario": -20,
+        "conferencia": -20,
+        "evento": -15,
+        "matrícula": -25,
+        "ha finalizado": -30,
+        "cupos agotados": -25,
+        "convocatoria cerrada": -25,
     }
     
-    combined_text = (text + " " + description).lower()
+    score = 0
     
     # Calcular puntuación
-    score = 0
     for term, weight in job_indicators.items():
         if term in combined_text:
             score += weight
@@ -68,191 +393,208 @@ def is_job_post(text, description):
         if term in combined_text:
             score += weight
     
-    # Verificar estado de la oferta (activa/finalizada)
-    is_expired = False
-    if "finalizado" in description.lower() or "cerrado" in description.lower():
-        is_expired = True
-        score -= 5  # Penalizar ofertas finalizadas
+    # Verificar si está expirada
+    is_expired = any(pattern in combined_text for pattern in [
+        "ha finalizado", "se acabó", "cupos agotados", "convocatoria cerrada"
+    ])
     
-    # Añadir más patrones para detectar ofertas finalizadas
-    expired_patterns = [
-        r"(?:ha|período)\s+finalizado",
-        r"convocatoria\s+cerrada",
-        r"ya\s+no\s+(?:está|se encuentra)\s+disponible",
-        r"se\s+han\s+cubierto\s+(?:todas)?\s+las\s+plazas",
-    ]
-
-    # Buscar estos patrones en la descripción del post
-    for pattern in expired_patterns:
-        if re.search(pattern, description.lower()):
-            is_expired = True
-            score -= 5
-            break
+    is_job = score >= 30
     
-    # Primero determinar si es una oferta laboral
-    is_job = score >= 15  # Umbral ajustable
+    # Determinar tipo
+    job_type = "No identificado"
+    if is_job:
+        if "práctica profesional" in combined_text:
+            job_type = "Práctica Profesional"
+        elif "práctica laboral" in combined_text:
+            job_type = "Práctica Laboral"
+        elif "vacante" in combined_text:
+            job_type = "Vacante"
+        elif "pasantía" in combined_text:
+            job_type = "Pasantía"
+        else:
+            job_type = "Oferta Laboral"
     
-    # Definir patrones para tipos de oferta
-    job_type_patterns = {
-        "Práctica Profesional": [r"[Pp]r[aá]ctica\s+[Pp]rofesional", r"[Pp]r[aá]ctica\s+[Pp]rof\."],
-        "Práctica Laboral": [r"[Pp]r[aá]ctica\s+[Ll]aboral"],
-        "Vacante": [r"[Vv]acante", r"[Pp]uesto\s+[Vv]acante"]
-    }
-    
-    # Identificar tipo de oferta con búsqueda más robusta
-    job_type = None
-    if is_job:  # Solo asignar tipo si es una oferta
-        for jt, patterns in job_type_patterns.items():
-            for pattern in patterns:
-                if re.search(pattern, combined_text):
-                    job_type = jt
-                    break
-            if job_type:
-                break
-    
-    # Añadir detección de patrones específicos para mejorar precisión
-    job_specific_patterns = [
-        r"(?:enviar|envía|remitir)(?:\s+(?:tu|su|el))?(?:\s+(?:cv|curriculum|hoja de vida))",
-        r"interesados(?:\s+(?:enviar|contactar|escribir))",
-        r"estamos\s+(?:buscando|contratando|seleccionando)",
-        r"(?:se\s+)?requiere\s+personal",
-        r"se\s+solicita",
-        r"(?:enviar|mandar)\s+(?:postulación|aplicación)"
-    ]
-    
-    for pattern in job_specific_patterns:
-        if re.search(pattern, combined_text):
-            score += 5  # Incrementar puntuación si hay patrones específicos
-    
-    # Devolver también si está activa o finalizada
     return is_job, job_type, score, is_expired
 
-def extract_job_data(image_text, post_description):
-    """Extrae información estructurada de la oferta laboral"""
+def extract_job_data(image_text: str, post_description: str) -> Dict:
+    """Extrae información con procesamiento general mejorado"""
     
-    # Normalizar textos
-    image_text = normalize_text(image_text)
-    post_description = normalize_text(post_description)
+    primary_text = normalize_text(post_description) if post_description else ""
+    secondary_text = normalize_text(image_text) if image_text else ""
     
-    combined_text = image_text + "\n\n" + post_description
+    # Estrategia inteligente de combinación
+    if len(primary_text) < 100 and len(secondary_text) > 50:
+        combined_text = primary_text + "\n\n" + secondary_text
+    elif len(primary_text) > 50:
+        combined_text = primary_text
+    else:
+        combined_text = secondary_text
     
-    # Inicializar diccionario con más campos
-    job_data = {
-        "company_name": None,
-        "contact_name": None,
-        "contact_position": None,
-        "contact_email": None,
-        "contact_phone": None,
-        "position_title": None,  # Añadido
-        "requirements": [],
-        "knowledge": [],
-        "functions": [],
-        "benefits": [],
-        "is_active": True,  # Añadido
-        "experience_required": None,
-        "education_required": None
+    # Extraer información usando funciones mejoradas
+    company_info = extract_company_info(combined_text)
+    contact_info = extract_contact_info(combined_text)
+    sections_info = extract_requirements_and_knowledge(combined_text)
+    
+    # Si no hay contacto en descripción, buscar en OCR
+    if not (contact_info.get('name') or contact_info.get('phone')) and secondary_text:
+        ocr_contact = extract_contact_info(secondary_text)
+        contact_info.update({k: v for k, v in ocr_contact.items() if v})
+    
+    return {
+        "company_name": company_info["name"],
+        "company_industry": company_info["industry"],
+        "contact_name": contact_info.get("name"),
+        "contact_position": contact_info.get("position"),
+        "contact_email": contact_info.get("email"),
+        "contact_phone": contact_info.get("phone"),
+        "position_title": extract_position_title(combined_text),
+        "requirements": sections_info["requirements"],
+        "knowledge_required": sections_info["knowledge"],
+        "functions": sections_info["functions"],
+        "benefits": sections_info["benefits"],
+        "is_active": not is_job_post(primary_text, secondary_text)[3],
+        "work_modality": extract_work_modality(combined_text),
+        "duration": extract_duration(combined_text),
+    }
+
+def extract_position_title(text: str) -> Optional[str]:
+    """Extrae título del puesto con patrones generales"""
+    
+    normalized_text = normalize_text(text).lower()
+    
+    patterns = [
+        r"práctica\s+(?:profesional|laboral)\s+(?:como|en)\s+([^\n,.]+)",
+        r"(?:puesto|cargo|vacante)\s+(?:de|para)\s+([^\n,.]+)",
+        r"se\s+(?:busca|requiere|solicita)\s+([^\n,.]+)",
+        r"\b(?:analista|ingeniero|desarrollador|especialista|gerente)\s+(?:de|en)\s+([^\n,.]+)",
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            title = match.group(1).strip()
+            title = re.sub(r'^(?:un|una)\s+', '', title)
+            return title.strip().title()
+    
+    return None
+
+def extract_work_modality(text: str) -> Optional[str]:
+    """Extrae modalidad de trabajo"""
+    
+    normalized_text = normalize_text(text).lower()
+    
+    if re.search(r"presencial|oficina", normalized_text):
+        return "Presencial"
+    elif re.search(r"remoto|virtual|casa", normalized_text):
+        return "Remoto"
+    elif re.search(r"híbrido|mixto", normalized_text):
+        return "Híbrido"
+    
+    return None
+
+def extract_duration(text: str) -> Optional[str]:
+    """Extrae duración del trabajo"""
+    
+    normalized_text = normalize_text(text).lower()
+    
+    duration_patterns = [
+        r"(\d+)\s+meses",
+        r"(\d+)\s+años",
+        r"duración:\s*([^\n]+)",
+        r"período:\s*([^\n]+)",
+    ]
+    
+    for pattern in duration_patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            return match.group(1).strip()
+    
+    return None
+
+def extract_experience_education(text: str) -> Dict[str, Optional[str]]:
+    """Extrae experiencia y educación requeridas"""
+    
+    normalized_text = normalize_text(text)
+    
+    result = {"experience": None, "education": None}
+    
+    # Experiencia
+    exp_patterns = [
+        r"experiencia\s+(?:mínima\s+)?(?:de\s+)?(\d+(?:-\d+)?|\d+\+)\s+(?:años?|meses?)",
+        r"(\d+(?:-\d+)?|\d+\+)\s+(?:años?|meses?)\s+(?:de\s+experiencia|requeridos)",
+    ]
+    
+    for pattern in exp_patterns:
+        match = re.search(pattern, normalized_text, re.IGNORECASE)
+        if match:
+            exp_str = match.group(1) + (" años" if "año" in match.group(0).lower() else " meses")
+            result["experience"] = exp_str
+            break
+    
+    # Educación
+    edu_patterns = [
+        r"(?:estudiante|egresado)\s+(?:de|en)\s+([^\n,.;]+)",
+        r"Facultad de\s+([^\n,.;]+)",
+        r"(?:carrera|título|licenciatura)\s+(?:en|de)\s+([^\n,.;]+)",
+    ]
+    
+    for pattern in edu_patterns:
+        match = re.search(pattern, normalized_text, re.IGNORECASE)
+        if match:
+            edu = match.group(1).strip().title()
+            result["education"] = re.sub(r'[.,;:]+$', '', edu)
+            break
+    
+    return result
+
+def extract_skills_and_technologies(text: str) -> Dict[str, List[str]]:
+    """Extrae habilidades técnicas y tecnologías específicas"""
+
+    normalized_text = normalize_text(text)
+    
+    result = {
+        "programming_languages": [],
+        "technologies": [],
+        "soft_skills": []
     }
     
-    # Verificar si la oferta está activa o finalizada
-    if "finalizado" in post_description.lower() or "cerrado" in post_description.lower():
-        job_data["is_active"] = False
+    # Patrones para lenguajes de programación
+    programming_patterns = [
+        r'\b(Python|Java|JavaScript|C\+\+|C#|PHP|Go|Rust|Swift|Kotlin)\b',
+        r'\b(React|Angular|Vue|Node\.js|Django|Flask|Spring)\b'
+    ]
+
+    for pattern in programming_patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            programming = match.group(1).strip()
+            programming = re.sub(r'^(?:un|una)\s+', '', programming)
+            return tech.strip().programming()
     
-    # Patrones mejorados
-    company_patterns = [
-        r"Empresa:\s*([^\n]+)",
-        r"Entidad:\s*([^\n]+)",
-        r"(?:Empresa|Entidad):\s*([A-Za-z0-9\s\.,]+)(?:\n|$)"
+    # Patrones para tecnologías
+    tech_patterns = [
+        r'\b(AWS|Azure|GCP|Docker|Kubernetes|Git)\b',
+        r'\b(MySQL|PostgreSQL|MongoDB|Redis|Elasticsearch)\b'
     ]
     
-    # Buscar título del puesto (nuevo)
-    position_patterns = [
-        r"(?:para|como)\s+([A-Za-z\s]+de\s+[A-Za-z\s]+)",
-        r"(?:busca|solicita)\s+([A-Za-z\s]+)"
+    for pattern in tech_patterns:
+        match = re.search(pattern, normalized_text)
+        if match:
+            tech = match.group(1).strip()
+            tech = re.sub(r'^(?:un|una)\s+', '', tech)
+            return tech.strip().title()
+
+    # Patrones para habilidades blandas
+    soft_skills_patterns = [
+        r'\b(comunicación|trabajo en equipo|liderazgo|adaptabilidad|resolución de problemas)\b',
+        r'\b(empatía|creatividad|pensamiento crítico|gestión del tiempo)\b'
     ]
-    
-    # Patrones más específicos para títulos de puestos
-    new_position_patterns = [
-        r"(?:como|puesto de|cargo de)\s+([A-Za-z\s]+(?:de|en)\s+[A-Za-z\s]+)",
-        r"(?:analista|ingeniero|desarrollador|programador)\s+(?:de|en)\s+([A-Za-z\s]+)",
-        r"(?:ofrecen|buscan|solicitan)\s+(?:un|una)\s+([A-Za-z\s]+)"
-    ]
-    
-    for pattern in position_patterns + new_position_patterns:
-        match = re.search(pattern, combined_text, re.IGNORECASE)
+
+    for pattern in soft_skills_patterns:
+        match = re.search(pattern, normalized_text)
         if match:
-            job_data["position_title"] = match.group(1).strip()
-            break
-    
-    # Extraer empresa
-    for pattern in company_patterns:
-        match = re.search(pattern, combined_text)
-        if match:
-            job_data["company_name"] = match.group(1).strip()
-            break
-    
-    # Extraer contacto (nombre y posición)
-    contact_pattern = r"Contacto:\s*([^|]+)\|\s*([^\n]+)"
-    contact_match = re.search(contact_pattern, combined_text)
-    if contact_match:
-        job_data["contact_name"] = contact_match.group(1).strip()
-        job_data["contact_position"] = contact_match.group(2).strip()
-    
-    # Extraer email
-    email_pattern = r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-    email_match = re.search(email_pattern, combined_text)
-    if email_match:
-        job_data["contact_email"] = email_match.group(0)
-    
-    # Extraer teléfono
-    phone_pattern = r"(?:\+\d{1,3})?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}"
-    phone_match = re.search(phone_pattern, combined_text)
-    if phone_match:
-        job_data["contact_phone"] = phone_match.group(0)
-    
-    # Extraer secciones con listas
-    section_patterns = {
-        "requirements": r"Requisitos:\s*\n(.*?)(?:\n\n|\n[A-Z])",
-        "knowledge": r"Conocimientos[^:]*:\s*\n(.*?)(?:\n\n|\n[A-Z])",
-        "functions": r"(?:Funciones|Algunas de las funciones)[^:]*:\s*\n(.*?)(?:\n\n|\n[A-Z])",
-        "benefits": r"Ofrecen:\s*\n(.*?)(?:\n\n|\n[A-Z])"
-    }
-    
-    for section, pattern in section_patterns.items():
-        match = re.search(pattern, combined_text, re.DOTALL)
-        if match:
-            section_text = match.group(1)
-            # Extraer elementos de lista (con viñetas o números)
-            items = re.findall(r'[•⚫⦁⭐✓✔·][^\n•⚫⦁⭐✓✔·]*|(?:\d+\.\s*)[^\n]*', section_text)
-            if items:
-                job_data[section] = [item.strip().lstrip('•⚫⦁⭐✓✔·').strip() for item in items if item.strip()]
-            else:
-                # Si no hay viñetas, dividir por saltos de línea
-                job_data[section] = [line.strip() for line in section_text.split('\n') if line.strip()]
-    
-    # Extraer nivel de experiencia y formación requerida
-    experience_patterns = [
-        r"(?:experiencia|exp\.)\s+(?:de|mínima|requerida)?\s+(\d+[- ]+\d+|\d+)\s+(?:años|meses)",
-        r"(\d+[- ]+\d+|\d+)\s+(?:años|meses)\s+de\s+experiencia"
-    ]
-    
-    education_patterns = [
-        r"(?:título|formación|estudios)\s+(?:en|de)\s+([A-Za-z\s]+)",
-        r"(?:ingenier[oa]|licenciad[oa]|técnic[oa])\s+(?:en|de)\s+([A-Za-z\s]+)",
-        r"(?:estudiante|egresado)\s+de\s+([A-Za-z\s]+)"
-    ]
-    
-    # Buscar experiencia requerida
-    for pattern in experience_patterns:
-        match = re.search(pattern, combined_text, re.IGNORECASE)
-        if match:
-            job_data["experience_required"] = match.group(1)
-            break
-    
-    # Buscar formación requerida
-    for pattern in education_patterns:
-        match = re.search(pattern, combined_text, re.IGNORECASE)
-        if match:
-            job_data["education_required"] = match.group(1).strip()
-            break
-    
-    return job_data
+            soft_skills = match.group(1).strip()
+            soft_skills = re.sub(r'^(?:un|una)\s+', '', soft_skills)
+            return soft_skills.strip().title()
+
+    return result
