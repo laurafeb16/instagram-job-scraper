@@ -200,5 +200,5 @@ Distribución por tipo:
 - [x] Sistema de scraping básico
 - [x] Implementación OCR
 - [x] Dashboard web funcional
-- [ ] Exportación de datos
+- [x] Exportación de datos
 - [ ] Modelo de Machine Learning
