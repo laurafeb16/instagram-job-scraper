@@ -7,29 +7,21 @@
   "classification": {
     "is_job": true,
     "job_type": "Práctica Laboral",
-    "score": 111,
+    "score": 116,
     "is_expired": false
   },
   "extracted_info": {
-    "company_name": "Copa Airhnes",
+    "company_name": "Copa Airlines",
     "company_industry": "aviación",
-    "contact_name": "Jovani Mendoza Anahsta de Experiencia al Chent",
-    "contact_position": null,
+    "contact_name": "Jovani Mendoza",
+    "contact_position": "Anahsta de Experiencia al Chente Movil: +(507",
     "contact_email": null,
-    "contact_phone": "+(507) 6292-5939",
+    "contact_phone": "6292-5939",
     "position_title": null,
-    "requirements": [
-      "Ser estudiante de último ano de carrera de la Facultad de Ingenieria de Sistemas Computacionales (FISC). Computadora personal + Seguro contra accidentes, el que proporciona la"
-    ],
-    "knowledge_required": [
-      "academicos en un entomo profesional real y desee hacerlo en la Dirección de Carga , Courier de esta empresa. Requisitos: - Ser estudiante de último ano de carrera de la Facultad de Ingenieria de Sistemas Computacionales (FISC). Computadora personal + Seguro contra accidentes, el que proporciona la"
-    ],
-    "functions": [
-      "en el area: - Completar el curriculo de formación en lA de AWS, abarcando fundamentos, arquitectura y operación de modelos. + Aphcar los conocimientos adquiridos en un proyecto de lA asignado. Contribuir al desarrollo o mejora de una funcionahdad dentro de una de las iniciativas activas. Documentar el proceso técnico y de aprendizaje para retroahmentación académica empresarial."
-    ],
-    "benefits": [
-      "Aprendizaje sobre la industria y procesos, acercamiento a la vida laboral y poner en práctica los conocimiento adquiridos en su carrera. + Horario de lunes a viemes de 7:30 a. m. a 4:30 p.m."
-    ],
+    "requirements": [],
+    "knowledge_required": [],
+    "functions": [],
+    "benefits": [],
     "is_active": true,
     "work_modality": null,
     "duration": null

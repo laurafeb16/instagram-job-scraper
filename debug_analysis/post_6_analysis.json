@@ -7,7 +7,7 @@
   "classification": {
     "is_job": true,
     "job_type": "Vacante",
-    "score": 57,
+    "score": 44,
     "is_expired": false
   },
   "extracted_info": {
@@ -21,9 +21,7 @@
     "requirements": [],
     "knowledge_required": [],
     "functions": [],
-    "benefits": [
-      "que ofrecen + Oportunidades de cre dentro de Ta z + Planes de capacitación cont An Ya , + Diversas herramientas de aprendizaje Para Pruesarrollo del trabajo. + Ambiente colaborativo para el desarrollo de los profesionales. + Contratación a tiempo completo y por contrato indefinido."
-    ],
+    "benefits": [],
     "is_active": true,
     "work_modality": null,
     "duration": null

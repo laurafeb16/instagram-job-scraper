@@ -7,12 +7,12 @@
   "classification": {
     "is_job": true,
     "job_type": "Práctica Profesional",
-    "score": 62,
+    "score": 81,
     "is_expired": false
   },
   "extracted_info": {
-    "company_name": null,
-    "company_industry": null,
+    "company_name": "p. m. de lune",
+    "company_industry": "educación",
     "contact_name": null,
     "contact_position": null,
     "contact_email": null,

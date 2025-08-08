@@ -7,28 +7,22 @@
   "classification": {
     "is_job": true,
     "job_type": "Práctica Laboral",
-    "score": 121,
+    "score": 98,
     "is_expired": false
   },
   "extracted_info": {
     "company_name": "GRUPO MANZ, S. A",
-    "company_industry": "tecnología",
-    "contact_name": "Lcda. Ehzabeth Rodriguez Talent Development Ce",
-    "contact_position": null,
+    "company_industry": "educación",
+    "contact_name": "Lcda.. Ehzabeth Rodriguez Talent Development",
+    "contact_position": "Center (TDC) Mov",
     "contact_email": null,
-    "contact_phone": "+(507) 6647-1366",
-    "position_title": null,
-    "requirements": [
-      "Estudiante de último ano de carrera en la Facultad de Ingenieria de Sistemas Computacionales (FISC). e Interes en el desarrollo de habihdades en programación cientifica, procesamiento de datos y fundamentos de intehgencia artificial. e Alta disposición para el aprendizaje practico e Anahsis de problemas y trabajo en equipo Disponibihdad para hacer viajes eventuales y participar en actividades de campo fuera de oficina segun sea requerido."
-    ],
-    "knowledge_required": [
-      "academicos en un entomo profesional real. Requisitos: + Estudiante de último ano de carrera en la Facultad de Ingenieria de Sistemas Computacionales (FISC). e Interes en el desarrollo de habihdades en programación cientifica, procesamiento de datos y fundamentos de intehgencia artificial. e Alta disposición para el aprendizaje practico e Anahsis de problemas y trabajo en equipo Disponibihdad para hacer viajes eventuales y participar en actividades de campo fuera de oficina segun sea requerido. Conocimientos en: Fundamentos de programación (Python, C++, Java u otros). e Lógica computacional y estructuras de datos. +. Bases de datos (MySQL, PostgreSQL, etc.). Conocimientos basicos en matemáticas aphcadas y algebra hneal. + Deseable: conocimientos previos o interes en MATLAB SIMULINK SIMULINK. . Deseable: interes en intehgencia artificial, aprendizaje automatico o sistemas intehgentes. Algunas de las"
-    ],
-    "functions": [
-      "del area: e Capacitarse en el uso de MATLAB SIMULINK para aphcaciones cientificas y de simulación. + Apoyar en el desarrollo de scripts y funciones en MATLAB SIMULINK para anahsis de datos y prototipado. Investigar y documentar algoritmos aphcables a agentes de intehgencia artificial. e Colaborar con el equipo técnico en pruebas de conceptos relacionados con lA. e Capacidad para comunicar y colaborar en la construcción de soluciones que integren aspectos tecnicos y comerciales. e Participar en reuniones tecnicas y reportar avances del aprendizaje."
-    ],
+    "contact_phone": "6647-1366",
+    "position_title": "Pruebas De Conceptos Relacionados Con La",
+    "requirements": [],
+    "knowledge_required": [],
+    "functions": [],
     "benefits": [
-      "Apoyo economico (Viatico), seguro contra accidentes y un ambiente colaborativo para el crecimiento profesional, capacitación continua y certificaciones sin costo."
+      "Apoyo economico (Viatico), seguro contra accidentes y un ambiente colaborativo para el crecimiento profesional, capacitación continua y certificaciones sin costo"
     ],
     "is_active": true,
     "work_modality": "Presencial",

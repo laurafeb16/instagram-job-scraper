@@ -4,11 +4,13 @@
     "\\src",
     "\\src\\database",
     "\\src\\image_processing",
+    "\\src\\ml",
+    "\\src\\reports",
     "\\src\\scraper",
     "\\src\\text_analysis",
     "\\src\\utils",
     "\\src\\web"
   ],
-  "SelectedNode": "\\src\\scraper\\instagram_scraper.py",
+  "SelectedNode": "\\src\\text_analysis\\job_analyzer.py",
   "PreviewInSolutionExplorer": false
 }

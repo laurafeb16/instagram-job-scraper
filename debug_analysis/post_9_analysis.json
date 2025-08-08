@@ -7,29 +7,23 @@
   "classification": {
     "is_job": true,
     "job_type": "Práctica Profesional",
-    "score": 94,
+    "score": 116,
     "is_expired": false
   },
   "extracted_info": {
-    "company_name": "Towerbank Intemational, Inc",
-    "company_industry": "tecnología",
-    "contact_name": "Joana Oro Oficial Jr. de Recursos Humanos Movi",
-    "contact_position": null,
+    "company_name": "Towerbank International, Inc",
+    "company_industry": "financiero",
+    "contact_name": "Joana Oro",
+    "contact_position": "Oficial Jr. de Recursos Humanos Movil: +(507) 6550",
     "contact_email": null,
-    "contact_phone": "+(507) 6550-6473",
+    "contact_phone": "6550-6473",
     "position_title": "Opción Al Trabajo De Graduación",
     "requirements": [
-      "+. Ser estudiante de último ano de carrera de la Facultad de Ingenieria de Sistemas Computacionales (FISC). Interes en aphcar sus"
+      "Ser estudiante de último ano de carrera de la Facultad de Ingeniería de Sistemas Computacionales (FISC). Interes en aphcar sus"
     ],
-    "knowledge_required": [
-      "academicos en un entomo profesional real. Perfil: +. Ser estudiante de último ano de carrera de la Facultad de Ingenieria de Sistemas Computacionales (FISC). Interes en aphcar sus conocimientos en proyectos innovadores del sector bancario. + Deseo de vincular su práctica profesional con iniciativas de transformación digital en lA. Conocimientos en: + Lenguajes de programación como Python y JavaScript Manejo básico de servicios doud, preferiblemente AWS (conocimiento de servicios como 3, Lambda, SageMaker, Bedrock). Algunas de las"
-    ],
-    "functions": [
-      "en el area: + Completar el curriculo de formación en lA de AWS, abarcando fundamentos, arquitectura y operación de modelos. Aphcar los conocimientos adquiridos en un proyecto de lA asignado. + Contribuir al desarrollo o mejora de una funcionahdad dentro de una de las iniciativas activas. + Documentar el proceso técnico y de aprendizaje para retroahmentación académica empresarial."
-    ],
-    "benefits": [
-      "Apoyo economico Formación técnica avalada por Amazon Web Services (AWS) Participación en proyectos reales de intehgencia artificial + Mentores intemos y acompanamiento técnico especiahzado +. Desarrollo de un producto o componente funcional para una iniciativa empresarial Potencial vinculación futura en proyectos de innovación tecnologica"
-    ],
+    "knowledge_required": [],
+    "functions": [],
+    "benefits": [],
     "is_active": true,
     "work_modality": null,
     "duration": null
