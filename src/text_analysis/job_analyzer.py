@@ -134,11 +134,37 @@ def normalize_text(text: str) -> str:
     return normalized
 
 def clean_contact_name(name: str) -> str:
-    """Limpia nombres de contacto con correcciones generales de OCR"""
+    """Limpia nombres de contacto con correcciones generales de OCR - VERSIÓN MEJORADA"""
     if not name:
         return name
     
-    # Correcciones generales de nombres (no específicas)
+    # === CORRECCIONES ESPECÍFICAS DE OCR PARA NOMBRES ===
+    # Primero aplicar correcciones específicas de OCR
+    ocr_name_corrections = {
+        # Errores específicos encontrados en los logs
+        r'\bAnahsta\b': 'Analista',  # Error OCR muy común
+        r'\bEhzabeth\b': 'Elizabeth',  # 'h' mal interpretada
+        r'\bChente\b': 'Cliente',     # Error OCR común
+        r'\bMendoza\s+Anahsta\b': 'Mendoza',  # Eliminar "Anahsta" después de apellidos
+        r'\bVega\s+Anahsta\b': 'Vega',        # Eliminar "Anahsta" después de apellidos
+        r'\bRodriguez\s+Anahsta\b': 'Rodriguez', # Eliminar "Anahsta" después de apellidos
+        
+        # Patrones para eliminar departamentos/cargos del final del nombre
+        r'\s+(?:Talent\s+Development\s+Center|TDC)\s*$': '',
+        r'\s+(?:Recursos\s+Humanos|Human\s+Resources)\s*$': '',
+        r'\s+(?:Analista|Manager|Director|Coordinador)\s+de\s+.*$': '',
+        r'\s+(?:Center|Development|Department)\s*$': '',
+        
+        # Limpiar palabras descriptivas al final
+        r'\s+(?:de\s+Recursos\s+Humanos|de\s+Experiencia|al\s+Cliente)\s*$': '',
+        r'\s+(?:Movil|Móvil|Email|Teléfono)\s*$': '',
+    }
+    
+    cleaned = name
+    for pattern, replacement in ocr_name_corrections.items():
+        cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
+    
+    # === CORRECCIONES GENERALES EXISTENTES ===
     general_corrections = {
         # Títulos mal interpretados
         r'\bLcda\b': 'Lcda.',
@@ -152,11 +178,23 @@ def clean_contact_name(name: str) -> str:
         r'\bde\s+los\b': 'de los',
     }
     
-    cleaned = name
     for pattern, replacement in general_corrections.items():
         cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
     
-    return re.sub(r'\s+', ' ', cleaned).strip()
+    # === LIMPIEZA FINAL ===
+    # Eliminar espacios múltiples y limpiar
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+    
+    # Si el nombre tiene solo 1 palabra después de la limpieza, preservar apellidos comunes
+    words = cleaned.split()
+    if len(words) == 1 and len(words[0]) < 4:
+        return name  # Devolver original si quedó muy corto
+    
+    # Validar que el resultado sea un nombre válido
+    if len(cleaned) >= 5 and len(words) >= 1:
+        return cleaned
+    
+    return name  # Devolver original si la limpieza falló
 
 def separate_name_and_position(full_text: str) -> Tuple[Optional[str], Optional[str]]:
     """Separa nombre y cargo usando patrones generales escalables - VERSIÓN ULTRA ROBUSTA CORREGIDA"""
@@ -894,14 +932,28 @@ def extract_contact_info_enhanced(text: str) -> Dict[str, Optional[str]]:
     
     # === EXTRACCIÓN DE EMAIL MEJORADA CON VALIDACIÓN ===
     email_patterns = [
-        r"enviar\s+Hoja\s+de\s+Vida\s+a:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
-        r"enviar\s+CV\s+a:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
-        r"Interesados?\s+enviar.*?a:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
-        r"Email:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
-        r"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
-        r'enviar.*?a:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
-        r'email:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
-        r'([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com)',
+        # CORRECCIÓN ESPECÍFICA para el formato encontrado en los logs
+        r"Interesados?\s+enviar\s+(?:Hoja\s+de\s+Vida|CV|curricul[ou]m)\s+a:\s*([a-zA-Z0-9._%+-]+(?:O|@)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        
+        # Patrones específicos con instrucciones
+        r"enviar\s+(?:Hoja\s+de\s+Vida|CV|curricul[ou]m)\s+a:?\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        r"Interesados?\s+enviar.*?(?:a:?|al?)\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        
+        # Patrones con etiquetas
+        r"Email:?\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        r"Correo:?\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        r"E-mail:?\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})",
+        
+        # Patrones más flexibles
+        r'enviar.*?(?:a:?|al?)\s*([a-zA-Z0-9._%+-]+[@O][a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        r'(?:contacto|contact).*?([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        
+        # Patrón general (último recurso)
+        r'([a-zA-Z0-9._%+-]+[@O][a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        
+        # Patrones específicos para dominios comunes
+        r'([a-zA-Z0-9._%+-]+[@O](?:gmail|hotmail|yahoo|outlook|copa|grupoenx|manz)\.com)',
+        r'([a-zA-Z0-9._%+-]+[@O][a-zA-Z0-9.-]+\.(?:com|net|org|edu|pa))',
     ]
     
     for pattern in email_patterns:
@@ -909,8 +961,19 @@ def extract_contact_info_enhanced(text: str) -> Dict[str, Optional[str]]:
             email_match = re.search(pattern, normalized_text, re.IGNORECASE)
             if email_match and len(email_match.groups()) >= 1:
                 email = email_match.group(1).strip().lower()
-                # Validar email
-                if len(email) >= 5 and email.count('@') == 1 and '.' in email.split('@')[1]:
+                
+                # CORRECCIÓN ESPECÍFICA: reemplazar "O" por "@" (error OCR común)
+                email = email.replace('o@', '@').replace('O@', '@').replace('o', '@', 1) if 'o' in email and '@' not in email else email
+                email = email.replace('O', '@', 1) if 'O' in email and '@' not in email else email
+                
+                # Validación de email más estricta
+                if (len(email) >= 5 and 
+                    email.count('@') == 1 and 
+                    '.' in email.split('@')[1] and
+                    not email.startswith('.') and 
+                    not email.endswith('.') and
+                    len(email.split('@')[0]) >= 2 and
+                    len(email.split('@')[1]) >= 4):
                     contact_info["email"] = email
                     logger.debug(f"✅ Email extraído: '{contact_info['email']}'")
                     break
@@ -1393,98 +1456,197 @@ def extract_requirements_and_knowledge(text: str) -> Dict[str, List[str]]:
     return result
 
 def extract_standalone_benefits(text: str) -> List[str]:
-    """Extrae beneficios incluso cuando no están en una sección formal"""
+    """Extrae beneficios separados en elementos individuales - VERSIÓN MEJORADA"""
     benefits = []
     
-    # Patrones específicos para beneficios comunes (corregidos)
-    benefit_patterns = [
-        # Patrones simples sin grupos de captura adicionales
-        r'(?:•|\-|\*|\d+\.)\s*(?:apoyo\s+económico|viático)[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:seguro\s+contra\s+accidentes)[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:ambiente\s+colaborativo)[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:capacitación\s+continua|certificaciones)[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:horario\s+(?:flexible|de\s+lunes\s+a\s+viernes))[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:estación\s+de\s+trabajo|computadora)[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:posibilidad\s+de\s+inserción|experiencia\s+laboral)[^.;]*',
-        
-        # Patrón para elementos de lista con palabras clave
-        r'(?:•|\-|\*|\d+\.)\s*[A-Z][^.;]{10,100}(?:económico|viático|seguro|ambiente|capacitación|aprendizaje|experiencia|inserción|crecimiento|desarrollo)[^.;]*',
+    # === PATRONES PARA BENEFICIOS INDIVIDUALES ===
+    individual_benefit_patterns = [
+        # Beneficios específicos como elementos separados
+        r'(?:•|\-|\*|\d+\.|\n)\s*(apoyo\s+económico(?:\s*\([^)]+\))?)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(viático)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(seguro\s+contra\s+accidentes)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(ambiente\s+colaborativo)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(capacitación\s+continua)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(certificaciones?)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(horario\s+flexible)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(estación\s+de\s+trabajo)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(computadora\s+personal)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(experiencia\s+laboral)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(crecimiento\s+profesional)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(inserción\s+laboral)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(carta\s+de\s+recomendación)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(remuneración\s+mensual)',
+        r'(?:•|\-|\*|\d+\.|\n)\s*(oportunidad\s+de\s+contratación)',
     ]
     
-    # Extraer beneficios utilizando los patrones
-    for pattern in benefit_patterns:
+    # Extraer beneficios individuales
+    for pattern in individual_benefit_patterns:
         matches = re.findall(pattern, text, re.IGNORECASE | re.MULTILINE)
         for match in matches:
             benefit = match.strip()
-            if benefit and len(benefit) > 10 and benefit not in benefits:
-                # Eliminar el marcador de lista si existe
-                benefit = re.sub(r'^(?:•|\-|\*|\d+\.)\s*', '', benefit)
-                benefits.append(benefit)
-    
-    # Buscar beneficios en oraciones completas
-    sentence_patterns = [
-        r'(?:ofrecemos|te\s+ofrecemos|incluye|incluimos)\s+([^.;]{10,150})',
-        r'(?:apoyo\s+económico|viático|seguro|ambiente\s+colaborativo)[^.;]{10,150}',
-        r'(?:práctica\s+profesional\s+será\s+remunerada)[^.;]{10,150}',
-        r'(?:brindando\s+así\s+una\s+oportunidad)[^.;]{10,150}',
-        r'(?:emitirá\s+una\s+carta)[^.;]{10,150}',
-    ]
-    
-    for pattern in sentence_patterns:
-        matches = re.findall(pattern, text, re.IGNORECASE)
-        for match in matches:
-            if isinstance(match, str):
-                benefit = match.strip()
-                if benefit and len(benefit) > 10 and benefit not in benefits:
+            if benefit and len(benefit) > 3:
+                # Limpiar marcadores de lista
+                benefit = re.sub(r'^(?:•|\-|\*|\d+\.|\n)\s*', '', benefit).strip()
+                # Normalizar
+                benefit = benefit.capitalize()
+                if benefit not in benefits and len(benefit) >= 5:
                     benefits.append(benefit)
     
-    return benefits[:8]  # Limitar a 8 beneficios
-
-def extract_standalone_functions(text: str) -> List[str]:
-    """Extrae funciones incluso cuando no están en una sección formal"""
-    functions = []
-    
-    # Patrones de verbos de acción (corregidos)
-    action_verb_patterns = [
-        # Patrones simples sin grupos de captura adicionales
-        r'(?:•|\-|\*|\d+\.)\s*(?:Desarrollar|Implementar|Participar|Colaborar|Diseñar|Realizar|Apoyar|Mantener)[^.;]*',
-        r'(?:•|\-|\*|\d+\.)\s*(?:Analizar|Investigar|Ejecutar|Crear|Generar|Contribuir|Gestionar)[^.;]*',
-        
-        # Patrón para elementos que comienzan con verbos
-        r'(?:•|\-|\*|\d+\.)\s*[A-Z][a-z]+(?:ar|er|ir|izar|ear)\s+[^.;]{10,100}',
+    # === SEPARAR BENEFICIOS DE TEXTO CORRIDO ===
+    # Buscar listas separadas por comas o "y"
+    benefit_list_patterns = [
+        r'(?:ofrecemos|incluye|beneficios?):?\s*([^.;!?]+)',
+        r'(?:te\s+ofrecemos|lo\s+que\s+ofrecemos):?\s*([^.;!?]+)',
+        r'(?:durante.*?periodo.*?estudiante.*?tendrá.*?oportunidad.*?de)\s+([^.;!?]+)',
+        r'(?:práctica.*?será.*?remunerada.*?brindando.*?así)\s+([^.;!?]+)',
+        r'(?:al\s+finalizar.*?se\s+emitirá)\s+([^.;!?]+)',
     ]
     
-    # Extraer funciones utilizando los patrones
-    for pattern in action_verb_patterns:
+    for pattern in benefit_list_patterns:
+        matches = re.findall(pattern, text, re.IGNORECASE)
+        for match in matches:
+            # Separar por comas, "y", "además", etc.
+            separated_benefits = re.split(r'[,;]\s*|\s+y\s+|\s+además\s+|\s+también\s+|\s+así\s+como\s+', match)
+            for benefit in separated_benefits:
+                benefit = benefit.strip()
+                if (benefit and 
+                    len(benefit) > 8 and 
+                    len(benefit) < 100 and
+                    not benefit.lower().startswith(('que', 'para', 'con', 'en', 'de', 'a', 'por', 'una', 'el', 'la'))):
+                    
+                    # Limpiar beneficio
+                    benefit = re.sub(r'^(?:una\s+|el\s+|la\s+)', '', benefit, flags=re.IGNORECASE)
+                    benefit = benefit.capitalize()
+                    
+                    if benefit not in benefits:
+                        benefits.append(benefit)
+    
+    # === BENEFICIOS ESPECÍFICOS DEL TEXTO DE GRUPO ENX ===
+    # Extraer beneficios específicos encontrados en el texto real
+    specific_patterns = [
+        r'(adquirir\s+experiencia\s+práctica)',
+        r'(aplicar\s+tecnologías\s+actuales)',
+        r'(aprovechar\s+certificaciones\s+previas)',
+        r'(remunerada\s+de\s+manera\s+mensual)',
+        r'(crecimiento\s+profesional\s+en\s+un\s+entorno\s+dinámico\s+e\s+innovador)',
+        r'(carta\s+de\s+práctica\s+realizada)',
+        r'(posibilidad\s+de\s+ser\s+considerado\s+para\s+una\s+contratación)',
+    ]
+    
+    for pattern in specific_patterns:
+        matches = re.findall(pattern, text, re.IGNORECASE)
+        for match in matches:
+            benefit = match.strip().capitalize()
+            if benefit not in benefits:
+                benefits.append(benefit)
+    
+    return benefits[:8]  # Limitar a 8 beneficios máximo
+
+def extract_standalone_functions(text: str) -> List[str]:
+    """Extrae funciones separadas en elementos individuales - VERSIÓN MEJORADA"""
+    functions = []
+    
+    # === PATRONES PARA FUNCIONES INDIVIDUALES ===
+    individual_function_patterns = [
+        # Funciones específicas con verbos de acción
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:Programación|Desarrollo|Implementación|Participación|Colaboración|Diseño|Realización|Apoyo|Mantenimiento)\s+[^.;]{10,120})',
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:Analizar|Investigar|Ejecutar|Crear|Generar|Contribuir|Gestionar)\s+[^.;]{10,120})',
+        
+        # Funciones específicas encontradas en textos reales
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:trabajar\s+en\s+Machine\s+Learning|diseñar\s+soluciones|desarrollar\s+soluciones)[^.;]{10,120})',
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:colaborar\s+con\s+el\s+equipo|transformar\s+requerimientos)[^.;]{10,120})',
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:gestión\s+de\s+la\s+calidad|diseñar.*procesos|investigar.*tecnologías)[^.;]{10,120})',
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:asumir\s+tareas|apoyar\s+al\s+equipo)[^.;]{10,120})',
+        
+        # Patrones generales mejorados
+        r'(?:•|\-|\*|\d+\.|\n)\s*([A-Z][a-z]+(?:ar|er|ir|izar|ear)\s+[^.;]{10,120})',
+        r'(?:•|\-|\*|\d+\.|\n)\s*((?:Realizar|Ejecutar|Implementar|Desarrollar|Mantener|Apoyar|Gestionar|Coordinar|Supervisar|Monitorear)\s+[^.;]{10,120})',
+    ]
+    
+    # Extraer funciones individuales
+    for pattern in individual_function_patterns:
         matches = re.findall(pattern, text, re.IGNORECASE | re.MULTILINE)
         for match in matches:
             function = match.strip()
-            if function and len(function) > 10 and function not in functions:
-                # Eliminar el marcador de lista si existe
-                function = re.sub(r'^(?:•|\-|\*|\d+\.)\s*', '', function)
+            if function and len(function) > 10:
+                # Limpiar marcadores de lista
+                function = re.sub(r'^(?:•|\-|\*|\d+\.|\n)\s*', '', function).strip()
+                # Normalizar primera letra
+                function = function[0].upper() + function[1:] if len(function) > 1 else function.upper()
+                
+                if function not in functions and 15 <= len(function) <= 150:
+                    functions.append(function)
+    
+    # === SEPARAR FUNCIONES DE TEXTO CORRIDO ===
+    # Buscar listas de funciones en secciones
+    function_section_patterns = [
+        r'(?:Algunas\s+de\s+las\s+funciones.*?área:|Funciones.*?:)\s*([^.!?]+(?:\.|!|\?|$))',
+        r'(?:Responsabilidades.*?:|Actividades.*?:)\s*([^.!?]+(?:\.|!|\?|$))',
+        r'(?:Tareas.*?:|Qué\s+harás.*?:)\s*([^.!?]+(?:\.|!|\?|$))',
+    ]
+    
+    for pattern in function_section_patterns:
+        matches = re.findall(pattern, text, re.IGNORECASE | re.DOTALL)
+        for match in matches:
+            # Dividir por marcadores de lista o puntos
+            separated_functions = re.split(r'[•\-\*]\s*|(?:\d+\.)\s*', match)
+            for function in separated_functions:
+                function = function.strip()
+                if (function and 
+                    len(function) > 15 and 
+                    len(function) < 200 and
+                    not function.lower().startswith(('que', 'para', 'con', 'en', 'de', 'a', 'por', 'la', 'el', 'y', 'además'))):
+                    
+                    # Limpiar función
+                    function = re.sub(r'^(?:y\s+|además\s+|también\s+)', '', function, flags=re.IGNORECASE)
+                    function = function[0].upper() + function[1:] if len(function) > 1 else function.upper()
+                    
+                    if function not in functions:
+                        functions.append(function)
+    
+    # === FUNCIONES ESPECÍFICAS DEL TEXTO REAL ===
+    # Extraer funciones específicas encontradas en el texto de Grupo ENX
+    specific_function_patterns = [
+        r'(Programación\s+y\s+desarrollo\s+de\s+IA.*?plataforma)',
+        r'(Desarrollo\s+y\s+mantenimiento\s+de\s+soluciones.*?efectivas)',
+        r'(Gestión\s+de\s+la\s+calidad\s+e\s+integridad\s+de\s+datos.*?software)',
+        r'(Funciones\s+generales\s+de\s+apoyo.*?labores)',
+        r'(trabajar\s+en\s+Machine\s+Learning.*?plataforma)',
+        r'(colaborar\s+con\s+el\s+equipo.*?efectivas)',
+        r'(diseñar.*?procesos.*?confiables)',
+        r'(investigar\s+nuevas\s+tecnologías)',
+        r'(realizar\s+pruebas\s+de\s+software)',
+        r'(asumir\s+tareas\s+adicionales)',
+    ]
+    
+    for pattern in specific_function_patterns:
+        matches = re.findall(pattern, text, re.IGNORECASE)
+        for match in matches:
+            function = match.strip()
+            # Normalizar primera letra
+            function = function[0].upper() + function[1:] if len(function) > 1 else function.upper()
+            
+            if function not in functions and len(function) > 15:
                 functions.append(function)
     
-    # Búsqueda en secciones explícitas
-    if "funciones" in text.lower() or "responsabilidades" in text.lower() or "actividades" in text.lower():
-        lines = text.split('\n')
-        in_function_section = False
+    # === LIMPIAR FUNCIONES DUPLICADAS Y SIMILARES ===
+    # Eliminar funciones muy similares
+    cleaned_functions = []
+    for function in functions:
+        is_duplicate = False
+        for existing in cleaned_functions:
+            # Verificar similitud (palabras clave principales)
+            function_words = set(function.lower().split()[:3])  # Primeras 3 palabras
+            existing_words = set(existing.lower().split()[:3])
+            
+            if len(function_words & existing_words) >= 2:  # Si comparten 2+ palabras clave
+                is_duplicate = True
+                break
         
-        for line in lines:
-            line = line.strip()
-            # Detectar inicio de sección
-            if re.search(r'funciones|responsabilidades|actividades', line, re.IGNORECASE) and ':' in line:
-                in_function_section = True
-                continue
-            # Detectar fin de sección
-            if in_function_section and re.search(r'requisitos|beneficios|ofrecemos', line, re.IGNORECASE) and ':' in line:
-                in_function_section = False
-            # Procesar línea dentro de sección
-            if in_function_section and line and len(line) > 15:
-                clean_line = re.sub(r'^[•\-\*\d.]+\s*', '', line)
-                if clean_line not in functions and len(clean_line) > 10:
-                    functions.append(clean_line)
+        if not is_duplicate:
+            cleaned_functions.append(function)
     
-    return functions[:10]  # Limitar a 10 funciones
+    return cleaned_functions[:10]
 
 def extract_universal_list_items(text: str) -> List[str]:
     """Extrae elementos de lista usando patrones UNIVERSALES"""
