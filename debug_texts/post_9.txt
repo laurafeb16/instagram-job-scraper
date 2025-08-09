@@ -1,47 +1,44 @@
-POST URL: https://www.instagram.com/utpfisc/p/DM1VJauMBiT/
-IMAGE URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/526428849_1191909372741288_5389460506105662214_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGFfhI0-cy-J3oFM1XBaQbPOYauB-x8d8EQUQzTdhEpgY4lJZ6PIbjd1KMj_2TYb1Y&_nc_ohc=G8Ilo3iH0zIQ7kNvwGxvg7p&_nc_gid=o8CETIQqnky3_UA4QvdH8w&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0ODQ3NTg0NDIwNDY5MQ%3D%3D.3-ccb7-5&oh=00_AfX94UrHVfCc6u3-Xa1OOW0T3fyBERUjQt7hVEbQSr4-9A&oe=689A09BA&_nc_sid=fc8dfb
-DESCRIPTION: Práctica profesional ofrecida por Towerbank International, Inc.
+POST URL: [Extraído desde debug_images/post_9.png]
+IMAGE URL: [Imagen local]
+DESCRIPTION: [Texto extraído por OCR]
 EXTRACTED TEXT:
-ml
-r o . PA Y D
-: É
-Práctica Profesional FP; ($4 Wowervar:
-rt ONES
-A
-Entidad: Towerbank International, Inc.
-Contacto: Joana Oro | Oficial Jr. de Recursos Humanos
-Móvil: +(507) 6550-6473
-Towerbank está ofreciendo oportunidades para estudiantes que opten por realizar
-práctica profesional como opción al trabajo de graduación, aplicando sus
-conocimientos académicos en un entorno profesional real.
-Perfil:
-+. Ser estudiante de último año de carrera de la Facultad de Ingeniería de Sistemas
-Computacionales (FISC).
-* Interés en aplicar sus conocimientos en proyectos innovadores del sector bancario.
-+ Deseo de vincular su práctica profesional con iniciativas de transformación digital en lA.
-Conocimientos en:
-+ Lenguajes de programación como Python y JavaScript
-» Manejo básico de servicios cloud, preferiblemente AWS (conocimiento de servicios como
-$3, Lambda, SageMaker, Bedrock).
-Algunas de las funciones de colaboración en el área:
-+ Completar el currículo de formación en lA de AWS, abarcando fundamentos, arquitectura y
-operación de modelos.
-* Aplicar los conocimientos adquiridos en un proyecto de lA asignado.
-+ Contribuir al desarrollo o mejora de una funcionalidad dentro de una de las iniciativas
-activas.
-+ Documentar el proceso técnico y de aprendizaje para retroalimentación académica
-empresarial.
-La Práctica Profesional, será acorde a las normativas de la UTP - FISC.
-Ofrecen:
-+ Apoyo económico
-* Formación técnica avalada por Amazon Web Services (AWS)
-» Participación en proyectos reales de inteligencia artificial
-+ Mentores internos y acompañamiento técnico especializado
-+. Desarrollo de un producto o componente funcional para una iniciativa empresarial
-» Potencial vinculación futura en proyectos de innovación tecnológica
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de este banco.
-Interesados enviar Hoja de Vida a: jorootowerbank.com
-A
+Talleres virtuales
+Dirigido a estudiantes de UTP - FISC
+de 4to año
+Pueden participar estudiantes de Centros Regionales ¿
+Banco General y la
+Facultad de Ingenieria de Sistemas Computacionales de la
+Universidad Tecnológica de Panamá
+te invitan a inscribirte
+Regístrate aqui
+¡Cupos Limitados!
+40 cupos
+Nuevas tendencias en
+desarrollo de aplicaciones
+Del 25 de agosto al 5 de septiembre de 2025
+por Microsoft Teams
+Fecha Tema Facilitador Hora
+25-08-75 | Instalaciones Top m 9300.
+26-08-25 | MySQL Aurora 6:30 p.m. - 9:30p.m.
+27-08-25 | Funciones Lambda con Python en AWS 6:30 p. m. - 9:30 p.m.
+78-08-75 | Diseño de APIs con arquitectura REST Raúl Samaniego 6:30 p.m. -9:30p.m.
+29-08-25 Diseño de APIs con arquitectura GraphQL 6:30 p. m. - 9:30 p.m,
+01-09-25 Front End con angular 18 Fernando Castillo 6:30 p. m. - 9:30 p. m.
+02-09-25 Pruebas unitarias en Angular conJasmine y Karma Maria Cedeño 6:30 p. m. - 9:30 p.m.
+03-09-25 Crea, ejecuta y gestiona contenedores desde cero 6:30 p. m. - 9:30 p.m.
+| 05-09-25 | Ansible: Automatización sin limites José Sanmartín 6:30p.m. 9:30p.m.
+Requisitos:
+* Computadora con 8 GB de remoria « 2 GB disponible en disco y ser adrrinistrador de. equipo
+* Camara web
++ Microfono
++» Altavoces compat bles o auriculares con m crófons o disoos t vos equivalentes
++ Acceso a Internet estable
+La Facultad de Ingenieria de Sistemas Computacionales ce la Universidad Tecnológica de Panamá te invita a que
+participes de los talleres vir:uales realizados por Banco General como parte del Convenio Marco de Cooperacion.
+PE SN
+2% Banco General ED; ( i
+> y ::) ¿ Y
+sus buenos vecinos
 Universidad Tecnológica de Panamá
 Facultad de Ingenieria de Sistemas Computacionales
-TT O in h, Qutpfisc Y Publicado: 1 de agosto de 2025
+Siguenos: f X o in WIEZA Publicado: 4 de agosto de 2025

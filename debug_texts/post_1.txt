@@ -1,46 +1,57 @@
-POST URL: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
-IMAGE URL: https://instagram.fpac1-3.fna.fbcdn.net/v/t39.30808-6/528301474_1194902705775288_7562878248844204705_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-3.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QGJaa4CKtJDjTQYBY98FJ76khByfHwNRr6VaaLP04StIMDQ0qBeK0mhkwTEknW-5_I&_nc_ohc=urbz49Pe0CUQ7kNvwH4rJj3&_nc_gid=4Cz3sZMVUnU-qrJT3nq_Zg&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NTIxMzg3MjA0NzI2Ng%3D%3D.3-ccb7-5&oh=00_AfW_gHbDDmHK8iPrSVWrGMPX-MdmiTszDAQoxmTbm6H0ug&oe=689A00E1&_nc_sid=fc8dfb
-DESCRIPTION: Práctica laboral ofrecida por Compañía Panameña de Aviación, S. A. (Copa Airlines)
+POST URL: [Extraído desde debug_images/post_1.png]
+IMAGE URL: [Imagen local]
+DESCRIPTION: [Texto extraído por OCR]
 EXTRACTED TEXT:
 ml
-“za var
-LA o »
-Práctica Laboral (Epi (45 corsatrines
-3 IE t Cargo HEN.
-Pt NES
+dl se
+z . . A Y: 2]
+Práctica Profesional “EP; ¿($ =><
++? [::] EN A APA
+rt. ONES
 A
-Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
-Contacto: Jovani Mendoza | Analista de Experiencia al Cliente
-Móvil: +(507) 6292-5939
-Copa Airlines está ofreciendo oportunidad a estudiante que requiera ganar
-experiencia laboral, aplicando sus conocimientos académicos en un entorno
-profesional real y desee hacerlo en la Dirección de Carga €, Courier de esta empresa.
+Empresa: Grupo ENX
+Contacto: Katherine Vega | Analista de Recursos Humanos
+Móvil: +(507) 6916-9054
+Grupo ENX, a través de su empresa Arpia Intelligence, se encuentra en búsqueda de un
+estudiante que desee realizar su práctica profesional como opción al trabajo de
+graduación y que tenga interés en desarrollarse dentro de esta empresa.
 Requisitos:
-- Ser estudiante de último año de carrera de la Facultad de Ingeniería de Sistemas
-Computacionales (FISC).
-» Computadora personal
-+ Seguro contra accidentes, el que proporciona la universidad o uno privado. Este
-seguro debe estar vigente durante todo el tiempo de práctica.
+e Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas Computacionales (FISC)
++ Buen índice académico.
+* Dominio fluido del idioma inglés.
++ Que tengan horario nocturno, ya que la práctica es tiempo completo.
+e Experiencia o conocimientos en inteligencia artificial (Al).
++ Habilidades blandas como trabajo en equipo, comunicación efectiva, proactividad, adaptabilidad,
+atención al detalle y capacidad para el análisis y procesamiento de datos,
 Conocimientos en:
-» Básico o intermedio en Excel (mandatorio).
-» Manejo SQL (opcional).
-- Manejo Python (opcional).
+e Habilidades de programación de lenguaje de programación relevante para el análisis de datos, como
+Python, PHP, JavaScript, etc.
++ Manejo de base de datos SQL y NoSQL para la extracción, transformación y carga (ETL) de datos.
++ Herramientas y técnicas de visualización de datos para comunicar resultados de manera efectiva.
++ Conceptos y técnicas de aprendizaje automático e inteligencia artificial para el análisis predictivo y la
+generación de insights.
 Algunas de las funciones de colaboración en el área:
-- Completar el currículo de formación en lA de AWS, abarcando fundamentos, arquitectura y
-operación de modelos.
-+ Aplicar los conocimientos adquiridos en un proyecto de lA asignado.
-» Contribuir al desarrollo o mejora de una funcionalidad dentro de una de las iniciativas
-activas.
-» Documentar el proceso técnico y de aprendizaje para retroalimentación académica
-empresarial.
-La Práctica Laboral, será acorde a las normativas de la UTP - FISC.
-Ofrecen:
-» Aprendizaje sobre la industria y procesos, acercamiento a la vida laboral y poner en práctica
-los conocimiento adquiridos en su carrera.
-+ Horario de lunes a viernes de 7:30 a. m. a 4:30 p.m.
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa.
-Interesados enviar Hoja de Vida a: jomendozadcopaair.com
-A
+e Programación y desarrollo de lA: trabajar en Machine Learning para diseñar soluciones que respondan
+a las necesidades del cliente o de la plataforma,
++ Desarrollo y mantenimiento de soluciones de análisis de datos: colaborar con el equipo para transformar
+requerimientos del negocio en soluciones técnicas efectivas.
+e Gestión de la calidad e integridad de datos: diseñar, implementar y mantener procesos que aseguren
+datos precisos y confiables, además de investigar nuevas tecnologias y realizar pruebas de software.
+e Funciones generales de apoyo: asumir tareas adicionales según lo requiera el cargo y apoyar al equipo
+en diversas labores.
+La Práctica Profesional, será acorde a las normativas de la UTP - FISC.
+Beneficios que ofrecen:
+e Durante el periodo de los 6 meses de la práctica profesional, el estudiante tendrá la oportunidad de
+adquirir experiencia práctica, aplicar tecnologías actuales y en caso de contar con ellas, aprovechar
+certificaciones previas.
+e La práctica profesional será remunerada de manera mensual durante el periodo de los 6 meses de la
+práctica profesional, brindando así una oportunidad de crecimiento profesional en un entorno dinámico
+e innovador.
+e Al finalizar, se emitirá una carta de práctica realizada y existirá la posibilidad de ser considerado para una
+contratación.
+Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa
+Interesados enviar Hoja de Vida a: recursoshumanosOgrupoenx.com
+NN
 Universidad Tecnológica de Panamá
 Facultad de Ingenieria de Sistemas Computacionales
-Síguenos: f X GO ou in WINZA Y Publicado: 5 de agosto de 2025
+Síguenos: f X GO O in WIZZA Y Publicado: 3 de agosto de 2025

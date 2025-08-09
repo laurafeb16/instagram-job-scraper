@@ -1,44 +1,38 @@
-POST URL: https://www.instagram.com/utpfisc/p/DM8AtuSsWAN/
-IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/528722669_1194074402524785_4780936680842938165_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QFBXtiXOBn7-NFdBpI3uOCDd41zO70vlxqtxEfWnsXEcVyg8l8PR8biaOHnBY6dw00&_nc_ohc=30oFyND_TH4Q7kNvwFWRJBj&_nc_gid=0U6BFF_iAI6fuTmLwUWcwA&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MTgyODkzNjYxOTE1NTQ2OQ%3D%3D.3-ccb7-5&oh=00_AfXEKzVHpwv-ds2ikQBUi6dgMMEee7pkaLQJPueCcG24Uw&oe=689A03D6&_nc_sid=fc8dfb
-DESCRIPTION: De verdad, aprovechen esos cursos.
+POST URL: [Extraído desde debug_images/post_7.png]
+IMAGE URL: [Imagen local]
+DESCRIPTION: [Texto extraído por OCR]
 EXTRACTED TEXT:
-Talleres virtuales
-Dirigido a estudiantes de UTP - FISC
-de 4to año
-Pueden participar estudiantes de Centros Regionales ¿
-Banco General y la
-Facultad de Ingenieria de Sistemas Computacionales de la
-Universidad Tecnológica de Panamá
-te invitan a inscribirte
-Regístrate aqui
-¡Cupos Limitados!
-40 cupos
-Nuevas tendencias en
-desarrollo de aplicaciones
-Del 25 de agosto al 5 de septiembre de 2025
-por Microsoft Teams
-Fecha Tema Facilitador Hora
-25-08-75 | Instalaciones Top m 9300.
-26-08-25 | MySQL Aurora 6:30 p.m. - 9:30p.m.
-27-08-25 | Funciones Lambda con Python en AWS 6:30 p. m. - 9:30 p.m.
-78-08-75 | Diseño de APIs con arquitectura REST Raúl Samaniego 6:30 p.m. -9:30p.m.
-29-08-25 Diseño de APIs con arquitectura GraphQL 6:30 p. m. - 9:30 p.m,
-01-09-25 Front End con angular 18 Fernando Castillo 6:30 p. m. - 9:30 p. m.
-02-09-25 Pruebas unitarias en Angular conJasmine y Karma Maria Cedeño 6:30 p. m. - 9:30 p.m.
-03-09-25 Crea, ejecuta y gestiona contenedores desde cero 6:30 p. m. - 9:30 p.m.
-| 05-09-25 | Ansible: Automatización sin limites José Sanmartín 6:30p.m. 9:30p.m.
-Requisitos:
-* Computadora con 8 GB de remoria « 2 GB disponible en disco y ser adrrinistrador de. equipo
-* Camara web
-+ Microfono
-+» Altavoces compat bles o auriculares con m crófons o disoos t vos equivalentes
-+ Acceso a Internet estable
-La Facultad de Ingenieria de Sistemas Computacionales ce la Universidad Tecnológica de Panamá te invita a que
-participes de los talleres vir:uales realizados por Banco General como parte del Convenio Marco de Cooperacion.
-PE SN
-2% Banco General ED; ( i
-> y ::) ¿ Y
-sus buenos vecinos
-Universidad Tecnológica de Panamá
+Talleres virtuales 40
+Dirigido a estudiantes de UTP - FISC y) 3 +
+de 4to año Ps )S y
+Pueden participar estudiantes de Centros Regionales AAN E Ed Y
+A E) 4 :
+Banco General y la de wo :
+Facultad de Ingenieria de Sistemas Computacionales d- e o e .
+Universidad Tecnológica de Panamá . a Y !
+te invitan a inscribirte : ( A
+Y y »/
+a] :
+Regístrate aquí . A
+¡Cupos Limitados! , A E
+40 cupos => ..
+74
+A A ES o
+T
+por Micá5o
+4
+h SA
+Requisitos
+* Computadora
+«Carrara wen
+* Mcrofono
++ Altavoces compatibles Y
++ Acceso a Internet estable.
+La Facultad de Ingenieria de Sistemas Computacionales de la Universidad Tecnológica de Panamá te invita a cue
+participes de los talleres virtuales realizados por Banco General como parte del Corvento Marco de Cooperación
+Banco General ; 3 EN ¿
+o, UU O
+NN
+Universidad Tecnológica de Panama
 Facultad de Ingenieria de Sistemas Computacionales
-Siguenos: f X o in WIEZA Publicado: 4 de agosto de 2025
+Siguenos: f X Q O in h, autpfisc WN Publicado: 4 de agosto de 2025

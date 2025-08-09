@@ -1,651 +1,691 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import os
 import sys
 import logging
-import json
-import io
 import argparse
-from dotenv import load_dotenv
-from datetime import datetime
-import time
-import random
+from datetime import datetime, timedelta
+from dateutil import parser as date_parser
 
-# Configurar encoding UTF-8 para evitar problemas con emojis
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+# Añadir el directorio raíz al path CORREGIDO
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Añadir el directorio raíz al path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from src.scraper.instagram_scraper import InstagramScraper
-from src.image_processing.ocr import EnhancedImageProcessor
-from src.database.models import init_db, JobPost, JobData, CarouselImage, AnalysisMetrics, get_job_statistics
-from src.text_analysis.job_analyzer import is_job_post, extract_job_data
-from src.utils.helpers import save_image_from_url
-
-# Configurar logging SIN EMOJIS para evitar errores
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("main.log", encoding='utf-8'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+# Imports corregidos para funcionar desde cualquier directorio
+try:
+    from scraper.instagram_scraper import InstagramScraper
+    from text_analysis.job_analyzer import extract_job_data, is_job_post
+    from database.models import init_db, JobPost, JobData, AnalysisMetrics, migrate_existing_data
+    from utils.helpers import clean_environment, save_image_from_url
+    from image_processing.ocr import extract_text_from_image
+except ImportError:
+    # Fallback para imports absolutos
+    try:
+        from src.scraper.instagram_scraper import InstagramScraper
+        from src.text_analysis.job_analyzer import extract_job_data, is_job_post
+        from src.database.models import init_db, JobPost, JobData, AnalysisMetrics, migrate_existing_data
+        from src.utils.helpers import clean_environment, save_image_from_url
+        from src.image_processing.ocr import extract_text_from_image
+    except ImportError as e:
+        print(f"❌ Error de importación: {e}")
+        print("📁 Verifica que el directorio actual tenga la estructura correcta")
+        sys.exit(1)
 
 # Cargar variables de entorno
+from dotenv import load_dotenv
 load_dotenv()
 
-def parse_arguments():
-    """Parsea argumentos de línea de comandos"""
-    parser = argparse.ArgumentParser(
-        description='Analizador de Ofertas Laborales de Instagram',
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Ejemplos de uso:
-  python src/main.py                    # Procesamiento por defecto (25 posts)
-  python src/main.py 20                 # Procesar 20 posts
-  python src/main.py --posts 100        # Procesar 100 posts
-  python src/main.py 50 --batch 10      # 50 posts en lotes de 10
-  python src/main.py --max               # Procesamiento masivo (2500 posts)
-  python src/main.py --headless         # Ejecutar en modo headless
-  python src/main.py --clean-only       # Solo limpiar entorno y BD
-        """)
-    
-    # Argumento principal: número de posts
-    parser.add_argument(
-        'posts', 
-        nargs='?', 
-        type=int, 
-        default=25,
-        help='Número de posts a procesar (por defecto: 25)'
-    )
-    
-    # Argumentos opcionales
-    parser.add_argument(
-        '--posts', '-p',
-        type=int,
-        dest='posts_alt',
-        help='Número de posts a procesar (alternativo)'
-    )
-    
-    parser.add_argument(
-        '--batch', '-b',
-        type=int,
-        default=10,
-        help='Tamaño de lote para scraping (por defecto: 10)'
-    )
-    
-    parser.add_argument(
-        '--max', '--masivo',
-        action='store_true',
-        help='Modo masivo: procesar hasta 2500 posts'
-    )
-    
-    parser.add_argument(
-        '--headless',
-        action='store_true',
-        help='Ejecutar navegador en modo headless (sin interfaz)'
-    )
-    
-    parser.add_argument(
-        '--no-clean',
-        action='store_true',
-        help='No limpiar entorno ni base de datos antes de iniciar'
-    )
-    
-    parser.add_argument(
-        '--clean-only',
-        action='store_true',
-        help='Solo limpiar entorno y base de datos, luego salir'
-    )
-    
-    parser.add_argument(
-        '--account', '-a',
-        type=str,
-        help='Cuenta de Instagram objetivo (sobrescribe .env)'
-    )
-    
-    parser.add_argument(
-        '--debug',
-        action='store_true',
-        help='Activar logging de debug detallado'
-    )
-    
-    args = parser.parse_args()
-    
-    # Lógica de prioridad para el número de posts
-    if args.posts_alt:
-        args.posts = args.posts_alt
-    
-    if args.max:
-        args.posts = 2500
-        args.batch = 25
-    
-    # Validaciones
-    if args.posts <= 0:
-        parser.error("El número de posts debe ser mayor que 0")
-    
-    if args.posts > 3000:
-        logger.warning(f"ADVERTENCIA: Número muy alto de posts ({args.posts}). Recomendado: máximo 2500")
-    
-    if args.batch <= 0 or args.batch > 100:
-        parser.error("El tamaño de lote debe estar entre 1 y 100")
-    
-    return args
-
-def analyze_and_save_post(post, post_count, image_processor, db_session):
-    """
-    Analiza un post individual y guarda la información en la base de datos
-    
-    Args:
-        post: Diccionario con información del post
-        post_count: Número del post (para archivos de debug)
-        image_processor: Instancia del procesador de imágenes
-        db_session: Sesión de base de datos
-    
-    Returns:
-        Dict con resultados del análisis
-    """
-    
-    logger.info(f"Procesando post {post_count}: {post['url']}")
-    
-    try:
-        # Verificar si el post ya existe en la base de datos
-        existing_post = db_session.query(JobPost).filter_by(post_url=post['url']).first()
-        if existing_post:
-            logger.warning(f"Post {post_count} ya existe en BD: {post['url']}")
-            return {
-                "post_id": existing_post.id,
-                "is_job": existing_post.is_job_offer,
-                "job_type": "DUPLICADO",
-                "score": existing_post.classification_score,
-                "company": "N/A",
-                "contact_email": None
-            }
-        
-        # Crear directorios de debug si no existen
-        os.makedirs("debug_images", exist_ok=True)
-        os.makedirs("debug_texts", exist_ok=True)
-        os.makedirs("debug_analysis", exist_ok=True)
-        
-        # Guardar imagen para inspección
-        local_image_path = f"debug_images/post_{post_count}.png"
-        save_image_from_url(post['image_url'], local_image_path)
-        
-        # Extraer texto de la imagen principal
-        image_text = image_processor.extract_text_from_url(post['image_url'])
-        logger.info(f"Texto extraído ({len(image_text)} caracteres): {image_text[:200]}...")
-        
-        # Guardar texto extraído para inspección
-        with open(f"debug_texts/post_{post_count}.txt", "w", encoding="utf-8") as f:
-            f.write(f"POST URL: {post['url']}\n")
-            f.write(f"IMAGE URL: {post['image_url']}\n")
-            f.write(f"DESCRIPTION: {post['description']}\n")
-            f.write(f"EXTRACTED TEXT:\n{image_text}\n")
-        
-        # Análisis de clasificación
-        is_job, job_type, score, is_expired = is_job_post(image_text, post['description'])
-        
-        logger.info(f"Análisis de clasificación:")
-        logger.info(f"  - Es oferta laboral: {is_job}")
-        logger.info(f"  - Tipo: {job_type or 'No identificado'}")
-        logger.info(f"  - Puntuación: {score}")
-        logger.info(f"  - Estado: {'Finalizada' if is_expired else 'Activa'}")
-        
-        # Convertir fechas
-        post_date = datetime.fromisoformat(post['date'].replace('Z', '+00:00'))
-        scraped_at = datetime.fromisoformat(post['scraped_at'])
-        
-        # Crear registro principal del post
-        job_post = JobPost(
-            post_url=post['url'],
-            image_url=post['image_url'],
-            description=post['description'],
-            post_date=post_date,
-            scraped_at=scraped_at,
-            local_image_path=local_image_path,
-            is_carousel=post.get('is_carousel', False),
-            classification_score=score,
-            is_job_offer=is_job
-        )
-        
-        db_session.add(job_post)
-        db_session.commit()
-        
-        # Procesar imágenes del carrusel si existen
-        carousel_texts = []
-        if post.get('is_carousel', False) and post.get('carousel_images'):
-            for idx, img_url in enumerate(post['carousel_images']):
-                # Guardar imagen del carrusel
-                carousel_local_path = f"debug_images/post_{post_count}_carousel_{idx}.png"
-                save_image_from_url(img_url, carousel_local_path)
-                
-                # Extraer texto de cada imagen del carrusel
-                carousel_text = image_processor.extract_text_from_url(img_url)
-                carousel_texts.append(carousel_text)
-                
-                # Crear registro de imagen del carrusel
-                carousel_img = CarouselImage(
-                    post_id=job_post.id,
-                    image_url=img_url,
-                    local_image_path=carousel_local_path,
-                    image_order=idx,
-                    extracted_text=carousel_text
-                )
-                db_session.add(carousel_img)
-            
-            db_session.commit()
-            logger.info(f"Procesadas {len(post['carousel_images'])} imágenes del carrusel")
-        
-        # Extraer información estructurada si es una oferta laboral
-        job_info = {}
-        if is_job:
-            # Combinar texto de imagen principal y carrusel para análisis completo
-            combined_image_text = image_text
-            if carousel_texts:
-                combined_image_text += "\n\n" + "\n\n".join(carousel_texts)
-            
-            job_info = extract_job_data(combined_image_text, post['description'])
-            
-            logger.info("Información extraída:")
-            logger.info(f"  - Empresa: {job_info.get('company_name', 'No identificada')}")
-            logger.info(f"  - Industria: {job_info.get('company_industry', 'No identificada')}")
-            logger.info(f"  - Contacto: {job_info.get('contact_name', 'No identificado')}")
-            logger.info(f"  - Email: {job_info.get('contact_email', 'No identificado')}")
-            logger.info(f"  - Puesto: {job_info.get('position_title', 'No identificado')}")
-            
-            # Crear registro de datos estructurados
-            job_data = JobData(
-                post_id=job_post.id,
-                company_name=job_info.get('company_name') or "Por determinar",
-                company_industry=job_info.get('company_industry'),
-                job_type=job_type or "Por determinar",
-                position_title=job_info.get('position_title'),
-                work_modality=job_info.get('work_modality'),
-                duration=job_info.get('duration'),
-                contact_name=job_info.get('contact_name'),
-                contact_position=job_info.get('contact_position'),
-                contact_email=job_info.get('contact_email'),
-                contact_phone=job_info.get('contact_phone'),
-                requirements=job_info.get('requirements', []),
-                knowledge_required=job_info.get('knowledge_required', []),
-                functions=job_info.get('functions', []),
-                benefits=job_info.get('benefits', []),
-                experience_required=job_info.get('experience_required'),
-                education_required=job_info.get('education_required'),
-                is_active=job_info.get('is_active', True) and not is_expired
-            )
-        else:
-            # Post que no es oferta laboral
-            job_data = JobData(
-                post_id=job_post.id,
-                company_name="N/A",
-                job_type="No es oferta laboral",
-                requirements=[image_text] if image_text.strip() else [],
-                is_active=False
-            )
-        
-        db_session.add(job_data)
-        db_session.commit()
-        
-        # Crear métricas de análisis
-        metrics = AnalysisMetrics(
-            post_id=job_post.id,
-            text_length=len(image_text),
-            classification_confidence=min(100, max(0, score + 50)),
-            has_contact_info=bool(job_info.get('contact_email') or job_info.get('contact_phone')),
-            has_requirements=bool(job_info.get('requirements')),
-            has_benefits=bool(job_info.get('benefits'))
-        )
-        
-        db_session.add(metrics)
-        db_session.commit()
-        
-        # Guardar análisis detallado para inspección
-        analysis_data = {
-            "post_info": {
-                "url": post['url'],
-                "date": post['date'],
-                "description": post['description']
-            },
-            "classification": {
-                "is_job": is_job,
-                "job_type": job_type,
-                "score": score,
-                "is_expired": is_expired
-            },
-            "extracted_info": job_info,
-            "text_extracted": {
-                "main_image": image_text,
-                "carousel_images": carousel_texts
-            }
-        }
-        
-        with open(f"debug_analysis/post_{post_count}_analysis.json", "w", encoding="utf-8") as f:
-            json.dump(analysis_data, f, ensure_ascii=False, indent=2)
-        
-        return {
-            "post_id": job_post.id,
-            "is_job": is_job,
-            "job_type": job_type,
-            "score": score,
-            "company": job_info.get('company_name'),
-            "contact_email": job_info.get('contact_email')
-        }
-    except Exception as e:
-        db_session.rollback()
-        logger.error(f"ERROR procesando post {post_count}: {str(e)}")
-        raise
-
-def clean_environment():
-    """Limpia el entorno antes de ejecutar el script"""
-    logger.info("Limpiando entorno para nueva ejecución...")
-    
-    # Directorios a limpiar
-    dirs_to_clean = [
-        "debug_images",
-        "debug_images_processed", 
-        "debug_texts",
-        "debug_analysis"
+# Configuración de logging mejorada
+os.makedirs('logs', exist_ok=True)
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('logs/instagram_scraper.log', encoding='utf-8')
     ]
-    
-    # Limpiar cada directorio
-    for dir_path in dirs_to_clean:
-        if os.path.exists(dir_path):
-            logger.info(f"Limpiando directorio: {dir_path}")
-            for file in os.listdir(dir_path):
-                file_path = os.path.join(dir_path, file)
-                try:
-                    if os.path.isfile(file_path):
-                        os.unlink(file_path)
-                except Exception as e:
-                    logger.error(f"Error al borrar {file_path}: {e}")
-        else:
-            # Crear el directorio si no existe
-            logger.info(f"Creando directorio: {dir_path}")
-            os.makedirs(dir_path, exist_ok=True)
-    
-    logger.info("Limpieza completada")
+)
 
-def clean_database():
-    """Limpia la base de datos para evitar conflictos de UNIQUE constraint"""
-    logger.info("Limpiando base de datos...")
-    db_session = init_db()
+logger = logging.getLogger(__name__)
+
+def safe_parse_datetime(date_value):
+    """Convierte cualquier formato de fecha a datetime de Python de manera segura"""
     try:
-        # Eliminar todos los registros existentes
-        db_session.query(AnalysisMetrics).delete()
-        db_session.query(CarouselImage).delete()
-        db_session.query(JobData).delete()
-        db_session.query(JobPost).delete()
-        db_session.commit()
-        logger.info("Base de datos limpiada correctamente")
-    except Exception as e:
-        db_session.rollback()
-        logger.error(f"Error al limpiar la base de datos: {e}")
-    finally:
-        db_session.close()
-
-def remove_duplicates_from_list(posts_list):
-    """Elimina posts duplicados basándose en la URL"""
-    seen_urls = set()
-    unique_posts = []
-    duplicates_count = 0
-    
-    for post in posts_list:
-        if post['url'] not in seen_urls:
-            seen_urls.add(post['url'])
-            unique_posts.append(post)
-        else:
-            duplicates_count += 1
-    
-    if duplicates_count > 0:
-        logger.warning(f"Se eliminaron {duplicates_count} posts duplicados de la lista")
-    
-    return unique_posts
-
-def main():
-    """Función principal optimizada con argumentos de línea de comandos"""
-    
-    # Parsear argumentos
-    args = parse_arguments()
-    
-    # Configurar logging según argumentos
-    if args.debug:
-        logging.getLogger().setLevel(logging.DEBUG)
-        logger.debug("Modo debug activado")
-    
-    # Mostrar configuración
-    logger.info("=== CONFIGURACIÓN ===")
-    logger.info(f"Posts a procesar: {args.posts}")
-    logger.info(f"Tamaño de lote: {args.batch}")
-    logger.info(f"Modo headless: {'Sí' if args.headless else 'No'}")
-    logger.info(f"Limpiar entorno: {'No' if args.no_clean else 'Sí'}")
-    
-    # Solo limpiar si se especifica
-    if args.clean_only:
-        logger.info("Modo solo limpieza activado")
-        clean_environment()
-        clean_database()
-        logger.info("Limpieza completada. Saliendo...")
-        return
-    
-    # Limpiar entorno anterior (a menos que se especifique lo contrario)
-    if not args.no_clean:
-        clean_environment()
-        clean_database()
-    
-    # Obtener credenciales desde argumentos o variables de entorno
-    username = os.getenv("INSTAGRAM_USERNAME")
-    password = os.getenv("INSTAGRAM_PASSWORD")
-    target_account = args.account or os.getenv("TARGET_ACCOUNT")
-    
-    if not all([username, password, target_account]):
-        logger.error("ERROR: Faltan credenciales. Configura las variables de entorno:")
-        logger.error("- INSTAGRAM_USERNAME")
-        logger.error("- INSTAGRAM_PASSWORD") 
-        logger.error("- TARGET_ACCOUNT (o usa --account)")
-        return
-    
-    logger.info("=== INICIANDO ANÁLISIS DE OFERTAS LABORALES ===")
-    logger.info(f"Cuenta objetivo: {target_account}")
-    
-    # Inicializar componentes
-    scraper = InstagramScraper(username, password, target_account, headless=args.headless)
-    image_processor = EnhancedImageProcessor()
-    db_session = init_db()
-    
-    try:
-        # Proceso de scraping
-        logger.info("Iniciando proceso de login...")
-        if not scraper.login():
-            logger.error("ERROR: Fallo en el login. Verificar credenciales.")
-            return
+        if date_value is None:
+            return datetime.now()
         
-        logger.info("Navegando a la cuenta objetivo...")
-        if not scraper.navigate_to_target_account():
-            logger.error("ERROR: No se pudo acceder a la cuenta objetivo.")
-            return
+        if isinstance(date_value, datetime):
+            return date_value
         
-        # CONFIGURACIÓN DINÁMICA BASADA EN ARGUMENTOS
-        MAX_POSTS = args.posts
-        BATCH_SIZE = min(args.batch, MAX_POSTS)
-        
-        # Ajustar configuración según el volumen
-        if MAX_POSTS <= 10:
-            RETRY_ATTEMPTS = 2
-            PAUSE_RANGE = (1, 3)
-            PROCESSING_BATCH_SIZE = MAX_POSTS
-        elif MAX_POSTS <= 50:
-            RETRY_ATTEMPTS = 3
-            PAUSE_RANGE = (2, 5)
-            PROCESSING_BATCH_SIZE = 5
-        elif MAX_POSTS <= 200:
-            RETRY_ATTEMPTS = 3
-            PAUSE_RANGE = (3, 6)
-            PROCESSING_BATCH_SIZE = 10
-        else:  # Volumen alto
-            RETRY_ATTEMPTS = 3
-            PAUSE_RANGE = (3, 8)
-            PROCESSING_BATCH_SIZE = 10
-        
-        logger.info(f"CONFIGURACIÓN AUTOMÁTICA:")
-        logger.info(f"   Total posts: {MAX_POSTS}")
-        logger.info(f"   Lote scraping: {BATCH_SIZE}")
-        logger.info(f"   Lote procesamiento: {PROCESSING_BATCH_SIZE}")
-        logger.info(f"   Pausas: {PAUSE_RANGE[0]}-{PAUSE_RANGE[1]}s")
-        
-        all_posts = []
-        current_batch = 0
-        consecutive_failures = 0
-        
-        # EXTRACCIÓN CON MANEJO DE DUPLICADOS
-        while len(all_posts) < MAX_POSTS and consecutive_failures < RETRY_ATTEMPTS:
-            remaining_posts = MAX_POSTS - len(all_posts)
-            batch_size = min(BATCH_SIZE, remaining_posts)
-            
-            logger.info(f"Lote {current_batch + 1}: extrayendo {batch_size} posts...")
-            
+        if isinstance(date_value, str):
+            # Intentar parsear diferentes formatos
             try:
-                batch_posts = scraper.scrape_posts(limit=batch_size)
-                
-                if not batch_posts:
-                    consecutive_failures += 1
-                    logger.warning(f"Lote vacío ({consecutive_failures}/{RETRY_ATTEMPTS})")
-                    if consecutive_failures >= RETRY_ATTEMPTS:
-                        logger.info("No hay más posts disponibles, finalizando")
-                        break
-                else:
-                    # Filtrar duplicados antes de agregar
-                    new_urls = {post['url'] for post in batch_posts}
-                    existing_urls = {post['url'] for post in all_posts}
-                    
-                    unique_batch_posts = [post for post in batch_posts if post['url'] not in existing_urls]
-                    
-                    all_posts.extend(unique_batch_posts)
-                    consecutive_failures = 0
-                    
-                    logger.info(f"Lote {current_batch + 1}: {len(unique_batch_posts)} posts únicos extraídos")
-                    if len(unique_batch_posts) < len(batch_posts):
-                        logger.info(f"   Se filtraron {len(batch_posts) - len(unique_batch_posts)} duplicados")
-                
-                current_batch += 1
-                
-                # Pausa inteligente
-                if remaining_posts > batch_size and len(all_posts) < MAX_POSTS:
-                    pause_time = random.uniform(*PAUSE_RANGE)
-                    logger.info(f"Pausa de {pause_time:.1f}s...")
-                    time.sleep(pause_time)
-                
-            except Exception as e:
-                consecutive_failures += 1
-                logger.error(f"ERROR en lote {current_batch + 1}: {str(e)}")
-                if consecutive_failures >= RETRY_ATTEMPTS:
-                    logger.error("Demasiados errores consecutivos, abortando")
-                    break
-                time.sleep(5)
+                return date_parser.parse(date_value)
+            except:
+                # Si falla, devolver fecha actual
+                return datetime.now()
         
-        # Filtrado final de duplicados por seguridad
-        all_posts = remove_duplicates_from_list(all_posts)
-        
-        logger.info(f"EXTRACCIÓN COMPLETADA: {len(all_posts)} posts únicos obtenidos")
-        
-        if not all_posts:
-            logger.warning("No se obtuvieron posts para procesar")
-            return
-        
-        # PROCESAMIENTO DINÁMICO
-        results = []
-        job_offers_found = 0
-        duplicates_found = 0
-        
-        # Progreso más frecuente para volúmenes pequeños
-        progress_interval = min(10, max(1, len(all_posts) // 10))
-        
-        for i in range(0, len(all_posts), PROCESSING_BATCH_SIZE):
-            batch = all_posts[i:i + PROCESSING_BATCH_SIZE]
+        # Si es otro tipo, intentar convertir a string y parsear
+        try:
+            return date_parser.parse(str(date_value))
+        except:
+            return datetime.now()
             
-            batch_num = i // PROCESSING_BATCH_SIZE + 1
-            total_batches = (len(all_posts) + PROCESSING_BATCH_SIZE - 1) // PROCESSING_BATCH_SIZE
+    except Exception:
+        return datetime.now()
+
+class InstagramScraperAdapter:
+    """Adaptador para el InstagramScraper que maneja los nuevos métodos esperados"""
+    
+    def __init__(self, target_account='utpfisc', headless=False):
+        # Obtener credenciales del .env
+        username = os.getenv('INSTAGRAM_USERNAME')
+        password = os.getenv('INSTAGRAM_PASSWORD')
+        
+        if not username or not password:
+            logger.warning("⚠️ Credenciales de Instagram no encontradas en .env")
+            logger.warning("⚠️ Asegúrate de configurar INSTAGRAM_USERNAME y INSTAGRAM_PASSWORD")
+            # Usar valores por defecto para testing o lanzar error
+            username = "test_user"
+            password = "test_password"
+        
+        self.scraper = InstagramScraper(
+            username=username,
+            password=password, 
+            target_account=target_account,
+            headless=headless
+        )
+        
+    def setup_driver(self):
+        """Configurar el driver (ya se hace en __init__)"""
+        return not self.scraper.browser_crashed
+    
+    def login(self):
+        """Login con el método adaptado"""
+        return self.scraper.login()
+    
+    def navigate_to_account(self, account):
+        """Navegar a la cuenta objetivo"""
+        return self.scraper.navigate_to_target_account()
+    
+    def extract_posts(self, max_posts, pause_range=(1, 3)):
+        """Extraer posts con el método mejorado"""
+        try:
+            posts = self.scraper.scrape_posts(limit=max_posts)
+            return posts or []
+        except Exception as e:
+            logger.error(f"Error extrayendo posts: {str(e)}")
+            return []
+    
+    def close(self):
+        """Cerrar el scraper"""
+        return self.scraper.close()
+
+class JobScrapingPipeline:
+    """Pipeline mejorado para extracción de ofertas laborales con nuevas funcionalidades"""
+    
+    def __init__(self, target_account='utpfisc', headless=False, clean_env=True):
+        self.target_account = target_account
+        self.headless = headless
+        self.clean_env = clean_env
+        
+        # Inicializar base de datos
+        self.db_session = init_db()
+        
+        # Migrar datos existentes si es necesario
+        migrate_existing_data(self.db_session)
+        
+        # Inicializar scraper usando el adaptador
+        self.scraper = InstagramScraperAdapter(target_account=target_account, headless=headless)
+        
+        # Contadores para estadísticas
+        self.stats = {
+            'posts_processed': 0,
+            'job_offers_found': 0,
+            'duplicates_skipped': 0,
+            'errors': 0,
+            'technologies_extracted': 0,
+            'soft_skills_extracted': 0,
+            'contacts_extracted': 0,
+            'functions_extracted': 0,
+            'benefits_extracted': 0
+        }
+
+    def setup_environment(self):
+        """Configura el entorno de ejecución"""
+        
+        if self.clean_env:
+            logger.info("Limpiando entorno para nueva ejecución...")
+            clean_environment()
+            
+            # Limpiar base de datos
+            logger.info("Limpiando base de datos...")
+            try:
+                self.db_session.query(AnalysisMetrics).delete()
+                self.db_session.query(JobData).delete()
+                self.db_session.query(JobPost).delete()
+                self.db_session.commit()
+                logger.info("Base de datos limpiada correctamente")
+            except Exception as e:
+                logger.error(f"Error limpiando base de datos: {str(e)}")
+                self.db_session.rollback()
+
+    def process_post_enhanced(self, post_data: dict) -> dict:
+        """Procesa un post individual con las nuevas funcionalidades mejoradas - CORREGIDO"""
+        
+        # Inicializar variables por defecto para evitar errores
+        job_data_dict = {}
+        extracted_text = ""
+        
+        try:
+            # Extraer texto de imagen si está disponible
+            if post_data.get('image_path'):
+                try:
+                    extracted_text = extract_text_from_image(post_data['image_path'])
+                    logger.debug(f"Texto extraído: {len(extracted_text)} caracteres")
+                except Exception as e:
+                    logger.warning(f"Error en OCR: {str(e)}")
+            
+            # Clasificar si es oferta laboral
+            is_job, job_type, score, is_expired = is_job_post(
+                extracted_text, 
+                post_data.get('description', '')
+            )
+            
+            logger.info(f"Análisis de clasificación:")
+            logger.info(f"  - Es oferta laboral: {is_job}")
+            logger.info(f"  - Tipo: {job_type}")
+            logger.info(f"  - Puntuación: {score}")
+            logger.info(f"  - Estado: {'Expirada' if is_expired else 'Activa'}")
+            
+            # CORRECCIÓN: Convertir fechas de manera segura
+            post_date = safe_parse_datetime(post_data.get('date'))
+            
+            # Crear JobPost
+            job_post = JobPost(
+                post_url=post_data['url'],
+                image_url=post_data.get('image_url', ''),
+                description=post_data.get('description', ''),
+                post_date=post_date,  # Fecha convertida de manera segura
+                local_image_path=post_data.get('image_path'),
+                is_job_offer=is_job,
+                classification_score=score
+            )
+            
+            self.db_session.add(job_post)
+            self.db_session.flush()  # Para obtener el ID
+            
+            # Si es oferta laboral, extraer información detallada
+            if is_job:
+                try:
+                    job_data_dict = extract_job_data(
+                        extracted_text,
+                        post_data.get('description', '')
+                    )
+                    
+                    # Validar que job_data_dict sea un diccionario válido
+                    if not isinstance(job_data_dict, dict):
+                        job_data_dict = {}
+                        logger.warning("extract_job_data no retornó un diccionario válido")
+                    
+                    # === LOGGING MEJORADO DE INFORMACIÓN EXTRAÍDA ===
+                    logger.info("Información extraída:")
+                    logger.info(f"  - Empresa: {job_data_dict.get('company_name', 'No identificada')}")
+                    logger.info(f"  - Industria: {job_data_dict.get('company_industry', 'No especificada')}")
+                    logger.info(f"  - Contacto: {job_data_dict.get('contact_name', 'No disponible')}")
+                    logger.info(f"  - Email: {job_data_dict.get('contact_email', 'No disponible')}")
+                    logger.info(f"  - Puesto: {job_data_dict.get('position_title', 'No especificado')}")
+                    
+                    # Logging de nuevos campos con validación segura
+                    if job_data_dict.get('schedule'):
+                        logger.info(f"  - Horario: {job_data_dict['schedule']}")
+                    
+                    programming_langs = job_data_dict.get('programming_languages', []) or []
+                    if programming_langs and isinstance(programming_langs, list):
+                        logger.info(f"  - Lenguajes: {', '.join(programming_langs[:3])}")
+                    
+                    soft_skills = job_data_dict.get('soft_skills', []) or []
+                    if soft_skills and isinstance(soft_skills, list):
+                        logger.info(f"  - Habilidades blandas: {', '.join(soft_skills[:3])}")
+                    
+                    # Crear JobData con nuevos campos - CORREGIDO
+                    # Evitar conflicto de is_active
+                    job_data_dict_copy = job_data_dict.copy()
+                    job_data_dict_copy.pop('is_active', None)  # Remover si existe
+                    
+                    job_data = JobData(
+                        post_id=job_post.id,
+                        job_type=job_type,
+                        is_active=not is_expired,
+                        **job_data_dict_copy  # Sin conflicto de is_active
+                    )
+                    
+                    self.db_session.add(job_data)
+                    
+                    # === CREAR MÉTRICAS MEJORADAS - CONTEO CORREGIDO ===
+                    # Calcular tecnologías encontradas de forma COMPLETA
+                    total_technologies = (
+                        len(job_data_dict.get('programming_languages') or []) +
+                        len(job_data_dict.get('databases') or []) +
+                        len(job_data_dict.get('cloud_platforms') or []) +
+                        len(job_data_dict.get('frameworks_tools') or []) +
+                        len(job_data_dict.get('office_tools') or []) +         # ← AGREGADO
+                        len(job_data_dict.get('specialized_software') or [])   # ← AGREGADO
+                    )
+                    
+                    total_soft_skills = len(job_data_dict.get('soft_skills') or [])
+                    total_functions = len(job_data_dict.get('functions') or [])
+                    total_benefits = len(job_data_dict.get('benefits') or [])
+                    
+                    # Log detallado de conteo
+                    logger.debug(f"🔢 Conteo de tecnologías:")
+                    logger.debug(f"  - Lenguajes: {len(job_data_dict.get('programming_languages') or [])}")
+                    logger.debug(f"  - Bases de datos: {len(job_data_dict.get('databases') or [])}")
+                    logger.debug(f"  - Plataformas cloud: {len(job_data_dict.get('cloud_platforms') or [])}")
+                    logger.debug(f"  - Frameworks/tools: {len(job_data_dict.get('frameworks_tools') or [])}")
+                    logger.debug(f"  - Office tools: {len(job_data_dict.get('office_tools') or [])}")
+                    logger.debug(f"  - Software especializado: {len(job_data_dict.get('specialized_software') or [])}")
+                    logger.debug(f"  - TOTAL: {total_technologies}")
+                    logger.debug(f"  - Habilidades blandas: {total_soft_skills}")
+                    
+                    metrics = AnalysisMetrics(
+                        post_id=job_post.id,
+                        ocr_confidence=85,  # Valor por defecto
+                        text_length=len(extracted_text),
+                        classification_confidence=min(100, max(0, score)),
+                        has_contact_info=bool(job_data_dict.get('contact_name')),
+                        has_requirements=bool(job_data_dict.get('requirements')),
+                        has_benefits=bool(job_data_dict.get('benefits')),
+                        has_technologies=bool(total_technologies > 0),
+                        has_soft_skills=bool(total_soft_skills > 0),
+                        has_schedule=bool(job_data_dict.get('schedule')),
+                        total_technologies_found=total_technologies,
+                        total_soft_skills_found=total_soft_skills,
+                        extraction_completeness_score=self.calculate_completeness_score(job_data_dict)
+                    )
+                    
+                    self.db_session.add(metrics)
+                    
+                    # Actualizar estadísticas CORREGIDAS
+                    self.stats['job_offers_found'] += 1
+                    self.stats['technologies_extracted'] += total_technologies
+                    self.stats['soft_skills_extracted'] += total_soft_skills
+                    self.stats['functions_extracted'] += total_functions
+                    self.stats['benefits_extracted'] += total_benefits
+                    if job_data_dict.get('contact_name'):
+                        self.stats['contacts_extracted'] += 1
+                    
+                    logger.info(f"OFERTA #{self.stats['job_offers_found']}: {job_data_dict.get('company_name', 'Empresa no identificada')}")
+                    logger.info(f"📊 Tecnologías en esta oferta: {total_technologies}")
+                    logger.info(f"👥 Habilidades blandas en esta oferta: {total_soft_skills}")
+                    
+                except Exception as extraction_error:
+                    logger.error(f"Error extrayendo datos de la oferta: {str(extraction_error)}")
+                    # Continúa con el procesamiento pero sin datos extraídos
+                    job_data_dict = {}
+            
+            self.db_session.commit()
+            self.stats['posts_processed'] += 1
+            
+            return {
+                'success': True,
+                'is_job_offer': is_job,
+                'job_type': job_type,
+                'score': score,
+                'company': job_data_dict.get('company_name') if job_data_dict else None,
+                'extracted_text': extracted_text
+            }
+            
+        except Exception as e:
+            logger.error(f"Error procesando post: {str(e)}")
+            self.db_session.rollback()
+            self.stats['errors'] += 1
+            return {
+                'success': False, 
+                'error': str(e), 
+                'extracted_text': extracted_text,
+                'is_job_offer': False
+            }
+
+    def calculate_completeness_score(self, job_data: dict) -> int:
+        """Calcula un score de completitud basado en campos extraídos"""
+        
+        if not isinstance(job_data, dict):
+            return 0
+        
+        score = 0
+        max_score = 100
+        
+        # Campos básicos (40 puntos)
+        if job_data.get('company_name'): score += 10
+        if job_data.get('contact_email'): score += 10
+        if job_data.get('contact_name'): score += 10
+        if job_data.get('position_title'): score += 10
+        
+        # Campos detallados (30 puntos)
+        if job_data.get('requirements'): score += 10
+        if job_data.get('benefits'): score += 10
+        if job_data.get('functions'): score += 10
+        
+        # Campos nuevos (30 puntos)
+        if job_data.get('programming_languages'): score += 5
+        if job_data.get('databases'): score += 5
+        if job_data.get('soft_skills'): score += 5
+        if job_data.get('schedule'): score += 5
+        if job_data.get('work_modality'): score += 5
+        if job_data.get('company_industry'): score += 5
+        
+        return min(max_score, score)
+
+    def run_extraction(self, num_posts: int = 10, batch_size: int = None) -> dict:
+        """Ejecuta el proceso de extracción con configuración automática mejorada"""
+        
+        logger.info("=== CONFIGURACIÓN ===")
+        logger.info(f"Posts a procesar: {num_posts}")
+        
+        # Configuración automática inteligente
+        if batch_size is None:
+            if num_posts <= 5:
+                batch_size = num_posts
+                processing_batch = num_posts
+                pause_range = (1, 2)
+            elif num_posts <= 20:
+                batch_size = 10
+                processing_batch = 10
+                pause_range = (1, 3)
+            elif num_posts <= 50:
+                batch_size = 15
+                processing_batch = 15
+                pause_range = (2, 4)
+            else:
+                batch_size = 20
+                processing_batch = 20
+                pause_range = (3, 5)
+        else:
+            processing_batch = batch_size
+            pause_range = (1, 3)
+        
+        logger.info(f"Tamaño de lote: {batch_size}")
+        logger.info(f"Lote scraping: {batch_size}")
+        logger.info(f"Lote procesamiento: {processing_batch}")
+        logger.info(f"Pausas: {pause_range[0]}-{pause_range[1]}s")
+        
+        # Limpiar entorno
+        self.setup_environment()
+        
+        logger.info("=== INICIANDO ANÁLISIS DE OFERTAS LABORALES ===")
+        logger.info(f"Cuenta objetivo: {self.target_account}")
+        
+        try:
+            # Configurar scraper
+            if not self.scraper.setup_driver():
+                raise Exception("Error configurando el navegador")
+            
+            # Login
+            logger.info("Iniciando proceso de login...")
+            if not self.scraper.login():
+                raise Exception("Error en el proceso de login")
+            
+            # Navegar a cuenta objetivo
+            logger.info("Navegando a la cuenta objetivo...")
+            if not self.scraper.navigate_to_account(self.target_account):
+                raise Exception(f"Error navegando a la cuenta {self.target_account}")
+            
+            # === EXTRACCIÓN EN LOTES ===
+            total_extracted = 0
+            batch_number = 1
+            
+            while total_extracted < num_posts:
+                remaining = num_posts - total_extracted
+                current_batch_size = min(batch_size, remaining)
+                
+                logger.info(f"CONFIGURACIÓN AUTOMÁTICA:")
+                logger.info(f"   Total posts: {num_posts}")
+                logger.info(f"   Lote scraping: {current_batch_size}")
+                logger.info(f"   Lote procesamiento: {processing_batch}")
+                logger.info(f"   Pausas: {pause_range[0]}-{pause_range[1]}s")
+                
+                logger.info(f"Lote {batch_number}: extrayendo {current_batch_size} posts...")
+                
+                # Extraer posts del lote
+                posts = self.scraper.extract_posts(
+                    max_posts=current_batch_size,
+                    pause_range=pause_range
+                )
+                
+                if not posts:
+                    logger.warning(f"No se obtuvieron posts en el lote {batch_number}")
+                    break
+                
+                logger.info(f"Lote {batch_number}: {len(posts)} posts únicos extraídos")
+                total_extracted += len(posts)
+                
+                # Procesar posts en lotes
+                self.process_posts_in_batches(posts, processing_batch)
+                
+                batch_number += 1
+                
+                if total_extracted >= num_posts:
+                    break
+            
+            logger.info(f"EXTRACCIÓN COMPLETADA: {total_extracted} posts únicos obtenidos")
+            
+            # === GENERAR RESUMEN FINAL ===
+            return self.generate_final_summary()
+            
+        except Exception as e:
+            logger.error(f"Error en extracción: {str(e)}")
+            return {'success': False, 'error': str(e)}
+        finally:
+            try:
+                self.scraper.close()
+                logger.info("Recursos liberados correctamente")
+            except:
+                pass
+
+    def process_posts_in_batches(self, posts: list, batch_size: int):
+        """Procesa posts en lotes para mejor rendimiento"""
+        
+        total_batches = (len(posts) + batch_size - 1) // batch_size
+        
+        for i in range(0, len(posts), batch_size):
+            batch = posts[i:i + batch_size]
+            batch_num = (i // batch_size) + 1
             
             logger.info(f"Procesando lote {batch_num}/{total_batches}")
             
-            for post_idx, post in enumerate(batch):
-                post_count = i + post_idx + 1
-                try:
-                    result = analyze_and_save_post(post, post_count, image_processor, db_session)
-                    results.append(result)
-                    
-                    if result['job_type'] == 'DUPLICADO':
-                        duplicates_found += 1
-                    elif result['is_job']:
-                        job_offers_found += 1
-                        logger.info(f"OFERTA #{job_offers_found}: {result.get('company', 'N/A')}")
-                    
-                    # Progreso dinámico
-                    if post_count % progress_interval == 0 or post_count == len(all_posts):
-                        progress = (post_count / len(all_posts)) * 100
-                        logger.info(f"Progreso: {post_count}/{len(all_posts)} ({progress:.1f}%) - Ofertas: {job_offers_found}")
+            for j, post_data in enumerate(batch, 1):
+                post_num = i + j
+                logger.info(f"Procesando post {post_num}: {post_data['url']}")
+                
+                # Descargar imagen
+                if post_data.get('image_url'):
+                    image_path = save_image_from_url(
+                        post_data['image_url'], 
+                        f"debug_images/post_{post_num}.png"
+                    )
+                    post_data['image_path'] = image_path
+                
+                # Procesar post
+                result = self.process_post_enhanced(post_data)
+                
+                # Mostrar progreso con manejo seguro de datos
+                if result['success']:
+                    if result.get('is_job_offer'):
+                        company = result.get('company', 'No identificada')
+                        extracted_text_len = len(result.get('extracted_text', ''))
+                        logger.info(f"✅ Oferta encontrada: {company} ({extracted_text_len} caracteres)")
                         
-                except Exception as e:
-                    logger.error(f"ERROR procesando post {post_count}: {str(e)}")
-                    continue
-            
-            # Pausa entre lotes de procesamiento
-            if len(all_posts) > 50 and i + PROCESSING_BATCH_SIZE < len(all_posts):
-                time.sleep(random.uniform(0.5, 2))
+                    progress = (post_num / len(posts)) * 100
+                    logger.info(f"Progreso: {post_num}/{len(posts)} ({progress:.1f}%) - Ofertas: {self.stats['job_offers_found']}")
+                else:
+                    logger.warning(f"❌ Error procesando post: {result.get('error', 'Error desconocido')}")
+
+    def generate_final_summary(self) -> dict:
+        """Genera un resumen final mejorado con nuevas métricas"""
         
-        # RESUMEN FINAL
         logger.info("\n=== RESUMEN DE RESULTADOS ===")
-        logger.info(f"Posts procesados: {len(results)}")
-        logger.info(f"Posts duplicados: {duplicates_found}")
-        logger.info(f"Ofertas laborales encontradas: {job_offers_found}")
+        logger.info(f"Posts procesados: {self.stats['posts_processed']}")
+        logger.info(f"Posts duplicados: {self.stats['duplicates_skipped']}")
+        logger.info(f"Ofertas laborales encontradas: {self.stats['job_offers_found']}")
+        logger.info(f"Errores encontrados: {self.stats['errors']}")
         
-        if job_offers_found > 0:
-            success_rate = (job_offers_found / (len(results) - duplicates_found)) * 100
+        # Calcular tasa de éxito con validación
+        success_rate = 0
+        if self.stats['posts_processed'] > 0:
+            success_rate = (self.stats['job_offers_found'] / self.stats['posts_processed']) * 100
             logger.info(f"Tasa de éxito: {success_rate:.1f}%")
+        else:
+            logger.info("Tasa de éxito: 0% (no se procesaron posts)")
         
-        # Estadísticas detalladas
-        stats = get_job_statistics(db_session)
-        logger.info(f"Total posts en BD: {stats['total_posts']}")
-        logger.info(f"Ofertas activas: {stats['active_offers']}")
+        # === ESTADÍSTICAS MEJORADAS ===
         
-        if stats.get('by_job_type'):
-            logger.info("Por tipo de trabajo:")
-            for job_type, count in stats['by_job_type'].items():
-                if job_type and job_type != "No es oferta laboral":
+        try:
+            # Obtener estadísticas de la base de datos
+            total_posts = self.db_session.query(JobPost).count()
+            active_offers = self.db_session.query(JobData).filter(JobData.is_active == True).count()
+            
+            logger.info(f"Total posts en BD: {total_posts}")
+            logger.info(f"Ofertas activas: {active_offers}")
+            
+            # Por tipo de trabajo
+            from sqlalchemy import func
+            job_types = self.db_session.query(
+                JobData.job_type, func.count(JobData.job_type)
+            ).filter(
+                JobData.job_type.isnot(None)
+            ).group_by(JobData.job_type).all()
+            
+            if job_types:
+                logger.info("Por tipo de trabajo:")
+                for job_type, count in job_types:
                     logger.info(f"  - {job_type}: {count}")
-        
-        if stats.get('by_industry'):
-            logger.info("Por industria:")
-            for industry, count in stats['by_industry'].items():
-                if industry:
+            
+            # Por industria
+            industries = self.db_session.query(
+                JobData.company_industry, func.count(JobData.company_industry)
+            ).filter(
+                JobData.company_industry.isnot(None)
+            ).group_by(JobData.company_industry).all()
+            
+            if industries:
+                logger.info("Por industria:")
+                for industry, count in industries:
                     logger.info(f"  - {industry}: {count}")
-        
-        # Mostrar ofertas encontradas
-        if job_offers_found > 0:
+            
+            # === NUEVAS MÉTRICAS ===
+            logger.info(f"\nMétricas de extracción mejoradas:")
+            logger.info(f"  - Tecnologías extraídas: {self.stats['technologies_extracted']}")
+            logger.info(f"  - Habilidades blandas extraídas: {self.stats['soft_skills_extracted']}")
+            logger.info(f"  - Contactos extraídos: {self.stats['contacts_extracted']}")
+            
+            # Obtener ofertas de esta ejecución
+            recent_offers = self.db_session.query(JobData).join(JobPost).filter(
+                JobPost.scraped_at >= datetime.now() - timedelta(minutes=30),
+                JobData.is_active == True
+            ).all()
+            
             logger.info(f"\nOfertas encontradas en esta ejecución:")
-            for i, result in enumerate([r for r in results if r['is_job']], 1):
-                logger.info(f"{i:2d}. {result['company'] or 'Empresa no identificada'}")
-                logger.info(f"     Tipo: {result['job_type']}")
-                if result['contact_email']:
-                    logger.info(f"     Contacto: {result['contact_email']}")
+            for i, offer in enumerate(recent_offers, 1):
+                company = offer.company_name or "Empresa no identificada"
+                logger.info(f" {i}. {company}")
+                logger.info(f"     Tipo: {offer.job_type}")
+                
+                # Manejo seguro de listas que pueden ser None
+                if offer.programming_languages and isinstance(offer.programming_languages, list):
+                    logger.info(f"     Tecnologías: {', '.join(offer.programming_languages[:3])}")
+                    
+                if offer.soft_skills and isinstance(offer.soft_skills, list):
+                    logger.info(f"     Habilidades: {', '.join(offer.soft_skills[:3])}")
                 logger.info("")
+                
+        except Exception as e:
+            logger.error(f"Error generando estadísticas finales: {str(e)}")
         
         logger.info("=== PROCESAMIENTO COMPLETADO EXITOSAMENTE ===")
         
+        return {
+            'success': True,
+            'posts_processed': self.stats['posts_processed'],
+            'job_offers_found': self.stats['job_offers_found'],
+            'success_rate': success_rate,
+            'technologies_extracted': self.stats['technologies_extracted'],
+            'soft_skills_extracted': self.stats['soft_skills_extracted'],
+            'contacts_extracted': self.stats['contacts_extracted'],
+            'functions_extracted': self.stats['functions_extracted'],
+            'benefits_extracted': self.stats['benefits_extracted'],
+            'errors': self.stats['errors']
+        }
+
+def main():
+    """Función principal mejorada con nuevas opciones"""
+    
+    parser = argparse.ArgumentParser(description='Extractor de ofertas laborales de Instagram')
+    parser.add_argument('num_posts', type=int, nargs='?', default=10, 
+                       help='Número de posts a procesar (por defecto: 10)')
+    parser.add_argument('--account', '-a', default='utpfisc', 
+                       help='Cuenta de Instagram objetivo (por defecto: utpfisc)')
+    parser.add_argument('--headless', action='store_true', 
+                       help='Ejecutar navegador en modo headless')
+    parser.add_argument('--no-clean', action='store_true', 
+                       help='No limpiar entorno antes de ejecutar')
+    parser.add_argument('--batch-size', '-b', type=int, 
+                       help='Tamaño de lote personalizado')
+    parser.add_argument('--debug', action='store_true', 
+                       help='Activar modo debug con logs detallados')
+    
+    args = parser.parse_args()
+    
+    # Configurar logging para debug
+    if args.debug:
+        logging.getLogger().setLevel(logging.DEBUG)
+        logger.info("Modo debug activado")
+    
+    # Verificar que el .env existe
+    if not os.path.exists('.env'):
+        logger.warning("⚠️ Archivo .env no encontrado")
+        logger.info("📝 Crea un archivo .env con:")
+        logger.info("   INSTAGRAM_USERNAME=tu_usuario")
+        logger.info("   INSTAGRAM_PASSWORD=tu_contraseña")
+    
+    # Crear pipeline
+    pipeline = JobScrapingPipeline(
+        target_account=args.account,
+        headless=args.headless,
+        clean_env=not args.no_clean
+    )
+    
+    try:
+        # Ejecutar extracción
+        result = pipeline.run_extraction(
+            num_posts=args.num_posts,
+            batch_size=args.batch_size
+        )
+        
+        if result['success']:
+            logger.info(f"✅ Proceso completado exitosamente")
+            logger.info(f"📊 Ofertas encontradas: {result['job_offers_found']}")
+            logger.info(f"🔧 Tecnologías extraídas: {result['technologies_extracted']}")
+            logger.info(f"👥 Habilidades blandas: {result['soft_skills_extracted']}")
+            logger.info(f"📞 Contactos extraídos: {result['contacts_extracted']}")
+            logger.info(f"📋 Funciones extraídas: {result['functions_extracted']}")
+            logger.info(f"🎁 Beneficios extraídos: {result['benefits_extracted']}")
+            if result.get('errors', 0) > 0:
+                logger.warning(f"⚠️  Errores encontrados: {result['errors']}")
+        else:
+            logger.error(f"❌ Error en el proceso: {result.get('error', 'Error desconocido')}")
+            sys.exit(1)
+            
     except KeyboardInterrupt:
-        logger.info("\nProceso interrumpido por el usuario")
-        logger.info(f"Posts procesados hasta el momento: {len(results) if 'results' in locals() else 0}")
+        logger.info("🛑 Proceso interrumpido por el usuario")
+        sys.exit(0)
     except Exception as e:
-        logger.error(f"ERROR crítico: {str(e)}")
-        raise
+        logger.error(f"💥 Error crítico: {str(e)}")
+        sys.exit(1)
     finally:
-        # Cerrar recursos
-        scraper.close()
-        db_session.close()
-        logger.info("Recursos liberados correctamente")
+        # Cerrar sesión de base de datos
+        try:
+            pipeline.db_session.close()
+        except:
+            pass
 
 if __name__ == "__main__":
     main()

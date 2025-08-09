@@ -185,7 +185,7 @@ class EnhancedImageProcessor:
         except Exception as e:
             self.logger.error(f"Error general al extraer texto: {e}", exc_info=True)
             return ""
-            
+    
     def extract_text_from_url(self, url, lang='spa'):
         """Extrae texto de una imagen desde una URL"""
         image = self.load_image_from_url(url)
@@ -199,3 +199,89 @@ class EnhancedImageProcessor:
         if image is not None:
             return self.extract_text(image, lang)
         return ""
+
+# ========================================================================================
+# FUNCIÓN DE COMPATIBILIDAD PARA MAIN.PY (NO MODIFICA EL CÓDIGO ORIGINAL ARRIBA)
+# ========================================================================================
+
+# Instancia global del procesador (singleton pattern)
+_global_processor = None
+
+def get_processor():
+    """Obtiene una instancia del procesador OCR (singleton)"""
+    global _global_processor
+    if _global_processor is None:
+        _global_processor = EnhancedImageProcessor()
+    return _global_processor
+
+def extract_text_from_image(image_path, lang='spa'):
+    """
+    Función de compatibilidad para main.py - CORREGIDA con guardado de debug
+    """
+    # === LOG TEMPORAL PARA DEBUGGING ===
+    logger = logging.getLogger(__name__)
+    logger.info(f"🧪 [DEBUG] extract_text_from_image MEJORADA ejecutándose para: {image_path}")
+    
+    try:
+        processor = get_processor()
+        extracted_text = processor.extract_text_from_path(image_path, lang)
+        
+        logger.info(f"🧪 [DEBUG] Texto extraído: {len(extracted_text)} caracteres")
+        
+        # === GUARDAR TEXTO EXTRAÍDO PARA DEBUG ===
+        if extracted_text and len(extracted_text.strip()) > 10:
+            try:
+                debug_dir = "debug_texts"
+                os.makedirs(debug_dir, exist_ok=True)
+                logger.info(f"🧪 [DEBUG] Directorio debug_texts creado/verificado")
+                
+                base_name = os.path.splitext(os.path.basename(image_path))[0]
+                debug_file = os.path.join(debug_dir, f"{base_name}.txt")
+                logger.info(f"🧪 [DEBUG] Archivo debug: {debug_file}")
+                
+                # ALWAYS OVERWRITE - no verificar si existe
+                with open(debug_file, 'w', encoding='utf-8') as f:
+                    f.write(f"POST URL: [Extraído desde {image_path}]\n")
+                    f.write(f"IMAGE URL: [Imagen local]\n") 
+                    f.write(f"DESCRIPTION: [Texto extraído por OCR]\n")
+                    f.write(f"EXTRACTED TEXT:\n")
+                    f.write(extracted_text)
+                
+                logger.info(f"💾 Texto OCR guardado en: {debug_file}")     
+            except Exception as save_error:
+                logger.warning(f"Error guardando texto debug: {str(save_error)}")
+        else:
+            logger.info(f"🧪 [DEBUG] No se guardó texto - muy corto o vacío")
+        
+        return extracted_text
+        
+    except Exception as e:
+        logger.error(f"Error en extract_text_from_image: {str(e)}")
+        return ""
+
+def extract_text_from_url(image_url, lang='spa'):
+    """
+    Función adicional para extraer texto desde URL
+    
+    Args:
+        image_url (str): URL de la imagen
+        lang (str): Idioma para OCR (por defecto 'spa' para español)
+        
+    Returns:
+        str: Texto extraído de la imagen
+    """
+    try:
+        processor = get_processor()
+        return processor.extract_text_from_url(image_url, lang)
+    except Exception as e:
+        logger = logging.getLogger(__name__)
+        logger.error(f"Error en extract_text_from_url: {str(e)}")
+        return ""
+
+# Exportar funciones para compatibilidad
+__all__ = [
+    'EnhancedImageProcessor',
+    'extract_text_from_image',
+    'extract_text_from_url',
+    'get_processor'
+]

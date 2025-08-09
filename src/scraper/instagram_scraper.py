@@ -140,10 +140,20 @@ class InstagramScraper:
             if not self._reinitialize_browser():
                 return False
         
+        # === LOG TEMPORAL PARA DEBUGGING ===
+        self.logger.info("🧪 [DEBUG] Método login() ejecutándose - VERSIÓN CORREGIDA")
+        
         # Intentar cargar cookies primero
-        if self.load_cookies():
+        self.logger.info("🧪 [DEBUG] A punto de llamar load_cookies()")
+        cookies_loaded = self.load_cookies()
+        self.logger.info(f"🧪 [DEBUG] load_cookies() retornó: {cookies_loaded}")
+        
+        if cookies_loaded:
+            self.logger.info("✅ Login completado usando cookies guardadas")
             return True
         
+        # Si no hay cookies o falló, hacer login normal
+        self.logger.info("🧪 [DEBUG] Procediendo con login manual")
         # Si no hay cookies o falló, hacer login normal
         try:
             self.logger.info("Iniciando sesión en Instagram")
@@ -404,27 +414,70 @@ class InstagramScraper:
             start_time = time.time()
             
             while time.time() - start_time < timeout:
-                # Verificar elementos esenciales
-                if (self.driver.find_elements(By.TAG_NAME, "article") or 
-                    self.driver.find_elements(By.CSS_SELECTOR, "div[role='dialog']")):
-                    
-                    # Verificar que hay una imagen
-                    if self.driver.find_elements(By.CSS_SELECTOR, "img[src*='fbcdn.net']"):
-                        return True
-                
-                time.sleep(0.5)
+                # === SELECTORES ACTUALIZADOS PARA INSTAGRAM 2025 ===
             
+                # 1. Verificar elementos principales (más genéricos)
+                main_elements = [
+                    "main[role='main']",  # Contenedor principal
+                    "section",            # Secciones de contenido
+                    "div[style*='flex']", # Divs con flex (común en IG)
+                    "[data-testid]",      # Cualquier elemento con testid
+                ]
+            
+                found_main = False
+                for selector in main_elements:
+                    if self.driver.find_elements(By.CSS_SELECTOR, selector):
+                        found_main = True
+                        self.logger.debug(f"✅ Elemento principal encontrado: {selector}")
+                        break
+            
+                # 2. Verificar que hay imágenes (más flexible)
+                image_selectors = [
+                    "img[src*='fbcdn.net']",
+                    "img[src*='instagram']",
+                    "img[decoding='auto']",
+                    "img[loading='lazy']",
+                    "img[style*='object-fit']",
+                ]
+            
+                found_image = False
+                for selector in image_selectors:
+                    images = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    if images:
+                        found_image = True
+                        self.logger.debug(f"✅ Imagen encontrada: {selector} ({len(images)} imágenes)")
+                        break
+            
+                # 3. Si encontramos contenido principal E imágenes, considerarlo cargado
+                if found_main and found_image:
+                    self.logger.debug("✅ Post cargado exitosamente")
+                    return True
+            
+                # Log de debugging
+                self.logger.debug(f"⏳ Esperando carga... Main: {found_main}, Images: {found_image}")
+                time.sleep(0.5)
+        
+            self.logger.warning(f"⚠️ Timeout esperando carga del post")
             return False
             
         except Exception as e:
-            self.logger.debug(f"Error esperando carga del post: {str(e)}")
-            return False
+             self.logger.debug(f"Error esperando carga del post: {str(e)}")
+             return False
 
     def _extract_post_data_improved(self):
-        """Extractor de datos mejorado y más robusto"""
+        """Extractor de datos mejorado y más robusto con debugging"""
         try:
             # Obtener URL actual
             post_url = self.driver.current_url
+            
+            # Debug de estructura (solo en modo debug)
+            self._debug_current_page()  # ← AGREGAR ESTA LÍNEA
+        
+            # Debug de estructura (solo en modo debug)
+            try:
+                self._debug_page_structure()
+            except:
+                pass
             
             # Extraer imagen principal
             img_url = self._extract_image_improved()
@@ -432,8 +485,15 @@ class InstagramScraper:
                 self.logger.warning("No se pudo extraer imagen")
                 return None
             
-            # Extraer descripción
+            # Extraer descripción con método mejorado
             description = self._extract_description_improved()
+            
+            # Log detallado de la descripción extraída
+            if description:
+                self.logger.info(f"📝 Descripción extraída exitosamente: {len(description)} caracteres")
+                self.logger.debug(f"Primeros 200 chars: {description[:200]}...")
+            else:
+                self.logger.warning("⚠️ No se extrajo descripción del post")
             
             # Extraer fecha
             post_date = self._extract_date_improved()
@@ -512,52 +572,301 @@ class InstagramScraper:
             return ""
 
     def _extract_description_improved(self):
-        """Extractor de descripción mejorado"""
+        """Extractor de descripción ULTRA MEJORADO con debugging detallado"""
         try:
-            # Selectores actualizados para descripción
-            selectors = [
+            self.logger.debug("🔍 Iniciando extracción ULTRA mejorada de descripción...")
+            
+            # === GUARDAR SCREENSHOT PARA DEBUG ===
+            if self._is_browser_alive():
+                try:
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    debug_screenshot = f"debug_description_{timestamp}.png"
+                    self.driver.save_screenshot(debug_screenshot)
+                    self.logger.debug(f"📸 Screenshot guardado: {debug_screenshot}")
+                except:
+                    pass
+            
+            # === ESTRATEGIA NUEVA: SELECTORES ESPECÍFICOS PARA CAPTION ===
+            caption_selectors = [
+                # Selectores más específicos para captions de Instagram 2025
+                "article h1",  # Nuevo selector para títulos principales
                 "article div[data-testid='post-caption'] span",
-                "div[role='dialog'] div[class*='_a9zs'] span",
-                "article div[class*='_a9zs'] span",
-                "span._ap3a._aaco._aacu._aacx._aad7._aade",
-                "div[class*='x1lliihq'] span",
-                "article h1 + div",
-                "ul li div span[dir='auto']"
+                "div[role='dialog'] div[data-testid='post-caption'] span",
+                "article div[data-testid='post-caption-content'] span",
+                
+                # Selectores por estructura DOM actual
+                "article div[class*='_ap3a'] div[class*='_a9zs'] span[dir='auto']",
+                "div[role='dialog'] div[class*='_ap3a'] div[class*='_a9zs'] span[dir='auto']",
+                
+                # Selectores alternativos para contenido de texto
+                "article div[role='button'] + div span[dir='auto']",
+                "article div[class*='x1lliihq'] span[dir='auto']",
+                
+                # Selectores más amplios
+                "article span[class*='_aacl _aaco _aacu _aacx _aad7 _aade']",
+                "div[role='dialog'] span[class*='_aacl _aaco _aacu _aacx _aad7 _aade']",
             ]
             
-            for selector in selectors:
+            self.logger.debug(f"🎯 Probando {len(caption_selectors)} selectores específicos para captions...")
+            
+            for i, selector in enumerate(caption_selectors):
                 try:
                     elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                    for element in elements:
-                        text = element.text.strip()
-                        if text and len(text) > 5:
-                            self.logger.debug(f"✅ Descripción extraída con: {selector}")
-                            return text[:2000]
-                except Exception:
+                    self.logger.debug(f"Selector {i+1}: '{selector}' → {len(elements)} elementos")
+                    
+                    for j, element in enumerate(elements):
+                        try:
+                            text = element.text.strip()
+                            if text:
+                                self.logger.debug(f"  Elemento {j+1}: '{text[:100]}...' ({len(text)} chars)")
+                                
+                                # Verificación mejorada
+                                if self._is_job_related_description(text):
+                                    self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA - Selector {i+1}: '{selector}' ({len(text)} chars)")
+                                    self.logger.debug(f"💡 Contenido completo: {text}")
+                                    return text
+                                    
+                        except Exception as e:
+                            self.logger.debug(f"Error procesando elemento {j+1}: {str(e)}")
+                            continue
+                            
+                except Exception as e:
+                    self.logger.debug(f"Error con selector {i+1}: {str(e)}")
                     continue
             
-            # Método alternativo: buscar en todo el artículo
+            # === ESTRATEGIA TEXTO COMPLETO CON FILTRADO INTELIGENTE ===
+            self.logger.debug("🧠 Estrategia: Análisis inteligente de texto completo...")
+            
             try:
+                # Obtener todo el texto visible del artículo
                 article = self.driver.find_element(By.TAG_NAME, "article")
                 if article:
-                    text = article.text.strip()
-                    if text and len(text) > 20:
-                        lines = text.split('\n')
-                        for line in lines:
-                            if (len(line) > 20 and 
-                                not line.isdigit() and 
-                                'ago' not in line.lower() and
-                                'like' not in line.lower()):
-                                self.logger.debug("✅ Descripción extraída del artículo")
-                                return line[:2000]
-            except:
-                pass
-                
-            self.logger.debug("ℹ️ No se encontró descripción")
+                    full_text = article.text.strip()
+                    self.logger.debug(f"📄 Texto completo del artículo: {len(full_text)} caracteres")
+                    
+                    # Guardar texto completo para debug
+                    try:
+                        with open(f"debug_full_text_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt", 'w', encoding='utf-8') as f:
+                            f.write(f"POST URL: {self.driver.current_url}\n")
+                            f.write(f"FULL TEXT ({len(full_text)} chars):\n")
+                            f.write(f"{'='*50}\n")
+                            f.write(full_text)
+                    except:
+                        pass
+                    
+                    # Extraer descripción inteligentemente
+                    extracted_description = self._extract_smart_description(full_text)
+                    if extracted_description:
+                        self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA del texto completo ({len(extracted_description)} chars)")
+                        return extracted_description
+                        
+            except Exception as e:
+                self.logger.debug(f"Error en análisis de texto completo: {str(e)}")
+            
+            # === ESTRATEGIA DE ÚLTIMO RECURSO: XPATH AGRESIVO ===
+            self.logger.debug("🚨 Estrategia de último recurso: XPath agresivo...")
+            
+            aggressive_xpaths = [
+                "//article//span[string-length(text()) > 50]",
+                "//div[@role='dialog']//span[string-length(text()) > 50]",
+                "//article//div[contains(@class, 'caption')]//span",
+                "//article//div[contains(@style, 'white-space')]//span",
+                "//span[contains(text(), 'práctica') or contains(text(), 'trabajo') or contains(text(), 'empresa')]",
+            ]
+            
+            for xpath in aggressive_xpaths:
+                try:
+                    elements = self.driver.find_elements(By.XPATH, xpath)
+                    self.logger.debug(f"XPath '{xpath}' → {len(elements)} elementos")
+                    
+                    for element in elements:
+                        try:
+                            text = element.text.strip()
+                            if self._is_job_related_description(text):
+                                self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA con XPath agresivo ({len(text)} chars)")
+                                return text
+                        except:
+                            continue
+                except:
+                    continue
+            
+            self.logger.warning("⚠️ No se pudo extraer descripción con NINGÚN método")
             return ""
             
         except Exception as e:
-            self.logger.error(f"❌ Error extrayendo descripción: {str(e)}")
+            self.logger.error(f"❌ Error crítico extrayendo descripción: {str(e)}")
+            return ""
+
+    def _is_job_related_description(self, text):
+        """Verifica si el texto es una descripción relacionada con trabajo"""
+        try:
+            if not text or len(text) < 20:
+                return False
+            
+            # Palabras clave de trabajo/ofertas laborales
+            job_keywords = [
+                'práctica', 'trabajo', 'empleo', 'vacante', 'oferta', 'empresa',
+                'contacto', 'solicita', 'busca', 'requiere', 'oportunidad',
+                'posición', 'puesto', 'cargo', 'reclutamiento', 'talento',
+                'profesional', 'candidato', 'aplicar', 'enviar', 'curriculum'
+            ]
+            
+            # Filtros para excluir UI de Instagram
+            ui_filters = [
+                'subir contactos', 'personas no usuarias', 'like', 'share', 
+                'comment', 'view', 'follow', 'more posts', 'stories', 'reels',
+                'home', 'profile', 'explore', 'ago', 'hace', 'hours', 'horas',
+                'minutes', 'minutos', 'days', 'días', 'ver más', 'show more'
+            ]
+            
+            text_lower = text.lower()
+            
+            # Si contiene principalmente filtros de UI, rechazar
+            ui_count = sum(1 for ui_word in ui_filters if ui_word in text_lower)
+            if ui_count > 2:  # Si tiene más de 2 palabras de UI
+                return False
+            
+            # Si contiene palabras clave de trabajo, aceptar
+            job_count = sum(1 for job_word in job_keywords if job_word in text_lower)
+            if job_count >= 1:  # Al menos una palabra clave de trabajo
+                return True
+            
+            # Si es texto largo sin palabras de UI, podría ser descripción
+            if len(text) > 100 and ui_count == 0:
+                return True
+                
+            return False
+            
+        except:
+            return False
+
+    def _extract_smart_description(self, full_text):
+        """Extrae descripción de manera inteligente del texto completo"""
+        try:
+            lines = full_text.split('\n')
+            self.logger.debug(f"🔍 Analizando {len(lines)} líneas de texto...")
+            
+            # Buscar líneas que contengan información de trabajo
+            job_lines = []
+            found_job_content = False
+            
+            for i, line in enumerate(lines):
+                line = line.strip()
+                if not line or len(line) < 10:
+                    continue
+                
+                self.logger.debug(f"Línea {i+1}: '{line[:50]}...'")
+                
+                # Si es una línea de trabajo, empezar a recopilar
+                if self._is_job_related_description(line):
+                    found_job_content = True
+                    job_lines.append(line)
+                    self.logger.debug(f"  ✅ Línea de trabajo detectada")
+                elif found_job_content and len(line) > 20:
+                    # Continuar recopilando si ya encontramos contenido de trabajo
+                    # y la línea no es obviamente UI
+                    if not any(ui in line.lower() for ui in ['like', 'comment', 'share', 'ago', 'hace']):
+                        job_lines.append(line)
+                        self.logger.debug(f"  ➕ Línea adicional agregada")
+                    else:
+                        # Si encontramos UI, parar la recopilación
+                        self.logger.debug(f"  🛑 Línea de UI detectada, parando recopilación")
+                        break
+                        
+            if job_lines:
+                description = '\n'.join(job_lines)
+                self.logger.debug(f"📝 Descripción inteligente construida: {len(description)} chars")
+                return description
+                
+            return ""
+            
+        except Exception as e:
+            self.logger.debug(f"Error en extracción inteligente: {str(e)}")
+            return ""
+
+    def _is_valid_description(self, text):
+        """Verifica si un texto es una descripción válida de Instagram"""
+        try:
+            # Filtros para excluir elementos de UI
+            ui_keywords = [
+                'like', 'share', 'comment', 'view', 'follow', 'more posts',
+                'mas publicaciones', 'posts from', 'ver más', 'show more',
+                'ago', 'hours', 'minutes', 'days', 'weeks', 'months',
+                'hace', 'horas', 'minutos', 'días', 'semanas', 'meses',
+                'home', 'profile', 'stories', 'reels', 'explore'
+            ]
+            
+            # Verificar que no sea solo elementos de UI
+            if any(ui_word in text.lower() for ui_word in ui_keywords):
+                # Si contiene UI keywords, verificar que también tenga contenido real
+                job_keywords = [
+                    'práctica', 'trabajo', 'empresa', 'contacto', 'empleo',
+                    'vacante', 'oferta', 'solicita', 'busca', 'requiere'
+                ]
+                if not any(job_word in text.lower() for job_word in job_keywords):
+                    return False
+            
+            # Verificar que tenga contenido sustancial
+            if len(text.split()) < 5:  # Menos de 5 palabras
+                return False
+            
+            # Verificar que no sea solo números o símbolos
+            if not any(c.isalpha() for c in text):
+                return False
+                
+            return True
+            
+        except:
+            return False
+
+    def _extract_job_description_from_text(self, full_text):
+        """Extrae descripción de trabajo de un texto completo"""
+        try:
+            lines = full_text.split('\n')
+            job_lines = []
+            capturing = False
+            
+            job_indicators = [
+                'práctica', 'trabajo', 'empleo', 'vacante', 'oferta',
+                'empresa', 'contacto', 'solicita', 'busca', 'requiere',
+                'oportunidad', 'posición', 'puesto'
+            ]
+            
+            for line in lines:
+                line = line.strip()
+                
+                # Saltar líneas vacías o muy cortas
+                if not line or len(line) < 10:
+                    continue
+                
+                # Saltar elementos de UI
+                if any(ui in line.lower() for ui in ['like', 'comment', 'share', 'ago', 'hace']):
+                    continue
+                
+                # Comenzar a capturar si encontramos indicadores de trabajo
+                if any(indicator in line.lower() for indicator in job_indicators):
+                    capturing = True
+                    job_lines.append(line)
+                    continue
+                
+                # Si ya estamos capturando, continuar hasta encontrar una línea irrelevante
+                if capturing:
+                    # Verificar si la línea sigue siendo relevante
+                    if (len(line) > 20 and 
+                        not any(ui in line.lower() for ui in ['home', 'profile', 'stories'])):
+                        job_lines.append(line)
+                    else:
+                        # Si encontramos una línea irrelevante, dejar de capturar
+                        break
+            
+            if job_lines:
+                description = '\n'.join(job_lines)
+                if len(description) > 50:  # Asegurar que tenga contenido sustancial
+                    return description
+                    
+            return ""
+            
+        except:
             return ""
 
     def _extract_date_improved(self):
@@ -687,6 +996,56 @@ class InstagramScraper:
             self.logger.debug(f"Error cerrando popups: {str(e)}")
             return False
 
+    def _debug_current_page(self):
+        """Debugging TEMPORAL para ver qué elementos existen en la página"""
+        try:
+            current_url = self.driver.current_url
+            self.logger.info(f"🔍 DEBUGGING página: {current_url}")
+        
+            # Verificar elementos básicos
+            basic_checks = {
+                "HTML body": "body",
+                "Main sections": "main, section",
+                "All divs": "div",
+                "All images": "img",
+                "Elements with testid": "[data-testid]",
+                "Articles": "article",
+                "Roles": "[role]",
+            }
+        
+            for name, selector in basic_checks.items():
+                try:
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    self.logger.info(f"  📋 {name}: {len(elements)} elementos")
+                
+                    # Para imágenes, mostrar algunas URLs
+                    if selector == "img" and elements:
+                        for i, img in enumerate(elements[:3]):
+                            src = img.get_attribute("src") or "No src"
+                            self.logger.info(f"    Imagen {i+1}: {src[:100]}...")
+                        
+                except Exception as e:
+                    self.logger.info(f"  ❌ {name}: Error - {str(e)}")
+        
+            # Verificar título de la página
+            try:
+                title = self.driver.title
+                self.logger.info(f"  📄 Título: {title}")
+            except:
+                pass
+            
+            # Guardar HTML completo para análisis
+            try:
+                html_debug = f"debug_html_{datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
+                with open(html_debug, 'w', encoding='utf-8') as f:
+                    f.write(self.driver.page_source)
+                self.logger.info(f"  📁 HTML guardado en: {html_debug}")
+            except Exception as e:
+                self.logger.info(f"  ❌ No se pudo guardar HTML: {str(e)}")
+            
+        except Exception as e:
+            self.logger.error(f"Error en debug de página: {str(e)}")
+
     def _save_debug_screenshot(self, filename_prefix):
         """Guarda captura de pantalla para debugging"""
         try:
@@ -737,47 +1096,98 @@ class InstagramScraper:
             return False
 
     def load_cookies(self):
-        """Carga cookies previamente guardadas"""
+        """Carga cookies previamente guardadas - VERSIÓN CORREGIDA"""
         try:
             if not os.path.exists('instagram_cookies.pkl'):
-                self.logger.info("No hay cookies guardadas")
+                self.logger.info("📋 No hay cookies guardadas, se realizará login normal")
                 return False
             
             if not self._is_browser_alive():
+                self.logger.warning("Navegador no disponible para cargar cookies")
                 return False
+            
+            self.logger.info("🍪 Intentando cargar cookies guardadas...")
             
             with open('instagram_cookies.pkl', 'rb') as f:
                 cookies = pickle.load(f)
+            
+            self.logger.info(f"📦 {len(cookies)} cookies encontradas")
             
             # Navegar a Instagram primero
             self.driver.get(self.base_url)
             self.random_sleep(2, 3)
             
             # Añadir cookies
+            cookies_loaded = 0
             for cookie in cookies:
                 try:
                     self.driver.add_cookie(cookie)
-                except:
-                    pass
+                    cookies_loaded += 1
+                except Exception as e:
+                    self.logger.debug(f"Error agregando cookie: {str(e)}")
+                    continue
+            
+            self.logger.info(f"✅ {cookies_loaded} cookies aplicadas correctamente")
             
             # Recargar la página
             self.driver.refresh()
             self.random_sleep(3, 5)
             
-            # Verificar si la sesión está activa
+            # Verificar si la sesión está activa con múltiples métodos
+            session_active = False
+            
+            # Método 1: Buscar elementos de usuario logueado
             try:
-                if (self.driver.find_elements(By.CSS_SELECTOR, "svg[aria-label='Home']") or
-                    self.driver.find_elements(By.XPATH, "//div[contains(@class, 'xh8yej3')]//img[@alt]")):
-                    self.logger.info("🍪 Sesión cargada exitosamente desde cookies")
-                    return True
-            except:
-                pass
+                home_indicators = [
+                    "svg[aria-label='Home']",
+                    "svg[aria-label='Inicio']", 
+                    "a[href='/']//svg",
+                    "div[class*='x1n2onr6']//img[@alt]",  # Avatar de usuario
+                    "nav a[href='/direct/']",  # Direct messages
+                ]
+                
+                for indicator in home_indicators:
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, indicator)
+                    if elements and elements[0].is_displayed():
+                        session_active = True
+                        self.logger.info(f"✅ Sesión activa detectada con: {indicator}")
+                        break
+                        
+            except Exception as e:
+                self.logger.debug(f"Error verificando sesión: {str(e)}")
             
-            self.logger.info("No se pudo restaurar la sesión desde cookies")
-            return False
+            # Método 2: Verificar que NO estemos en login
+            if not session_active:
+                try:
+                    login_elements = self.driver.find_elements(By.XPATH, "//input[@name='username']")
+                    if not login_elements:  # Si NO hay campos de login, probablemente estemos logueados
+                        session_active = True
+                        self.logger.info("✅ Sesión activa: no se encontraron campos de login")
+                except:
+                    pass
             
+            # Método 3: Verificar URL actual
+            if not session_active:
+                current_url = self.driver.current_url
+                if '/accounts/login' not in current_url and '/login' not in current_url:
+                    session_active = True
+                    self.logger.info(f"✅ Sesión activa: URL actual {current_url}")
+            
+            if session_active:
+                self.logger.info("🎉 Sesión cargada exitosamente desde cookies")
+                return True
+            else:
+                self.logger.info("❌ No se pudo restaurar la sesión desde cookies")
+                # Eliminar cookies inválidas
+                try:
+                    os.remove('instagram_cookies.pkl')
+                    self.logger.info("🗑️ Cookies inválidas eliminadas")
+                except:
+                    pass
+                return False
+                
         except Exception as e:
-            self.logger.error(f"Error cargando cookies: {str(e)}")
+            self.logger.error(f"❌ Error cargando cookies: {str(e)}")
             return False
 
     def close(self):
@@ -811,3 +1221,46 @@ class InstagramScraper:
                 pass  # Implementar descarga si es necesario
             except Exception as e:
                 self.logger.error(f"Error al descargar imagen {i}: {str(e)}")
+
+    def _debug_page_structure(self):
+        """Método de debugging para analizar la estructura de la página"""
+        try:
+            if not self._is_browser_alive():
+                return
+                
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            debug_file = f"debug_page_structure_{timestamp}.txt"
+            
+            with open(debug_file, 'w', encoding='utf-8') as f:
+                f.write(f"POST URL: {self.driver.current_url}\n")
+                f.write(f"TIMESTAMP: {timestamp}\n")
+                f.write("="*80 + "\n\n")
+                
+                # Analizar artículos
+                articles = self.driver.find_elements(By.TAG_NAME, "article")
+                f.write(f"ARTÍCULOS ENCONTRADOS: {len(articles)}\n\n")
+                
+                for i, article in enumerate(articles):
+                    f.write(f"ARTÍCULO {i+1}:\n")
+                    f.write(f"Texto completo ({len(article.text)} chars):\n")
+                    f.write(article.text[:500] + "...\n\n")
+                    
+                # Analizar elementos con data-testid
+                testid_elements = self.driver.find_elements(By.CSS_SELECTOR, "[data-testid*='caption']")
+                f.write(f"ELEMENTOS CON data-testid 'caption': {len(testid_elements)}\n\n")
+                
+                for i, elem in enumerate(testid_elements):
+                    f.write(f"ELEMENTO {i+1}: {elem.text[:200]}...\n\n")
+                
+                # Analizar spans con contenido
+                spans = self.driver.find_elements(By.CSS_SELECTOR, "article span, div[role='dialog'] span")
+                long_spans = [span for span in spans if len(span.text.strip()) > 30]
+                f.write(f"SPANS CON CONTENIDO LARGO: {len(long_spans)}\n\n")
+                
+                for i, span in enumerate(long_spans[:10]):  # Solo los primeros 10
+                    f.write(f"SPAN {i+1}: {span.text[:100]}...\n\n")
+                    
+            self.logger.info(f"📊 Debug de estructura guardado en: {debug_file}")
+            
+        except Exception as e:
+            self.logger.error(f"Error en debug de estructura: {str(e)}")

@@ -1,0 +1,10 @@
+POST URL: https://www.instagram.com/utpfisc/p/DM-oH96zsSi/
+TIMESTAMP: 20250808_180032
+================================================================================
+
+ARTÍCULOS ENCONTRADOS: 0
+
+ELEMENTOS CON data-testid 'caption': 0
+
+SPANS CON CONTENIDO LARGO: 0
+

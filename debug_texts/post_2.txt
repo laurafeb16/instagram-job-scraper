@@ -1,50 +1,35 @@
-POST URL: https://www.instagram.com/utpfisc/p/DM-n2qOTBkJ/
-IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527182964_1194901062442119_9161717728736133745_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGyz0POb9Z7SWek0IdZKvVjefOeFKPEu2V3Rv9yOwkdpCp5YoiDxN8qjTiBXHDxkxs&_nc_ohc=cgZ2JZZ2TPUQ7kNvwGpGF8F&_nc_gid=9NxiZQZ59rzrtEb4ME5D4Q&edm=ALQROFkAAAAA&ccb=7-5&ig_cache_key=MzY5MjU2NDAyNDQ5MzA4Njk4NQ%3D%3D.3-ccb7-5&oh=00_AfUbNDStew12nnNd2fBnT3y-krY41yJBZ9vh5zr9fwq0Eg&oe=689A0EAF&_nc_sid=fc8dfb
-DESCRIPTION: Práctica laboral ofrecida por GRUPO MANZ, S. A.
+POST URL: [Extraído desde debug_images/post_2.png]
+IMAGE URL: [Imagen local]
+DESCRIPTION: [Texto extraído por OCR]
 EXTRACTED TEXT:
-ml
-epi NA
-Práctica Laboral O (E: Dj MANZon0U
-A om;
-Empresa: GRUPO MANZ, S. A.
-Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
-Móvil: +(507) 6647-1366
-GRUPO MANZ está ofreciendo oportunidad a estudiante que requiera ganar experiencia
-laboral, aplicando sus conocimientos académicos en un entorno profesional real.
-Requisitos:
-+ Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas
-Computacionales (FISC).
-e Interés en el desarrollo de habilidades en programación cientifica, procesamiento de
-datos y fundamentos de inteligencia artificial.
-e Alta disposición para el aprendizaje práctico
-e Análisis de problemas y trabajo en equipo
-* Disponibilidad para hacer viajes eventuales y participar en actividades de campo fuera
-de oficina según sea requerido.
-Conocimientos en:
-* Fundamentos de programación (Python, C++, Java u otros).
-e Lógica computacional y estructuras de datos.
-+. Bases de datos (MySQL, PostgreSQL, etc.).
-* Conocimientos básicos en matemáticas aplicadas y álgebra lineal.
-+ Deseable: conocimientos previos o interés en MATLAB/SIMULINK/SIMULINK.
-*. Deseable: interés en inteligencia artificial, aprendizaje automático o sistemas
-inteligentes.
-Algunas de las funciones del área:
-e Capacitarse en el uso de MATLAB/SIMULINK para aplicaciones científicas y de
-simulación.
-+ Apoyar en el desarrollo de scripts y funciones en MATLAB/SIMULINK para análisis de
-datos y prototipado.
-* Investigar y documentar algoritmos aplicables a agentes de inteligencia artificial.
-e Colaborar con el equipo técnico en pruebas de conceptos relacionados con lA.
-e Capacidad para comunicar y colaborar en la construcción de soluciones que integren
-aspectos técnicos y comerciales.
-e Participar en reuniones técnicas y reportar avances del aprendizaje.
-La Práctica Laboral, será acorde a las normativas de la UTP - FISC.
-Ofrecen:
-+ Apoyo económico (Viático), seguro contra accidentes y un ambiente colaborativo
-para el crecimiento profesional, capacitación continua y certificaciones sin costo.
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de este empresa.
-Interesados enviar Hoja de Vida a: talentoogrpmanz.com
-E)
-Universidad Tecnológica de Panamá
-Facultad de Ingenieria de Sistemas Computacionales
-Síguenos: f X O O in WII Y Publicado: 5 de agosto de 2025
+UN |
+. 3
+8 “2
+» o 4d
+y YI : |
+: .. s . qe Ñ y | ]
+: 7 .” - Ny s *,
+! e Y WO i
+| y Emp; |
+AS a - y i r >
+. Y : |
+| , PS == “E (
+Mr , : «y a UV Le e
+A e) > OS S
+> ES =A : = an
+| : 2 . aa <A
+. : a A H . 14 “ - E 1
+sd “q Sn p . = rs * “f. ES ES ER E
+/ 3 ( a, y SEAS
+pa ' A YES E
+E > Ñ PART a : o io: iii il
+=> N E A : == NA
+y/ 0 .. a Ñ > E
+o, > nn. -
+: -, l
+a A
+|
+O r : .
+an j oh a -
+n
+>>
