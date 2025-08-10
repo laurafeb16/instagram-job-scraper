@@ -1,17 +1,38 @@
-POST URL: [Extraído desde debug_images/post_6.png]
-IMAGE URL: [Imagen local]
-DESCRIPTION: [Texto extraído por OCR]
-EXTRACTED TEXT:
-un |
-MA
-fa Chatbot+Phyton
-— > Y ' . e .
-0 t | +netmiko/Paramiko
-| Ca Por:Daniela Vargas |
-l a Heydher Herrera
-Brandan Olivarren |
-Y Eduardo Lee
-; 'h Is241 |) >
-z = E
-LL ná
-e
+=== INFORMACIÓN DEL POST ===
+POST URL: https://www.instagram.com/utpfisc/p/DMwMdSAMBeH/
+IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/525785466_1190245616240997_3735165287139239781_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHEilVLF1K3_KEosVKX7LN6P0k_rV1FLkcz55Jw0qTL1yygtizRQAHH2Uq3Atmtwpw&_nc_ohc=Jd4kkLrhvG0Q7kNvwHE8OVQ&_nc_gid=K0-pWlZR9Jp4r9LuLb86RQ&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzY4ODUwMjg4MzU2OTg5OTM5OQ%3D%3D.3-ccb7-5&oh=00_AfW7JRJXv6Z1h-NjapnKGrqzuDRw4hMTZxeaqBDonw2pyw&oe=689DCA4A&_nc_sid=10d13b
+IMAGE PATH: debug_images/post_6.png
+EXTRACTION DATE: 2025-08-09 22:34:07
+
+=== DESCRIPCIÓN DEL POST ===
+La Facultad de Ingeniería de Sistemas Computacionales de la Universidad Tecnológica de Panamá, comunica que la misa ofrecida por la Familia Bonilla en memoria del compañero y amigo Walter Alberto Bonilla Espinosa, será en la Parroquia Santa Marta, Altos del Chase, este martes 5 de agosto a las 3:00 p. m., se pide vestir de blanco.
+
+=== TEXTO EXTRAÍDO POR OCR ===
+Caracteres extraídos: 395
+Contenido:
+a EN )
+EA Yo
+MISA EN MEMORIA DE: ¡US 2
+NS
+Walter Alberto ”* E
+Ú , NN
+o o : / 1 2)
+Bonilla Espinosa  ' Y
+== vo
+E
+1957-2025
+PARROQUIA SANTA MARTA, a
+ALTOS DEL CHASE MN
+i : MARTES 05 DE AGOSTO
+3:00 PM
+a, Con profunda gratitud y amor,
+Se - invitamos a familiares y amigos a la
+Y So ty Santa Misa que ofreceremos por su
+SA
+a 2 A eterno descanso.
+A A PZA
+> y | Pa Agradecemos vestimenta blanca
+X. í
+Ne
+
+=== FIN DEL ARCHIVO ===

@@ -179,7 +179,14 @@ class JobScrapingPipeline:
             # Extraer texto de imagen si está disponible
             if post_data.get('image_path'):
                 try:
-                    extracted_text = extract_text_from_image(post_data['image_path'])
+                    # === PASAR INFORMACIÓN COMPLETA DEL POST A OCR ===
+                    extracted_text = extract_text_from_image(
+                        post_data['image_path'],
+                        lang='spa',
+                        post_description=post_data.get('description', ''),
+                        post_url=post_data.get('url', ''),
+                        image_url=post_data.get('image_url', '')
+                    )
                     logger.debug(f"Texto extraído: {len(extracted_text)} caracteres")
                 except Exception as e:
                     logger.warning(f"Error en OCR: {str(e)}")
@@ -225,26 +232,27 @@ class JobScrapingPipeline:
                     if not isinstance(job_data_dict, dict):
                         job_data_dict = {}
                         logger.warning("extract_job_data no retornó un diccionario válido")
-                    
-                    # === LOGGING MEJORADO DE INFORMACIÓN EXTRAÍDA ===
-                    logger.info("Información extraída:")
-                    logger.info(f"  - Empresa: {job_data_dict.get('company_name', 'No identificada')}")
+                        
+                    # === LOGGING MEJORADO CON FUENTE DE INFORMACIÓN ===
+                    logger.info("🎯 INFORMACIÓN EXTRAÍDA (PRIORIZADA):")
+                    logger.info(f"  - Empresa: {job_data_dict.get('company_name', 'No identificada')} [DESCRIPCIÓN]")
                     logger.info(f"  - Industria: {job_data_dict.get('company_industry', 'No especificada')}")
-                    logger.info(f"  - Contacto: {job_data_dict.get('contact_name', 'No disponible')}")
-                    logger.info(f"  - Email: {job_data_dict.get('contact_email', 'No disponible')}")
-                    logger.info(f"  - Puesto: {job_data_dict.get('position_title', 'No especificado')}")
-                    
-                    # Logging de nuevos campos con validación segura
+                    logger.info(f"  - Contacto: {job_data_dict.get('contact_name', 'No disponible')} [DESCRIPCIÓN]")
+                    logger.info(f"  - Email: {job_data_dict.get('contact_email', 'No disponible')} [DESCRIPCIÓN]")
+                    logger.info(f"  - Teléfono: {job_data_dict.get('contact_phone', 'No disponible')} [DESCRIPCIÓN]")
+                    logger.info(f"  - Posición contacto: {job_data_dict.get('contact_position', 'No especificado')} [DESCRIPCIÓN]")
+                        
+                    # Logging de campos complementarios desde OCR
                     if job_data_dict.get('schedule'):
-                        logger.info(f"  - Horario: {job_data_dict['schedule']}")
-                    
+                        logger.info(f"  - Horario: {job_data_dict['schedule']} [OCR]")
+                        
                     programming_langs = job_data_dict.get('programming_languages', []) or []
                     if programming_langs and isinstance(programming_langs, list):
-                        logger.info(f"  - Lenguajes: {', '.join(programming_langs[:3])}")
-                    
+                        logger.info(f"  - Lenguajes: {', '.join(programming_langs[:3])} [OCR]")
+                        
                     soft_skills = job_data_dict.get('soft_skills', []) or []
                     if soft_skills and isinstance(soft_skills, list):
-                        logger.info(f"  - Habilidades blandas: {', '.join(soft_skills[:3])}")
+                        logger.info(f"  - Habilidades blandas: {', '.join(soft_skills[:3])} [OCR]")
                     
                     # Crear JobData con nuevos campos - CORREGIDO
                     # Evitar conflicto de is_active

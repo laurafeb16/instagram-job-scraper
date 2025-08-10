@@ -1,57 +1,74 @@
-POST URL: [Extraído desde debug_images/post_1.png]
-IMAGE URL: [Imagen local]
-DESCRIPTION: [Texto extraído por OCR]
-EXTRACTED TEXT:
-ml
-dl se
-z . . A Y: 2]
-Práctica Profesional “EP; ¿($ =><
-+? [::] EN A APA
-rt. ONES
-A
-Empresa: Grupo ENX
-Contacto: Katherine Vega | Analista de Recursos Humanos
-Móvil: +(507) 6916-9054
-Grupo ENX, a través de su empresa Arpia Intelligence, se encuentra en búsqueda de un
-estudiante que desee realizar su práctica profesional como opción al trabajo de
-graduación y que tenga interés en desarrollarse dentro de esta empresa.
-Requisitos:
-e Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas Computacionales (FISC)
-+ Buen índice académico.
-* Dominio fluido del idioma inglés.
-+ Que tengan horario nocturno, ya que la práctica es tiempo completo.
-e Experiencia o conocimientos en inteligencia artificial (Al).
-+ Habilidades blandas como trabajo en equipo, comunicación efectiva, proactividad, adaptabilidad,
-atención al detalle y capacidad para el análisis y procesamiento de datos,
-Conocimientos en:
-e Habilidades de programación de lenguaje de programación relevante para el análisis de datos, como
-Python, PHP, JavaScript, etc.
-+ Manejo de base de datos SQL y NoSQL para la extracción, transformación y carga (ETL) de datos.
-+ Herramientas y técnicas de visualización de datos para comunicar resultados de manera efectiva.
-+ Conceptos y técnicas de aprendizaje automático e inteligencia artificial para el análisis predictivo y la
-generación de insights.
-Algunas de las funciones de colaboración en el área:
-e Programación y desarrollo de lA: trabajar en Machine Learning para diseñar soluciones que respondan
-a las necesidades del cliente o de la plataforma,
-+ Desarrollo y mantenimiento de soluciones de análisis de datos: colaborar con el equipo para transformar
-requerimientos del negocio en soluciones técnicas efectivas.
-e Gestión de la calidad e integridad de datos: diseñar, implementar y mantener procesos que aseguren
-datos precisos y confiables, además de investigar nuevas tecnologias y realizar pruebas de software.
-e Funciones generales de apoyo: asumir tareas adicionales según lo requiera el cargo y apoyar al equipo
-en diversas labores.
-La Práctica Profesional, será acorde a las normativas de la UTP - FISC.
-Beneficios que ofrecen:
-e Durante el periodo de los 6 meses de la práctica profesional, el estudiante tendrá la oportunidad de
-adquirir experiencia práctica, aplicar tecnologías actuales y en caso de contar con ellas, aprovechar
-certificaciones previas.
-e La práctica profesional será remunerada de manera mensual durante el periodo de los 6 meses de la
-práctica profesional, brindando así una oportunidad de crecimiento profesional en un entorno dinámico
-e innovador.
-e Al finalizar, se emitirá una carta de práctica realizada y existirá la posibilidad de ser considerado para una
-contratación.
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa
-Interesados enviar Hoja de Vida a: recursoshumanosOgrupoenx.com
-NN
+=== INFORMACIÓN DEL POST ===
+POST URL: https://www.instagram.com/utpfisc/p/DM1VcdFM1X3/
+IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/526619065_1191910749407817_7945124354512556101_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QG-VA5mOxIrYRzI9A84Po4JLrJ7B77zoTQYdvC9rFyPVrdPfX9ncoFjOjmEPiuE2C4&_nc_ohc=eDs0l-eT-AQQ7kNvwE1GTqC&_nc_gid=jvnUrUHIhs9j6xUXDRQOLg&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0OTc4NDA0NzgzNDYxNQ%3D%3D.3-ccb7-5&oh=00_AfXGZqm3LTosGnFYFOen0w0U-VM93HGy8oFVAF65BAQK8g&oe=689DE71B&_nc_sid=10d13b
+IMAGE PATH: debug_images/post_1.png
+EXTRACTION DATE: 2025-08-09 22:33:13
+
+=== DESCRIPCIÓN DEL POST ===
+📢 ¡Atención!
+Programación de matrícula para el II Semestre 2025
+Los estudiantes de estudios generales de primer año de ingeniería realizarán su proceso de matrícula directamente en: https://matricula.utp.ac.pa, el viernes 8 de agosto de 7:00 a. m. a 8:00 p. m.
+El proceso no es automático cada estudiante debe seleccionar su grupo y completar el registro.
+**Solo se permitirá la matrícula en 1 solo grupo (todas las asignaturas en ese grupo).
+
+Observaciones para el proceso de matrícula del martes 12 y miércoles 13 de agosto de 2025:
+1.  El proceso se realizará en línea, siguiendo el procedimiento acostumbrado.
+2.  Los Coordinadores de carrera atenderán en horario regular de oficina.
+3.  Cada estudiante debe verificar la asignación de su cita (hora y día) para matricularse ingresando al Sistema de Matrícula https://matricula.utp.ac.pa.
+Si el estudiante va a matricular todas sus asignaturas en un solo grupo, debe hacerlo el lunes 11 de agosto, durante el turno asignado a su facultad como lo indica el calendario.
+@utppanama
+
+=== TEXTO EXTRAÍDO POR OCR ===
+Caracteres extraídos: 3002
+Contenido:
+Me . . 2... . ii
+e Universidad Tecnológica de Panamá YN
+5 5 . . , . e a
+z Ep $ . Vicerrectoría Académica ol >
+1L¿ e Programación de matrícula para el Il Semestre 2025 ASA
+10 SEAS
+Atención: viernes 8 de agosto de 7:00 a. m. a 8:00 p. m.
+29 Los estudiantes de estudios generales de primer año de ingenieria realizarán su proceso de
+A ¿2 matricula directamente en el sitio web: https://matricula.utp.ac.pa
+á El proceso no es automático cada estudiante debe seleccionar su grupo y completar el registro.
+Desde 7:00 a. m. a 8:00 p. m. Desde 7:00 a. m. a 3:00 p. m. Desde 7:00 a. m. a 8:00 p. m. Desde 7:00 a. m. a 8:00 p. m.
+Todas las Facultades Todas las carreras de las Todas las carreras de las Caso especiales de
+Estudiantes de siguientes Facultades siguientes Facultades todas las carreras
+palo de or (incluye estudios generales)
+** Matricula es; un solo grupo rm,
+A f . y Facultad de Facultad de o (az ”
+Co a 63 lageniería Eléctrica fogenieria Civil 2) A e
+NA ió WE y
+do =
+Facultad de 0 a,
+Desde 10:00 a. m. a 11:00 p. m. Facultad de ar: 8 Ingenieria Industrial y Y ED P AN
+Todas las carreras y años Ingeniería Mécanica y 1 $ lor
+y e
+**Ma:ricula en un solo grupo DS NY Le
+FISC de 10:00 a. m. 2 1230 p.m. sem Facultad de 2 FÓN Facultad de o
+Fl de 12:31 p.m. a 3:00 p.m. l Dd Ingenieria de f el y Ciencia y Tecnologia Atención directa con
+EIC de 3:01 p.m. a 5:30 p.m. V je Sistemas Ll el Coordinador(a)
+FIM de 5:31 p. m. a 8.00 p. m. NZY Computacionales
+FIE y FCyT ¿e 8:01 p. m. a 11:00 p. mm.
+* Capitulo de Honor Sigma Lambda (Estatuto Universitario, Sección J)
+Artículo 217. El Capitulo de Honor Sigma Lambda es una institución universitaria a la cual ingresan los estudiantes
+que reúnan las siguientes condiciones:
+a) Haber cursado, por lo menos, dos años en la Universidad Tecnológica de Panamá en la carrera de estudios;
+b) No haber tenido fracasos en ninguna asignatura;
+c) No haber incurrido en contravención disciplinaria ni en mala conducta que hayan dado
+lugar a sanción de las autoridades universitarias;
+ch) Poseer un índice académico de 2.50 a 3.00 según Artículo 217 del Estatuto Universitario, Sección J.
+**Solo se permitirá la matricula en 1 solo grupo (todas las asignaturas en ese grupo)
+El lunes 11 de agosto, la matricula por facultad será en el orden que se indica en el calendario.
+Observaciones para el proceso de matricula del martes 12 y miércoles 13 de agosto de 2025:
+1. El proceso se realizará en línea, siguiendo el procedimiento acostumbrado.
+2. Los Coordinadores de carrera atenderán en horario regular de oficina.
+3. Cada estudiante debe verificar la asignación de su cita (hora y dia) para matricularse ingresando al Sistema de
+Matrícula https://matricula.utp.ac.pa, si el estudiante va a matricular todas sus asignaturas en un solo grupo, debe
+hacerlo el lunes 11 de agosto, durante el turno asignado a su facultad.
+nano
 Universidad Tecnológica de Panamá
 Facultad de Ingenieria de Sistemas Computacionales
-Síguenos: f X GO O in WIZZA Y Publicado: 3 de agosto de 2025
+Siguenos: f AS O in h, Outpñsc W Publicado: 1 de agosto de 2025
+
+=== FIN DEL ARCHIVO ===

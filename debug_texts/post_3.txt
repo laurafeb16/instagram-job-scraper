@@ -1,46 +1,35 @@
-POST URL: [Extraído desde debug_images/post_3.png]
-IMAGE URL: [Imagen local]
-DESCRIPTION: [Texto extraído por OCR]
-EXTRACTED TEXT:
-ml
-“za var
-LA o »
-Práctica Laboral (Epi (45 corsatrines
-3 IE t Cargo HEN.
-Pt NES
-A
-Empresa: Compañía Panameña de Aviación, S. A. (Copa Airlines)
-Contacto: Jovani Mendoza | Analista de Experiencia al Cliente
-Móvil: +(507) 6292-5939
-Copa Airlines está ofreciendo oportunidad a estudiante que requiera ganar
-experiencia laboral, aplicando sus conocimientos académicos en un entorno
-profesional real y desee hacerlo en la Dirección de Carga €, Courier de esta empresa.
-Requisitos:
-- Ser estudiante de último año de carrera de la Facultad de Ingeniería de Sistemas
-Computacionales (FISC).
-» Computadora personal
-+ Seguro contra accidentes, el que proporciona la universidad o uno privado. Este
-seguro debe estar vigente durante todo el tiempo de práctica.
-Conocimientos en:
-» Básico o intermedio en Excel (mandatorio).
-» Manejo SQL (opcional).
-- Manejo Python (opcional).
-Algunas de las funciones de colaboración en el área:
-- Completar el currículo de formación en lA de AWS, abarcando fundamentos, arquitectura y
-operación de modelos.
-+ Aplicar los conocimientos adquiridos en un proyecto de lA asignado.
-» Contribuir al desarrollo o mejora de una funcionalidad dentro de una de las iniciativas
-activas.
-» Documentar el proceso técnico y de aprendizaje para retroalimentación académica
-empresarial.
-La Práctica Laboral, será acorde a las normativas de la UTP - FISC.
-Ofrecen:
-» Aprendizaje sobre la industria y procesos, acercamiento a la vida laboral y poner en práctica
-los conocimiento adquiridos en su carrera.
-+ Horario de lunes a viernes de 7:30 a. m. a 4:30 p.m.
-Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa.
-Interesados enviar Hoja de Vida a: jomendozadcopaair.com
+=== INFORMACIÓN DEL POST ===
+POST URL: https://www.instagram.com/utpfisc/p/DM1UzkQsS0u/
+IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527176659_1191908189408073_434474170749333322_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHG_ummTFPKrAsaxjnRNujEG0qm_uYlCLh1soBS3Ei-7kjsvtKbclh3nIWZND3GrR8&_nc_ohc=HTokPlDo8VoQ7kNvwHBsBoq&_nc_gid=pazoIhsbgbvhpg-NwahyWA&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzY4OTk0Njk3NDI1ODI3NzY3OA%3D%3D.3-ccb7-5&oh=00_AfXzsasKp0vPEiJccBoDcRwuQCJHWbILysD9BvZO7TMOXQ&oe=689DD5D2&_nc_sid=10d13b
+IMAGE PATH: debug_images/post_3.png
+EXTRACTION DATE: 2025-08-09 22:33:33
+
+=== DESCRIPCIÓN DEL POST ===
+📢 ¡Atención!
+Ha finalizado el período de reclutamiento de la práctica profesional ofrecida por la Dirección General de Contrataciones Públicas (DGCP).
+Agradecemos el interés que han mostrado en la oferta presentada.
+
+=== TEXTO EXTRAÍDO POR OCR ===
+Caracteres extraídos: 809
+Contenido:
+1 - Vo mn.
+o DO O Ja ¡077 :
+Framework O at y
+Desarrollo  Fróly po UN "Angular, nest jsjs
+Base de data 7 ,
+SS . RP Is RESTFUL >
+0 dad con herramientas de integración y Conocirg Docker.
+e Entendi a iyocesos de compras públicas y MZ .
+La Práctica Profesio Te de a las normativas de |;
+Ofrecen: ;
+* Apoyo económico. a Ya
+* Jornada de 8:00 a. m. a 4:00 p. m. de lunes a viernes los 6 meses de la práctica.
+» Crecimiento profesional y posibilidad de inserción laboral, estación de trabajo individual.
+Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta entidad.
+Interesados enviar Hoja de Vida a: dgcp-solicitudespractica:wodgcp.gob.pa
 A
 Universidad Tecnológica de Panamá
 Facultad de Ingenieria de Sistemas Computacionales
-Síguenos: f X GO ou in WINZA Y Publicado: 5 de agosto de 2025
+Síguenos: f X GO O in WIZA MpPublicado: 1 de agosto de 2025
+
+=== FIN DEL ARCHIVO ===

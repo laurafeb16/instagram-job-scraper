@@ -4,6 +4,7 @@ import os
 import pytesseract
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 import requests
+from datetime import datetime
 from io import BytesIO
 import numpy as np # Added for potential future advanced image processing, not strictly used in current PIL example
 
@@ -214,9 +215,16 @@ def get_processor():
         _global_processor = EnhancedImageProcessor()
     return _global_processor
 
-def extract_text_from_image(image_path, lang='spa'):
+def extract_text_from_image(image_path, lang='spa', post_description='', post_url='', image_url=''):
     """
-    Función de compatibilidad para main.py - CORREGIDA con guardado de debug
+    Función de compatibilidad para main.py - MEJORADA con información completa de debug
+    
+    Args:
+        image_path (str): Ruta de la imagen
+        lang (str): Idioma para OCR
+        post_description (str): Descripción del post de Instagram
+        post_url (str): URL del post de Instagram
+        image_url (str): URL de la imagen original
     """
     # === LOG TEMPORAL PARA DEBUGGING ===
     logger = logging.getLogger(__name__)
@@ -228,7 +236,7 @@ def extract_text_from_image(image_path, lang='spa'):
         
         logger.info(f"🧪 [DEBUG] Texto extraído: {len(extracted_text)} caracteres")
         
-        # === GUARDAR TEXTO EXTRAÍDO PARA DEBUG ===
+        # === GUARDAR INFORMACIÓN COMPLETA PARA DEBUG ===
         if extracted_text and len(extracted_text.strip()) > 10:
             try:
                 debug_dir = "debug_texts"
@@ -239,19 +247,29 @@ def extract_text_from_image(image_path, lang='spa'):
                 debug_file = os.path.join(debug_dir, f"{base_name}.txt")
                 logger.info(f"🧪 [DEBUG] Archivo debug: {debug_file}")
                 
-                # ALWAYS OVERWRITE - no verificar si existe
+                # ESCRIBIR INFORMACIÓN COMPLETA
                 with open(debug_file, 'w', encoding='utf-8') as f:
-                    f.write(f"POST URL: [Extraído desde {image_path}]\n")
-                    f.write(f"IMAGE URL: [Imagen local]\n") 
-                    f.write(f"DESCRIPTION: [Texto extraído por OCR]\n")
-                    f.write(f"EXTRACTED TEXT:\n")
+                    f.write(f"=== INFORMACIÓN DEL POST ===\n")
+                    f.write(f"POST URL: {post_url or '[No disponible]'}\n")
+                    f.write(f"IMAGE URL: {image_url or '[No disponible]'}\n")
+                    f.write(f"IMAGE PATH: {image_path}\n")
+                    f.write(f"EXTRACTION DATE: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                    f.write(f"\n=== DESCRIPCIÓN DEL POST ===\n")
+                    if post_description and post_description.strip():
+                        f.write(post_description.strip())
+                    else:
+                        f.write("[Sin descripción disponible]")
+                    f.write(f"\n\n=== TEXTO EXTRAÍDO POR OCR ===\n")
+                    f.write(f"Caracteres extraídos: {len(extracted_text)}\n")
+                    f.write(f"Contenido:\n")
                     f.write(extracted_text)
+                    f.write(f"\n\n=== FIN DEL ARCHIVO ===\n")
                 
-                logger.info(f"💾 Texto OCR guardado en: {debug_file}")     
+                logger.info(f"💾 Información completa guardada en: {debug_file}")     
             except Exception as save_error:
-                logger.warning(f"Error guardando texto debug: {str(save_error)}")
+                logger.warning(f"Error guardando información debug: {str(save_error)}")
         else:
-            logger.info(f"🧪 [DEBUG] No se guardó texto - muy corto o vacío")
+            logger.info(f"🧪 [DEBUG] No se guardó información - texto muy corto o vacío")
         
         return extracted_text
         

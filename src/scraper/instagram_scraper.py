@@ -62,6 +62,9 @@ class InstagramScraper:
         chrome_options.add_argument("--no-first-run")
         chrome_options.add_argument("--disable-extensions")
         
+        # User agent actualizado para 2025
+        chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
+        
         # Usar ChromeDriver local
         chrome_driver_path = os.path.join(os.getcwd(), 'chromedriver.exe')
         self.logger.info(f"Buscando ChromeDriver en: {chrome_driver_path}")
@@ -75,6 +78,10 @@ class InstagramScraper:
             self.driver.set_window_size(1366, 768)
             self.wait = WebDriverWait(self.driver, 15)
             self.browser_crashed = False
+            
+            # Ejecutar script anti-detección
+            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+            
         except Exception as e:
             self.logger.error(f"Error inicializando driver: {e}")
             self.browser_crashed = True
@@ -113,6 +120,7 @@ class InstagramScraper:
             chrome_options.add_argument("--disable-dev-shm-usage")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--window-size=1920,1080")
+            chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
             
             chrome_driver_path = os.path.join(os.getcwd(), 'chromedriver.exe')
             self.driver = webdriver.Chrome(
@@ -122,6 +130,9 @@ class InstagramScraper:
             self.driver.set_window_size(1366, 768)
             self.wait = WebDriverWait(self.driver, 15)
             self.browser_crashed = False
+            
+            # Ejecutar script anti-detección
+            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
             
             # Recargar cookies si existen
             self.load_cookies()
@@ -140,65 +151,101 @@ class InstagramScraper:
             if not self._reinitialize_browser():
                 return False
         
-        # === LOG TEMPORAL PARA DEBUGGING ===
-        self.logger.info("🧪 [DEBUG] Método login() ejecutándose - VERSIÓN CORREGIDA")
+        self.logger.info("🔐 Iniciando proceso de login...")
         
         # Intentar cargar cookies primero
-        self.logger.info("🧪 [DEBUG] A punto de llamar load_cookies()")
         cookies_loaded = self.load_cookies()
-        self.logger.info(f"🧪 [DEBUG] load_cookies() retornó: {cookies_loaded}")
-        
         if cookies_loaded:
             self.logger.info("✅ Login completado usando cookies guardadas")
             return True
         
         # Si no hay cookies o falló, hacer login normal
-        self.logger.info("🧪 [DEBUG] Procediendo con login manual")
-        # Si no hay cookies o falló, hacer login normal
         try:
-            self.logger.info("Iniciando sesión en Instagram")
+            self.logger.info("📝 Realizando login manual en Instagram")
             self.driver.get(self.base_url)
             self.random_sleep(3, 5)
             
             # Manejar posible pop-up de cookies
             self._close_popups()
             
-            # Ingresar credenciales
+            # Ingresar credenciales - selectores actualizados para 2025
             try:
+                # Esperar a que aparezca el formulario de login
                 username_input = self.wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//input[@name='username']"))
+                    EC.presence_of_element_located((By.XPATH, "//input[@name='username' or @aria-label='Teléfono, usuario o correo electrónico' or @aria-label='Phone number, username, or email']"))
                 )
                 password_input = self.wait.until(
-                    EC.presence_of_element_located((By.XPATH, "//input[@name='password']"))
+                    EC.presence_of_element_located((By.XPATH, "//input[@name='password' or @aria-label='Contraseña' or @aria-label='Password']"))
                 )
                 
                 # Escribir credenciales de manera más natural
                 self._type_naturally(username_input, self.username)
-                self.random_sleep(0.5, 1)
+                self.random_sleep(0.5, 1.5)
                 self._type_naturally(password_input, self.password)
-                self.random_sleep(0.5, 1)
+                self.random_sleep(0.5, 1.5)
                 
-                # Hacer clic en el botón de login
-                login_button = self.driver.find_element(By.XPATH, "//button[@type='submit']")
+                # Hacer clic en el botón de login - selectores actualizados
+                login_button = self.driver.find_element(By.XPATH, "//button[@type='submit' or contains(., 'Iniciar sesión') or contains(., 'Log in') or div[contains(text(), 'Iniciar sesión')] or div[contains(text(), 'Log in')]]")
                 login_button.click()
                 
                 # Esperar a que se complete el login
                 self.random_sleep(5, 8)
                 
-                # Manejar ventanas emergentes post-login
-                self._close_popups()
-                
-                # Guardar cookies después de login exitoso
-                self.save_cookies()
-                self.logger.info("Login exitoso")
-                return True
+                # Verificar si el login fue exitoso
+                if self._verify_login_success():
+                    # Manejar ventanas emergentes post-login
+                    self._close_popups()
+                    
+                    # Guardar cookies después de login exitoso
+                    self.save_cookies()
+                    self.logger.info("✅ Login exitoso")
+                    return True
+                else:
+                    self.logger.error("❌ Login falló - verificación no exitosa")
+                    return False
                 
             except Exception as e:
-                self.logger.error(f"Error al ingresar credenciales: {str(e)}")
+                self.logger.error(f"❌ Error al ingresar credenciales: {str(e)}")
                 return False
                 
         except Exception as e:
-            self.logger.error(f"Error durante el login: {str(e)}")
+            self.logger.error(f"❌ Error durante el login: {str(e)}")
+            return False
+
+    def _verify_login_success(self):
+        """Verifica si el login fue exitoso"""
+        try:
+            # Esperar un poco para que la página cargue
+            self.random_sleep(2, 3)
+            
+            # Buscar indicadores de que estamos logueados
+            success_indicators = [
+                "//nav//a[@aria-label='Inicio' or @aria-label='Home']",
+                "//nav//svg[@aria-label='Inicio' or @aria-label='Home']",
+                "//a[contains(@href, '/direct/')]",  # Direct messages
+                "//div[@role='menubar']",  # Barra de navegación
+                "//img[@alt and contains(@src, 'fbcdn')]"  # Avatar de usuario
+            ]
+            
+            for indicator in success_indicators:
+                try:
+                    elements = self.driver.find_elements(By.XPATH, indicator)
+                    if elements:
+                        self.logger.debug(f"✅ Login verificado con: {indicator}")
+                        return True
+                except:
+                    continue
+            
+            # También verificar que NO estemos en la página de login
+            current_url = self.driver.current_url
+            if '/accounts/login' not in current_url and '/login' not in current_url:
+                self.logger.debug("✅ Login verificado por URL")
+                return True
+            
+            return False
+            
+        except Exception as e:
+            self.logger.debug(f"Error verificando login: {str(e)}")
             return False
 
     def _type_naturally(self, element, text):
@@ -215,24 +262,24 @@ class InstagramScraper:
                 return False
         
         try:
-            self.logger.info(f"Navegando a la cuenta: {self.target_account}")
+            self.logger.info(f"🔍 Navegando a la cuenta: {self.target_account}")
             self.driver.get(f"{self.base_url}{self.target_account}/")
             self.random_sleep(3, 5)
             
             # Verificar si la cuenta existe
             if "Esta página no está disponible" in self.driver.page_source or "Page not found" in self.driver.page_source:
-                self.logger.error(f"La cuenta {self.target_account} no existe o no está disponible")
+                self.logger.error(f"❌ La cuenta {self.target_account} no existe o no está disponible")
                 return False
                 
             return True
         except Exception as e:
-            self.logger.error(f"Error al navegar a la cuenta objetivo: {str(e)}")
+            self.logger.error(f"❌ Error al navegar a la cuenta objetivo: {str(e)}")
             return False
 
     def scrape_posts(self, limit=10):
         """Método principal MEJORADO que evita duplicados y mantiene orden"""
         try:
-            self.logger.info(f"🚀 Iniciando extracción de {limit} posts (MÉTODO ANTI-DUPLICADOS)")
+            self.logger.info(f"🚀 Iniciando extracción de {limit} posts con selectores actualizados 2025")
             
             if not self._is_browser_alive():
                 if not self._reinitialize_browser():
@@ -244,7 +291,7 @@ class InstagramScraper:
             all_available_urls = self._get_chronological_post_urls(limit * 3)
             
             if not all_available_urls:
-                self.logger.error("No se pudieron obtener URLs de posts")
+                self.logger.error("❌ No se pudieron obtener URLs de posts")
                 return []
             
             # Filtrar URLs ya procesadas en sesiones anteriores
@@ -333,13 +380,13 @@ class InstagramScraper:
             return []
 
     def _get_chronological_post_urls(self, target_count=30):
-        """Obtiene URLs en orden cronológico (más nuevos primero) SIN duplicados"""
+        """Obtiene URLs en orden cronológico (más nuevos primero) SIN duplicados - Actualizado 2025"""
         try:
             if not self._is_browser_alive():
                 if not self._reinitialize_browser():
                     return []
             
-            self.logger.info("📥 Obteniendo URLs en orden cronológico...")
+            self.logger.info("📥 Obteniendo URLs en orden cronológico con selectores 2025...")
             
             # Navegar al perfil
             self.driver.get(f"{self.base_url}{self.target_account}/")
@@ -353,24 +400,41 @@ class InstagramScraper:
             no_new_content_count = 0
             
             while len(ordered_urls) < target_count and scroll_attempts < max_scrolls:
-                # Obtener todos los enlaces visibles MANTENIENDO EL ORDEN
-                post_links = self.driver.find_elements(By.CSS_SELECTOR, "a[href*='/p/']")
+                # Selectores actualizados para Instagram 2025
+                post_selectors = [
+                    "a[href*='/p/']",  # Selector básico
+                    "article a[href*='/p/']",  # Dentro de artículos
+                    "div[role='tablist'] ~ div a[href*='/p/']",  # Posts en grid
+                    "main a[href*='/p/']",  # Dentro del main
+                ]
                 
                 current_count = len(ordered_urls)
                 
-                # Procesar enlaces en orden (Instagram los muestra cronológicamente)
-                for link in post_links:
+                # Intentar todos los selectores
+                for selector in post_selectors:
                     try:
-                        href = link.get_attribute('href')
-                        if href and '/p/' in href:
-                            clean_href = href.split('?')[0]  # Limpiar parámetros
-                            if clean_href not in seen_urls:
-                                seen_urls.add(clean_href)
-                                ordered_urls.append(href)  # Mantener URL original con parámetros
-                                
-                                if len(ordered_urls) >= target_count:
-                                    break
-                    except:
+                        post_links = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                        
+                        # Procesar enlaces en orden (Instagram los muestra cronológicamente)
+                        for link in post_links:
+                            try:
+                                href = link.get_attribute('href')
+                                if href and '/p/' in href:
+                                    clean_href = href.split('?')[0]  # Limpiar parámetros
+                                    if clean_href not in seen_urls:
+                                        seen_urls.add(clean_href)
+                                        ordered_urls.append(href)  # Mantener URL original con parámetros
+                                        
+                                        if len(ordered_urls) >= target_count:
+                                            break
+                            except:
+                                continue
+                        
+                        if len(ordered_urls) >= target_count:
+                            break
+                            
+                    except Exception as e:
+                        self.logger.debug(f"Error con selector {selector}: {str(e)}")
                         continue
                 
                 new_found = len(ordered_urls) - current_count
@@ -408,53 +472,76 @@ class InstagramScraper:
             self.logger.error(f"❌ Error obteniendo URLs cronológicas: {str(e)}")
             return []
 
-    def _wait_for_post_load(self, timeout=10):
-        """Espera a que el post se cargue completamente"""
+    def _wait_for_post_load(self, timeout=15):
+        """Espera a que el post se cargue completamente - Actualizado para Instagram 2025"""
         try:
             start_time = time.time()
             
             while time.time() - start_time < timeout:
-                # === SELECTORES ACTUALIZADOS PARA INSTAGRAM 2025 ===
-            
-                # 1. Verificar elementos principales (más genéricos)
-                main_elements = [
-                    "main[role='main']",  # Contenedor principal
-                    "section",            # Secciones de contenido
-                    "div[style*='flex']", # Divs con flex (común en IG)
-                    "[data-testid]",      # Cualquier elemento con testid
+                # Verificar múltiples indicadores de carga
+                
+                # 1. Verificar que hay contenido principal
+                main_content_found = False
+                main_selectors = [
+                    "main[role='main']",
+                    "article",
+                    "div[role='main']",
+                    "section",
                 ]
-            
-                found_main = False
-                for selector in main_elements:
+                
+                for selector in main_selectors:
                     if self.driver.find_elements(By.CSS_SELECTOR, selector):
-                        found_main = True
-                        self.logger.debug(f"✅ Elemento principal encontrado: {selector}")
+                        main_content_found = True
                         break
-            
-                # 2. Verificar que hay imágenes (más flexible)
+                
+                # 2. Verificar que hay imágenes cargadas
+                images_found = False
                 image_selectors = [
                     "img[src*='fbcdn.net']",
                     "img[src*='instagram']",
                     "img[decoding='auto']",
-                    "img[loading='lazy']",
                     "img[style*='object-fit']",
                 ]
-            
-                found_image = False
+                
                 for selector in image_selectors:
                     images = self.driver.find_elements(By.CSS_SELECTOR, selector)
                     if images:
-                        found_image = True
-                        self.logger.debug(f"✅ Imagen encontrada: {selector} ({len(images)} imágenes)")
+                        # Verificar que al menos una imagen está realmente cargada
+                        for img in images:
+                            if img.get_attribute('complete') == 'true' or img.size['height'] > 50:
+                                images_found = True
+                                break
+                        if images_found:
+                            break
+                
+                # 3. Verificar que no estamos en una página de error
+                error_indicators = [
+                    "Esta página no está disponible",
+                    "Page not found",
+                    "Sorry, this page isn't available",
+                    "Lo sentimos, esta página no está disponible"
+                ]
+                
+                is_error = False
+                page_text = self.driver.find_element(By.TAG_NAME, "body").text
+                for error_text in error_indicators:
+                    if error_text in page_text:
+                        is_error = True
                         break
-            
-                # 3. Si encontramos contenido principal E imágenes, considerarlo cargado
-                if found_main and found_image:
+                
+                if is_error:
+                    self.logger.warning("⚠️ Página de error detectada")
+                    return False
+                
+                # Si tenemos contenido principal E imágenes, considerarlo cargado
+                if main_content_found and images_found:
                     self.logger.debug("✅ Post cargado exitosamente")
                     return True
-            
-                # Log de debugging
-                self.logger.debug(f"⏳ Esperando carga... Main: {found_main}, Images: {found_image}")
+                
+                # Log de debugging cada 3 segundos
+                if int(time.time() - start_time) % 3 == 0:
+                    self.logger.debug(f"⏳ Esperando carga... Main: {main_content_found}, Images: {images_found}")
+                
                 time.sleep(0.5)
         
             self.logger.warning(f"⚠️ Timeout esperando carga del post")
@@ -465,24 +552,18 @@ class InstagramScraper:
              return False
 
     def _extract_post_data_improved(self):
-        """Extractor de datos mejorado y más robusto con debugging"""
+        """Extractor de datos mejorado para Instagram 2025"""
         try:
             # Obtener URL actual
             post_url = self.driver.current_url
             
             # Debug de estructura (solo en modo debug)
-            self._debug_current_page()  # ← AGREGAR ESTA LÍNEA
+            self._debug_current_page()
         
-            # Debug de estructura (solo en modo debug)
-            try:
-                self._debug_page_structure()
-            except:
-                pass
-            
             # Extraer imagen principal
             img_url = self._extract_image_improved()
             if not img_url:
-                self.logger.warning("No se pudo extraer imagen")
+                self.logger.warning("⚠️ No se pudo extraer imagen")
                 return None
             
             # Extraer descripción con método mejorado
@@ -516,37 +597,56 @@ class InstagramScraper:
             return post_data
             
         except Exception as e:
-            self.logger.error(f"Error extrayendo datos del post: {str(e)}")
+            self.logger.error(f"❌ Error extrayendo datos del post: {str(e)}")
             return None
 
     def _extract_image_improved(self):
-        """Extractor de imagen mejorado con mejor manejo de errores"""
+        """Extractor de imagen mejorado para Instagram 2025"""
         try:
-            # Lista de selectores actualizados y ordenados por prioridad
+            # Lista de selectores actualizados para Instagram 2025
             selectors = [
-                "article img[src*='fbcdn.net']",
-                "div[role='dialog'] img[src*='fbcdn.net']",
+                # Selectores más específicos primero
+                "article img[src*='fbcdn.net']:not([src*='profile']):not([src*='avatar'])",
+                "main img[src*='fbcdn.net']:not([src*='profile']):not([src*='avatar'])",
+                "div[role='dialog'] img[src*='fbcdn.net']:not([src*='profile']):not([src*='avatar'])",
+                
+                # Selectores por estructura
                 "img[style*='object-fit'][src*='fbcdn.net']",
                 "img[decoding='auto'][src*='fbcdn.net']",
-                "div._aagv img[src*='fbcdn.net']",
+                "img[loading='lazy'][src*='fbcdn.net']",
+                
+                # Selectores más genéricos
                 "img[sizes][src*='fbcdn.net']",
                 "img[alt]:not([alt=''])[src*='fbcdn.net']",
             ]
             
-            for selector in selectors:
+            for i, selector in enumerate(selectors):
                 try:
                     elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    self.logger.debug(f"Selector {i+1}: '{selector}' → {len(elements)} elementos")
+                    
                     for element in elements:
                         img_url = element.get_attribute("src")
                         if (img_url and 
                             img_url.startswith('http') and 
                             'fbcdn.net' in img_url and
                             not 'profile' in img_url.lower() and
-                            not 'avatar' in img_url.lower()):
+                            not 'avatar' in img_url.lower() and
+                            not 'icon' in img_url.lower()):
                             
-                            self.logger.debug(f"✅ Imagen extraída con: {selector}")
-                            return img_url
-                except Exception:
+                            # Verificar que la imagen tenga dimensiones válidas
+                            try:
+                                width = element.size.get('width', 0)
+                                height = element.size.get('height', 0)
+                                if width > 50 and height > 50:  # Imagen de tamaño válido
+                                    self.logger.debug(f"✅ Imagen extraída con: {selector} ({width}x{height})")
+                                    return img_url
+                            except:
+                                # Si no podemos obtener dimensiones, aceptar la imagen
+                                self.logger.debug(f"✅ Imagen extraída con: {selector}")
+                                return img_url
+                except Exception as e:
+                    self.logger.debug(f"Error con selector {i+1}: {str(e)}")
                     continue
             
             # Método alternativo: buscar cualquier imagen válida
@@ -559,8 +659,16 @@ class InstagramScraper:
                         not 'profile' in src.lower() and
                         not 'avatar' in src.lower() and
                         not 'icon' in src.lower()):
-                        self.logger.debug("✅ Imagen extraída con método alternativo")
-                        return src
+                        
+                        # Verificar dimensiones
+                        try:
+                            width = img.size.get('width', 0)
+                            height = img.size.get('height', 0)
+                            if width > 100 and height > 100:
+                                self.logger.debug("✅ Imagen extraída con método alternativo")
+                                return src
+                        except:
+                            pass
             except:
                 pass
                 
@@ -572,158 +680,344 @@ class InstagramScraper:
             return ""
 
     def _extract_description_improved(self):
-        """Extractor de descripción ULTRA MEJORADO con debugging detallado"""
+        """🔧 EXTRACTOR DE DESCRIPCIÓN ULTRA MEJORADO - VERSIÓN 2025 ULTRA ROBUSTA"""
         try:
-            self.logger.debug("🔍 Iniciando extracción ULTRA mejorada de descripción...")
+            self.logger.info("🔍 Iniciando extracción ULTRA ROBUSTA de descripción...")
             
-            # === GUARDAR SCREENSHOT PARA DEBUG ===
-            if self._is_browser_alive():
-                try:
-                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    debug_screenshot = f"debug_description_{timestamp}.png"
-                    self.driver.save_screenshot(debug_screenshot)
-                    self.logger.debug(f"📸 Screenshot guardado: {debug_screenshot}")
-                except:
-                    pass
+            # === GUARDAR SCREENSHOT Y HTML PARA DEBUG ===
+            self._save_debug_screenshot("description_extraction")
+            self._save_debug_html("description_extraction")
             
-            # === ESTRATEGIA NUEVA: SELECTORES ESPECÍFICOS PARA CAPTION ===
-            caption_selectors = [
-                # Selectores más específicos para captions de Instagram 2025
-                "article h1",  # Nuevo selector para títulos principales
-                "article div[data-testid='post-caption'] span",
-                "div[role='dialog'] div[data-testid='post-caption'] span",
-                "article div[data-testid='post-caption-content'] span",
-                
-                # Selectores por estructura DOM actual
-                "article div[class*='_ap3a'] div[class*='_a9zs'] span[dir='auto']",
-                "div[role='dialog'] div[class*='_ap3a'] div[class*='_a9zs'] span[dir='auto']",
-                
-                # Selectores alternativos para contenido de texto
-                "article div[role='button'] + div span[dir='auto']",
-                "article div[class*='x1lliihq'] span[dir='auto']",
-                
-                # Selectores más amplios
-                "article span[class*='_aacl _aaco _aacu _aacx _aad7 _aade']",
-                "div[role='dialog'] span[class*='_aacl _aaco _aacu _aacx _aad7 _aade']",
+            # === ESTRATEGIA #0: BUSCAR EN TITLE DE LA PÁGINA ===
+            try:
+                page_title = self.driver.title
+                if page_title and len(page_title) > 30 and self._is_job_related_description(page_title):
+                    self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA del title ({len(page_title)} chars)")
+                    return page_title
+            except:
+                pass
+            
+            # === ESTRATEGIA #1: META TAGS (MÁS CONFIABLE) ===
+            self.logger.debug("🎯 Estrategia #1: Meta tags...")
+            
+            meta_selectors = [
+                "meta[property='og:description']",
+                "meta[name='description']", 
+                "meta[property='description']",
+                "meta[name='twitter:description']",
+                "meta[property='og:title']"
             ]
             
-            self.logger.debug(f"🎯 Probando {len(caption_selectors)} selectores específicos para captions...")
-            
-            for i, selector in enumerate(caption_selectors):
+            for selector in meta_selectors:
                 try:
-                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                    self.logger.debug(f"Selector {i+1}: '{selector}' → {len(elements)} elementos")
+                    element = self.driver.find_element(By.CSS_SELECTOR, selector)
+                    content = element.get_attribute('content')
                     
-                    for j, element in enumerate(elements):
-                        try:
-                            text = element.text.strip()
-                            if text:
-                                self.logger.debug(f"  Elemento {j+1}: '{text[:100]}...' ({len(text)} chars)")
-                                
-                                # Verificación mejorada
-                                if self._is_job_related_description(text):
-                                    self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA - Selector {i+1}: '{selector}' ({len(text)} chars)")
-                                    self.logger.debug(f"💡 Contenido completo: {text}")
-                                    return text
-                                    
-                        except Exception as e:
-                            self.logger.debug(f"Error procesando elemento {j+1}: {str(e)}")
-                            continue
+                    if content and len(content) > 30:
+                        self.logger.debug(f"Meta encontrado: {selector} - {len(content)} chars")
+                        cleaned_content = self._clean_meta_description(content)
+                        
+                        if cleaned_content and len(cleaned_content) > 20:
+                            self.logger.info(f"✅ DESCRIPCIÓN de meta tag ({len(cleaned_content)} chars)")
+                            return cleaned_content
                             
                 except Exception as e:
-                    self.logger.debug(f"Error con selector {i+1}: {str(e)}")
+                    self.logger.debug(f"Error con {selector}: {str(e)}")
                     continue
             
-            # === ESTRATEGIA TEXTO COMPLETO CON FILTRADO INTELIGENTE ===
-            self.logger.debug("🧠 Estrategia: Análisis inteligente de texto completo...")
+            # === ESTRATEGIA #2: SELECTORES UNIVERSALES BÁSICOS ===
+            self.logger.debug("🎯 Estrategia #2: Selectores universales...")
+            
+            universal_selectors = [
+                # Intentar el más básico primero
+                "article",
+                "main", 
+                "[role='main']",
+                "[role='article']",
+                "section",
+                "div[id*='content']",
+                "div[class*='content']"
+            ]
+            
+            for selector in universal_selectors:
+                try:
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    for element in elements:
+                        text = element.text.strip()
+                        if text and len(text) > 100:
+                            self.logger.debug(f"Texto de {selector}: {len(text)} chars")
+                            
+                            # Buscar descripción inteligente en el texto
+                            smart_desc = self._extract_smart_description(text)
+                            if smart_desc:
+                                self.logger.info(f"✅ DESCRIPCIÓN de {selector} ({len(smart_desc)} chars)")
+                                return smart_desc
+                                
+                except Exception as e:
+                    self.logger.debug(f"Error con {selector}: {str(e)}")
+                    continue
+            
+            # === ESTRATEGIA #3: TEXTO COMPLETO DE LA PÁGINA ===
+            self.logger.debug("🎯 Estrategia #3: Texto completo...")
             
             try:
-                # Obtener todo el texto visible del artículo
-                article = self.driver.find_element(By.TAG_NAME, "article")
-                if article:
-                    full_text = article.text.strip()
-                    self.logger.debug(f"📄 Texto completo del artículo: {len(full_text)} caracteres")
+                full_page_text = self.driver.find_element(By.TAG_NAME, "body").text
+                
+                if full_page_text and len(full_page_text) > 100:
+                    self.logger.debug(f"Texto completo: {len(full_page_text)} chars")
                     
-                    # Guardar texto completo para debug
-                    try:
-                        with open(f"debug_full_text_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt", 'w', encoding='utf-8') as f:
-                            f.write(f"POST URL: {self.driver.current_url}\n")
-                            f.write(f"FULL TEXT ({len(full_text)} chars):\n")
-                            f.write(f"{'='*50}\n")
-                            f.write(full_text)
-                    except:
-                        pass
+                    # Guardar texto completo para análisis manual
+                    debug_filename = f"debug_full_text_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+                    with open(debug_filename, 'w', encoding='utf-8') as f:
+                        f.write(f"URL: {self.driver.current_url}\n")
+                        f.write(f"TEXTO COMPLETO ({len(full_page_text)} chars):\n")
+                        f.write("="*80 + "\n")
+                        f.write(full_page_text)
                     
-                    # Extraer descripción inteligentemente
-                    extracted_description = self._extract_smart_description(full_text)
-                    if extracted_description:
-                        self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA del texto completo ({len(extracted_description)} chars)")
-                        return extracted_description
-                        
+                    self.logger.debug(f"📝 Texto completo guardado en: {debug_filename}")
+                    
+                    # Buscar patrones de trabajo en texto completo
+                    job_patterns = [
+                        r'((?:Práctica|práctica)[^.]*?(?:Empresa|empresa)[^.]*?(?:Contacto|contacto)[^.]{50,500})',
+                        r'((?:Empresa|empresa):[^.]*?(?:Contacto|contacto):[^.]{50,500})',
+                        r'((?:GRUPO|Grupo|Compañía)[^.]*?(?:ofreciendo|oferta|solicita|busca)[^.]{50,500})',
+                        r'([^.]{100,}(?:práctica|trabajo|empleo|vacante|oferta)[^.]{100,})',
+                    ]
+                    
+                    for pattern in job_patterns:
+                        matches = re.findall(pattern, full_page_text, re.IGNORECASE | re.DOTALL)
+                        for match in matches:
+                            cleaned = re.sub(r'\s+', ' ', match).strip()
+                            if len(cleaned) > 100 and self._is_job_related_description(cleaned):
+                                self.logger.info(f"✅ DESCRIPCIÓN por patrón regex ({len(cleaned)} chars)")
+                                return cleaned
+                                
             except Exception as e:
-                self.logger.debug(f"Error en análisis de texto completo: {str(e)}")
+                self.logger.debug(f"Error con texto completo: {str(e)}")
             
-            # === ESTRATEGIA DE ÚLTIMO RECURSO: XPATH AGRESIVO ===
-            self.logger.debug("🚨 Estrategia de último recurso: XPath agresivo...")
+            # === ESTRATEGIA #4: XPATH ULTRA AGRESIVO ===
+            self.logger.debug("🎯 Estrategia #4: XPath ultra agresivo...")
             
             aggressive_xpaths = [
-                "//article//span[string-length(text()) > 50]",
-                "//div[@role='dialog']//span[string-length(text()) > 50]",
-                "//article//div[contains(@class, 'caption')]//span",
-                "//article//div[contains(@style, 'white-space')]//span",
-                "//span[contains(text(), 'práctica') or contains(text(), 'trabajo') or contains(text(), 'empresa')]",
+                # Buscar cualquier texto que contenga palabras clave
+                "//text()[contains(., 'práctica') or contains(., 'Práctica')]/..",
+                "//text()[contains(., 'empresa') or contains(., 'Empresa')]/..",  
+                "//text()[contains(., 'contacto') or contains(., 'Contacto')]/..",
+                "//text()[contains(., 'oportunidad')]/..",
+                "//text()[contains(., 'trabajo')]/..",
+                
+                # Buscar por longitud de texto
+                "//*[string-length(text()) > 100]",
+                "//*[string-length(text()) > 50]",
             ]
             
             for xpath in aggressive_xpaths:
                 try:
                     elements = self.driver.find_elements(By.XPATH, xpath)
-                    self.logger.debug(f"XPath '{xpath}' → {len(elements)} elementos")
+                    self.logger.debug(f"XPath '{xpath[:30]}...' → {len(elements)} elementos")
                     
                     for element in elements:
                         try:
                             text = element.text.strip()
-                            if self._is_job_related_description(text):
-                                self.logger.info(f"✅ DESCRIPCIÓN EXTRAÍDA con XPath agresivo ({len(text)} chars)")
-                                return text
+                            if text and len(text) > 50 and self._is_job_related_description(text):
+                                smart_desc = self._extract_smart_description(text)
+                                if smart_desc:
+                                    self.logger.info(f"✅ DESCRIPCIÓN con XPath agresivo ({len(smart_desc)} chars)")
+                                    return smart_desc
                         except:
                             continue
                 except:
                     continue
             
-            self.logger.warning("⚠️ No se pudo extraer descripción con NINGÚN método")
+            # === ESTRATEGIA #5: ÚLTIMO RECURSO - CUALQUIER TEXTO LARGO ===
+            self.logger.debug("🎯 Estrategia #5: Último recurso...")
+            
+            try:
+                all_elements = self.driver.find_elements(By.XPATH, "//*")
+                text_candidates = []
+                
+                for element in all_elements:
+                    try:
+                        text = element.text.strip()
+                        if text and 50 <= len(text) <= 2000:
+                            text_candidates.append(text)
+                    except:
+                        continue
+                
+                # Ordenar por longitud y buscar el mejor
+                text_candidates.sort(key=len, reverse=True)
+                
+                for text in text_candidates[:10]:  # Solo los 10 más largos
+                    if self._is_job_related_description(text):
+                        smart_desc = self._extract_smart_description(text)
+                        if smart_desc:
+                            self.logger.info(f"✅ DESCRIPCIÓN último recurso ({len(smart_desc)} chars)")
+                            return smart_desc
+                        
+            except Exception as e:
+                self.logger.debug(f"Error en último recurso: {str(e)}")
+            
+            self.logger.warning("❌ TODAS las estrategias fallaron - NO se extrajo descripción")
             return ""
             
         except Exception as e:
-            self.logger.error(f"❌ Error crítico extrayendo descripción: {str(e)}")
+            self.logger.error(f"❌ Error crítico en extracción: {str(e)}")
             return ""
 
+    def _save_debug_html(self, filename_prefix):  # ✅ CORREGIR INDENTACIÓN AQUÍ
+        """Guarda HTML de la página para debugging"""
+        try:
+            if self._is_browser_alive():
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                filename = f"debug_{filename_prefix}_{timestamp}.html"
+                html_content = self.driver.page_source
+            
+                with open(filename, 'w', encoding='utf-8') as f:
+                    f.write(f"<!-- POST URL: {self.driver.current_url} -->\n")
+                    f.write(f"<!-- TIMESTAMP: {timestamp} -->\n")
+                    f.write(html_content)
+            
+                self.logger.debug(f"📄 HTML guardado: {filename}")
+        except Exception as e:
+            self.logger.debug(f"Error guardando HTML: {str(e)}")
+
+    def _is_valid_meta_description(self, content):
+        """Verifica si el contenido de meta description es válido"""
+        try:
+            if not content or len(content) < 20:
+                return False
+            
+            # Excluir descripciones genéricas de Instagram
+            generic_patterns = [
+                r'^\d+\s+(likes?|me gusta)',
+                r'^\d+\s+(comments?|comentarios)',
+                r'^.*\s+en Instagram:?\s*$',
+                r'^Instagram.*foto.*vídeo',
+                r'Mira.*en Instagram',
+            ]
+            
+            for pattern in generic_patterns:
+                if re.match(pattern, content, re.IGNORECASE):
+                    return False
+            
+            # Verificar que contenga contenido relacionado con trabajo
+            return self._is_job_related_description(content)
+            
+        except:
+            return False
+
+    def _clean_meta_description(self, content):
+        """Limpia la descripción extraída de meta tags - CORREGIDO PARA NO TRUNCAR EMAILS"""
+        try:
+            self.logger.debug(f"🧹 Limpiando meta description: {len(content)} chars")
+            self.logger.debug(f"Contenido original: {content[:200]}...")
+            
+            # Patrones MEJORADOS que NO cortan emails
+            instagram_stats_patterns = [
+                # NUEVO: Buscar el patrón completo y extraer solo la parte después de las comillas
+                r'^\d+\s+(?:likes?|me gusta),\s*\d+\s+(?:comments?|comentarios)\s*-\s*\w+\s+el\s+[^:]+:\s*"([^"]+)".*$',
+                r'^\d+\s+(?:me gusta|likes?),\s*\d+\s+(?:comentarios?|comments?)\s*-\s*\w+\s+el\s+[^:]+:\s*"([^"]+)".*$',
+                
+                # Patrones de seguridad (solo si no hay comillas)
+                r'^\d+\s+(?:likes?|me gusta)\s*,\s*\d+\s+(?:comments?|comentarios)\s*-.*?:\s*',
+                r'^\w+\s+•\s+\d+\s+(?:publicaciones?|posts?)\s+en Instagram:\s*',
+            ]
+            
+            original_content = content
+            cleaned_content = content
+            
+            # PRIMERO: Intentar extraer contenido entre comillas (método más seguro)
+            quote_patterns = [
+                r'^\d+[^"]*"([^"]{50,})"',  # Buscar contenido largo entre comillas
+                r'"([^"]{100,})"',          # Cualquier contenido largo entre comillas
+            ]
+            
+            for pattern in quote_patterns:
+                match = re.search(pattern, content, re.DOTALL)
+                if match:
+                    extracted = match.group(1).strip()
+                    if self._is_job_related_description(extracted):
+                        self.logger.debug(f"✅ Extraído de comillas: {len(extracted)} chars")
+                        return extracted
+            
+            # SEGUNDO: Si no hay comillas, usar patrones de limpieza conservadores
+            for pattern in instagram_stats_patterns:
+                # Si el patrón tiene grupo de captura, usarlo
+                if '(' in pattern and ')' in pattern:
+                    match = re.search(pattern, cleaned_content, flags=re.IGNORECASE | re.DOTALL)
+                    if match:
+                        extracted = match.group(1).strip()
+                        if len(extracted) > 20:
+                            self.logger.debug(f"✅ Extraído con patrón de captura: {len(extracted)} chars")
+                            return extracted
+                else:
+                    # Patrón de limpieza simple
+                    new_content = re.sub(pattern, '', cleaned_content, flags=re.IGNORECASE)
+                    if new_content != cleaned_content:
+                        cleaned_content = new_content
+                        break
+            
+            # Limpiar caracteres finales y espacios
+            cleaned_content = re.sub(r'"\s*\.\s*$', '', cleaned_content)
+            cleaned_content = re.sub(r'"$', '', cleaned_content)
+            cleaned_content = re.sub(r'\s*\.\s*$', '', cleaned_content)
+            cleaned_content = re.sub(r'\s+', ' ', cleaned_content).strip()
+            
+            # VALIDACIÓN FINAL: Si la limpieza redujo demasiado el contenido, usar método alternativo
+            if len(cleaned_content) < len(original_content) * 0.3:  # Si perdió más del 70%
+                self.logger.debug("⚠️ Limpieza demasiado agresiva, intentando método alternativo...")
+                
+                # Buscar la parte más larga que contenga palabras de trabajo
+                parts = original_content.split(':', 1)  # Dividir en el primer ':'
+                if len(parts) > 1 and self._is_job_related_description(parts[1]):
+                    alternative = parts[1].strip().strip('"').strip()
+                    if len(alternative) > 50:
+                        self.logger.debug(f"✅ Método alternativo exitoso: {len(alternative)} chars")
+                        return alternative
+            
+            self.logger.debug(f"📝 Limpieza completada: {len(original_content)} → {len(cleaned_content)} chars")
+            return cleaned_content if cleaned_content else original_content
+            
+        except Exception as e:
+            self.logger.debug(f"Error limpiando meta description: {str(e)}")
+            return content
+
     def _is_job_related_description(self, text):
-        """Verifica si el texto es una descripción relacionada con trabajo"""
+        """Verifica si el texto es una descripción relacionada con trabajo - Mejorado para 2025"""
         try:
             if not text or len(text) < 20:
                 return False
             
-            # Palabras clave de trabajo/ofertas laborales
+            # Palabras clave de trabajo/ofertas laborales (expandidas)
             job_keywords = [
                 'práctica', 'trabajo', 'empleo', 'vacante', 'oferta', 'empresa',
                 'contacto', 'solicita', 'busca', 'requiere', 'oportunidad',
                 'posición', 'puesto', 'cargo', 'reclutamiento', 'talento',
-                'profesional', 'candidato', 'aplicar', 'enviar', 'curriculum'
+                'profesional', 'candidato', 'aplicar', 'enviar', 'curriculum',
+                'cv', 'hoja de vida', 'perfil', 'laboral', 'experiencia',
+                'requisitos', 'competencias', 'habilidades', 'conocimientos'
             ]
             
-            # Filtros para excluir UI de Instagram
+            # Filtros mejorados para excluir UI de Instagram
             ui_filters = [
-                'subir contactos', 'personas no usuarias', 'like', 'share', 
-                'comment', 'view', 'follow', 'more posts', 'stories', 'reels',
-                'home', 'profile', 'explore', 'ago', 'hace', 'hours', 'horas',
-                'minutes', 'minutos', 'days', 'días', 'ver más', 'show more'
+                'like', 'share', 'comment', 'view', 'follow', 'followers',
+                'following', 'posts', 'stories', 'reels', 'igtv',
+                'ago', 'hace', 'hours', 'horas', 'minutes', 'minutos',
+                'days', 'días', 'weeks', 'semanas', 'months', 'meses',
+                'ver más', 'show more', 'load more', 'cargar más',
+                'home', 'explore', 'activity', 'profile'
             ]
             
             text_lower = text.lower()
             
+            # Filtros adicionales para contenido no relevante
+            if any(pattern in text_lower for pattern in ['@', '#hashtag', 'instagram.com']):
+                if not any(keyword in text_lower for keyword in job_keywords):
+                    return False
+            
             # Si contiene principalmente filtros de UI, rechazar
             ui_count = sum(1 for ui_word in ui_filters if ui_word in text_lower)
-            if ui_count > 2:  # Si tiene más de 2 palabras de UI
+            if ui_count > 3:  # Si tiene más de 3 palabras de UI
                 return False
             
             # Si contiene palabras clave de trabajo, aceptar
@@ -741,7 +1035,7 @@ class InstagramScraper:
             return False
 
     def _extract_smart_description(self, full_text):
-        """Extrae descripción de manera inteligente del texto completo"""
+        """Extrae descripción de manera inteligente del texto completo - Mejorado 2025"""
         try:
             lines = full_text.split('\n')
             self.logger.debug(f"🔍 Analizando {len(lines)} líneas de texto...")
@@ -749,28 +1043,27 @@ class InstagramScraper:
             # Buscar líneas que contengan información de trabajo
             job_lines = []
             found_job_content = False
+            stop_words = ['like', 'comment', 'share', 'ago', 'hace', 'view', 'follow']
             
             for i, line in enumerate(lines):
                 line = line.strip()
                 if not line or len(line) < 10:
                     continue
                 
-                self.logger.debug(f"Línea {i+1}: '{line[:50]}...'")
-                
                 # Si es una línea de trabajo, empezar a recopilar
                 if self._is_job_related_description(line):
                     found_job_content = True
                     job_lines.append(line)
-                    self.logger.debug(f"  ✅ Línea de trabajo detectada")
+                    self.logger.debug(f"  ✅ Línea de trabajo detectada: {line[:50]}...")
                 elif found_job_content and len(line) > 20:
                     # Continuar recopilando si ya encontramos contenido de trabajo
                     # y la línea no es obviamente UI
-                    if not any(ui in line.lower() for ui in ['like', 'comment', 'share', 'ago', 'hace']):
+                    if not any(stop_word in line.lower() for stop_word in stop_words):
                         job_lines.append(line)
-                        self.logger.debug(f"  ➕ Línea adicional agregada")
+                        self.logger.debug(f"  ➕ Línea adicional agregada: {line[:50]}...")
                     else:
                         # Si encontramos UI, parar la recopilación
-                        self.logger.debug(f"  🛑 Línea de UI detectada, parando recopilación")
+                        self.logger.debug(f"  🛑 Línea de UI detectada, parando: {line[:50]}...")
                         break
                         
             if job_lines:
@@ -784,112 +1077,52 @@ class InstagramScraper:
             self.logger.debug(f"Error en extracción inteligente: {str(e)}")
             return ""
 
-    def _is_valid_description(self, text):
-        """Verifica si un texto es una descripción válida de Instagram"""
-        try:
-            # Filtros para excluir elementos de UI
-            ui_keywords = [
-                'like', 'share', 'comment', 'view', 'follow', 'more posts',
-                'mas publicaciones', 'posts from', 'ver más', 'show more',
-                'ago', 'hours', 'minutes', 'days', 'weeks', 'months',
-                'hace', 'horas', 'minutos', 'días', 'semanas', 'meses',
-                'home', 'profile', 'stories', 'reels', 'explore'
-            ]
-            
-            # Verificar que no sea solo elementos de UI
-            if any(ui_word in text.lower() for ui_word in ui_keywords):
-                # Si contiene UI keywords, verificar que también tenga contenido real
-                job_keywords = [
-                    'práctica', 'trabajo', 'empresa', 'contacto', 'empleo',
-                    'vacante', 'oferta', 'solicita', 'busca', 'requiere'
-                ]
-                if not any(job_word in text.lower() for job_word in job_keywords):
-                    return False
-            
-            # Verificar que tenga contenido sustancial
-            if len(text.split()) < 5:  # Menos de 5 palabras
-                return False
-            
-            # Verificar que no sea solo números o símbolos
-            if not any(c.isalpha() for c in text):
-                return False
-                
-            return True
-            
-        except:
-            return False
-
-    def _extract_job_description_from_text(self, full_text):
-        """Extrae descripción de trabajo de un texto completo"""
-        try:
-            lines = full_text.split('\n')
-            job_lines = []
-            capturing = False
-            
-            job_indicators = [
-                'práctica', 'trabajo', 'empleo', 'vacante', 'oferta',
-                'empresa', 'contacto', 'solicita', 'busca', 'requiere',
-                'oportunidad', 'posición', 'puesto'
-            ]
-            
-            for line in lines:
-                line = line.strip()
-                
-                # Saltar líneas vacías o muy cortas
-                if not line or len(line) < 10:
-                    continue
-                
-                # Saltar elementos de UI
-                if any(ui in line.lower() for ui in ['like', 'comment', 'share', 'ago', 'hace']):
-                    continue
-                
-                # Comenzar a capturar si encontramos indicadores de trabajo
-                if any(indicator in line.lower() for indicator in job_indicators):
-                    capturing = True
-                    job_lines.append(line)
-                    continue
-                
-                # Si ya estamos capturando, continuar hasta encontrar una línea irrelevante
-                if capturing:
-                    # Verificar si la línea sigue siendo relevante
-                    if (len(line) > 20 and 
-                        not any(ui in line.lower() for ui in ['home', 'profile', 'stories'])):
-                        job_lines.append(line)
-                    else:
-                        # Si encontramos una línea irrelevante, dejar de capturar
-                        break
-            
-            if job_lines:
-                description = '\n'.join(job_lines)
-                if len(description) > 50:  # Asegurar que tenga contenido sustancial
-                    return description
-                    
-            return ""
-            
-        except:
-            return ""
-
     def _extract_date_improved(self):
-        """Extrae la fecha del post de manera mejorada"""
+        """Extrae la fecha del post de manera mejorada para Instagram 2025"""
         try:
-            # Buscar elementos de tiempo
-            time_elements = self.driver.find_elements(By.CSS_SELECTOR, "time")
-            for time_elem in time_elements:
-                datetime_attr = time_elem.get_attribute("datetime")
-                if datetime_attr:
-                    return datetime_attr
-            
-            # Método alternativo: buscar por texto de fecha
-            date_patterns = [
-                r'(\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago',
-                r'hace\s+(\d+)\s+(segundo|minuto|hora|día|semana|mes|año)s?'
+            # Buscar elementos de tiempo con selectores actualizados
+            time_selectors = [
+                "time",
+                "time[datetime]",
+                "[datetime]",
+                "span[title]",  # Instagram a veces pone fechas en titles
             ]
             
-            page_text = self.driver.find_element(By.TAG_NAME, "body").text
-            for pattern in date_patterns:
-                match = re.search(pattern, page_text, re.IGNORECASE)
-                if match:
-                    return datetime.now().isoformat()
+            for selector in time_selectors:
+                try:
+                    time_elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    for time_elem in time_elements:
+                        # Intentar datetime attribute
+                        datetime_attr = time_elem.get_attribute("datetime")
+                        if datetime_attr:
+                            return datetime_attr
+                        
+                        # Intentar title attribute
+                        title_attr = time_elem.get_attribute("title")
+                        if title_attr:
+                            return title_attr
+                            
+                        # Intentar el texto del elemento
+                        text = time_elem.text.strip()
+                        if text and any(word in text.lower() for word in ['ago', 'hace', 'hour', 'day', 'week']):
+                            return datetime.now().isoformat()
+                except:
+                    continue
+            
+            # Método alternativo: buscar por texto de fecha en el DOM
+            try:
+                page_text = self.driver.find_element(By.TAG_NAME, "body").text
+                date_patterns = [
+                    r'(\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago',
+                    r'hace\s+(\d+)\s+(segundo|minuto|hora|día|semana|mes|año)s?'
+                ]
+                
+                for pattern in date_patterns:
+                    match = re.search(pattern, page_text, re.IGNORECASE)
+                    if match:
+                        return datetime.now().isoformat()
+            except:
+                pass
             
         except Exception as e:
             self.logger.debug(f"Error extrayendo fecha: {str(e)}")
@@ -897,27 +1130,43 @@ class InstagramScraper:
         return datetime.now().isoformat()
 
     def _detect_carousel_safely(self):
-        """Detecta carruseles sin navegar por ellos"""
+        """Detecta carruseles sin navegar por ellos - Actualizado 2025"""
         try:
+            # Selectores actualizados para detectar carruseles en Instagram 2025
             carousel_indicators = [
-                "div[role='tablist'] button",
+                # Indicadores de múltiples imágenes
+                "div[role='tablist']",
+                "button[aria-label*='Next']",
+                "button[aria-label*='Siguiente']",
+                
+                # Indicadores de posición (ej: "1 of 3")
                 "span[aria-label*='1 of']:not([aria-label='1 of 1'])",
-                "button[aria-label='Next'][aria-disabled='false']",
+                "span[aria-label*='1 de']:not([aria-label='1 de 1'])",
+                
+                # Puntos indicadores
+                "div[style*='transform'] button[aria-label*='of']",
+                
+                # Controles de navegación
+                "button[aria-disabled='false'][aria-label*='Next']",
+                "button[aria-disabled='false'][aria-label*='Siguiente']",
             ]
             
             for selector in carousel_indicators:
-                elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                if elements:
+                try:
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
                     for element in elements:
                         if element.is_displayed():
-                            if 'of' in selector:
+                            # Verificar indicadores de posición
+                            if 'of' in selector or 'de' in selector:
                                 label = element.get_attribute('aria-label') or ''
-                                if 'of' in label and not label.endswith('of 1'):
+                                if ('of' in label and not label.endswith('of 1')) or ('de' in label and not label.endswith('de 1')):
                                     self.logger.debug(f"Carrusel detectado: {label}")
                                     return True
                             else:
                                 self.logger.debug(f"Carrusel detectado con: {selector}")
                                 return True
+                except:
+                    continue
             
             return False
             
@@ -954,97 +1203,89 @@ class InstagramScraper:
             return "unknown"
 
     def _close_popups(self):
-        """Cierra popups de manera más eficiente"""
+        """Cierra popups de manera más eficiente - Actualizado 2025"""
         try:
+            # Selectores actualizados para popups de Instagram 2025
             popup_selectors = [
-                "button[aria-label='Close']",
+                "button[aria-label='Cerrar' or aria-label='Close']",
                 "div[role='dialog'] button:first-child",
-                "svg[aria-label='Close']",
+                "svg[aria-label='Cerrar' or aria-label='Close']",
+                "button[aria-label='Dismiss' or aria-label='Descartar']",
             ]
             
             text_selectors = [
-                "Not Now", "Ahora no", "Accept", "Aceptar", "Allow", "Later"
+                "Not Now", "Ahora no", "Accept", "Aceptar", "Allow", "Permitir",
+                "Later", "Más tarde", "Skip", "Omitir", "Continue", "Continuar"
             ]
+            
+            popups_closed = 0
             
             # Intentar selectores CSS primero
             for selector in popup_selectors:
                 try:
                     elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                    if elements and elements[0].is_displayed():
-                        elements[0].click()
-                        self.logger.debug(f"Popup cerrado: {selector}")
-                        self.random_sleep(0.5, 1)
-                        return True
+                    for element in elements:
+                        if element.is_displayed():
+                            element.click()
+                            self.logger.debug(f"Popup cerrado: {selector}")
+                            self.random_sleep(0.5, 1)
+                            popups_closed += 1
+                            break
                 except:
                     continue
             
             # Intentar selectores con texto
             for text in text_selectors:
                 try:
-                    elements = self.driver.find_elements(By.XPATH, f"//button[contains(text(), '{text}')]")
-                    if elements and elements[0].is_displayed():
-                        elements[0].click()
-                        self.logger.debug(f"Popup cerrado: {text}")
-                        self.random_sleep(0.5, 1)
-                        return True
+                    # Buscar tanto en buttons como en divs clickeables
+                    xpath_patterns = [
+                        f"//button[contains(text(), '{text}')]",
+                        f"//div[@role='button'][contains(text(), '{text}')]",
+                        f"//span[contains(text(), '{text}')]/parent::button",
+                    ]
+                    
+                    for xpath in xpath_patterns:
+                        elements = self.driver.find_elements(By.XPATH, xpath)
+                        for element in elements:
+                            if element.is_displayed():
+                                element.click()
+                                self.logger.debug(f"Popup cerrado: {text}")
+                                self.random_sleep(0.5, 1)
+                                popups_closed += 1
+                                break
+                        if popups_closed > 0:
+                            break
                 except:
                     continue
             
-            return False
+            return popups_closed > 0
             
         except Exception as e:
             self.logger.debug(f"Error cerrando popups: {str(e)}")
             return False
 
     def _debug_current_page(self):
-        """Debugging TEMPORAL para ver qué elementos existen en la página"""
+        """Debugging para analizar la página actual - Optimizado"""
         try:
             current_url = self.driver.current_url
-            self.logger.info(f"🔍 DEBUGGING página: {current_url}")
+            self.logger.debug(f"🔍 URL actual: {current_url}")
         
-            # Verificar elementos básicos
-            basic_checks = {
-                "HTML body": "body",
-                "Main sections": "main, section",
-                "All divs": "div",
-                "All images": "img",
-                "Elements with testid": "[data-testid]",
+            # Verificar elementos básicos rápidamente
+            quick_checks = {
                 "Articles": "article",
-                "Roles": "[role]",
+                "Images": "img[src*='fbcdn']",
+                "Main content": "main",
             }
         
-            for name, selector in basic_checks.items():
+            for name, selector in quick_checks.items():
                 try:
-                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                    self.logger.info(f"  📋 {name}: {len(elements)} elementos")
-                
-                    # Para imágenes, mostrar algunas URLs
-                    if selector == "img" and elements:
-                        for i, img in enumerate(elements[:3]):
-                            src = img.get_attribute("src") or "No src"
-                            self.logger.info(f"    Imagen {i+1}: {src[:100]}...")
-                        
-                except Exception as e:
-                    self.logger.info(f"  ❌ {name}: Error - {str(e)}")
-        
-            # Verificar título de la página
-            try:
-                title = self.driver.title
-                self.logger.info(f"  📄 Título: {title}")
-            except:
-                pass
-            
-            # Guardar HTML completo para análisis
-            try:
-                html_debug = f"debug_html_{datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
-                with open(html_debug, 'w', encoding='utf-8') as f:
-                    f.write(self.driver.page_source)
-                self.logger.info(f"  📁 HTML guardado en: {html_debug}")
-            except Exception as e:
-                self.logger.info(f"  ❌ No se pudo guardar HTML: {str(e)}")
+                    count = len(self.driver.find_elements(By.CSS_SELECTOR, selector))
+                    self.logger.debug(f"  📋 {name}: {count}")
+                except:
+                    self.logger.debug(f"  ❌ {name}: Error")
             
         except Exception as e:
-            self.logger.error(f"Error en debug de página: {str(e)}")
+            self.logger.debug(f"Error en debug rápido: {str(e)}")
 
     def _save_debug_screenshot(self, filename_prefix):
         """Guarda captura de pantalla para debugging"""
@@ -1053,11 +1294,99 @@ class InstagramScraper:
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 filename = f"debug_{filename_prefix}_{timestamp}.png"
                 self.driver.save_screenshot(filename)
-                self.logger.info(f"📸 Captura guardada: {filename}")
+                self.logger.debug(f"📸 Captura guardada: {filename}")
         except Exception as e:
-            self.logger.error(f"Error guardando captura: {str(e)}")
+            self.logger.debug(f"Error guardando captura: {str(e)}")
 
-    # Métodos de compatibilidad
+    # === MÉTODOS DE COOKIES ===
+
+    def save_cookies(self):
+        """Guarda las cookies de la sesión"""
+        try:
+            if self._is_browser_alive():
+                cookies = self.driver.get_cookies()
+                with open('instagram_cookies.pkl', 'wb') as f:
+                    pickle.dump(cookies, f)
+                self.logger.info("🍪 Cookies guardadas correctamente")
+                return True
+        except Exception as e:
+            self.logger.error(f"Error guardando cookies: {str(e)}")
+            return False
+
+    def load_cookies(self):
+        """Carga cookies previamente guardadas - Optimizado para 2025"""
+        try:
+            if not os.path.exists('instagram_cookies.pkl'):
+                self.logger.info("📋 No hay cookies guardadas")
+                return False
+            
+            if not self._is_browser_alive():
+                self.logger.warning("Navegador no disponible para cargar cookies")
+                return False
+            
+            self.logger.info("🍪 Cargando cookies guardadas...")
+            
+            with open('instagram_cookies.pkl', 'rb') as f:
+                cookies = pickle.load(f)
+            
+            # Navegar a Instagram primero
+            self.driver.get(self.base_url)
+            self.random_sleep(2, 3)
+            
+            # Añadir cookies
+            cookies_loaded = 0
+            for cookie in cookies:
+                try:
+                    self.driver.add_cookie(cookie)
+                    cookies_loaded += 1
+                except:
+                    continue
+            
+            self.logger.info(f"✅ {cookies_loaded} cookies aplicadas")
+            
+            # Recargar la página
+            self.driver.refresh()
+            self.random_sleep(3, 5)
+            
+            # Verificar si la sesión está activa
+            if self._verify_login_success():
+                self.logger.info("🎉 Sesión cargada exitosamente desde cookies")
+                return True
+            else:
+                self.logger.info("❌ Cookies inválidas")
+                try:
+                    os.remove('instagram_cookies.pkl')
+                except:
+                    pass
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"❌ Error cargando cookies: {str(e)}")
+            return False
+
+    # === MÉTODOS FINALES ===
+
+    def close(self):
+        """Cierra el navegador de manera segura"""
+        try:
+            if hasattr(self, 'driver') and not self.browser_crashed:
+                self.driver.quit()
+                self.logger.info("🔒 Navegador cerrado correctamente")
+        except Exception as e:
+            self.logger.error(f"Error cerrando navegador: {str(e)}")
+
+    def get_stats(self):
+        """Devuelve estadísticas de la extracción"""
+        return {
+            "posts_extracted": len(self.posts),
+            "posts_in_session": len(self.session_posts),
+            "total_processed": len(self.processed_urls),
+            "failed_navigations": self.failed_navigation_count,
+            "browser_crashed": self.browser_crashed
+        }
+
+    # === MÉTODOS DE COMPATIBILIDAD ===
+
     def _extract_post_data(self):
         return self._extract_post_data_improved()
 
@@ -1082,185 +1411,10 @@ class InstagramScraper:
     def scrape_posts_alternative(self, limit=10):
         return self.scrape_posts(limit)
 
-    def save_cookies(self):
-        """Guarda las cookies de la sesión"""
-        try:
-            if self._is_browser_alive():
-                cookies = self.driver.get_cookies()
-                with open('instagram_cookies.pkl', 'wb') as f:
-                    pickle.dump(cookies, f)
-                self.logger.info("🍪 Cookies guardadas correctamente")
-                return True
-        except Exception as e:
-            self.logger.error(f"Error guardando cookies: {str(e)}")
-            return False
-
-    def load_cookies(self):
-        """Carga cookies previamente guardadas - VERSIÓN CORREGIDA"""
-        try:
-            if not os.path.exists('instagram_cookies.pkl'):
-                self.logger.info("📋 No hay cookies guardadas, se realizará login normal")
-                return False
-            
-            if not self._is_browser_alive():
-                self.logger.warning("Navegador no disponible para cargar cookies")
-                return False
-            
-            self.logger.info("🍪 Intentando cargar cookies guardadas...")
-            
-            with open('instagram_cookies.pkl', 'rb') as f:
-                cookies = pickle.load(f)
-            
-            self.logger.info(f"📦 {len(cookies)} cookies encontradas")
-            
-            # Navegar a Instagram primero
-            self.driver.get(self.base_url)
-            self.random_sleep(2, 3)
-            
-            # Añadir cookies
-            cookies_loaded = 0
-            for cookie in cookies:
-                try:
-                    self.driver.add_cookie(cookie)
-                    cookies_loaded += 1
-                except Exception as e:
-                    self.logger.debug(f"Error agregando cookie: {str(e)}")
-                    continue
-            
-            self.logger.info(f"✅ {cookies_loaded} cookies aplicadas correctamente")
-            
-            # Recargar la página
-            self.driver.refresh()
-            self.random_sleep(3, 5)
-            
-            # Verificar si la sesión está activa con múltiples métodos
-            session_active = False
-            
-            # Método 1: Buscar elementos de usuario logueado
-            try:
-                home_indicators = [
-                    "svg[aria-label='Home']",
-                    "svg[aria-label='Inicio']", 
-                    "a[href='/']//svg",
-                    "div[class*='x1n2onr6']//img[@alt]",  # Avatar de usuario
-                    "nav a[href='/direct/']",  # Direct messages
-                ]
-                
-                for indicator in home_indicators:
-                    elements = self.driver.find_elements(By.CSS_SELECTOR, indicator)
-                    if elements and elements[0].is_displayed():
-                        session_active = True
-                        self.logger.info(f"✅ Sesión activa detectada con: {indicator}")
-                        break
-                        
-            except Exception as e:
-                self.logger.debug(f"Error verificando sesión: {str(e)}")
-            
-            # Método 2: Verificar que NO estemos en login
-            if not session_active:
-                try:
-                    login_elements = self.driver.find_elements(By.XPATH, "//input[@name='username']")
-                    if not login_elements:  # Si NO hay campos de login, probablemente estemos logueados
-                        session_active = True
-                        self.logger.info("✅ Sesión activa: no se encontraron campos de login")
-                except:
-                    pass
-            
-            # Método 3: Verificar URL actual
-            if not session_active:
-                current_url = self.driver.current_url
-                if '/accounts/login' not in current_url and '/login' not in current_url:
-                    session_active = True
-                    self.logger.info(f"✅ Sesión activa: URL actual {current_url}")
-            
-            if session_active:
-                self.logger.info("🎉 Sesión cargada exitosamente desde cookies")
-                return True
-            else:
-                self.logger.info("❌ No se pudo restaurar la sesión desde cookies")
-                # Eliminar cookies inválidas
-                try:
-                    os.remove('instagram_cookies.pkl')
-                    self.logger.info("🗑️ Cookies inválidas eliminadas")
-                except:
-                    pass
-                return False
-                
-        except Exception as e:
-            self.logger.error(f"❌ Error cargando cookies: {str(e)}")
-            return False
-
-    def close(self):
-        """Cierra el navegador de manera segura"""
-        try:
-            if hasattr(self, 'driver') and not self.browser_crashed:
-                self.driver.quit()
-                self.logger.info("🔒 Navegador cerrado correctamente")
-        except Exception as e:
-            self.logger.error(f"Error cerrando navegador: {str(e)}")
-
-    def get_stats(self):
-        """Devuelve estadísticas de la extracción"""
-        return {
-            "posts_extracted": len(self.posts),
-            "posts_in_session": len(self.session_posts),
-            "total_processed": len(self.processed_urls),
-            "failed_navigations": self.failed_navigation_count,
-            "browser_crashed": self.browser_crashed
-        }
-
-    # Métodos legacy para compatibilidad
     def download_images(self, output_dir="data/images"):
+        """Método legacy de compatibilidad"""
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
         
         self.logger.info(f"Descargando {len(self.posts)} imágenes en {output_dir}")
-        
-        for i, post in enumerate(self.posts):
-            try:
-                pass  # Implementar descarga si es necesario
-            except Exception as e:
-                self.logger.error(f"Error al descargar imagen {i}: {str(e)}")
-
-    def _debug_page_structure(self):
-        """Método de debugging para analizar la estructura de la página"""
-        try:
-            if not self._is_browser_alive():
-                return
-                
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            debug_file = f"debug_page_structure_{timestamp}.txt"
-            
-            with open(debug_file, 'w', encoding='utf-8') as f:
-                f.write(f"POST URL: {self.driver.current_url}\n")
-                f.write(f"TIMESTAMP: {timestamp}\n")
-                f.write("="*80 + "\n\n")
-                
-                # Analizar artículos
-                articles = self.driver.find_elements(By.TAG_NAME, "article")
-                f.write(f"ARTÍCULOS ENCONTRADOS: {len(articles)}\n\n")
-                
-                for i, article in enumerate(articles):
-                    f.write(f"ARTÍCULO {i+1}:\n")
-                    f.write(f"Texto completo ({len(article.text)} chars):\n")
-                    f.write(article.text[:500] + "...\n\n")
-                    
-                # Analizar elementos con data-testid
-                testid_elements = self.driver.find_elements(By.CSS_SELECTOR, "[data-testid*='caption']")
-                f.write(f"ELEMENTOS CON data-testid 'caption': {len(testid_elements)}\n\n")
-                
-                for i, elem in enumerate(testid_elements):
-                    f.write(f"ELEMENTO {i+1}: {elem.text[:200]}...\n\n")
-                
-                # Analizar spans con contenido
-                spans = self.driver.find_elements(By.CSS_SELECTOR, "article span, div[role='dialog'] span")
-                long_spans = [span for span in spans if len(span.text.strip()) > 30]
-                f.write(f"SPANS CON CONTENIDO LARGO: {len(long_spans)}\n\n")
-                
-                for i, span in enumerate(long_spans[:10]):  # Solo los primeros 10
-                    f.write(f"SPAN {i+1}: {span.text[:100]}...\n\n")
-                    
-            self.logger.info(f"📊 Debug de estructura guardado en: {debug_file}")
-            
-        except Exception as e:
-            self.logger.error(f"Error en debug de estructura: {str(e)}")
+        # Implementar descarga si es necesario

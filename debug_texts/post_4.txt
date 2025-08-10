@@ -1,50 +1,66 @@
-POST URL: [Extraído desde debug_images/post_4.png]
-IMAGE URL: [Imagen local]
-DESCRIPTION: [Texto extraído por OCR]
-EXTRACTED TEXT:
+=== INFORMACIÓN DEL POST ===
+POST URL: https://www.instagram.com/utpfisc/p/DMyys5-s96K/
+IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/527587230_1191057182826507_6404265283593817840_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QEt1aW_Z8fA3pUCcpOvEBc488bCp0GOLVwBdrzUqRIFkrVEUcFV2QUjJVyjX836fB8&_nc_ohc=AfMhJo_XHVYQ7kNvwEmOrqb&_nc_gid=H2wnFO6Z3wckC-89BZcydw&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzY4OTIzNDAzMzAwNzY0ODM5NA%3D%3D.3-ccb7-5&oh=00_AfWvPnsjK-Ei_kwcS8tkbgw3PYDFQWtApyyIZeUo_h9nDQ&oe=689DF986&_nc_sid=10d13b
+IMAGE PATH: debug_images/post_4.png
+EXTRACTION DATE: 2025-08-09 22:33:46
+
+=== DESCRIPCIÓN DEL POST ===
+Práctica laboral ofrecida por la empresa Viva Solutions, S. A.
+Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de este empresa
+Contacto:  Luis Carlos Cárdenas Ortega| Costumer Experince Manager
+Teléfono: +(507) 835-5801
+Interesados enviar Hoja de Vida a: info@vivaconecta.com
+
+=== TEXTO EXTRAÍDO POR OCR ===
+Caracteres extraídos: 2225
+Contenido:
 ml
-epi NA
-Práctica Laboral O (E: Dj MANZon0U
-A om;
-Empresa: GRUPO MANZ, S. A.
-Contacto: Lcda. Elizabeth Rodríguez | Talent Development Center (TDC)
-Móvil: +(507) 6647-1366
-GRUPO MANZ está ofreciendo oportunidad a estudiante que requiera ganar experiencia
-laboral, aplicando sus conocimientos académicos en un entorno profesional real.
+A ... 0
+AAA
+4 e ? e
+Práctica Laboral ED: V/S
+O NA TACICLHO IA CUE CONECTA
+e Nm;
+Empresa: Viva Solutions, S. A.
+Contacto: Luis Carlos Cárdenas Ortega|Costumer Experince Manager
+Teléfono: +(507) 835-5801
+Viva Solutions, S. A. está ofreciendo oportunidad a estudiante que requiera ganar
+experiencia laboral como Analista de Centro de Operaciones de Ciberseguridad (SOC).
 Requisitos:
-+ Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas
+e Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas
 Computacionales (FISC).
-e Interés en el desarrollo de habilidades en programación cientifica, procesamiento de
-datos y fundamentos de inteligencia artificial.
-e Alta disposición para el aprendizaje práctico
-e Análisis de problemas y trabajo en equipo
-* Disponibilidad para hacer viajes eventuales y participar en actividades de campo fuera
-de oficina según sea requerido.
+e Pensamiento crítico y capacidad analítica.
+e Trabajo bajo presión y toma de decisiones rápida.
+e Comunicación efectiva con equipos técnicos y no técnicos.
+e Colaboración en entornos multidisciplinarios.
 Conocimientos en:
-* Fundamentos de programación (Python, C++, Java u otros).
-e Lógica computacional y estructuras de datos.
-+. Bases de datos (MySQL, PostgreSQL, etc.).
-* Conocimientos básicos en matemáticas aplicadas y álgebra lineal.
-+ Deseable: conocimientos previos o interés en MATLAB/SIMULINK/SIMULINK.
-*. Deseable: interés en inteligencia artificial, aprendizaje automático o sistemas
-inteligentes.
+e Redes (Paquetes, Puertos y Protocolos, TCP/IP, DNS, HTTP, VPN, etc.).
++ Manejo de sistemas operativos Windows, Linux y macOS.
+e Capacidad para interpretar logs, flujos de red y alertas.
+e Fundamentos de threat hunting y análisis forense.
 Algunas de las funciones del área:
-e Capacitarse en el uso de MATLAB/SIMULINK para aplicaciones científicas y de
-simulación.
-+ Apoyar en el desarrollo de scripts y funciones en MATLAB/SIMULINK para análisis de
-datos y prototipado.
-* Investigar y documentar algoritmos aplicables a agentes de inteligencia artificial.
-e Colaborar con el equipo técnico en pruebas de conceptos relacionados con lA.
-e Capacidad para comunicar y colaborar en la construcción de soluciones que integren
-aspectos técnicos y comerciales.
-e Participar en reuniones técnicas y reportar avances del aprendizaje.
++ Supervisar eventos de seguridad mediante uso de herramientas Security Incident 8
+Event Manager (SIEM), EndPoint Detection € Respond (EDR), Network Detection 8:
+Respond (NDR) y Extended Detection 8: Respond (XDR).
+e Clasificar alertas y realizar triage inicial de incidentes.
+e Investigar amenazas, vulnerabilidades y comportamientos anómalos.
+e Coordinar acciones de contención, erradicación y recuperación.
++ Documentar incidentes y generar reportes técnicos y ejecutivos.
+e Colaborar con equipos de Tl, respuesta a incidentes y gestión de riesgos internos y del
+cliente.
+e. Apoyar al cliente en los simulacros, auditorías y revisiones post-incidente.
+e Mantenerse actualizado sobre amenazas emergentes y técnicas de ataque a través de
+cursos de capacitación.
 La Práctica Laboral, será acorde a las normativas de la UTP - FISC.
 Ofrecen:
-+ Apoyo económico (Viático), seguro contra accidentes y un ambiente colaborativo
-para el crecimiento profesional, capacitación continua y certificaciones sin costo.
+e Apoyo económico.
+e Excelente ambiente de trabajo.
+e Capacitación continua y certificaciones sin costo.
 Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de este empresa.
-Interesados enviar Hoja de Vida a: talentoogrpmanz.com
+Interesados enviar Hoja de Vida a: infoovivaconecta.com
 E)
 Universidad Tecnológica de Panamá
 Facultad de Ingenieria de Sistemas Computacionales
-Síguenos: f X O O in WII Y Publicado: 5 de agosto de 2025
+Síguenos: f X GO O in WII Y Publicado: 31 de julio de 2025
+
+=== FIN DEL ARCHIVO ===

@@ -1,38 +1,65 @@
-POST URL: [Extraído desde debug_images/post_7.png]
-IMAGE URL: [Imagen local]
-DESCRIPTION: [Texto extraído por OCR]
-EXTRACTED TEXT:
-Talleres virtuales 40
-Dirigido a estudiantes de UTP - FISC y) 3 +
-de 4to año Ps )S y
-Pueden participar estudiantes de Centros Regionales AAN E Ed Y
-A E) 4 :
-Banco General y la de wo :
-Facultad de Ingenieria de Sistemas Computacionales d- e o e .
-Universidad Tecnológica de Panamá . a Y !
-te invitan a inscribirte : ( A
-Y y »/
-a] :
-Regístrate aquí . A
-¡Cupos Limitados! , A E
-40 cupos => ..
-74
-A A ES o
-T
-por Micá5o
-4
-h SA
-Requisitos
-* Computadora
-«Carrara wen
-* Mcrofono
-+ Altavoces compatibles Y
-+ Acceso a Internet estable.
-La Facultad de Ingenieria de Sistemas Computacionales de la Universidad Tecnológica de Panamá te invita a cue
-participes de los talleres virtuales realizados por Banco General como parte del Corvento Marco de Cooperación
-Banco General ; 3 EN ¿
-o, UU O
-NN
-Universidad Tecnológica de Panama
+=== INFORMACIÓN DEL POST ===
+POST URL: https://www.instagram.com/utpfisc/p/DMwLmDOM587/
+IMAGE URL: https://instagram.fpac1-2.fna.fbcdn.net/v/t39.30808-6/525726035_1190241796241379_5626915624984996618_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjEwODB4MTM1MC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpac1-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QGN8cQv0cZl9bRUyoUa8lYrIYYY0CRU_hwDrryCmqpbwTdVcR1EdzqcUxqF_NM9zpg&_nc_ohc=Nrl4PEgKP9cQ7kNvwFcdeGD&_nc_gid=-yxe1tIYZMZKZkmsYFXdkw&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzY4ODQ5OTA4ODEyNzY2MzkzMQ%3D%3D.3-ccb7-5&oh=00_AfVJ6GwlemwqvmyfTDIiWw3LZZeJHjiMjvgpd1Y4D-qL0Q&oe=689DF0FA&_nc_sid=10d13b
+IMAGE PATH: debug_images/post_7.png
+EXTRACTION DATE: 2025-08-09 22:34:21
+
+=== DESCRIPCIÓN DEL POST ===
+Práctica laboral ofrecida por la empresa AprenderSTEAM
+Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa
+Contacto: Alberto Pinto|Director
+Móvil: +(507) 6760-0619
+Interesados enviar Hoja de Vida a: info@aprendersteam.com
+
+=== TEXTO EXTRAÍDO POR OCR ===
+Caracteres extraídos: 2279
+Contenido:
+ml
+“Do. (AR 2100
+Práctica Laboral 7 ES E
+9 ISE e. «STEAM
+CS 4
+e Nm;
+Empresa: AprenderSTEAM
+Contacto: Alberto Pinto| Director
+Móvil: +(507) 6760-0619
+AprenderSTEAM está ofreciendo oportunidades para estudiantes que tengan interés en la
+educación STEAM y entusiasmo por trabajar con tecnologías emergentes aplicadas a la
+robótica y la Inteligencia Artificial (IA) para primaria y secundaria y que quieran ganar
+experiencia laboral.
+Requisitos:
+e Estudiante de último año de carrera en la Facultad de Ingeniería de Sistemas
+Computacionales (FISC).
+* Proactividad, capacidad de trabajar en equipo y habilidades comunicativas para
+colaborar en proyectos multidisciplinarios.
+e Habilidades básicas en redacción, documentación técnica y/o creación de contenido
+educativo digital.
+Conocimientos en:
++ Manejo de sistemas operativos Windows y conocimientos básicos en instalación y
+configuración de software y hardware.
+e Familiaridad o interés en plataformas educativas, robótica didáctica y conceptos básicos
+de inteligencia artificial aplicados a la enseñanza.
+Algunas de las funciones del área:
+» Atender y resolver casos de soporte técnico internos relacionados con equipos,
+plataformas educativas y laboratorios STEAM.
+e Asistir en la creación, prueba y edición de contenido educativo para la editorial —
+enfocado en robótica e inteligencia artificial— dirigido a estudiantes de primaria y
+secundaria.
+e Colaborar con el equipo pedagógico y técnico en capacitaciones, talleres y actividades
+vinculadas a la integración de nuevas tecnologías en el aula.
+La Práctica Laboral, será acorde a las normativas de la UTP - FISC.
+Ofrecen:
++ Apoyo económico, 6 meses en modalidad presencial o híbrida según necesidades del
+área.
++ Ambiente de aprendizaje enfocado en innovación educativa y acceso a tecnologías de
+vanguardia en robótica e lA.
++ Oportunidad de desarrollar competencias técnicas y pedagógicas, así como de
+construir portafolio con proyectos reales aplicados a la educación STEAM.
+Nota: Dudas o consultas adicionales comunicarse directamente con el contacto de esta empresa.
+Interesados enviar Hoja de Vida a: infooaprendersteam.com
+E)
+Universidad Tecnológica de Panamá
 Facultad de Ingenieria de Sistemas Computacionales
-Siguenos: f X Q O in h, autpfisc WN Publicado: 4 de agosto de 2025
+Síguenos: f X GO O in WII Y Publicado: 30 de julio de 2025
+
+=== FIN DEL ARCHIVO ===
